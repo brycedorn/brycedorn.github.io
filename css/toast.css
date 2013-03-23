@@ -16,16 +16,16 @@
 \*-----------------------------------*/
 
 html {
-font-family: Baskerville, "Baskerville Old Face", "Hoefler Text", 
+	font-family: Baskerville, "Baskerville Old Face", "Hoefler Text", 
 Garamond, "Times New Roman", serif;
     height: 100%;
 }
 
 body {
-	background: url("../img/test.png"), url("http://25.media.tumblr.com/af3dfbdd6cd83df2f4a782e9e3ee9876/tumblr_miu99ylxFi1rket8to1_500.gif");
+	background: url("../img/test.png"), url("../img/an.gif");
 	background-repeat: no-repeat, repeat-y;
-	background-position: center;
-	background-size: cover, 420px 420px;
+	background-position: center, 50% 40%;
+	background-size: cover,420px 420px;
 	height: 100%;
 }
 
@@ -35,7 +35,7 @@ footer {
 	position:absolute;
 	bottom:0px;
 	margin-left:2%;
-	margin-bottom: 0;
+	margin-bottom: 4px;
 	font-size: 10px;
 }
 
@@ -173,7 +173,7 @@ h2, .beta {
 	color: #fff;
 	text-shadow: 0px 0px 6px #000;
 }
-h4  {
+h4 {
 	margin-bottom: 10px;
 	color: #ffffff;
 	text-shadow: 1px 1px 8px #000;
@@ -181,10 +181,9 @@ h4  {
 	font-size: 90px;
 	font-weight: 400;
 	line-height: 1;
-	padding-left: 226px;
-	padding-top: 5px;
+	margin-left: 226px;
 	letter-spacing: 3px;
-	margin-top: -105px;
+	margin-top: -100px;
 	opacity:0;
 	-webkit-transition: all 0.7s ease-out;
 	-moz-transition: all 0.7s ease-out;
