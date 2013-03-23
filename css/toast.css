@@ -22,8 +22,10 @@ Garamond, "Times New Roman", serif;
 }
 
 body {
-	background: url("http://i.imgur.com/y5dTLhB.jpg") center no-repeat;
-	background-size: cover;
+	background: url("../img/test.png"), url("http://25.media.tumblr.com/af3dfbdd6cd83df2f4a782e9e3ee9876/tumblr_miu99ylxFi1rket8to1_500.gif");
+	background-repeat: no-repeat, repeat-y;
+	background-position: center;
+	background-size: cover, 420px 420px;
 	height: 100%;
 }
 
@@ -153,7 +155,7 @@ footer {
 
 p, .p, ul, ol, hr, table, form, pre,
 h1, .alpha, h2, .beta {
-	margin-bottom: 10px;
+	margin-bottom: 8px;
 }
 h1, .alpha {
 	margin-bottom: 10px;
@@ -174,7 +176,7 @@ h2, .beta {
 h4  {
 	margin-bottom: 10px;
 	color: #ffffff;
-	text-shadow: -1px -1px 8px #000;
+	text-shadow: 1px 1px 8px #000;
 	width: 20px;
 	font-size: 90px;
 	font-weight: 400;
@@ -182,7 +184,7 @@ h4  {
 	padding-left: 226px;
 	padding-top: 5px;
 	letter-spacing: 3px;
-	margin-top: -106px;
+	margin-top: -105px;
 	opacity:0;
 	-webkit-transition: all 0.7s ease-out;
 	-moz-transition: all 0.7s ease-out;
@@ -200,9 +202,4 @@ a:link {
 a:visited { 
 	text-decoration: none;
 	color: #ffffff;
-}
-hr {
-	border: none;
-	border-bottom: 1px solid rgba(0,0,0,.1);
-	margin-top: -1px;
 }
