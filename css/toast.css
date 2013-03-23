@@ -192,7 +192,7 @@ h4 {
 	transition: all 0.7s ease-out;
 }
 h4:hover {
-	opacity:1;
+	opacity:1.0;
 }
 a:link { 
 	text-decoration: none;
