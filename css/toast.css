@@ -1,0 +1,209 @@
+/*-----------------------------------*\
+	$RESET
+\*-----------------------------------*/
+
+* {
+	margin: 0;
+	padding: 0;
+	position: relative;
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+
+/*-----------------------------------*\
+	$GENERAL
+\*-----------------------------------*/
+
+html {
+font-family: Baskerville, "Baskerville Old Face", "Hoefler Text", 
+Garamond, "Times New Roman", serif;
+    height: 100%;
+}
+
+body {
+	background: url("http://i.imgur.com/y5dTLhB.jpg") center no-repeat;
+	background-size: cover;
+	height: 100%;
+}
+
+footer {
+	color: #ffffff;
+	opacity:0.2;
+	position:absolute;
+	bottom:0px;
+	margin-left:2%;
+	margin-bottom: 0;
+	font-size: 10px;
+}
+
+/*-----------------------------------*\
+	$ACCORDION
+\*-----------------------------------*/
+
+.wrapper{
+	width:90%;
+	max-width:800px;
+	margin-left: 4%;
+}
+.st-accordion{
+    padding: 0px;
+    width: 10px;
+}
+.st-accordion li{
+	width:200px;
+    font-size: 40px;
+    padding-left: 5px;
+    margin-bottom: 10px;
+}
+.st-accordion li a{
+    color: transparent;
+    display: block;
+    text-shadow: 0px 0px 6px #fff;
+    letter-spacing: 1px;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+.st-accordion li a:hover{
+    color: #fff;
+    text-shadow: 0px 0px 1px #fff;
+    padding-left: 10px;
+}
+
+.st-accordion ul li{
+    height: 100px;
+    overflow: hidden;
+}
+.st-accordion ul li > a{
+	width: 400px;
+    text-shadow: 1px 1px 1px #fff;
+    font-size: 16px;
+    display: block;
+	position: relative;
+    line-height: 100px;
+    -webkit-transition:  color 0.2s ease-in-out;
+	-moz-transition:  color 0.2s ease-in-out;
+	-o-transition:  color 0.2s ease-in-out;
+	-ms-transition:  color 0.2s ease-in-out;
+	transition:  color 0.2s ease-in-out;
+}
+.st-accordion ul li > a span{
+	text-indent:-9000px;
+	width: 26px;
+	height: 14px;
+	position: absolute;
+	top: 50%;
+	right: 26px;
+	margin-top: -7px;
+	opacity:1;
+	-webkit-transition:  all 0.2s ease-in-out;
+	-moz-transition:  all 0.2s ease-in-out;
+	-o-transition:  all 0.2s ease-in-out;
+	-ms-transition:  all 0.2s ease-in-out;
+	transition:  all 0.2s ease-in-out;
+}
+.st-accordion ul li.st-open > a{
+    color: #ffffff;
+}
+.st-accordion ul li.st-open > a span{
+	-webkit-transform:rotate(180deg);
+	-moz-transform:rotate(180deg);
+    transform:rotate(180deg);
+	right:10px;
+	opacity:1;
+}
+.st-content{
+	font-style: normal;
+    font-family:  Georgia, serif;
+    padding: 6px 0px 30px 0px;
+    margin-left: 30px;
+    font-size: 20px;
+    padding-top: 14px;
+    margin-bottom: -20px;
+}
+.st-content p{
+	/* background-color:rgba(100,100,100,0.2); */
+	font-style: italic;
+	text-shadow: 1px 1px 8px #000;
+    font-size:  16px;
+    font-family:  Georgia, serif;
+    line-height:  28px;
+    color:#ffffff;
+    padding-left: 12px;
+    margin-top: -8px;
+}
+.st-content img{
+    width:125px;
+    margin-left: 6px;
+    border-right:1px solid #fff;
+    border-bottom:1px solid #fff;
+}
+@media screen and (max-width: 320px){
+	.st-accordion ul li > a{
+		font-size:36px;
+	}
+}
+
+/*-----------------------------------*\
+	$TYPE
+\*-----------------------------------*/
+
+p, .p, ul, ol, hr, table, form, pre,
+h1, .alpha, h2, .beta {
+	margin-bottom: 10px;
+}
+h1, .alpha {
+	margin-bottom: 10px;
+	color: #ffffff;
+	width: 20px;
+	font-size: 90px;
+	font-weight: 400;
+	line-height: 1;
+	padding-left: 16px;
+	padding-top: 14px;
+	letter-spacing: 3px;
+}
+h2, .beta {
+	font-size: 20px;
+	font-weight: 400;
+	color: #fff;
+	text-shadow: 0px 0px 6px #000;
+}
+h4  {
+	margin-bottom: 10px;
+	color: #ffffff;
+	text-shadow: -1px -1px 8px #000;
+	width: 20px;
+	font-size: 90px;
+	font-weight: 400;
+	line-height: 1;
+	padding-left: 230px;
+	padding-top: 10px;
+	letter-spacing: 3px;
+	margin-top: -110px;
+	opacity:0;
+	-webkit-transition: all 0.7s ease-out;
+	-moz-transition: all 0.7s ease-out;
+	-o-transition: all 0.7s ease-out;
+	-ms-transition: all 0.7s ease-out;
+	transition: all 0.7s ease-out;
+}
+h4:hover {
+	opacity:1;
+}
+a:link { 
+	text-decoration: none;
+	color: #ffffff;
+}
+a:visited { 
+	text-decoration: none;
+	color: #ffffff;
+}
+hr {
+	border: none;
+	border-bottom: 1px solid rgba(0,0,0,.1);
+	margin-top: -1px;
+}
