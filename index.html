@@ -8,20 +8,8 @@
 		<meta name="author" content="Bryce Dorn" />
 		<link rel="icon" type="img/x-icon" href="img/favicon.ico">
 		<link rel="stylesheet" href="css/toast.css">
-		<noscript>
-			<style>
-				.st-accordion ul li{
-					height:auto;
-				}
-				.st-accordion ul li > a span{
-					visibility:hidden;
-				}
-			</style>
-		</noscript>
-		<script type="text/javascript">
-    	</script>
 	</head>
-	<body>
+	<body> <!-- onload="timeredirect()" -->
         <div class="container">
             <div class="header">
 				<h1><a href="http://www.bryce.io">bryce.io</a></h1>
@@ -36,20 +24,25 @@
 							<a href="#" onclick="hideImage();">about</a>
                             <div class="st-content">
                             	<p>I like to code and design things</p>
-                            	<p></p>
-								<a href="#" onclick="showImage();"><h2>show resume</h2></a>
+                            	<p>I'm pretty sure I'm nocturnal</p>
+                            	<p>I want to have a pet raptor one day</p>
+								<a href="#" onclick="showImage();"><h2>resume</h2></a>
+                            	<div class="bottomlink">
 								<a href="#" onclick="hideImage();"><p>pdf</p></a>
+								</div>
 							</div>
 						</li>
 						<li>
-							<a href="#" onclick="hideImage();">work</a>
+							<a href="#" onclick="hideImage();">venture</a>
                             <div class="st-content">
                             	<h2>map design & modeling</h2>
-                            		<a href="http://brycedorn.carbonmade.com/projects/4730462#1"><p>team fortress 2</p></a>
+                            		<a href="http://brycedorn.carbonmade.com/projects/4730462"><p>team fortress 2</p></a>
                             	<h2>ad design</h2>
                             		<a href="http://brycedorn.carbonmade.com/projects/4730464"><p>star course</p></a>
                             	<h2>data visualization</h2>
+                            	<div class="bottomlink">
                             		<a href="https://github.com/brycedorn"><p>cs467 projects</p></a>
+                            	</div>
                             </div>
 						</li>
 						<li>
@@ -69,7 +62,7 @@
 			</div>
 		</div>
 		<div class="resume">
-			<a href="#" onclick="hideImage();"><img id="loadingImage" src="http://www.easyjob.net/wp-content/gallery/resume-examples/examples-of-resume-formats.jpg" style="visibility:hidden" align="middle"/></a>
+			<a href="#" onclick="hideImage();"><img id="loadingImage" src="http://www.easyjob.net/wp-content/gallery/resume-examples/examples-of-resume-formats.jpg" style="visibility:hidden"/></a>
 		</div>
 		<script type="text/javascript" src="js/imageshow.js"></script>
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
