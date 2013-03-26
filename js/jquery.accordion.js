@@ -57,13 +57,13 @@
 		// if set to true, only one item can be opened. Once one item is opened, any other that is opened will be closed first
 		oneOpenedItem	: true,
 		// speed of the open / close item animation
-		speed			: 600,
+		speed			: 400,
 		// easing of the open / close item animation
-		easing			: 'easeInOutExpo',
+		easing			: 'easeInOutCirc',
 		// speed of the scroll to action animation
 		scrollSpeed		: 900,
 		// easing of the scroll to action animation
-		scrollEasing	: 'easeInOutExpo'
+		scrollEasing	: 'easeInOutCirc'
     };
 	
 	$.Accordion.prototype 		= {
