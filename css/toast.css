@@ -16,8 +16,7 @@
 \*-----------------------------------*/
 
 html {
-	font-family: Baskerville, "Baskerville Old Face", "Hoefler Text", 
-Garamond, "Times New Roman", serif;
+font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
     height: 100%;
 }
 
@@ -117,7 +116,6 @@ footer:hover {
 }
 .st-content{
 	font-style: normal;
-    font-family:  Georgia, serif;
     padding: 6px 0px 30px 0px;
     margin-left: 30px;
     font-size: 20px;
@@ -128,8 +126,7 @@ footer:hover {
 	/* background-color:rgba(100,100,100,0.2); */
 	font-style: italic;
 	text-shadow: 1px 1px 8px #000;
-    font-size:  16px;
-    font-family:  Georgia, serif;
+    font-size:  19px;
     line-height:  28px;
     color:#ffffff;
     padding-left: 12px;
@@ -170,6 +167,7 @@ footer:hover {
 		font-size:36px;
 	}
 }
+
 /*-----------------------------------*\
 	$TYPE
 \*-----------------------------------*/

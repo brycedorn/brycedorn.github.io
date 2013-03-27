@@ -7,12 +7,10 @@ function hideImage(){
 	document.getElementById('loadingImage').style.bottom='700px';
 }
 
-
-function timeredirect()
-{
-    var t = setTimeout("redirect_to('')", 1500);
-}
-function redirect_to(url)
-{
-     document.location = url;
-}
+// Wait for window load
+$(window).load(function() {
+	// Animate loader off screen
+	$("#loader").animate({
+		top: -200
+	}, 1500);
+});
