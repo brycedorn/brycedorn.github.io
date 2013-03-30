@@ -1,81 +1,232 @@
-<!DOCTYPE HTML>
-<html lang="en">
-	<head>
-		<title>bryce.io</title>
+
+<!DOCTYPE html>
+<head>
+	<title>bryce.io</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
 		<meta name="description" content="Welcome">
 		<meta name="keywords" content="bryce,dorn,brycedorn">
 		<meta name="author" content="Bryce Dorn" />
-		<link rel="icon" type="img/x-icon" href="img/favicon.ico">
-		<link rel="stylesheet" href="css/toast.css">
-	</head>
-	<body>
-        <div class="container">
-            <div class="header">
-				<h1><a href="http://www.bryce.io">bryce.io</a></h1>
+		<link rel="shortcut icon" href="img/favicon.ico">
+		<link rel='stylesheet' type='text/css' href='css/styles.css'/>
+		<link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+
+<body>
+<div id="container">
+	<div id="nametag">
+		<img src="img/cube.png" alt="cube"/>
+		<h1>Bryce Dorn</h1>
+		<p id="blurb">insert feed of things here</p>
+	</div>
+
+	<ul id="menu">
+		<a id="link-creative" href="#creative">
+			<object>
+				<li><h3>about</h3></li>
+			</object>
+		</a>
+		<a id="link-about" href="#about">
+			<object>
+				<li><h3>exp</h3></li>
+			</object>
+		</a>
+		<a id="link-projects" href="#projects">
+			<object>
+				<li><h3>Projects</h3></li>
+			</object>
+		</a>
+		<a id="link-contact" href="#contact">
+			<object>
+				<li><h3>Contact</h3></li>
+			</object>
+		</a>
+	</ul>	
+
+	<div id="creative" class="panel">
+		<div class="content">
+			<div id="header">
+				<h2>about this guy</h2>
 			</div>
-			<div class="header2">
-            	<h4><a href="http://www.bryce.io">dorn</a></h4>
-            </div>
-            <div class="wrapper">
-				<div id="st-accordion">
-					<ul class="st-accordion">
-						<li>
-							<a href="#" onclick="hideImage();">about</a>
-                            <div class="st-content">
-                            	<p>I like to code and design things</p>
-                            	<p>I'm pretty sure I'm nocturnal</p>
-                            	<p>I'd like a pet raptor one day</p>
-								<a href="#" onclick="showImage();"><h2>resume</h2></a>
-                            	<div class="bottomlink">
-								<a href="#" onclick="hideImage();"><p>pdf</p></a>
-								</div>
-							</div>
-						</li>
-						<li>
-							<a href="#" onclick="hideImage();">venture</a>
-                            <div class="st-content">
-                            	<h2>map design & modeling</h2>
-                            		<a href="http://brycedorn.carbonmade.com/projects/4730462"><p>team fortress 2</p></a>
-                            	<h2>ad design</h2>
-                            		<a href="http://brycedorn.carbonmade.com/projects/4730464"><p>star course</p></a>
-                            	<h2>data visualization</h2>
-                            	<div class="bottomlink">
-                            		<a href="https://github.com/brycedorn"><p>cs467 projects</p></a>
-                            	</div>
-                            </div>
-						</li>
-						<li>
-							<a href="#" onclick="hideImage();">social</a>
-                            <div class="st-content">
-                            	<h2>work</h2>
-								<a href="https://github.com/brycedorn"><p>github</p></a>
-								<a href="http://www.linkedin.com/pub/bryce-dorn/46/21b/607"><p>linkedin</p></a>
-								<h2>play</h2>
-								<a href="http://www.last.fm/user/BDORN"><p>last.fm</p></a>
-								<a href="http://steamcommunity.com/id/xxcombatxxfetusxx/"><p>steam</p></a>
-								<a href="https://www.youtube.com/user/TheCombatFetus"><p>youtube</p></a>
-							</div>
-						</li>
-					</ul>
+
+			<div id="left">
+				<div class="face"></div>
+			</div>
+
+			<div id="right">
+				<h1>hello</h1>
+				<h5>my name is Bryce</h5>
+				<p>I'm a Sophomore at the University of Illinois</p>
+				<p>Pursuing a Bachelors in CS in Engineering</p>
+				<p>I like to code and design things</p>
+				<p>I'm pretty sure I'm nocturnal</p>
+				<p>I want to have a pet raptor one day</p>
+				<p>What else...</p>
+				<p>Cats are the best</p>
+				<p>I hope I'm not forgetting anything</p>
+			</div>
+		</div>
+	</div>
+
+	<div id="contact" class="panel">
+		<div class="content">
+			<div id="header">
+				<h2>i can talk</h2>
+			</div>
+
+			<div id="left">
+				<div id="mini">
+					<img src="img/icon/64x64/iphone.png"/>
+					<p class="detail">630.890.6224</p>
+				</div>
+			</div>
+			<div id="right">
+				<div id="mini">
+					<img src="img/icon/64x64/mail-back.png"/>
+					<p class="detail">brycedorn@gmail.com</p>
 				</div>
 			</div>
 		</div>
-		<div class="resume">
-			<a href="#" onclick="hideImage();"><img id="loadingImage" src="http://www.easyjob.net/wp-content/gallery/resume-examples/examples-of-resume-formats.jpg" style="visibility:hidden"/></a>
+	</div>
+
+	<div id="projects" class="panel">
+		<div class="content">
+			<div id="header">
+				<h2>some stuff i've done</h2>
+			</div>
+
+			<div id="left">
+					<p class="company">map design</p>
+						<span class="location">
+							Team Fortress 2</br>
+							Left 4 Dead</br>
+						</span>
+						<p class="detail">Lorem ipsudfum asdfh fjdiao aspd ckadoaps ek aspd ox ekapsodk</p>
+
+					<p class="company">data vis</p>
+						<span class="location">
+							Javascript</br>
+							Processing</br>
+						</span>
+						<p class="detail">Lorem ipsudfum asdfh fjdiao aspd ckadoaps ek aspd ox ekapsodk</p>
+			</div>
+			<div id="right">
+					<p class="company">ad design</p>
+						<span class="location">
+							Illustrator</br>
+							Photoshop</br>
+						</span>
+						<p class="detail">Lorem ipsudfum asdfh fjdiao aspd ckadoaps ek aspd ox ekapsodk</p>
+
+					<p class="company">not sure what to put here</p>
+					<span class="location">
+							University of Illinois at Urbana-Champaign</br>
+							<span class="date">
+								2011-Now
+							</span>
+					</span>
+					<p class="position">Ad Design Manager</p>
+					<p class="detail">Managed a committee of students that collaborated on designs.</p>
+			</div>
 		</div>
-		<!--<img src="img/91.gif" id="loader"> -->
-		<script type="text/javascript" src="js/imageshow.js"></script>
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-		<script type="text/javascript" src="js/jquery.accordion.js"></script>
-		<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
-	    <script type="text/javascript">
-	        $(function() {
-				$('#st-accordion').accordion();
-	        });
-	    </script>
-	</body>
-	<footer>
-		<a href="mailto:brycedorn@gmail.com"><h2>mail</h2></a>
-	</footer>
+	</div>
+
+	<div id="about" class="panel">
+		<div class="content">
+			<div id="header">
+				<h2>experience</h2>
+			</div>
+		
+			<div id="resumepdf" style="margin:-40px">
+				<a href="#resume"/>
+					<div id="nametag">
+						<img src="img/cube.png" alt="me"/>
+					</div>
+					<p>Download Resume</p>
+				</a>
+			</div>
+
+			<div id="left">
+				<h5 class="resume">Work Experience</h5>
+					<p class="company">StyleSeek Inc.</p>
+						<span class="location">
+							Chicago, IL</br>
+							<span class="date">
+								2012-Now 
+							</span>
+						</span>
+						<p class="position">Software Engineering Intern</p>
+						<p class="detail">Lorem ipsudfum asdfh fjdiao aspd ckadoaps ek aspd ox ekapsodk</p>
+			</div>
+			<div id="right">
+				<h5 class="resume">Organizations</h5>
+					<p class="company">Star Course</p>
+					<span class="location">
+							University of Illinois at Urbana-Champaign</br>
+							<span class="date">
+								2011-Now
+							</span>
+					</span>
+					<p class="position">Ad Design Manager</p>
+					<p class="detail">Managed a committee of students that collaborated on designs.</p>
+				
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+	<div id="footer">
+		<div id="menu-wrapper">
+			<ul id="more" class="footermenus">
+				<li><h4>more of me</h4></li>
+				<li><a href="https://github.com/brycedorn">github</a></li>
+				<li><a href="http://www.linkedin.com/pub/bryce-dorn/46/21b/607">linkedin</a></li>
+				<li><a href="http://www.last.fm/user/BDORN">last.fm</a></li>
+				<li><a href="http://steamcommunity.com/id/xxcombatxxfetusxx/">steam</a></li>
+			</ul>
+
+			<ul id="music" class="footermenus">
+			<li><h4>listening to</h4></li>
+				<script>
+					if (window.XMLHttpRequest)
+					  {// code for IE7+, Firefox, Chrome, Opera, Safari
+					  xmlhttp=new XMLHttpRequest();
+					  }
+					else
+					  {// code for IE6, IE5
+					  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+					  }
+					xmlhttp.open("GET","http://ws.audioscrobbler.com/2.0/user/BDORN/weeklyartistchart.xml",false);
+					xmlhttp.send();
+					xmlDoc=xmlhttp.responseXML; 
+					var x=xmlDoc.getElementsByTagName("artist");
+					for (i=0;i<4;i++)
+					  { 
+					  document.write("<li>");
+					  document.write("<a href='");
+					  document.write(x[i].getElementsByTagName("url")[0].childNodes[0].nodeValue);
+					  document.write("'>");
+					  document.write(x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue);
+					  document.write(" (");
+					  document.write(x[i].getElementsByTagName("playcount")[0].childNodes[0].nodeValue);
+					  document.write(")</a>");
+					  document.write("</li>");
+					  }
+				</script>
+			</ul>
+			
+			<ul id="inspiration" class="footermenus">
+				<li><h4>people i like</h4></li>
+				<li><a href="http://buenothebear.com/" target="_blank">pendleton ward</a></li>
+				<li><a href="http://johnksamson.com/" target="_blank">john k. samson</a></li>
+				<li><a href="https://twitter.com/neiltyson" target="_blank">neil degrasse tyson</a></li>
+				<li><a href="http://www.grimesmusic.com/" target="_blank">claire boucher</a></li>
+				
+			</ul>
+		</div>
+	</div>
+</div>
+
+</body> 
 </html>
