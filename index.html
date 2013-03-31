@@ -8,8 +8,9 @@
 		<meta name="author" content="Bryce Dorn" />
 		<link rel="shortcut icon" href="img/favicon.ico">
 		<link rel='stylesheet' type='text/css' href='css/styles.css'/>
+		<link href="slider/js-image-slider.css" rel="stylesheet" type="text/css" />
+    	<script src="slider/js-image-slider.js" type="text/javascript"></script>
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
-		<script type="text/javascript" src="test.js"></script>
 		<script type="text/javascript">
 			var sc_project=8829408; 
 			var sc_invisible=1; 
@@ -19,11 +20,6 @@
 			document.write("<sc"+"ript type='text/javascript' src='" +
 			scJsHost+
 			"statcounter.com/counter/counter.js'></"+"script>");
-		</script>
-		<script type="text/javascript">
-			function one() {
-			document.getElementById("box fade-in four").style.visibility="hidden";
-			}
 		</script>
 </head>
 
@@ -59,10 +55,10 @@
 			</div>
 			<div class="box fade-in two">
 				<ul id="menu">
-					<a id="link-creative" href="#creative" class="tooltip" onclick="one()">
+					<a id="link-creative" href="#creative">
 						<object>
 							<!--
-							<div class="box fade-in four" onclick="one()">
+							<div onclick="one()">
 								<span>
 						        <img class="callout" src="img/callout_black.gif"/>
 						        <h3><strong>Would you kindly...</strong><br/>
@@ -93,7 +89,7 @@
 				<div id="creative" class="panel">
 					<div class="content">
 						<div id="header">
-							<h2>٩(͡๏̯͡๏)۶ hey</h2>
+							<h2>oh hai</h2>
 						</div>
 
 						<div id="left">
@@ -148,16 +144,20 @@
 								<p class="company">map design</p>
 									<span class="location">
 										Team Fortress 2</br>
-										Left 4 Dead</br>
+										Left 4 Dead</br></br>
 									</span>
-									<p class="detail">Lorem ipsudfum asdfh fjdiao aspd ckadoaps ek aspd ox ekapsodk</p>
+									<div id="sliderFrame">
+									    <div id="slider">
+									      <img src="img/mapstuff/head.jpg" alt="ph_headquarters*">
+									      <img src="img/mapstuff/maya1.jpg" alt="cp_maya">
+									      <img src="img/mapstuff/maya2.jpg" alt="cp_maya">
+									      <img src="img/mapstuff/cargo.jpg" alt="ph_cargo">
+									      <img src="img/mapstuff/hanger2.jpg" alt="ph_hanger18">
+									      <img src="img/mapstuff/hanger1.jpg" alt="ph_hanger18">
+									  	</div>
+									</div>
+									<p class="detail">Created maps for Team Fortress 2, a popular multiplayer game. Contributed to <i>Prophunt</i>, a community-made gametype, and had a successful map(*) that has been played more than <a href="http://www.gamingmasters.org/prophunt/index.php?page=maps" id="link-creative">35k times.</a></p>
 
-								<p class="company">data vis</p>
-									<span class="location">
-										Javascript</br>
-										Processing</br>
-									</span>
-									<p class="detail">Lorem ipsudfum asdfh fjdiao aspd ckadoaps ek aspd ox ekapsodk</p>
 						</div>
 						<div id="right">
 								<p class="company">ad design</p>
@@ -165,17 +165,15 @@
 										Illustrator</br>
 										Photoshop</br>
 									</span>
-									<p class="detail">Lorem ipsudfum asdfh fjdiao aspd ckadoaps ek aspd ox ekapsodk</p>
-
-								<p class="company">stand up comedy</p>
-								<span class="location">
-										My own free time</br>
-										<span class="date">
-											i'm funny
-										</span>
-								</span>
-								<p class="position">Ad Design Manager</p>
-								<p class="detail">Managed a committee of students that collaborated on designs.</p>
+									<p class="detail">Some advertisements I made while acting as Ad Design manager for <i>Star Course</i>. You can see more at my <a href="http://brycedorn.carbonmade.com/projects/4730464">carbonmade</a> portfolio.</p>
+									<img src="img/me.png" alt="me"/><img src="img/me.png" alt="me"/><img src="img/me.png" alt="me"/>
+								
+								<p class="company">data visualization</p>
+									<span class="location">
+										Javascript</br>
+										Processing</br>
+									</span>
+								<p class="detail">Made some pretty cool data vis projects while taking <i>CS 467</i>, including a last.fm group analyzer and an audial web-productivity demonstration. Everything is up on my <a href="https://github.com/brycedorn">github</a>, feel free to fork and check them out.</p>
 						</div>
 					</div>
 				</div>

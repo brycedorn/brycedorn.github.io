@@ -208,7 +208,7 @@ clear: both;
 /*Footer*/
 
 #footer {
-bottom:-48%;
+bottom:-50%;
 position: absolute;
 margin-left: -12%;
 width: 101%;
@@ -284,7 +284,17 @@ text-shadow: #666 0px 1px 1px;
 
 	#resumepdf img {
 	float: left;
+
+	-webkit-transition: .3s;
+	-moz-transition: .3s;
 	}
+	#resumepdf img:hover{
+	transform:rotate(20deg);
+	-ms-transform:rotate(20deg); /* IE 9 */
+	-moz-transform:rotate(20deg); /* Firefox */
+	-webkit-transform:rotate(20deg); /* Safari and Chrome */
+	-o-transform:rotate(20deg); /* Opera */
+		}
 	
 	#resumepdf:hover {
 	-webkit-transform: translate(0,10px);
@@ -300,20 +310,20 @@ margin-right: 80px;
 }
 #left #mini {
 	margin-left: 50%;
-}
-#left #mini img {
-	height: 64px;
-	width: 64px;
+} 
+#right #mini {
+	margin-left: 30%;
 }
 #right {
+width:400px;
+display: block;
 float: left;
 }
-#right #mini {
-	margin-right: 50%;
-}
-#right #mini img {
+#right #mini img, #left #mini img {
 	height: 64px;
 	width: 64px;
+	-webkit-transition: .3s;
+	-moz-transition: .3s;
 }
 #right #mini p {
 	margin-left: -30px;
@@ -321,11 +331,11 @@ float: left;
 #left #mini p {
 	margin-left: -10px;
 }
-#contact #left {
-	margin-top: 30%
+#contact #left,#contact #right {
+	margin-top: 20%
 }
-#contact #right {
-	margin-top: 30%
+#right #mini img:hover, #left #mini img:hover{
+	opacity: 0.2;
 }
 	.resume { 
 	margin:50px 0 40px 0;
@@ -386,15 +396,20 @@ float: left;
 .panel{
 	position: absolute;
 	opacity: 0;
-	z-index:2;
-	-webkit-transition: opacity .6s ease-in-out;
-	-moz-transition: opacity .6s ease-in-out;
+	height:0%;
+	padding-top: 400px;
+	overflow: hidden;
+	z-index:3;
+	-webkit-transition: .6s ease-in-out;
+	-moz-transition: .6s ease-in-out;
 	-o-transition: opacity .6s ease-in-out;
 	-ms-transition: opacity .6s ease-in-out;
-	transition: opacity .6s ease-in-out;
+	transition: .6s ease-in-out;
 }
 .panel:target{
+	padding-top: 0px;
 	opacity: 1;
+	height:100%;	
 }
 
 #about:target ~ #header #menu #link-about,
@@ -450,18 +465,33 @@ animation-delay: 1.8s;
 -webkit-animation-delay: 2.1s;
 -moz-animation-delay: 2.1s;
 animation-delay: 2.1s;
-}
 
-.fade-in.four {
--webkit-animation-delay: 2.3s;
--moz-animation-delay: 2.3s;
-animation-delay: 2.3s;
 }
  
-/*---make a basic box ---*/
 .box{
 }
- 
+
+.carousel img{
+    display:block;
+    width:100%;
+    max-width:100%;
+}
+.carousel h2{
+    font-size:1em;
+    padding:0.5em;
+    position:absolute;
+    right:10px;
+    bottom:10px;
+    left:10px;
+    text-align:right;
+    color:#fff;
+    background-color:rgba(0,0,0,0.75);
+}
+
+/*------------------------------------*\
+    $Tooltip
+\*------------------------------------*/
+
 a.tooltip {outline:none; }
 a.tooltip strong {line-height:30px;}
 a.tooltip span {
