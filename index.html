@@ -22,7 +22,7 @@
 		</script>
 		<script type="text/javascript">
 			function one() {
-		    document.getElementById('box fade-in four').style.opacity = '0';
+			document.getElementById("box fade-in four").style.visibility="hidden";
 			}
 		</script>
 </head>
@@ -59,15 +59,17 @@
 			</div>
 			<div class="box fade-in two">
 				<ul id="menu">
-					<a id="link-creative" href="#creative" class="tooltip">
+					<a id="link-creative" href="#creative" class="tooltip" onclick="one()">
 						<object>
-							<div class="box fade-in four">
+							<!--
+							<div class="box fade-in four" onclick="one()">
 								<span>
-						        <img class="callout" src="img/callout_black.gif" onclick="one()"/>
+						        <img class="callout" src="img/callout_black.gif"/>
 						        <h3><strong>Would you kindly...</strong><br/>
 						        Use these to navigate.<br/> </h3>
 						    	</span>
-					    	</div>
+					    	</div> 
+					    	-->
 							<li><h3>about</h3></li>
 						</object>
 					</a>
