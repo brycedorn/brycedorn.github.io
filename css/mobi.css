@@ -1,0 +1,31 @@
+html {
+margin-top: 20px; 
+background: #eee;
+}
+
+h1, h2, h3, h4, h5 {
+color: #000;
+padding: 0; 
+margin:0;
+font-family:"league-gothic-1","league-gothic-2", Impact, helvetica;
+text-decoration: none;
+text-transform: uppercase;
+text-align: center;
+-webkit-font-smoothing: antialiased;
+}
+h1 {
+font-size: 200px;
+}
+h2 {
+font-size: 40px;
+font-weight: 100;
+text-transform: none;
+}
+a {
+text-align: center;
+text-decoration: none;
+color: #000;
+padding: 0;
+margin: 0;
+cursor:pointer;
+}
