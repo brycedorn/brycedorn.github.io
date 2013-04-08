@@ -22,7 +22,6 @@
 			"statcounter.com/counter/counter.js'></"+"script>");
 		</script>
 </head>
-
 <body>
 	<div class="statcounter"/>
 		<div id="container">
@@ -39,33 +38,29 @@
 					  {// code for IE6, IE5
 					  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 					  }
-					xmlhttp.open("GET","https://api.twitter.com/1/statuses/user_timeline.xml?include_entities=true&include_rts=true&screen_name=horse_ebooks&count=2",false);
+					xmlhttp.open("GET","https://api.twitter.com/1/statuses/user_timeline.xml?include_entities=true&include_rts=true&screen_name=horse_ebooks&count=1",false);
 					xmlhttp.send();
 					xmlDoc=xmlhttp.responseXML; 
 					var x=xmlDoc.getElementsByTagName("status");
-					for (i=0;i<1;i++)
-					  { 
-					  document.write("<p id='blurb'>");
-					  document.write(x[0].getAttribute("text");
-					  document.write("</p>");
-					  }
+					document.write("<p id='blurb'>");
+					document.write(x[0].getAttribute("text");
+					document.write("</p>");
+					}
 				</script>
 				<p id="blurb">gonna put some gnarly quotes here</p>
 				</a>
 			</div>
+
+			<div class="box fade-in two"> 
+				<div class="box fade-out one" id="placehold">
+					<h2>use these to navigate -</h2>
+				</div>
+			</div>
+
 			<div class="box fade-in two">
 				<ul id="menu">
 					<a id="link-creative" href="#creative">
 						<object>
-							<!--
-							<div onclick="one()">
-								<span>
-						        <img class="callout" src="img/callout_black.gif"/>
-						        <h3><strong>Would you kindly...</strong><br/>
-						        Use these to navigate.<br/> </h3>
-						    	</span>
-					    	</div> 
-					    	-->
 							<li><h3>about</h3></li>
 						</object>
 					</a>
@@ -85,7 +80,6 @@
 						</object>
 					</a>
 				</ul>
-
 				<div id="creative" class="panel">
 					<div class="content">
 						<div id="header">
@@ -100,15 +94,15 @@
 
 						<div id="right">
 							<h1>hello</h1>
-							<h5>my name is Bryce</h5>
-							<p>I'm a Sophomore at the University of Illinois</p>
-							<p>Pursuing a Bachelors in CS in Engineering</p>
+							<h5>My name is Bryce</h5>
+							<p>I'm a sophomore at the University of Illinois</p>
+							<p>Going for a degree in cs in engineering</p>
 							<p>I like to code and design things</p>
 							<p>I'm pretty sure I'm nocturnal</p>
 							<p>I want to have a pet raptor one day</p>
-							<p>...what else...</p>
-							<p>Cats are the best</p>
-							<p>I hope I'm not forgetting anything</p>
+							<p>I may or may not be a dolphin</p>
+							<p>Cats are the <u>best</u></p>
+							<p>...I hope I'm not forgetting anything</p>
 						</div>
 					</div>
 				</div>
@@ -116,7 +110,7 @@
 				<div id="contact" class="panel">
 					<div class="content">
 						<div id="header">
-							<h2>i can talk</h2>
+							<h2>i can communicate</h2>
 						</div>
 
 						<div id="left">
@@ -128,7 +122,7 @@
 						<div id="right">
 							<div id="mini">
 								<img src="img/icon/64x64/mail-back.png"/>
-								<p class="detail">brycedorn@gmail.com</p>
+								<a href="mailto:brycedorn@gmail.com?Subject=hey!"><p class="detail">brycedorn@gmail.com</p></a>
 							</div>
 						</div>
 					</div>
@@ -164,16 +158,16 @@
 									<span class="location">
 										Illustrator</br>
 										Photoshop</br>
+										InDesign</br>
 									</span>
-									<p class="detail">Some advertisements I made while acting as Ad Design manager for <i>Star Course</i>. You can see more at my <a href="http://brycedorn.carbonmade.com/projects/4730464">carbonmade</a> portfolio.</p>
-									<img src="img/me.png" alt="me"/><img src="img/me.png" alt="me"/><img src="img/me.png" alt="me"/>
+									<p class="detail">Made a bunch of advertisements and graphics while acting as Ad Design manager for <i>Star Course</i>, which ranged from full-sized posters to tee shirt designs. Some of them are up on my <a href="http://brycedorn.carbonmade.com/projects/4730464">Carbonmade</a> portfolio, feel free to check them out.</p>
 								
 								<p class="company">data visualization</p>
 									<span class="location">
 										Javascript</br>
 										Processing</br>
 									</span>
-								<p class="detail">Made some pretty cool data vis projects while taking <i>CS 467</i>, including a last.fm group analyzer and an audial web-productivity demonstration. Everything is up on my <a href="https://github.com/brycedorn">github</a>, feel free to fork and check them out.</p>
+								<p class="detail">Made some pretty cool data vis projects while taking <i>CS 467</i>, including a last.fm group analyzer and an audial web-productivity demonstration. Everything is up on my <a href="https://github.com/brycedorn">Github</a>, feel free to fork and check them out.</p>
 						</div>
 					</div>
 				</div>
@@ -186,16 +180,13 @@
 					
 						<div id="resumepdf" style="margin:-40px">
 							<a href="resume.pdf"/>
-								<div id="nametag">
-									<img src="img/me.png" alt="me"/>
-								</div>
 								<p>Download Resume</p>
 							</a>
 						</div>
 
 						<div id="left">
 							<h5 class="resume">Work Experience</h5>
-								<p class="company"><a href="https://www.styleseek.com">StyleSeek Inc.</a></p>
+								<p class="company"><a href="https://www.styleseek.com">StyleSeek</a></p>
 									<span class="location">
 										Chicago, IL</br>
 										<span class="date">
@@ -203,7 +194,16 @@
 										</span>
 									</span>
 									<p class="position">Software Engineering Intern</p>
-									<p class="detail">Going to be there over the summer ('13), so can't say much yet.</p>
+									<p class="detail">Currently working with the software development team at <a href="http://www.styleseek.com">StyleSeek</a>, a men's fashion startup based in Chicago. Will be there over this summer.</p>
+								<p class="company" style="margin-top:-20px"><a href="https://www.macgill.com/">MacGill</a></p>
+									<span class="location">
+										Lombard, IL</br>
+										<span class="date">
+											Summer 2012 
+										</span>
+									</span>
+									<p class="position">Shipping Hand</p>
+									<p class="detail">Spent the summer working in the shipping & recieving sector of a medical equipment supplier.</p>
 						</div>
 						<div id="right">
 							<h5 class="resume">Organizations</h5>
@@ -215,8 +215,15 @@
 										</span>
 								</span>
 								<p class="position">Ad Design Manager</p>
-								<p class="detail">Managed a committee of students that collaborated on designs.</p>
-							
+								<p class="detail">Managed a committee of students that collaborated on designs. I tried to upload whatever I could find to my <a href="http://brycedorn.carbonmade.com/projects/4730464">Carbonmade</a> portfolio, so feel free to check them out.</p>
+								<p class="company"style="margin-top:-20px">ACM</p>
+								<span class="location">
+										University of Illinois at Urbana-Champaign</br>
+										<span class="date">
+											2011-Now
+										</span>
+								</span>
+								<p class="detail">Been a member of the Association for Computing Machinery at UIUC since freshman year. Recently joined the Gamebuilders SIG, which specializes in video game design and creation.</p>
 						</div>
 					</div>
 				</div>
@@ -247,16 +254,19 @@
 						xmlhttp.send();
 						xmlDoc=xmlhttp.responseXML; 
 						var x=xmlDoc.getElementsByTagName("artist");
-						for (i=0;i<4;i++)
+						for (i=0;i<8;i++)
 						  { 
 						  document.write("<li>");
 						  document.write("<a href='");
 						  document.write(x[i].getElementsByTagName("url")[0].childNodes[0].nodeValue);
 						  document.write("'>");
 						  document.write(x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue);
+						  /*
 						  document.write(" (");
 						  document.write(x[i].getElementsByTagName("playcount")[0].childNodes[0].nodeValue);
-						  document.write(")</a>");
+						  document.write(")");
+						  */
+						  document.write("</a>");
 						  document.write("</li>");
 						  }
 					</script>
@@ -265,8 +275,9 @@
 				<ul id="inspiration" class="footermenus">
 					<li><h4>people i like</h4></li>
 					<li><a href="http://buenothebear.com/" target="_blank">pendleton ward</a></li>
+					<li><a href="http://www.timanderic.com/" target="_blank">tim and eric</a></li>
+					<li><a href="http://day9.tv/" target="_blank">sean "day9" plott</a></li>
 					<li><a href="http://rebeccasugar.tumblr.com/" target="_blank">rebecca sugar</a></li>
-					<li><a href="https://twitter.com/neiltyson" target="_blank">neil degrasse tyson</a></li>
 					<li><a href="http://www.grimesmusic.com/" target="_blank">claire boucher</a></li>
 					
 				</ul>
