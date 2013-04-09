@@ -38,12 +38,11 @@ text-transform: uppercase;
 	font-weight: normal;
 	letter-spacing: 1px;
 	padding-top: 30px;
-	text-shadow: #bbb 1px 1px 6px;
+	text-shadow: #bbb 1px 1px 4px;
 	}
 	#blurb {
-	color: #333;
+	color: #555;
 	font-size: 10px;
-	text-transform: uppercase;
 	margin-top: 1px;
 	letter-spacing: 1px;
 	float:left;
@@ -68,7 +67,6 @@ text-transform: uppercase;
 	font-weight: 200;
 	letter-spacing: 2px;
 	color: #404040;
-	text-shadow: #eee 1px 1px 4px;
 	margin-bottom: 10px;
 	-webkit-transition: .3s;
 	-moz-transition: .3s;
@@ -491,23 +489,58 @@ animation-delay: 2.8s;
 
 /*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*
 
-	CSS carousel
+	CSS image slider
 
 ~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*/
 
-.carousel img{
-    display:block;
-    width:100%;
-    max-width:100%;
+#sliderFrame {position:relative;width:400px;} /*remove the "margin:0 auto;" if you want to align the whole slider to the left side*/
+        
+#slider {
+    width:400px;height:220px;/* Make it the same size as your images */
+	position:relative;
+    box-shadow: 0px 1px 5px #999999;
 }
-.carousel h2{
-    font-size:1em;
-    padding:0.5em;
-    position:absolute;
-    right:10px;
-    bottom:10px;
-    left:10px;
-    text-align:right;
-    color:#fff;
-    background-color:rgba(0,0,0,0.75);
+#slider img {
+	border:none;
+	display:none;
+}
+
+/* the link style (if an image is wrapped in a link) */
+#slider a.imgLink {
+	z-index:2;
+	display:none;position:absolute;
+	top:0px;left:0px;border:0;padding:0;margin:0;
+	width:100%;height:100%;
+}
+
+/* Caption styles */
+div.mc-caption-bg, div.mc-caption-bg2 {
+	position:absolute;
+	width:100%;
+	height:30px;
+	padding:0;
+	left:0px; /*if the caption needs to be aligned from right, specify by right instead of left. i.e. right:20px;*/
+	bottom:0px;/*if the caption needs to be aligned from top, specify by top instead of bottom. i.e. top:150px;*/
+	z-index:3;
+	overflow:hidden;
+	font-size: 0;
+}
+div.mc-caption-bg {
+	background-color:#111;
+}
+div.mc-caption {
+	font: 14px/20px Arial;
+	color:#eee;
+	z-index:4;
+	padding:4px 6px;
+	text-align:left;
+}
+
+/* --------- Others ------- */
+#slider 
+{
+	transform: translate3d(0,0,0);
+    -ms-transform:translate3d(0,0,0);
+    -moz-transform:translate3d(0,0,0);
+    -o-transform:translate3d(0,0,0);
 }
