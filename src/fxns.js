@@ -58,5 +58,3 @@ function stats(){
 	scJsHost+
 	"statcounter.com/counter/counter.js'></"+"script>");
 };
-
-
