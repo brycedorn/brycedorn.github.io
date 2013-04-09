@@ -1,10 +1,19 @@
-
 <!DOCTYPE html>
+
+<!--
+ ______   ______   __  __   ______   ______       _____    ______   ______     __   ______    
+/\  == \ /\  == \ /\ \_\ \ /\  ___\ /\  ___\     /\  __-. /\  __ \ /\__  _\   /\ \ /\  __ \   
+\ \  __< \ \  __< \ \____ \\ \ \____\ \  __\     \ \ \/\ \\ \ \/\ \\/_/\ \/   \ \ \\ \ \/\ \  
+ \ \_____\\ \_\ \_\\/\_____\\ \_____\\ \_____\    \ \____- \ \_____\  \ \_\    \ \_\\ \_____\ 
+  \/_____/ \/_/ /_/ \/_____/ \/_____/ \/_____/     \/____/  \/_____/   \/_/     \/_/ \/_____/ 
+       
+-->
+
 <head>
 	<title>bryce.io</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
-		<meta name="description" content="Welcome">
-		<meta name="keywords" content="bryce,dorn,brycedorn">
+		<meta name="description" content="bryce dorn's home on the series of tubes, bryce welcomes ye">
+		<meta name="keywords" content="bryce,dorn,brycedorn,bryce.io,bryce dorn">
 		<meta name="author" content="Bryce Dorn" />
 		<link rel="shortcut icon" href="img/favicon.ico">
 		<link rel='stylesheet' type='text/css' href='css/styles.css'/>
@@ -32,39 +41,40 @@
 <body>
 	<div class="statcounter"/>
 		<div id="container">
-			<div class="box fade-in one" id="nametag">
+			<div class="fade-in one" id="nametag">
 				<a href="http://www.bryce.io">
 				<img src="img/me.png" alt="me"/>
 				<h1>Bryce Dorn</h1>
 				<script>
-					if (window.XMLHttpRequest)
-					  {// code for IE7+, Firefox, Chrome, Opera, Safari
-					  xmlhttp=new XMLHttpRequest();
-					  }
-					else
-					  {// code for IE6, IE5
-					  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-					  }
-					xmlhttp.open("GET","https://api.twitter.com/1/statuses/user_timeline.xml?include_entities=true&include_rts=true&screen_name=horse_ebooks&count=1",false);
-					xmlhttp.send();
-					xmlDoc=xmlhttp.responseXML; 
-					var x=xmlDoc.getElementsByTagName("status");
+					var array = new Array();
+						array[0] = "Stairfax Temperatures";
+						array[1] = "Mr. Jiggles Puff";
+						array[2] = "Would you kindly...";
+						array[3] = "I am a...dolphin?";
+						array[4] = "I reject your reality, and substitute my own.";
+						array[5] = "Oh";
+						array[6] = "Thank you based god.";
+						array[7] = "Hearsdfafd";
+						array[8] = "ENGINEER IS CREDIT TO TEAM";
+						array[9] = "Hallo";
+					var x=Math.random()*10;
+					console.log(x);
+					x |= 0;
+					console.log(x);
 					document.write("<p id='blurb'>");
-					document.write(x[0].getAttribute("text");
+					document.write(array[x]);
 					document.write("</p>");
-					}
 				</script>
-				<p id="blurb">gonna put some gnarly quotes here</p>
 				</a>
 			</div>
 
-			<div class="box fade-in two"> 
-				<div class="box fade-out one" id="placehold">
+			<div class="fade-in two"> 
+				<div class="fade-out one" id="placehold">
 					<h2>use these to navigate -</h2>
 				</div>
 			</div>
 
-			<div class="box fade-in two">
+			<div class="fade-in two">
 				<ul id="menu">
 					<a id="link-creative" href="#creative">
 						<object>
@@ -108,7 +118,7 @@
 							<p>I'm pretty sure I'm nocturnal</p>
 							<p>I want to have a pet raptor one day</p>
 							<p>I may or may not be a dolphin</p>
-							<p>Cats are the <u>best</u></p>
+							<p>Cats are the best</p>
 							<p>...I hope I'm not forgetting anything</p>
 						</div>
 					</div>
@@ -186,7 +196,7 @@
 							<h2>experience</h2>
 						</div>
 					
-						<div id="resumepdf" style="margin:-40px">
+						<div id="exp" style="margin:-40px">
 							<a href="resume.pdf"/>
 								<p>Download Resume</p>
 							</a>
@@ -235,9 +245,8 @@
 						</div>
 					</div>
 				</div>
-				<div class="clear"></div>
 			</div>
-		<div id="footer" class="box fade-in three"><span>
+		<div id="footer" class=" fade-in three"><span>
 			<div id="menu-wrapper">
 				<ul id="more" class="footermenus">
 					<li><h4>more of me</h4></li>

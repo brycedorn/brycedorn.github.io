@@ -1,11 +1,27 @@
+/*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*
+
+	GENERAL CSS STYLING
+
+	Not subject to copywrite, feel
+	free to use this styling for
+	your own website.
+
+	Almost everything can be found
+	with a bit of searching, so have
+	at it!
+
+	~bryce
+
+~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*/
+
 html {
 margin: 0; 
 padding: 0;
 border-top: #AAC5D0 solid 20px;
 background: #fff url('http://i.stack.imgur.com/EL4Cz.png') repeat scroll left top;
-animation-delay: 4s; /* W3C and Opera */
-	-moz-animation-delay: 4s; /* Firefox */
-	-webkit-animation-delay: 4s; /* Safari and Chrome */
+animation-delay: 4s;
+	-moz-animation-delay: 4s;
+	-webkit-animation-delay: 4s;
 font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;}
 
 h1, h2, h3, h4, h5 {
@@ -15,8 +31,48 @@ text-decoration: none;
 text-transform: uppercase;
 -webkit-font-smoothing: antialiased;
 }
-		
-	/*Description*/ 
+
+	h1 {
+	color: #555;
+	font-size: 28px;
+	font-weight: normal;
+	letter-spacing: 1px;
+	padding-top: 30px;
+	text-shadow: #bbb 1px 1px 6px;
+	}
+	#blurb {
+	color: #333;
+	font-size: 10px;
+	text-transform: uppercase;
+	margin-top: 1px;
+	letter-spacing: 1px;
+	float:left;
+	margin-left: 2px;
+	}
+	h2 {
+	font-size: 85px;
+	line-height: 26px;
+	letter-spacing: 0px;
+	font-weight: 100;
+	color: #333;
+	text-shadow: #bbb 2px 2px 6px;
+	}
+	h3 {
+	font-size: 13px;
+	font-weight: normal;
+	padding-top: 10px;
+	letter-spacing: 1px;
+	}
+	h4 {
+	font-size: 40px;
+	font-weight: 200;
+	letter-spacing: 2px;
+	color: #404040;
+	text-shadow: #eee 1px 1px 4px;
+	margin-bottom: 10px;
+	-webkit-transition: .3s;
+	-moz-transition: .3s;
+	}
 	h5 {
 	text-transform: uppercase;
 	font-size: 9px;
@@ -76,13 +132,22 @@ position: absolute;
 	#content a {
 	color: #AAC5D0;} 
 
+/*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*
 
-/*Header*/
+	Header
+
+~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*/
 
 #container {
 padding-left: 10%;
 width: 90%;
-margin: 60px auto 0 auto;
+margin: 4% auto 0 auto;
+}
+
+#placehold{
+	float:left;
+	margin-top: 20%;
+	width:100%;
 }
 
 #nametag {
@@ -108,7 +173,6 @@ cursor: pointer;
 		margin-right: 20px; 
 		cursor: pointer;
 		box-shadow: 0px 0px 0 4px #AAC5D0;
-
 		border-radius: 50%;
 		-webkit-border-radius: 50%;
 		-moz-border-radius: 50%;
@@ -122,37 +186,10 @@ cursor: pointer;
 		-o-transform:rotate(20deg); /* Opera */
 		}
 
-		h1 {
-		color: #555;
-		font-size: 28px;
-		font-weight: normal;
-		letter-spacing: 1px;
-		padding-top: 30px;
-		text-shadow: #bbb 1px 1px 6px;
-		}
-		
-		#blurb {
-		color: #333;
-		font-size: 10px;
-		text-transform: uppercase;
-		margin-top: 1px;
-		letter-spacing: 1px;
-		}
-
 #header {
-height: 120px;
-padding-top: 100px;
+height: 110px;
+padding-top: 10%;
 }
-
-	h2 {
-	font-size: 85px;
-	line-height: 26px;
-	letter-spacing: 0px;
-	font-weight: 100;
-	color: #333;
-	text-shadow: #bbb 2px 2px 6px;
-	}
-
 
 #menu {
 position: absolute;
@@ -162,13 +199,6 @@ height: 300px;
 margin-left: 420px;
 z-index: 1000;
 }
-
-	h3 {
-	font-size: 13px;
-	font-weight: normal;
-	padding-top: 10px;
-	letter-spacing: 1px;
-	}
 	
 	#menu li {
 	color: #333;
@@ -177,40 +207,22 @@ z-index: 1000;
 	height: 33px;
 	margin-bottom: 15px;
 	display: block;
-	-webkit-box-shadow: 1px 1px 4px #888;
 	opacity: .8;
+	-webkit-box-shadow: 1px 1px 4px #888;
 		-transition: .3s;
 		-webkit-transition: .3s;
 		-moz-transition: .3s;
 	}
 
-		#menu h3:hover {
-		opacity: 1;
-		}
-		
-		#menu li:hover {opacity: 1;}
-		
-	li#backtotop {
-	color: #fff;
-	display: none;
-	width: 130px; 
-	height: 33px;
-	position: relative;
+	#menu h3:hover,#menu li:hover {
+	opacity: 1;
 	}
-	
-	.back {
-	font-size: 13px;
-	padding-top: 10px;}
-	
-.clear {
-height:50px;
-width: 100%;
-margin:0;
-overflow:hidden;
-clear: both;
-}
 
-/*Footer*/
+/*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*
+
+	Footer
+
+~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*/
 
 #footer {
 bottom:-50%;
@@ -234,18 +246,6 @@ margin: 0 auto;
 height: 200px; 
 width: 1200px;
 }
-
-	h4 {
-	font-size: 40px;
-	font-weight: 200;
-	letter-spacing: 2px;
-	color: #404040;
-	text-shadow: #eee 1px 1px 4px;
-	margin-bottom: 10px;
-	-webkit-transition: .3s;
-	-moz-transition: .3s;
-	}
-
 	.footermenus {
 	width: 330px;
 	float: left;
@@ -273,20 +273,6 @@ width: 1200px;
 		padding-left: 10px;
 		}
 
-/*Resume*/
-
-#resumepdf p {
-float: left;
-font-size: 24px;
-text-transform: uppercase;
-letter-spacing: 1px;
-color: #AAC5D0;
-padding-left: 60px;
-font-weight: normal;
-text-shadow: #666 0px 1px 1px;
-	-webkit-transition: .3s;
-	-moz-transition: .3s;
-}
 #left {
 clear: both;
 float: left; 
@@ -296,13 +282,13 @@ margin-right: 80px;
 #left #mini {
 	-webkit-transition: .3s;
 	-moz-transition: .3s;
-	width:30px;
+	width:20px;
 	margin-left: 50%;
 } 
 #right #mini {
 	-webkit-transition: .3s;
 	-moz-transition: .3s;
-	width:30px;
+	width:20px;
 	margin-left: 30%;
 }
 #right {
@@ -323,14 +309,37 @@ float: left;
 	margin-left: -12px;
 }
 #contact #left,#contact #right {
-	margin-top: 18%;
+	margin-top: 28%;
 }
 #right #mini img:hover, #left #mini img:hover{
 	opacity: 0.2;
 }
-	.resume { 
-	margin:40px 0 40px 0;
-	}
+
+/*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*
+
+	Exp
+
+~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*/
+
+#exp p {
+float: left;
+font-size: 28px;
+text-transform: uppercase;
+letter-spacing: 1px;
+color: #AAC5D0;
+padding-left: 42px;
+font-weight: normal;
+text-shadow: #666 0px 1px 1px;
+	-webkit-transition: .3s;
+	-moz-transition: .3s;
+}
+#exp p:hover{
+	padding-left: 52px;
+}
+
+.resume { 
+margin:40px 0 40px 0;
+}
 
 	.company {
 	color: #404040;
@@ -341,45 +350,36 @@ float: left;
 	margin-bottom: 8px;
 	}
 	
-		.location {
-		font-size: 10px;
-		text-transform: uppercase; 
-		letter-spacing: 1px;
-		color: #444;
-		}
-		
-		.position { 
-		font-style: italic;
-		margin: 16px 0;
-		}
-		
-		.detail { 
-		font-size: 14px; 
-		margin: 10px 0 38px 0;
-		line-height: 20px;
-		color: #444;
-		}
-	
-	.award {
-	color: #404040;
-	text-transform: uppercase;
-	font-weight: normal;
-	font-size: 21px;
+	.location {
+	font-size: 10px;
+	text-transform: uppercase; 
 	letter-spacing: 1px;
-	margin-bottom: 7px;
+	color: #444;
 	}
-		
-		.detail2 {
-		font-size: 14px;
-		margin: 0 0 20px 0;
-		color: #444;
-		}
-		
-		.skills { 
-		font-size: 13px;
-		margin-top: -10px;
-		color: #444;
-		}
+	
+	.position { 
+	font-style: italic;
+	margin: 16px 0;
+	}
+	
+	.detail { 
+	font-size: 14px; 
+	margin: 10px 0 38px 0;
+	line-height: 20px;
+	color: #444;
+	}
+	
+	.skills { 
+	font-size: 13px;
+	margin-top: -10px;
+	color: #444;
+	}
+
+/*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*
+
+	Panels
+
+~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*/
 
 .panel{
 	position: absolute;
@@ -408,27 +408,36 @@ float: left;
 	color: #fff;
 }
 
+/*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*
+
+	Portrait
+
+~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*/
+
 .face img {
 	box-shadow: 0px 0px 0 8px #AAC5D0;
 	background: rgba(0,255,255, 0.5);  
 	width: 400px;
 	height: 400px;
-	border-radius: 200px;
-	-webkit-border-radius: 200px;
-	-moz-border-radius: 200px;
 }
+
+/*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*
+
+	Fade-in & fade-out
+
+~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*/
 
 @-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 @-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
  
 .fade-in {
-    opacity:0;  /* make things invisible upon start */
-    -webkit-animation:fadeIn ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+    opacity:0;
+    -webkit-animation:fadeIn ease-in 1;
     -moz-animation:fadeIn ease-in 1;
     animation:fadeIn ease-in 1;
  
-    -webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+    -webkit-animation-fill-mode:forwards;
     -moz-animation-fill-mode:forwards;
     animation-fill-mode:forwards;
  
@@ -460,12 +469,12 @@ animation-delay: 2.1s;
 @keyframes fadeOut { from { opacity:1; } to { opacity:0; } }
  
 .fade-out {
-    opacity:1;  /* make things invisible upon start */
-    -webkit-animation:fadeOut ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+    opacity:1;
+    -webkit-animation:fadeOut ease-in 1;
     -moz-animation:fadeOut ease-in 1;
     animation:fadeOut ease-in 1;
  
-    -webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+    -webkit-animation-fill-mode:forwards;
     -moz-animation-fill-mode:forwards;
     animation-fill-mode:forwards;
  
@@ -479,9 +488,12 @@ animation-delay: 2.1s;
 -moz-animation-delay: 2.8s;
 animation-delay: 2.8s;
 }
- 
-.box{
-}
+
+/*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*
+
+	CSS carousel
+
+~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*/
 
 .carousel img{
     display:block;
@@ -498,10 +510,4 @@ animation-delay: 2.8s;
     text-align:right;
     color:#fff;
     background-color:rgba(0,0,0,0.75);
-}
-
-#placehold{
-	float:left;
-	margin-top: 20%;
-	width:100%;
 }
