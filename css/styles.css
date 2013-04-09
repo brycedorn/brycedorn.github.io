@@ -293,9 +293,15 @@ width: 385px;
 margin-right: 80px;
 }
 #left #mini {
+	-webkit-transition: .3s;
+	-moz-transition: .3s;
+	width:30px;
 	margin-left: 50%;
 } 
 #right #mini {
+	-webkit-transition: .3s;
+	-moz-transition: .3s;
+	width:30px;
 	margin-left: 30%;
 }
 #right {
@@ -316,7 +322,7 @@ float: left;
 	margin-left: -12px;
 }
 #contact #left,#contact #right {
-	margin-top: 16%
+	margin-top: 18%;
 }
 #right #mini img:hover, #left #mini img:hover{
 	opacity: 0.2;
