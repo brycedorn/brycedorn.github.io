@@ -48,13 +48,32 @@ function mobi(){
 	}
 };
 
-function stats(){
-	var sc_project=8829408; 
-	var sc_invisible=1; 
-	var sc_security="fcd4015f";
-	var scJsHost = (("https:" == document.location.protocol) ?
-	"https://secure." : "http://www.");
-	document.write("<sc"+"ript type='text/javascript' src='" +
-	scJsHost+
-	"statcounter.com/counter/counter.js'></"+"script>");
-};
+function artists(){
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.open("GET","http://ws.audioscrobbler.com/2.0/user/BDORN/weeklyartistchart.xml",false);
+xmlhttp.send();
+xmlDoc=xmlhttp.responseXML; 
+var x=xmlDoc.getElementsByTagName("artist");
+for (i=0;i<8;i++)
+  { 
+  document.write("<li>");
+  document.write("<a href='");
+  document.write(x[i].getElementsByTagName("url")[0].childNodes[0].nodeValue);
+  document.write("'>");
+  document.write(x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue);
+  /*
+  document.write(" (");
+  document.write(x[i].getElementsByTagName("playcount")[0].childNodes[0].nodeValue);
+  document.write(")");
+  */
+  document.write("</a>");
+  document.write("</li>");
+  }
+}

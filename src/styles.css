@@ -20,8 +20,8 @@ padding: 0;
 border-top: #AAC5D0 solid 20px;
 background: #fff url('img/grey.png') repeat scroll left top;
 animation-delay: 4s;
-	-moz-animation-delay: 4s;
-	-webkit-animation-delay: 4s;
+-moz-animation-delay: 4s;
+-webkit-animation-delay: 4s;
 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;}
 h1, h2, h3, h4, h5 {
 padding: 0; 
@@ -67,6 +67,7 @@ text-transform: uppercase;
 	letter-spacing: 2px;
 	color: #404040;
 	margin-bottom: 10px;
+	-transition: .3s;
 	-webkit-transition: .3s;
 	-moz-transition: .3s;
 	}
@@ -153,6 +154,7 @@ z-index: 1000;
 margin: 50px 0 20px 50px;
 width: 400px;
 cursor: pointer;
+-transition: .3s;
 -webkit-transition: .3s;
 -moz-transition: .3s;
 }
@@ -164,6 +166,7 @@ cursor: pointer;
 	}
 	
 		#nametag img { 
+		-transition: .3s;
 		-webkit-transition: .3s;
 		-moz-transition: .3s;
 		float: left;
@@ -262,6 +265,7 @@ width: 1200px;
 		#more a, #music a, #inspiration a {
 		padding-left: 2px;
 		color: #444;
+		-transition: 0.2s;
 		-webkit-transition: 0.2s;
 		-moz-transition: 0.2s;
 		}
@@ -277,12 +281,14 @@ width: 385px;
 margin-right: 80px;
 }
 #left #mini {
+	-transition: .3s;
 	-webkit-transition: .3s;
 	-moz-transition: .3s;
 	width:20px;
 	margin-left: 50%;
 } 
 #right #mini {
+	-transition: .3s;
 	-webkit-transition: .3s;
 	-moz-transition: .3s;
 	width:20px;
@@ -296,6 +302,7 @@ float: left;
 #right #mini img, #left #mini img {
 	height: 64px;
 	width: 64px;
+	-transition: .3s;
 	-webkit-transition: .3s;
 	-moz-transition: .3s;
 }
@@ -327,8 +334,9 @@ color: #AAC5D0;
 padding-left: 42px;
 font-weight: normal;
 text-shadow: #666 0px 1px 1px;
-	-webkit-transition: .3s;
-	-moz-transition: .3s;
+-transition: .3s;
+-webkit-transition: .3s;
+-moz-transition: .3s;
 }
 #exp p:hover{
 	padding-left: 52px;
