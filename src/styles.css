@@ -18,12 +18,11 @@ html {
 margin: 0; 
 padding: 0;
 border-top: #AAC5D0 solid 20px;
-background: #fff url('http://i.stack.imgur.com/EL4Cz.png') repeat scroll left top;
+background: #fff url('src/img/grey.png') repeat scroll left top;
 animation-delay: 4s;
 	-moz-animation-delay: 4s;
 	-webkit-animation-delay: 4s;
-font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;}
-
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;}
 h1, h2, h3, h4, h5 {
 padding: 0; 
 margin: 0;
