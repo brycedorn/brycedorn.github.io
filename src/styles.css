@@ -17,8 +17,8 @@
 html {
 margin: 0; 
 padding: 0;
-border-top: #AAC5D0 solid 20px;
-background: #fff url('img/grey.png') repeat scroll left top;
+border-top: #BDECB6 solid 20px;
+	background: #fff url('img/grey.png') repeat scroll left top;
 font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
 }
 h1, h2, h3, h4, h5 {
@@ -130,7 +130,7 @@ position: absolute;
 }
 
 	#content a {
-	color: #AAC5D0;} 
+	color: #BDECB6;} 
 
 /*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*
 
@@ -176,7 +176,7 @@ cursor: pointer;
 		float: left;
 		margin-right: 20px; 
 		cursor: pointer;
-		box-shadow: 0px 0px 0 4px #AAC5D0;
+		box-shadow: 0px 0px 0 4px #888;
 		border-radius: 50%;
 		-webkit-border-radius: 50%;
 		-moz-border-radius: 50%;
@@ -192,7 +192,7 @@ cursor: pointer;
 
 #header {
 height: 110px;
-padding-top: 10%;
+padding-top: 14%;
 }
 
 #menu {
@@ -206,7 +206,7 @@ z-index: 1000;
 	
 	#menu li {
 	color: #333;
-	background: #AAC5D0;
+	background: #BDECB6;
 	width: 135px;
 	height: 33px;
 	margin-bottom: 15px;
@@ -217,6 +217,10 @@ z-index: 1000;
 		-transition: .3s;
 		-webkit-transition: .3s;
 		-moz-transition: .3s;
+	border: #fff solid 1px;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	webkit-border-radius: 10px;
 	}
 
 	#menu h3:hover,#menu li:hover {
@@ -235,11 +239,10 @@ position: absolute;
 margin-left: -12%;
 width: 101%;
 height: 35%;
-background: #AAC5D0;
+background: #BDECB6;
 text-align: center;
 padding: 20px 0 0 0;
-border-bottom: #404040 solid 8px;
-border-top: #aaa solid 1px;
+border-top: #fff solid 1px;
 	transition: .3s;
 	-webkit-transition: .3s;
 	-moz-transition: .3s;
@@ -311,18 +314,10 @@ float: left;
 	-webkit-transition: .3s;
 	-moz-transition: .3s;
 }
-#right #mini p {
-	margin-left: -38px;
-}
-#left #mini p {
-	margin-left: -12px;
-}
-#contact #left,#contact #right {
-	margin-top: 28%;
-}
-#right #mini img:hover, #left #mini img:hover{
-	opacity: 0.2;
-}
+#right #mini p {margin-left: -38px;}
+#left #mini p {margin-left: -12px;}
+#contact #left,#contact #right {margin-top: 18%;}
+#right #mini img:hover, #left #mini img:hover{opacity: 0.2;}
 
 /*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*
 
@@ -335,7 +330,7 @@ float: left;
 font-size: 28px;
 text-transform: uppercase;
 letter-spacing: 1px;
-color: #AAC5D0;
+color: #BDECB6;
 padding-left: 42px;
 font-weight: normal;
 text-shadow: #666 0px 1px 1px;
@@ -376,12 +371,6 @@ margin:40px 0 40px 0;
 	font-size: 14px; 
 	margin: 10px 0 38px 0;
 	line-height: 20px;
-	color: #444;
-	}
-	
-	.skills { 
-	font-size: 13px;
-	margin-top: -10px;
 	color: #444;
 	}
 
@@ -425,11 +414,14 @@ margin:40px 0 40px 0;
 ~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*/
 
 .face img {
-	box-shadow: 0px 0px 0 8px #AAC5D0;
-	background: rgba(0,255,255, 0.5);  
+	box-shadow: 0px 0px 0 8px #888;
 	width: 400px;
 	height: 400px;
 	margin-left: 8px;
+	border-radius: 30px;
+	-moz-border-radius: 30px;
+	webkit-border-radius: 30px;
+	color: #fff;
 }
 
 /*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*
