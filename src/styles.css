@@ -18,7 +18,7 @@ html {
 margin: 0; 
 padding: 0;
 border-top: #AAC5D0 solid 20px;
-background: #fff url('src/img/grey.png') repeat scroll left top;
+background: #fff url('img/grey.png') repeat scroll left top;
 animation-delay: 4s;
 	-moz-animation-delay: 4s;
 	-webkit-animation-delay: 4s;
