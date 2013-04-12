@@ -29,7 +29,7 @@ function quotes(){
 		array[3] = "I am a...dolphin?";
 		array[4] = "Oops..SPAGETT!";
 		array[5] = "Taargus Taargus.";
-		array[6] = "Thank you based god.";
+		array[6] = "Lil b.";
 		array[7] = "What are your overheads??";
 		array[8] = "ENGINEER IS CREDIT TO TEAM!";
 		array[9] = "ヽ(ｏ`皿′ｏ)ﾉ";
@@ -68,11 +68,11 @@ for (i=0;i<8;i++)
   document.write(x[i].getElementsByTagName("url")[0].childNodes[0].nodeValue);
   document.write("'>");
   document.write(x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue);
-  /*
+  
   document.write(" (");
   document.write(x[i].getElementsByTagName("playcount")[0].childNodes[0].nodeValue);
   document.write(")");
-  */
+  
   document.write("</a>");
   document.write("</li>");
   }
