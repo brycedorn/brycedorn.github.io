@@ -1,13 +1,13 @@
 var sliderOptions=
 {
 	sliderId: "slider",
-	effect: "9",
+	effect: "17",
 	effectRandom: false,
 	pauseTime: 3000,
 	transitionTime: 500,
 	slices: 12,
 	boxes: 8,
-	hoverPause: 10,
+	hoverPause: 1,
 	autoAdvance: true,
 	captionOpacity: 0.3,
 	captionEffect: "fade",
