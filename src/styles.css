@@ -35,7 +35,7 @@ font-smoothing:antialiased;
 	font-size: 28px;
 	font-weight: normal;
 	letter-spacing: 1px;
-	padding-top: 30px;
+	padding-top: 20px;
 	text-shadow: #bbb 1px 1px 4px;
 	}
 		h1 img {
@@ -210,7 +210,7 @@ padding-top: 8%;
 
 #menu {
 position: absolute;
-bottom: -13%;
+bottom: -21%;
 margin-bottom: 10px;
 left:3%;
 z-index: 0;
@@ -252,7 +252,7 @@ z-index: 0;
 
 #footer {
 z-index: 50;
-bottom:-50%;
+bottom:-58%;
 position: absolute;
 width: 95%;
 margin-left: 2%;
