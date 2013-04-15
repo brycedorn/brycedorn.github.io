@@ -401,6 +401,7 @@ margin:20px 0 40px 0;
 	opacity: 0;
 	height:1%;
 	padding-top: 400px;
+	padding-bottom: 40px;
 	overflow: hidden;
 	z-index:500;
 	-webkit-transition: .6s ease-in-out;
