@@ -183,7 +183,8 @@ cursor: pointer;
 		float: left;
 		margin-right: 20px; 
 		cursor: pointer;
-		box-shadow: 0px 0px 0 4px #ddd;
+		border: #ccc solid 1px;
+		box-shadow: 0px 0px 4px #888;
 		border-radius: 50%;
 		-webkit-border-radius: 50%;
 		-moz-border-radius: 50%;
@@ -312,7 +313,7 @@ height: 200px;
 clear: both;
 float: left; 
 width: 385px;
-margin-left: 20%;
+margin-left: 18%;
 margin-right: 80px;
 }
 #right {
@@ -399,8 +400,8 @@ margin:20px 0 40px 0;
 	width: 90%;
 	position: absolute;
 	opacity: 0;
-	height:1%;
-	padding-top: 400px;
+	height: 80%;
+	padding-top: 0px;
 	padding-bottom: 40px;
 	overflow: hidden;
 	z-index:500;
@@ -411,23 +412,13 @@ margin:20px 0 40px 0;
 	transition: .6s ease-in-out;
 }
 .panel:target{
-	padding-top: 0px;
+	z-index: 1000;
 	opacity: 1;
-	height:80%;	
 }
 #content {
 display: block;
-margin-left: 50px;
 position: absolute;
 padding-bottom: 100px;
-}
-
-#about:target ~ #header #menu #link-about,
-#home:target ~ #header #menu #link-home,
-#projects:target ~ #header #menu #link-projects,
-#contact:target ~ #header #menu #link-contact{
-	background: #000;
-	color: #fff;
 }
 
 /*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*
@@ -437,14 +428,16 @@ padding-bottom: 100px;
 ~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*/
 
 .face img {
-	box-shadow: 0px 0px 0 8px #ddd;
+	border: #fff solid 1px;
+	box-shadow: 0px 0px 8px #888;
 	width: 400px;
 	height: 400px;
 	margin-left: 8px;
+	/*
 	border-radius: 30px;
 	-moz-border-radius: 30px;
 	webkit-border-radius: 30px;
-	color: #fff;
+	*/
 }
 
 /*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*
@@ -524,12 +517,13 @@ animation-delay: 2.8s;
 #sliderFrame {position:relative;width:400px;} /*remove the "margin:0 auto;" if you want to align the whole slider to the left side*/
         
 #slider {
-    width:400px;height:220px;/* Make it the same size as your images */
+    width:400px;height:250px;/* Make it the same size as your images */
 	position:relative;
-    box-shadow: 0px 1px 5px #999999;
+    box-shadow: 0px 0px 6px #888;
+    border: #fff solid 1px;
 }
 #slider img {
-	border:none;
+	border: none;
 	display:none;
 }
 
@@ -545,22 +539,19 @@ animation-delay: 2.8s;
 div.mc-caption-bg, div.mc-caption-bg2 {
 	position:absolute;
 	width:100%;
-	height:30px;
-	padding:0;
-	left:0px; /*if the caption needs to be aligned from right, specify by right instead of left. i.e. right:20px;*/
+	height:28px;
+	left:10px; /*if the caption needs to be aligned from right, specify by right instead of left. i.e. right:20px;*/
 	bottom:0px;/*if the caption needs to be aligned from top, specify by top instead of bottom. i.e. top:150px;*/
 	z-index:3;
 	overflow:hidden;
 	font-size: 0;
 }
 div.mc-caption-bg {
-	background-color:#111;
 }
 div.mc-caption {
 	font: 14px/20px Arial;
 	color:#eee;
 	z-index:4;
-	padding:4px 6px;
 	text-align:left;
 }
 
