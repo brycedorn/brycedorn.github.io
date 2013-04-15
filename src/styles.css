@@ -121,9 +121,6 @@ cursor:pointer;
 	}
 
 ul{
-list-style-type: none;
-padding: 0;
-margin: 0;
 text-align: center;
 }
 
@@ -153,54 +150,39 @@ width: 90%;
 margin: 4% auto 0 auto;
 }
 
-#placehold{
-	float:left;
-	margin-top: 20%;
-	width:100%;
-}
-
 #nametag {
 position: relative; 
-z-index: 1000;
+z-index: 1;
 margin: 0 auto 2%; auto;
 width: 400px;
-cursor: pointer;
 -transition: .3s;
 -webkit-transition: .3s;
 -moz-transition: .3s;
 }
-
 	#nametag:hover {
 	transform: translate(0,10px);
 	-webkit-transform: translate(0,10px);
 	-moz-transform:translate(0,10px);
-	cursor: pointer;
 	-webkit-backface-visibility: hidden;
 	}
 	
 		#nametag img { 
+		z-index: 0;
 		-transition: .3s;
 		-webkit-transition: .3s;
 		-moz-transition: .3s;
 		float: left;
 		margin-right: 20px; 
-		cursor: pointer;
 		border: #ccc solid 1px;
 		box-shadow: 0px 0px 4px #888;
 		border-radius: 50%;
 		-webkit-border-radius: 50%;
 		-moz-border-radius: 50%;
 		}
-		
-		#nametag img:hover { 
-		transform:rotate(20deg);
-		-ms-transform:rotate(20deg); /* IE 9 */
-		-moz-transform:rotate(20deg); /* Firefox */
-		-webkit-transform:rotate(20deg); /* Safari and Chrome */
-		-o-transform:rotate(20deg); /* Opera */
-		}
 
 #header {
+margin-left: -10%;
+margin-right: auto;
 height: 110px;
 padding-top: 8%;
 }
@@ -213,10 +195,11 @@ padding-top: 8%;
 
 #menu {
 position: absolute;
-bottom: -21%;
+bottom: -27%;
 margin-bottom: 10px;
 left:3%;
 z-index: 0;
+width: 100%;
 }
 
 	#menu ul {
@@ -226,8 +209,8 @@ z-index: 0;
 
 	#menu li {
 		color: #333;
-		width: 300px;
-		height: 33px;
+		width: 20%;
+		height: 34px;
 		margin-bottom: 15px;
 		opacity: .8;
 		-webkit-box-shadow: 1px 1px 4px #888;
@@ -239,12 +222,14 @@ z-index: 0;
 		float: left;
 	}
 	#menu ul li {
-		margin-right: 17px;
-		margin-left: 17px;
+		margin-right: 1.8%;
+		margin-left: 1.8%;
 	}
 
-	#menu h3:hover,#menu li:hover {
+	#menu li:hover {
 	opacity: 1;
+	-webkit-box-shadow: 2px 2px 6px #888;
+	box-shadow: 2px 2px 6px #888;
 	}
 
 /*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*
@@ -255,7 +240,7 @@ z-index: 0;
 
 #footer {
 z-index: 50;
-bottom:-58%;
+bottom:-64%;
 position: absolute;
 width: 95%;
 margin-left: 2%;
@@ -270,13 +255,13 @@ box-shadow: 0px 0px 20px #888;
 }
 
 #menu-wrapper { 
-
 margin-left: auto;
 margin-right: auto;
 height: 200px; 
+width: 100%;
 }
 	.footermenus {
-	width: 30%;
+	width: 29%;
 	float: left;
 	text-align: left;
 	}
@@ -284,16 +269,16 @@ height: 200px;
 	#more li {
 	display:block;
 	text-transform: uppercase;
-	width: 320px;
 	margin-bottom: 10px;
 	font-size: 12px;
 	letter-spacing: 1px;
-	margin-left: 36%;
+	margin-left: 20%;
+	margin-right: 0;
 	}
 	
 		#more a {
 		padding-left: 2px;
-		color: #444;
+		color: #ddd;
 		-transition: 0.2s;
 		-webkit-transition: 0.2s;
 		-moz-transition: 0.2s;
@@ -314,18 +299,21 @@ height: 200px;
 #left {
 clear: both;
 float: left; 
-width: 385px;
-margin-left: 18%;
-margin-right: 80px;
+width: 30%;
+margin-left: 10%;
 }
 #right {
-width:400px;
+text-align: right;
+width:30%;
 display: block;
-float: left;
+float: right;
+margin-right: 20%;
 }
 #mid {
 margin-top: 4%;
 text-align: center;
+margin-left: -10%;
+margin-right: auto;
 }
 #mid h1 {
 	text-transform: lowercase;
@@ -340,9 +328,8 @@ text-align: center;
 ~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*/
 
 #exp p {
-margin-left: auto;
-margin-right: auto;
-width: 24%;
+text-align: center;
+margin-left: -10%;
 font-size: 28px;
 text-transform: uppercase;
 letter-spacing: 1px;
@@ -399,12 +386,16 @@ margin:20px 0 40px 0;
 ~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*/
 
 .panel{
-	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	height: 80%;
+	top: 26%;
 	position: absolute;
 	opacity: 0;
 	height: 80%;
 	padding-top: 0px;
-	padding-bottom: 40px;
+	padding-bottom: 80px;
 	overflow: hidden;
 	z-index:500;
 	-webkit-transition: .6s ease-in-out;
@@ -434,12 +425,15 @@ padding-bottom: 100px;
 	box-shadow: 0px 0px 8px #888;
 	width: 400px;
 	height: 400px;
-	margin-left: 8px;
-	/*
-	border-radius: 30px;
-	-moz-border-radius: 30px;
-	webkit-border-radius: 30px;
-	*/
+	opacity: 1;
+	-webkit-transition: .3s ease-in-out;
+	-moz-transition: .3s ease-in-out;
+	-o-transition: opacity .3s ease-in-out;
+	-ms-transition: opacity .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.face img:hover{
+	box-shadow: 0px 0px 20px #888;
 }
 
 /*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*~'`^`'~*-,._.,-*

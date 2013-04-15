@@ -1,53 +1,43 @@
 html {
-background: -webkit-linear-gradient(right, rgba(130,180,0,0.4) 20%, rgba(20,150,80,0.4) 100%);
+background: #000;
 font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
 }
 
 h1, h2 {
-color: #eee;
-padding: 0; 
-margin:0;
+color: #fff;
 text-decoration: none;
-text-align: center;
-font-smoothing: antialiased;
--moz-font-smoothing: antialiased;
--webkit-font-smoothing: antialiased;
 }
 	h1 {
+	font-size: 40px;
+	font-weight: 200;
+	letter-spacing: 1px;
+	margin: 6% 0 8% 8%;
+	}
+	h2 {
+
+	background: #fff;
 	color: #000;
-	opacity: 0.7;
-	font-size: 120px;
-	font-weight: lighter;
-	margin-top: -2%;
-	text-align: left;
-	margin-left: 26%;
+	font-size: 80px;
+	font-weight: 150;
+	text-align: right;
+	margin: 2% 4% 10% 4%;
+	padding: 2%;
+	padding-right: 4%;
 	}
 		a {
 			text-decoration: none;
 		}
 		img {
-			margin-right: 20px;
+			float: left;
+			margin-left: 14%;
+			margin-top: 3%;
 		}
-	h4 {
-		opacity: 0.6;
-	font-size: 40px;
-	font-weight: 200;
-	letter-spacing: 20px;
-	color: #555;
-	margin: 20px 0px 20px 0px;
-	}
-#mid {
-margin-top: 10px;
-opacity: 1;
-text-align: center;
-margin-left: auto;
-margin-right: auto;
-width: 70%;
-height: auto;
-/*background: -webkit-linear-gradient(right, rgba(3,22,52,0.4) 20%, rgba(189,21,80,0.4) 100%);*/
-background: rgba(255,255,255,.2);
-text-align: center;
-padding: 0.2% 0 0 0;
-border: #eee solid 1px;
-box-shadow: 2px 2px 10px #888;
+		p {
+			color: #fff;
+			font-weight: lighter;
+			font-size: 12px;
+		}
+footer {
+	padding-bottom: 10px;
+	text-align: center;
 }
