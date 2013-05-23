@@ -15,4 +15,3 @@ tags
 app/assets/stylesheets/*.css
 *.swp
 !.gitkeep
-db/dump
