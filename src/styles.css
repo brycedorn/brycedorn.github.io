@@ -17,7 +17,7 @@ body, html { font-size: 100%; padding: 0; margin: 0; height: 100%;}
 
 body {
     font-family: slab;
-    color: #f2ede3;
+    color: #fdfdfd;
     background: #555;
     font-size: 0.9em;
     font-weight: 300;
@@ -40,7 +40,7 @@ a:hover {
 .container { height: 100%; }
 
 .bl-main {
-  opacity: 1;
+  opacity: 1.0;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -183,10 +183,6 @@ div.bl-panel-items > div > div {
   margin: 0 0 10px 0;
   padding-top: 20px;
   font-size: 1.4em;
-}
-
-.bl-content article a {
-  color: rgba(0,0,0,0.2);
 }
 
 .bl-content > ul {
@@ -375,10 +371,33 @@ section.bl-expand .bl-icon-close {
     width: 40%;
   }
 }
-
-ol{
+ol {
   list-style-type: none;
 }
 .tumblr_title{
-  font-size: 20pt;
+  font-size: 50pt;
+  margin: 40px 0 20px 0;
+}
+#poop {
+  opacity: 0.4;
+}
+#poop:hover{
+  opacity: 1;
+}
+code {
+  font-size: 14px;
+  background: #555;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-radius: 8px;
+}
+code:hover{
+  background: #999;
+}
+h3, h4 {
+  text-transform: uppercase;
+  font-size: 40pt;
+  line-height: 20px;
 }
