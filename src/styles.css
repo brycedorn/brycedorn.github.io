@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: slab;
-  src: url('../fonts/Museo_Slab_500_2.otf');
+  src: url('font/Museo_Slab_500_2.otf');
 }
 
 body, html { font-size: 100%; padding: 0; margin: 0; height: 100%;}
