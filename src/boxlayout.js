@@ -25,7 +25,7 @@ var Boxlayout = (function() {
 		// if currently navigating the work items
 		isAnimating = false,
 		// close work panel trigger
-		$closeWorkItem = $workPanelsContainer.find( 'nav > span.bl-icon-close' ),
+		$closeWorkItem = $workPanelsContainer.find( 'nav > img.bl-icon-close' ),
 		transEndEventNames = {
 			'WebkitTransition' : 'webkitTransitionEnd',
 			'MozTransition' : 'transitionend',
@@ -56,7 +56,7 @@ var Boxlayout = (function() {
 					$el.addClass( 'bl-expand-item' );
 				}
 
-			} ).find( 'span.bl-icon-close' ).on( 'click', function() {
+			} ).find( 'img.bl-icon-close' ).on( 'click', function() {
 
 				closeSection( $section );
 

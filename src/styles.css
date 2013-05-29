@@ -16,11 +16,11 @@ body, html { font-size: 100%; padding: 0; margin: 0; height: 100%;}
 }
 
 body {
-    font-family: slab;
-    color: #fdfdfd;
-    background: #555;
-    font-size: 0.9em;
-    font-weight: 300;
+  background: url('img/elephantmid.png') center no-repeat;
+  font-family: slab;
+  color: #fdfdfd;
+  font-size: 0.9em;
+  font-weight: 300;
 }
 
 a {
@@ -37,16 +37,14 @@ a:hover {
   color: #fff;
 }
 
-.container { height: 100%; }
-
 .bl-main {
-  opacity: 1.0;
+  opacity: 1;
   position: absolute;
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
-  
+
 .bl-main > section {
   position: absolute;
   width: 50%;
@@ -56,25 +54,25 @@ a:hover {
 .bl-main > section:first-child {
   top: 0;
   left: 0;
-  background: #FF003C;
+  background: rgba(255,0,60,0.3);
 }
 
 .bl-main > section:nth-child(2) {
   top: 0;
   left: 50%;
-  background: #FF8A00;
+  background: rgba(255,138,0,0.3);
 }
 
 .bl-main > section:nth-child(3) {
   top: 50%;
   left: 0;
-  background: #00C176;
+  background: rgba(0,193,118,0.3);
 }
 
 .bl-main > section:nth-child(4) {
   top: 50%;
   left: 50%;
-  background: #FABE28;
+  background: rgba(250,190,40,0.3);
 }
 
 .bl-box {
@@ -262,30 +260,6 @@ div.bl-panel-items > div {
   -ms-transform: translateY(0);
 }
 
-div.bl-panel-items > div.bl-show-work {
-  z-index: 1000;
-  opacity: 1;
-  -webkit-transform: translateY(-100%);
-  -webkit-transition: -webkit-transform 0.5s ease-in-out;
-  -moz-transform: translateY(-100%);
-  -moz-transition: -moz-transform 0.5s ease-in-out;
-  transform: translateY(-100%);
-  transition: transform 0.5s ease-in-out;
-  -ms-transform: translateY(-100%);
-}
-
-div.bl-panel-items > div.bl-hide-current-work {
-  opacity: 0;
-  -webkit-transition: -webkit-transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-  -webkit-transform: translateY(-100%) scale(0.5);
-  -moz-transition: -moz-transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-  -moz-transform: translateY(-100%) scale(0.5);
-  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-  transform: translateY(-100%) scale(0.5);
-  -ms-transform: translateY(-100%) scale(0.5);
-  z-index: 0;
-}
-
 /* Transition classes and properties */
 /* Separated for a better overview and control */
 
@@ -334,6 +308,14 @@ section.bl-expand .bl-box {
   transition: all 0.2s ease-in-out;
 }
 
+.bl-box img {
+  position: absolute;
+  width: 50%;
+  float: left;
+  margin-left: 26%;
+  opacity: 0.2;
+}
+
 .no-touch section:not(.bl-expand) .bl-box:hover h2 {
   -webkit-transform: translateY(-15px);
   -moz-transform: translateY(-15px);
@@ -346,6 +328,9 @@ section.bl-expand .bl-box {
   -webkit-transition: opacity 0.1s linear 0s;
   -moz-transition: opacity 0.1s linear 0s;
   transition: opacity 0.1s linear 0s;
+}
+img.bl-icon-close {
+  height: 30px;
 }
 
 section.bl-expand .bl-content,
@@ -379,7 +364,7 @@ ol {
   margin: 40px 0 20px 0;
 }
 #poop {
-  opacity: 0.4;
+  opacity: 0.5;
 }
 #poop:hover{
   opacity: 1;
@@ -400,4 +385,12 @@ h3, h4 {
   text-transform: uppercase;
   font-size: 40pt;
   line-height: 20px;
+}
+#credit p {
+  background: rgba(20,20,20,0.3);
+  padding: 10px;
+  border-radius: 5px;
+  position: absolute;
+  right:0;
+  bottom: 0;
 }
