@@ -16,7 +16,6 @@ var Boxlayout = (function() {
 		// if currently navigating the work items
 		isAnimating = false,
 		// close work panel trigger
-		$closeWorkItem = $workPanelsContainer.find( 'nav > img.bl-icon-close' ),
 		transEndEventNames = {
 			'WebkitTransition' : 'webkitTransitionEnd',
 			'MozTransition' : 'transitionend',
@@ -70,9 +69,7 @@ var Boxlayout = (function() {
 				var $section = $( 'section.bl-expand' );
 
 				// check if a section or a work panel is open
-				if( $( '.bl-show-work' ).length ) {
-					closeWorkPanel();
-				} else if( $section.length ) {
+				if( $section.length ) {
 					closeSection( $section );
 				}
 
