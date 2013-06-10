@@ -132,10 +132,6 @@ a:hover {
   pointer-events: none;
 }
 
-.bl-icon-close:before {
-  content: "\e005";
-}
-
 .bl-content, 
 div.bl-panel-items > div > div {
   opacity: 0;
@@ -201,9 +197,9 @@ div.bl-panel-items > div > div {
 /* Separated for a better overview and control */
 
 .bl-main > section {
-  -webkit-transition: all 1s ease-in-out;
-  -moz-transition: all 1s ease-in-out;
-  transition: all 1s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 
 .bl-main > section.bl-expand {
@@ -284,7 +280,6 @@ section.bl-expand .bl-icon-close {
 }
 
 /* tumblr embedding */
-
 ol {
   list-style-type: none;
 }
@@ -323,24 +318,4 @@ h3, h4 {
   position: absolute;
   right:0;
   bottom: 0;
-}
-
-
-/* Effect 6 */
-#smicon {
-  box-shadow: 0 0 0 4px rgba(255,255,255,1);
-  -webkit-transition: background 0.2s, color 0.2s;
-  -moz-transition: background 0.2s, color 0.2s;
-  transition: background 0.2s, color 0.2s;
-}
-
-.no-touch #smicon #smicon:hover {
-  background: rgba(255,255,255,1);
-  color: #64bb5d;
-}
-
-.no-touch #smicon #smicon:hover:before {
-  -webkit-animation: spinAround 2s linear infinite;
-  -moz-animation: spinAround 2s linear infinite;
-  animation: spinAround 2s linear infinite;
 }
