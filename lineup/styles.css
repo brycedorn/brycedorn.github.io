@@ -61,7 +61,7 @@ a {
   text-shadow: 0px 2px #999;
 }
 a:hover {
-  color: #eee;
+  color: #fff;
 }
 
 .first {
@@ -77,4 +77,8 @@ a:hover {
   font-size: 20px;
   text-shadow: 0px 1px #999;
   line-height: 30px;
+}
+
+#credit {
+  height: 80px;
 }
