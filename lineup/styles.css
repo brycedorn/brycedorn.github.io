@@ -1,7 +1,7 @@
 body, html { font-size: 100%; padding: 0; margin: 0; height: 100%;}
 
 body {
-  background: url('img/origamirepeat.jpg') repeat;
+  background: url('src/origamirepeat.jpg') repeat;
   text-align: center;
   color: #cf8464;
   height: 100%;
@@ -23,7 +23,7 @@ h2 {
 }
 
 #container {
-  background: url('img/case.jpg');
+  background: url('src/case.jpg');
   background-position: center top;
   margin: 0 auto;
   width: 810px;
@@ -31,7 +31,7 @@ h2 {
 }
 
 #banner {
-  background: url('img/banner.png') center no-repeat;
+  background: url('src/banner.png') center no-repeat;
   font-family: American Typewriter;
   width: 100%;
   margin: 0 auto;
