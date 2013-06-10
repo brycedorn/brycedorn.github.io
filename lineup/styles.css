@@ -27,7 +27,7 @@ h2 {
   background-position: center top;
   margin: 0 auto;
   width: 810px;
-  height: 1126px;
+  height: 1120px;
 }
 
 #banner {
@@ -39,26 +39,28 @@ h2 {
   font-size: 36px;
   position: absolute;
   color: #e6e6e6;
+  text-shadow: 0 2px #333;
   text-align: center;
   top:290px;
   line-height: 64px;
 }
 
 #lineup {
-  width: 775px;
+  width: 760px;
   margin: 100px auto;
   text-align: center;
 }
 p {
   display: inline;
   padding: 5px;
+  text-shadow: 0px 1px #777;
 }
 a {
   font-family: Impact;
   text-decoration: none;
   letter-spacing: 1px;
   color: #cf8464;
-  text-shadow: 0px 2px #999;
+  text-shadow: 0px 2px #777;
 }
 a:hover {
   color: #fff;
@@ -71,11 +73,12 @@ a:hover {
   font-size: 50px;
 }
 .third {
+  text-shadow: 0px 1px #777;
   font-size: 30px;
 }
 .fourth {
   font-size: 20px;
-  text-shadow: 0px 1px #999;
+  text-shadow: 0px 1px #777;
   line-height: 30px;
 }
 
