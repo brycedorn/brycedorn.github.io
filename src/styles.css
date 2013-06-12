@@ -35,6 +35,17 @@ a {
 a:hover {
   color: #fff;
 }
+#detail p {
+  font-size: 16px;
+}
+#detail {
+  margin-left: 30px;
+  width: 300px;
+}
+#sites {
+  list-style: none;
+  display: inline-block;
+}
 
 .bl-main {
   opacity: 1;
