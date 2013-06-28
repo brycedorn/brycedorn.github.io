@@ -1,0 +1,51 @@
+@font-face {
+  font-family: Slab;
+  src: url('../src/font/Museo_Slab_500_2.otf');
+}
+
+body, html { font-size: 100%; padding: 0; margin: 0; height: 100%;}
+
+body {
+  background: #fff;
+  height: 100%;
+}
+
+#navcont {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background: #5500dd;
+  height: 80px;
+}
+
+#nav {
+  margin: 10px auto;
+  height: 40px;
+  background: #5500dd;
+  width: 90%;
+  color: #5500dd;
+}
+ul li { 
+  list-style: none;
+  display: inline;
+}
+
+h1 {
+  line-height: 40px;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-family: Slab;
+  font-size: 32px;
+  font-weight: lighter;
+}
+
+#container {
+  background-position: center top;
+  margin: 0 auto;
+  width: 810px;
+  height: 1120px;
+}
+
+#about {
+
+}
