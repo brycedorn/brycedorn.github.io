@@ -46,6 +46,10 @@ a:hover {
   list-style: none;
   display: inline-block;
 }
+.whatido {
+  margin-left: 20px;
+}
+
 
 .bl-main {
   opacity: 1;
@@ -200,7 +204,7 @@ div.bl-panel-items > div > div {
   border: rgba(255,255,255,0.2) solid 8px;
 }
 .bl-content > ul li a img {
-  display: block;
+  vertical-align: middle;
   max-width: 100%;
 }
 
