@@ -16,7 +16,7 @@ body, html { font-size: 100%; padding: 0; margin: 0; height: 100%;}
 }
 
 body {
-  background: url('img/elephant.jpg') center repeat;
+  background: #aaa url('img/elephant.jpg') center;
   font-family: slab;
   color: #fdfdfd;
   font-size: 0.9em;
