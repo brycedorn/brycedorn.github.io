@@ -37,26 +37,44 @@ h2 {
   color: #e6e6e6;
   text-shadow: 0 2px #333;
   text-align: center;
-  line-height: 64px;
 }
 
 #banner {
+  width: 100%;
   background: url('src/banner.png') center no-repeat;
   background-size: 67%;
   font-family: American Typewriter;
   height: 98px;
-  font-size: 2.2em;
+  font-size: 1.4em;
+}
+#bannertofit {
+  width: 60%;
+  margin: 0 auto;
+}
+#bannertofit p {
+  display: block;
+  position: relative;
+  top: 10px;
 }
 
 #lineup {
-  width: 50%;
-  margin: 2% auto;
+  width: 94%;
+  position: relative;
+  top: 2%;
+  margin: 0 auto;
   text-align: center;
 }
+
 p {
-  display: inline;
-  padding: 5px;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
   text-shadow: 0px 1px #777;
+}
+
+p.diamond {
+  position: relative;
+  top: -8%;
 }
 a {
   font-family: Impact;
@@ -96,3 +114,7 @@ a:hover {
    #bannercontainer{
     margin-top: 13%;
    }
+   #bannertofit p {
+    top: 30px;
+  }
+}
