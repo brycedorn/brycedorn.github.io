@@ -10,7 +10,6 @@ $(document).ready(function(){
     setInterval(function(){
         old = $('#'+names[x]).css("background-color");
         $('#'+names[x]).css('background-color',temp); 
-        console.log(temp);
         if(x > 2) { x = 0; }
             else { x++; }
         temp = old;

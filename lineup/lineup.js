@@ -28,7 +28,7 @@ for (i=0;i<49;i++)
   document.write(x[i].getElementsByTagName("url")[0].childNodes[0].nodeValue);
   document.write("'>");
   document.write(x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue);
-  document.write("</a><p class='"+ranks[rank]+"'>");
+  document.write("</a><p class='"+ranks[rank]+" fittext4'>");
   if(i<48) { document.write("&#9670;</p>"); }
   else { document.write("</p>"); }
   }

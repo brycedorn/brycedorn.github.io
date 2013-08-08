@@ -4,18 +4,19 @@
     <meta name="author" content="Bryce Dorn"/>
     <link rel="shortcut icon" href="../src/img/favicon.ico">
     <link rel='stylesheet' type='text/css' href='styles.css'/>
-    <script src="lineup.js"></script>
 </head>
 <body>
     <a href="https://github.com/brycedorn/brycedorn.github.com/tree/master/lineup"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
-    <div id="banner">
-        <p>Based on listening stats from the month of <script>month()</script></p>
+    <div id="bannercontainer">
+      <div id="banner">
+        <p id="fittext3">Based on listening stats from the month of <script>month()</script></p>
+      </div>
     </div>
     <div id="container"> 
 
       <div id="title">
-        <h1>bryce's monthly</h1>
-        <h2>last.fm artist lineup</h2>
+        <h1 id="fittext1">bryce's monthly</h1>
+        <h2 id="fittext2">last.fm artist lineup</h2>
       </div>
       <div id="lineup">
         <script>lineup()</script>
@@ -25,5 +26,14 @@
     <div id="credit">
       <!--<a href="http://www.pixeden.com/psd-web-elements/retro-web-ribbons-vintage-psd-pack">Banner credit</a><a href="http://browse.deviantart.com/art/Origami-paper-texture-pack-113588196">Background credit</a>-->
     </div>
+    <script src="lineup.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="jquery.fittext.js"></script>
+    <script type="text/javascript">
+    $("#fittext1").fitText(0.85);
+    $("#fittext2").fitText(1.1);
+    $("#fittext3").fitText(1.9);
+    $(".fittext4").fitText(1.1);
+  </script>
 </body>
 </html>

@@ -9,40 +9,43 @@ body {
 
 h1 {
   font-family: American Typewriter;
-  font-size: 92px;
+  font-size: 5.7em;
   font-weight: lighter;
   text-shadow: 0 3px #777;
-  padding-top: 20px;
+  padding-top: 2%;
 }
 h2 {
   font-family: American Typewriter;
-  margin-top: -60px;
-  font-size: 74px;
+  margin-top: -8%;
+  font-size: 4.6em;
   text-shadow: 0 2px #777;
   font-weight: lighter;
 }
 
 #container {
-  background: url('src/case.jpg');
-  background-position: center top;
+  background: url('src/case.jpg') 50% 0;
+  background-size: 100%;
   margin: 0 auto;
-  width: 810px;
+  width: 56%;
   height: 1120px;
 }
 
-#banner {
-  background: url('src/banner.png') center no-repeat;
-  font-family: American Typewriter;
+#bannercontainer {
   width: 100%;
-  margin: 0 auto;
-  height: 98px;
-  font-size: 36px;
+  margin: 15% auto;
   position: absolute;
   color: #e6e6e6;
   text-shadow: 0 2px #333;
   text-align: center;
-  top:290px;
   line-height: 64px;
+}
+
+#banner {
+  background: url('src/banner.png') center no-repeat;
+  background-size: 67%;
+  font-family: American Typewriter;
+  height: 98px;
+  font-size: 2.2em;
 }
 
 #lineup {
@@ -85,3 +88,11 @@ a:hover {
 #credit {
   height: 80px;
 }
+
+@media only screen and (max-width: 840px) {
+   h1,h2 {
+      text-shadow: 0 1px 1px #777;
+   }
+   #bannercontainer{
+    margin-top: 13%;
+   }
