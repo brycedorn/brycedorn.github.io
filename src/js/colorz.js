@@ -4,7 +4,7 @@ $(document).ready(function(){
     var x = 0;
 
     setInterval(function(){
-        old = $('#'+names[x]).css("background-color");
+        old = $('#colors'+x).css("background-color");
         $('#colors'+x).css('background-color',temp); 
         if(x > 2) { x = 0; }
             else { x++; }
