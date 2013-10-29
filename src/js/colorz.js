@@ -6,6 +6,7 @@ $(document).ready(function(){
     setInterval(function(){
         old = $('#colors_'+x).css("background-color");
         $('#colors_'+x).css('background-color',temp); 
+        console.log('tryna change color of'+x)
         if(x > 2) { x = 0; }
             else { x++; }
         temp = old;
