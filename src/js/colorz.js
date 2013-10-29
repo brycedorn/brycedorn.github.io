@@ -4,8 +4,8 @@ $(document).ready(function(){
     var x = 0;
 
     setInterval(function(){
-        old = $('#color_'+x).css("background-color");
-        $('#color_'+x).css('background-color',temp); 
+        old = $('#colors_'+x).css("background-color");
+        $('#colors_'+x).css('background-color',temp); 
         if(x > 2) { x = 0; }
             else { x++; }
         temp = old;
