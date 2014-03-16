@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    var temp = "rgba(190,212,222,0.5)";
+    var temp = "rgba(168,124,137,0.5)";
     var old = 0;
     var x = 0;
 

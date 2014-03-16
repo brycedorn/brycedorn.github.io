@@ -16,7 +16,7 @@ body, html { font-size: 100%; padding: 0; margin: 0; height: 100%;}
 }
 
 body {
-  background: #aaa url('img/snow.jpg') center;
+  background: #aaa url('img/loveyou.gif') center;
   background-size: cover;
   font-family: slab;
   color: #fdfdfd;
@@ -72,22 +72,22 @@ a:hover {
 .bl-main > section:first-child {
   top: 0;
   left: 0;
-  background: rgba(203,224,225,0.5);
+  background: rgba(173,216,160,0.5);
 }
 .bl-main > section:nth-child(2) {
   top: 0;
   left: 50%;
-  background: rgba(197,221,227,0.5);
+  background: rgba(233,212,119,0.5);
 }
 .bl-main > section:nth-child(3) {
   top: 50%;
   left: 0;
-  background: rgba(182,201,214,0.5);
+  background: rgba(236,167,128,0.5);
 }
 .bl-main > section:nth-child(4) {
   top: 50%;
   left: 50%;
-  background: rgba(167,199,209,0.5);
+  background: rgba(224,133,132,0.5);
 }
 
 .bl-box {
