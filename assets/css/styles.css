@@ -1,0 +1,16 @@
+body {
+}
+
+#head {
+  width: 100%;
+  position: absolute;
+  top: 0;
+}
+
+h1 {
+  font-family: 'Lily Script One';
+  line-height: 0;
+}
+p {
+  font-family: 'Montserrat';
+}
