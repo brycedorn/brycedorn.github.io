@@ -1,16 +1,45 @@
 body {
+  color: #fff;
 }
-
 #head {
-  width: 100%;
   position: absolute;
-  top: 0;
+  top: 130px;
+  left: -100px;
+  font-size: 14em;
 }
-
+#subhead {
+  width: 100%;
+}
 h1 {
-  font-family: 'Lily Script One';
+  font-family:'Lily Script One';
   line-height: 0;
 }
 p {
-  font-family: 'Montserrat';
+  font-family:'Asap';
+}
+.full {
+  height: 1000px;
+}
+#left {
+  background: #2ecc71;
+  display: block;
+}
+#blog {
+  background: #3498db;
+  padding: 20px;
+}
+#works {
+  background: #e67e22;
+  padding: 20px;
+}
+#contact {
+  background: #1abc9c;
+  padding: 20px;
+}
+@media screen and (max-width: 888px) {
+  #head {
+    top: 50px;
+    left: -20px;
+    font-size: 4em;
+  }
 }
