@@ -5,7 +5,7 @@ $(document).ready(function () {
   $("#head").fitText(0.255);
   $("#left").height(h);
   $("#blog").height(h - 100);
-  $("#works").height(h);
+  $("#works").height(h - 100);
   $("#contact").height(h);
   $(".full").click(function () {
     openPage(this);

@@ -6,6 +6,7 @@ body {
 #head {
   color: #E5FCC2;
   cursor: default;
+  padding-bottom: 40px;
 }
 
 #contacttitle, #workstitle {
@@ -17,14 +18,14 @@ body {
 }
 
 
-h1 {
+h1,h2 {
   font-family: 'Lily Script One';
   text-shadow: 0px 2px 2px rgba(0,0,0,0.25);
   line-height: 0;
-  padding-bottom: 40px;
 }
 .full {
   padding: 64px;
+  overflow: scroll;
 }
 .closed {
   cursor: pointer;
@@ -56,13 +57,28 @@ h1 {
 }
 #blog {
   background: #9DE0AD;
-  overflow: scroll;
 }
 #works {
   background: #45ADA8;
 }
 #contact {
   background: #547980;
+}
+#projects {
+  width: 100%;
+  color: #E5FCC2;
+  font-family: 'Roboto';
+}
+#projects li {
+  display: inline-block;
+  width: 350px;
+  margin: 15px;
+  text-align: center;
+}
+#projects li img {
+  width: 300px;
+  box-shadow: 0px 1px 3px rgba(0,0,0,0.15);
+  border-radius: 12px;
 }
 
 /* Tumblr styles */
@@ -102,6 +118,13 @@ a.tumblr_link {
     display: none; 
 }
 
+*::selection {
+    background: #E5FCC2;
+}
+*::-webkit-selection {
+    background: #E5FCC2;
+}
+
 @media screen and (max-width: 767px) {
   .full {
     font-size: 0.8em;
@@ -122,5 +145,13 @@ a.tumblr_link {
   #workstitle, #contacttitle {
     font-size: 3em;
     padding-right: 10px;
+  }
+  #projects li {
+    width: 200px;
+    margin: 5px;
+  }
+  #projects li img {
+    width: 180px;
+    border-radius: 6px;
   }
 }
