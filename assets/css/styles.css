@@ -1,4 +1,9 @@
+html {
+  background: #343838;
+}
+
 body {
+  display: none;
   overflow: hidden;
   font-family: 'Open Sans';
 }
@@ -57,6 +62,9 @@ h1,h2 {
 }
 #blog {
   background: #9DE0AD;
+}
+#blog .content {
+  display: none;
 }
 #works {
   background: #45ADA8;

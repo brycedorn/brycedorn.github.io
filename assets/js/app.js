@@ -3,6 +3,7 @@ $(document).ready(function() {
   var anim = "easeOutExpo";
   var h = $(window).height();
   $(".closed").children().hide();
+  $("body").fadeIn(frames * 2);
   $("#head").fitText(0.255);
   $("#left").height(h);
   $("#blog").height(h - 100);
@@ -18,6 +19,8 @@ $(document).ready(function() {
       openPage($("#works"));
     } else openPage($("#contact"));
   });
+
+  $("#blog").find(".content").delay(600).fadeIn(frames * 2);
 
   function openPage(t) {
     if (!$(t).hasClass("open")) {
