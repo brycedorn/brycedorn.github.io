@@ -115,8 +115,8 @@ a.tumblr_link {
   font-size: 2em;
   text-decoration: none;
 }
-::-webkit-scrollbar { 
-    display: none; 
+::-webkit-scrollbar {
+    display: none;
 }
 
 *::selection {

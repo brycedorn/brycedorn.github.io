@@ -1,16 +1,17 @@
-$(document).ready(function () {
+$(document).ready(function() {
   var frames = 400;
   var anim = "easeOutExpo";
   var h = $(window).height();
+  $(".closed").children().hide();
   $("#head").fitText(0.255);
   $("#left").height(h);
   $("#blog").height(h - 100);
   $("#works").height(h - 100);
   $("#contact").height(h);
-  $(".full").click(function () {
+  $(".full").click(function() {
     openPage(this);
   });
-  $(".menuitem").click(function () {
+  $(".menuitem").click(function() {
     if ($(this).hasClass("first")) {
       openPage($("#blog"));
     } else if ($(this).hasClass("second")) {
@@ -25,7 +26,7 @@ $(document).ready(function () {
       $(".open").switchClass("open", "closed", frames, anim);
       $(t).switchClass("closed", "open", frames, anim);
       $(t).parent().switchClass("pure-u-1-24", "pure-u-17-24", frames, anim);
-      $(t).children().show("fade",1000);
+      $(t).children().delay(frames / 2).show("fade", "slow");
     }
   }
 });
