@@ -2,8 +2,9 @@
 
 ## Features
  - ~~Fittext~~
- - Tumblr Blog
- - Recent work
+ - ~~Tumblr Blog~~
+ - Populate pages
+ - Page loaded animation
 
 ## License
 
