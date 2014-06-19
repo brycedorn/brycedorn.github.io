@@ -5,6 +5,7 @@
  - ~~Tumblr Blog~~
  - Populate pages
  - Page loaded animation
+ - Hide pages on load
 
 ## License
 
