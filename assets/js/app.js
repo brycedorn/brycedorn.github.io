@@ -23,7 +23,7 @@ $(document).ready(function() {
 
   $("#blog").find(".content").delay(600).fadeIn(frames * 2);
 
-  get_posts();
+  // get_posts();
 
   function openPage(t) {
     if (!$(t).hasClass("open")) {
@@ -37,10 +37,10 @@ $(document).ready(function() {
   }
 });
 
-function get_posts() {
-  req = new XMLHttpRequest();
-  req.open("GET", "http://compscilewis.tumblr.com/api/read?start=2&num=1", false);
-  req.send();
-  posts = req.responseXML;
-  $("#blog").append(posts);
-}
+// function get_posts() {
+//   req = new XMLHttpRequest();
+//   req.open("GET", "http://compscilewis.tumblr.com/api/read?start=2&num=1", false);
+//   req.send();
+//   posts = req.responseXML;
+//   $("#blog").append(posts);
+// }
