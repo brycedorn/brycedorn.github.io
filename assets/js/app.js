@@ -23,6 +23,8 @@ $(document).ready(function() {
 
   $("#blog").find(".content").delay(600).fadeIn(frames * 2);
 
+  get_posts();
+
   function openPage(t) {
     if (!$(t).hasClass("open")) {
       $(".open").parent().switchClass("pure-u-17-24", "pure-u-1-24", frames, anim)
@@ -34,3 +36,11 @@ $(document).ready(function() {
     }
   }
 });
+
+function get_posts() {
+  req = new XMLHttpRequest();
+  req.open("GET", "http://compscilewis.tumblr.com/api/read?start=2&num=1", false);
+  req.send();
+  posts = req.responseXML;
+  $("#blog").append(posts);
+}
