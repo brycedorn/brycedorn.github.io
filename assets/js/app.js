@@ -1,10 +1,11 @@
 $(document).ready(function() {
   var frames = 400;
-  var anim = "easeOutExpo";
+  var anim = "easeInOutCubic";
   var h = $(window).height();
   $(".closed").children().hide();
   $("body").fadeIn(frames * 2);
   $("#head").fitText(0.255);
+  $("#blog").fitText(4.2);
   $("#left").height(h);
   $("#blog").height(h - 100);
   $("#works").height(h - 100);
