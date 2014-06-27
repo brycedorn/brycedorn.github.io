@@ -87,10 +87,14 @@ h1,h2 {
   padding-top: 40px;
 }
 #projects li {
+  color: #fff;
   display: inline-block;
   width: 300px;
   margin: 15px;
   text-align: center;
+}
+.imgwrap {
+  width: 200px;
 }
 #projects li img {
   width: 250px;
