@@ -6,14 +6,10 @@ body {
   display: none;
   overflow: hidden;
   font-family: 'Open Sans';
+  position: relative;
+  right: 0%;
+  width: 100%;
 }
-
-#head {
-  color: #E5FCC2;
-  cursor: default;
-  padding-bottom: 40px;
-}
-
 #contacttitle, #workstitle {
   font-size: 5em;
   color: #E5FCC2;
@@ -43,7 +39,7 @@ h1,h2 {
   cursor: pointer;
   width: 60px;
   height: 60px;
-  margin: 40px auto 0 auto;
+  margin: 30px auto 0 auto;
 }
 .first {
   background: #9DE0AD;
@@ -55,15 +51,20 @@ h1,h2 {
   background: #547980;
 }
 #left {
+  display: block;
   background: #594F4F;
   color: #E5FCC2;
-  padding: 10px;
+  padding: 4px;
 }
 #blog {
   background: #9DE0AD;
 }
 #blog .content {
   display: none;
+  font-size: 1.4em;
+}
+#blog img {
+  width: 100%;
 }
 #works {
   background: #45ADA8;
@@ -83,34 +84,35 @@ h1,h2 {
 #projects {
   width: 100%;
   color: #E5FCC2;
-  font-family: 'Roboto';
+  font-family: 'Bitter';
   padding-top: 40px;
+}
+#projects h2 {
+  font-size: 3em;
 }
 #projects li {
   color: #fff;
   display: inline-block;
-  width: 300px;
+  width: 80%;
   margin: 15px;
   text-align: center;
 }
-.imgwrap {
-  width: 200px;
-}
 #projects li img {
-  width: 250px;
+  width: 100%;
   box-shadow: 0px 1px 3px rgba(0,0,0,0.15);
   border-radius: 12px;
 }
 
 /* Tumblr styles */
 ol {
+  padding: 0;
   color: #547980;
   list-style: none;
-  font-family: 'Roboto';
+  font-family: 'Bitter';
 }
 .tumblr_title, .tumblr_link_post a.tumblr_link {
   font-family: 'Lily Script One';
-  font-size: 5em;
+  font-size: 4em;
   color: #fff;
   text-shadow: 0px 1px 1px rgba(0,0,0,0.15);
 }
@@ -135,18 +137,22 @@ a.tumblr_link {
   font-size: 2em;
   text-decoration: none;
 }
-::-webkit-scrollbar {
-    display: none;
-}
-
 *::selection {
-    background: #E5FCC2;
+    background: #222;
 }
 *::-webkit-selection {
-    background: #E5FCC2;
+    background: #222;
 }
 
 @media screen and (max-width: 767px) {
+  #left {
+    display: none;
+  }
+  body {
+    position: relative;
+    right: 9%;
+    width: 109%;
+  }
   .full {
     font-size: 0.8em;
     padding: 10px;
@@ -156,10 +162,15 @@ a.tumblr_link {
   .content {
     width: 100%;
     padding: 10px 0;
+    font-size: 1em;
+  }
+  .tumblr_title {
+    font-size: 3em;
   }
   ol {
     position: relative;
-    right: 14px;
+    padding: 14px;
+    /*right: 14px;*/
   }
   .content img {
     width: 100%;
@@ -168,13 +179,10 @@ a.tumblr_link {
     font-size: 3em;
     padding-right: 10px;
   }
-  #projects li {
-    width: 180px;
-    margin-right: 20px;
-    margin: 5px;
+  #projects h2 {
+    font-size: 2em;
   }
   #projects li img {
-    width: 140px;
     border-radius: 6px;
   }
 }
