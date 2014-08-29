@@ -1,5 +1,5 @@
 html {
-  background: #547980;
+  background: #556270;
 }
 
 body {
@@ -12,14 +12,17 @@ body {
 }
 #contacttitle, #workstitle {
   font-size: 5em;
-  color: #E5FCC2;
+  color: #fafafa;
   text-align: right;
   line-height: 0;
   padding-right: 2px;
 }
+#workstitle {
+  color: #556270;
+}
 
 h1,h2 {
-  font-family: 'Lily Script One';
+  font-family: 'Carter One';
   text-shadow: 0px 2px 2px rgba(0,0,0,0.25);
   line-height: 0;
 }
@@ -31,7 +34,7 @@ h1,h2 {
   cursor: pointer;
 }
 .menuitem {
-  background: #45ADA8;
+  background: #C7F464;
   display: block;
   text-align: center;
   box-shadow: 0px 1px 2px rgba(0,0,0,0.25);
@@ -42,22 +45,22 @@ h1,h2 {
   margin: 30px auto 0 auto;
 }
 .first {
-  background: #9DE0AD;
+  background: #4ECDC4;
 }
 .second {
-  background: #45ADA8;
+  background: #C7F464;
 }
 .third {
-  background: #547980;
+  background: #FF6B6B;
 }
 #left {
   display: block;
-  background: #594F4F;
-  color: #E5FCC2;
+  background: #556270;
+  color: #fafafa;
   padding: 4px;
 }
 #blog {
-  background: #9DE0AD;
+  background: #4ECDC4;
 }
 #blog .content {
   display: none;
@@ -67,69 +70,71 @@ h1,h2 {
   width: 100%;
 }
 #works {
-  background: #45ADA8;
+  background: #C7F464;
 }
 #contact {
   text-align: right;
-  color: #E5FCC2;
-  background: #547980;
+  color: #fafafa;
+  background: #FF6B6B;
 }
 #contact h2 {
   padding: 4px 0;
 }
 #contact a {
-  color: #E5FCC2;
+  color: #fafafa;
   text-decoration: none;
 }
 #projects {
   width: 100%;
-  color: #E5FCC2;
-  font-family: 'Bitter';
-  padding-top: 40px;
+  color: #fafafa;
+  font-family: 'Lato';
+  padding-bottom: 40px;
 }
 #projects h2 {
   font-size: 3em;
 }
 #projects li {
-  color: #fff;
+  color: #556270;
   display: inline-block;
   width: 80%;
   margin: 15px;
   text-align: center;
+  padding: 20px 0;
+  /*border-bottom: rgba(85,98,112,0.5) dashed 4px;*/
 }
 #projects li img {
   width: 100%;
-  box-shadow: 0px 1px 3px rgba(0,0,0,0.15);
+  box-shadow: 0px 1px 20px rgba(85,98,112,0.35);
   border-radius: 12px;
 }
 
 /* Tumblr styles */
 ol {
+  margin: 0;
   padding: 0;
-  color: #547980;
+  color: #556270;
   list-style: none;
-  font-family: 'Bitter';
+  font-family: 'Lato';
 }
 .tumblr_title, .tumblr_link_post a.tumblr_link {
-  font-family: 'Lily Script One';
-  font-size: 4em;
+  font-family: 'Carter One';
+  font-size: 3em;
   color: #fff;
   text-shadow: 0px 1px 1px rgba(0,0,0,0.15);
 }
 .tumblr_post {
-  border-top: rgba(255,255,255,0.5) dashed 4px;
-  padding: 40px 0;
+  border-bottom: rgba(255,255,255,0.5) dashed 4px;
+  padding: 30px 0;
 }
 .tumblr_quote {
   font-style: italic;
   font-size: 2em;
 }
 .tumblr_source {
-  opacity: 0.5;
   text-align: right;
 }
 ol a {
-  color: #45ADA8;
+  color: #C7F464;
   text-decoration: none;
 }
 a.tumblr_link {
@@ -137,13 +142,6 @@ a.tumblr_link {
   font-size: 2em;
   text-decoration: none;
 }
-*::selection {
-    background: #222;
-}
-*::-webkit-selection {
-    background: #222;
-}
-
 @media screen and (max-width: 767px) {
   #left {
     display: none;
