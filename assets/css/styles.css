@@ -69,9 +69,11 @@ h1,h2 {
 }
 #works {
   background: #C7F464;
+  cursor: default;
 }
 #contact {
   text-align: right;
+  cursor: default;
   color: #fafafa;
   background: #FF6B6B;
 }

@@ -5,7 +5,7 @@ $(document).ready(function() {
   $(".closed").children().hide();
   $("body").fadeIn(frames * 2);
   $("#left").height(h);
-  $("#blog").height(h - 100);
+  $("#blog").height(h);
   $("#works").height(h - 100);
   $("#contact").height(h);
   $(".full").click(function() {
