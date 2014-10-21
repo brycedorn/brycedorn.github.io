@@ -65,7 +65,8 @@ h1,h2 {
   font-size: 1.4em;
 }
 #blog img {
-  width: 100%;
+  /*width: 100%;*/
+  margin-left: 50px;
 }
 #works {
   background: #C7F464;
@@ -167,6 +168,9 @@ a.tumblr_link {
     position: relative;
     padding: 14px;
     /*right: 14px;*/
+  }
+  #blog img {
+    margin: 0;
   }
   .content img {
     width: 100%;
