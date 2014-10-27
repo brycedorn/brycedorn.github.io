@@ -8,8 +8,8 @@ $(document).ready(function() {
   $("#blog").height(h);
   $("#works").height(h);
   $("#contact").height(h);
-  var myScroll = new IScroll('#blog');
-  var myScroll = new IScroll('#works');
+  var isblock = new IScroll('#blog');
+  var isworks = new IScroll('#works');
   $("#blog").find(".content").delay(frames).fadeIn(frames);
 
   $(".full").click(function() {
