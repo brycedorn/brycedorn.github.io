@@ -1,16 +1,21 @@
 $(document).ready(function() {
-  var frames = 400;
+  var frames = 300;
   var anim = "easeInOutCubic";
-  var h = $(window).height();
+  var h = $(window).width() > 767 ? $(window).height() - 40 : $(window).height() - 110;
   $(".closed").children().hide();
-  $("body").fadeIn(frames * 2);
+  $("body").fadeIn(frames);
   $("#left").height(h);
   $("#blog").height(h);
-  $("#works").height(h - 100);
+  $("#works").height(h);
   $("#contact").height(h);
+  var myScroll = new IScroll('#blog');
+  var myScroll = new IScroll('#works');
+  $("#blog").find(".content").delay(frames).fadeIn(frames);
+
   $(".full").click(function() {
     openPage(this);
   });
+  
   $(".menuitem").click(function() {
     if ($(this).hasClass("first")) {
       openPage($("#blog"));
@@ -18,9 +23,6 @@ $(document).ready(function() {
       openPage($("#works"));
     } else openPage($("#contact"));
   });
-
-  var myScroll = new IScroll('#blog');
-  $("#blog").find(".content").delay(600).fadeIn(frames * 2);
 
   function openPage(t) {
     if (!$(t).hasClass("open")) {
