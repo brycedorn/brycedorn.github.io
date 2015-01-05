@@ -1,11 +1,4 @@
-# [guava.cat](http://www.guava.cat)
-
-## Features
- - ~~Fittext~~
- - ~~Tumblr Blog~~
- - Populate pages
- - Page loaded animation
- - Hide pages on load
+# [bryce.io](http://www.bryce.io)
 
 ## License
 
