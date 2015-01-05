@@ -1,5 +1,5 @@
 html {
-	background: #556270
+	background: #4B4B55
 }
 body {
 	display: none;
@@ -12,17 +12,20 @@ body {
 #contacttitle, #workstitle {
 	cursor: default;
 	font-size: 5em;
-	color: #fafafa;
+	color: #4B4B55;
 	text-align: right;
 	line-height: 0;
 	padding-right: 2px
 }
 #workstitle {
-	color: #556270
+	color: #4B4B55
 }
 h1, h2 {
-	font-family: 'Boogaloo';
+	font-family: 'Lobster';
 	line-height: 0
+}
+a:hover{
+	text-decoration: underline;
 }
 .full {
 	padding: 20px 64px;
@@ -32,7 +35,7 @@ h1, h2 {
 	cursor: pointer
 }
 .menuitem {
-	background: #C7F464;
+	background: #FB9C5A;
 	display: block;
 	text-align: center;
 	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
@@ -43,22 +46,22 @@ h1, h2 {
 	margin: 30px auto 0 auto
 }
 .first {
-	background: #4ECDC4
+	background: #FCC755
 }
 .second {
-	background: #C7F464
+	background: #FB9C5A
 }
 .third {
-	background: #FF6B6B
+	background: #FF516C
 }
 #left {
 	display: block;
-	background: #556270;
-	color: #fafafa;
+	background: #4B4B55;
+	color: #4B4B55;
 	padding: 4px
 }
 #blog {
-	background: #4ECDC4
+	background: #FCC755
 }
 #blog .content {
 	display: none;
@@ -68,23 +71,23 @@ h1, h2 {
 	margin-left: 50px
 }
 #works {
-	background: #C7F464
+	background: #FB9C5A
 }
 #contact {
 	text-align: right;
-	color: #fafafa;
-	background: #FF6B6B
+	color: #4B4B55;
+	background: #FF516C
 }
 #contact h2 {
 	padding: 4px 0
 }
 #contact a {
-	color: #fafafa;
+	color: #4B4B55;
 	text-decoration: none
 }
 #projects {
 	width: 100%;
-	color: #fafafa;
+	color: #4B4B55;
 	font-family: 'Glegoo';
 	padding-bottom: 40px
 }
@@ -92,7 +95,7 @@ h1, h2 {
 	font-size: 3em
 }
 #projects li {
-	color: #556270;
+	color: #4B4B55;
 	display: inline-block;
 	width: 80%;
 	margin: 15px;
@@ -107,14 +110,14 @@ h1, h2 {
 ol {
 	margin: 0;
 	padding: 0;
-	color: #556270;
+	color: #4B4B55;
 	list-style: none;
 	font-family: 'Glegoo'
 }
 .tumblr_title, .tumblr_link_post a.tumblr_link {
-	font-family: 'Boogaloo';
-	font-size: 3.2em;
-	color: #fff;
+	font-family: 'Lobster';
+	font-size: 3em;
+	color: #4B4B55;
 }
 .tumblr_post {
 	border-bottom: rgba(255, 255, 255, 0.5) dashed 4px;
@@ -128,11 +131,11 @@ ol {
 	text-align: right
 }
 ol a {
-	color: #C7F464;
+	color: #F4324A;
 	text-decoration: none
 }
 a.tumblr_link {
-	color: #fff;
+	color: #4B4B55;
 	font-size: 2em;
 	text-decoration: none
 }
