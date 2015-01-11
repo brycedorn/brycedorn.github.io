@@ -1,6 +1,18 @@
+var frames = 300;
+var anim = "easeInOutCubic";
+
+function openPage(t) {
+  if (!$(t).hasClass("open")) {
+    $(".open").parent().switchClass("pure-u-20-24", "pure-u-1-24", frames, anim)
+    $(".open").children().hide();
+    $(".open").switchClass("open", "closed", frames, anim);
+    $(t).switchClass("closed", "open", frames, anim);
+    $(t).parent().switchClass("pure-u-1-24", "pure-u-20-24", frames, anim);
+    $(t).children().delay(frames / 2).show("fade", "slow");
+  }
+}
+
 $(document).ready(function() {
-  var frames = 300;
-  var anim = "easeInOutCubic";
   var h = $(window).width() > 767 ? $(window).height() - 40 : $(window).height() - 110;
   $(".closed").children().hide();
   $("body").fadeIn(frames);
@@ -23,15 +35,29 @@ $(document).ready(function() {
       openPage($("#works"));
     } else openPage($("#contact"));
   });
+});
 
-  function openPage(t) {
-    if (!$(t).hasClass("open")) {
-      $(".open").parent().switchClass("pure-u-20-24", "pure-u-1-24", frames, anim)
-      $(".open").children().hide();
-      $(".open").switchClass("open", "closed", frames, anim);
-      $(t).switchClass("closed", "open", frames, anim);
-      $(t).parent().switchClass("pure-u-1-24", "pure-u-20-24", frames, anim);
-      $(t).children().delay(frames / 2).show("fade", "slow");
-    }
+$(document).keydown(function(e) {
+  switch(e.which) {
+      case 37: // left
+        var page = $(".open").attr("id");
+        if (page == "works") {
+          openPage($("#blog"));
+        } else if (page == "contact") {
+          openPage($("#works"));
+        }
+      break;
+
+      case 39: // right
+        var page = $(".open").attr("id");
+        if (page == "blog") {
+          openPage($("#works"));
+        } else if (page == "works") {
+          openPage($("#contact"));
+        }
+      break;
+
+      default: return;
   }
+  e.preventDefault();
 });
