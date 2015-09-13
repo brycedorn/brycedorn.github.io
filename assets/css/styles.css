@@ -28,6 +28,14 @@ h1, h2 {
 a:hover{
 	text-decoration: underline;
 }
+i {
+	-webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+i:hover {
+	-webkit-transform: rotate(8deg);
+  transform: rotate(8deg);
+}
 .full {
 	padding: 20px 64px;
 	overflow: scroll
@@ -36,7 +44,7 @@ a:hover{
 	cursor: pointer
 }
 .menuitem {
-	background: #FB9C5A;
+	background: #46FCDD;
 	display: block;
 	text-align: center;
 	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
@@ -47,13 +55,13 @@ a:hover{
 	margin: 30px auto 0 auto
 }
 .first {
-	background: #FCC755
+	background: #10F0F0
 }
 .second {
-	background: #FB9C5A
+	background: #46FCDD
 }
 .third {
-	background: #FF516C
+	background: #CDF500
 }
 #left {
 	display: block;
@@ -62,7 +70,7 @@ a:hover{
 	padding: 4px
 }
 #blog {
-	background: #FCC755
+	background: #10F0F0
 }
 #blog .content {
 	display: none;
@@ -72,12 +80,12 @@ a:hover{
 	margin-left: 50px
 }
 #works {
-	background: #FB9C5A
+	background: #46FCDD
 }
 #contact {
 	text-align: right;
 	color: #4B4B55;
-	background: #FF516C
+	background: #CDF500
 }
 #contact h2 {
 	padding: 4px 0
@@ -85,6 +93,9 @@ a:hover{
 #contact a {
 	color: #4B4B55;
 	text-decoration: none
+}
+#resume-link {
+	padding: 0 12px;
 }
 #projects {
 	color: #4B4B55;
@@ -131,13 +142,19 @@ ol {
 	text-align: right
 }
 ol a {
-	color: #F4324A;
+	color: #CDF500;
 	text-decoration: none
 }
 a.tumblr_link {
 	color: #4B4B55;
 	font-size: 2em;
 	text-decoration: none
+}
+::selection {
+  background: #B8CEC1;
+}
+::-moz-selection {
+  background: #B8CEC1;
 }
 @media screen and (max-width:767px) {
 	#left {
