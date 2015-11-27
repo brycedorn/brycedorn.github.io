@@ -1,0 +1,66 @@
+*,
+*:after,
+*:before {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+body {
+	background: #787878;
+	background: -webkit-radial-gradient(#787878, #737373);
+  background: -o-radial-gradient(#787878, #737373);
+  background: -moz-radial-gradient(#787878, #737373);
+  background: radial-gradient(#787878, #737373); 
+	color: #fafafa;
+}
+
+.menu {
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
+	-webkit-filter: url("#goo");
+}
+
+.menu-wrapper {
+	position: absolute;
+	left: 50%;
+	bottom: 10px;
+}
+
+.menu-toggle-button,
+.menu-item-bounce,
+.menu-item-button {
+	background: #ccc;
+	color: #fafafa;
+	border-radius: 50%;
+	border: none;
+	outline: none;
+	position: relative;
+	text-align: center;
+}
+
+.menu-toggle-button {
+	cursor: pointer;
+	background: none;
+	position: absolute;
+}
+
+.menu-items {
+	position: absolute;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	left: 0;
+	top: 0;
+}
+
+.menu-item-bounce {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.menu-item-button {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
