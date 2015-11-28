@@ -15,6 +15,11 @@ gulp.task('css', function() {
     .pipe(gulp.dest('dist/css'));
 });
 
+gulp.task('img', function() {
+  gulp.src('src/img/whale.png')
+    .pipe(gulp.dest('dist/img'));
+});
+
 gulp.task('fonts', function() {
   gulp.src('src/fonts/fontawesome-webfont.woff2')
     .pipe(gulp.dest('dist/fonts'));
@@ -25,7 +30,7 @@ gulp.task('copy', function() {
     .pipe(gulp.dest(''));
 });
 
-gulp.task('default',['js', 'css', 'fonts', 'copy']);
+gulp.task('default',['js', 'css', 'img', 'fonts', 'copy']);
 
 gulp.task('watch', function() {
   gulp.watch('src/**/*.*', ['default']);
