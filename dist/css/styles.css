@@ -64,6 +64,14 @@ body {
 	top: 0px;
 	left: 0px;
 }
+
+.menu-item-icon {
+	position: relative;
+}
+
+.menu-toggle-icon {
+	/*color: #787878;*/
+}
 /*!
  *  Font Awesome 4.4.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)

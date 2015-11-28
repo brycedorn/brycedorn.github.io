@@ -1,12 +1,15 @@
 module.exports = {
+  // Actions
   OPEN_MENU: 'open',
   CLOSE_MENU: 'close',
   RESIZE_ELEMENTS: 'resize',
   CHANGE_EVENT: 'change',
+
+  // Menu data
   ITEMS: [
     {
       'url': '/resume.pdf',
-      'icon': 'fa-user'
+      'icon': 'fa-flask'
     },
     {
       'url': 'https://www.flickr.com/photos/_burce',
@@ -14,7 +17,7 @@ module.exports = {
     },
     {
       'url': 'https://github.com/brycedorn',
-      'icon': 'fa-github'
+      'icon': 'fa-github-alt'
     },
     {
       'url': 'https://www.linkedin.com/in/brycedorn',
@@ -22,11 +25,11 @@ module.exports = {
     },
     {
       'url': 'mailto:brycedorn@gmail.com',
-      'icon': 'fa-envelope'
+      'icon': 'fa-inbox'
     },
     {
       'url': 'tel:6308906224',
-      'icon': 'fa-phone'
+      'icon': 'fa-mobile-phone'
     }
   ],
   ITEM_COLORS: [
@@ -39,7 +42,8 @@ module.exports = {
   ],
   COLORS: {
     WHITE: "#fafafa",
-    GREY: "#ccc"
+    GREY: "#ccc",
+    DARK_GREY: "#787878"
   },
   
   // Animation constants
@@ -52,5 +56,5 @@ module.exports = {
   LARGE_SCALE: 1.2,
   REL_SCALE: 0.15,
   REL_SCALE_2: 0.125,
-  REL_SCALE_LH: 0.005,
+  REL_SCALE_LH: 0.00475,
 };

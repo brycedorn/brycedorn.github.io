@@ -18,7 +18,7 @@ AppDispatcher.register(function(payload){
     	closeMenu();
     	break;
     case 'resize': 
-      resizeElements();
+      resizeElements(payload.action.isOpen);
       break;
     default:
     	break;
@@ -103,23 +103,31 @@ function closeMenu(){
   })
 }
 
-function resizeElements(){
+function resizeElements(isOpen){
   var h = $(window).height(),
       r = h < $(document).width() ? h : $(window).width(),
       largerButtons = ".menu-toggle-button, .menu-item-bounce, .menu-item-button",
       scale = (r < 700 ? r < 500 ? 1.7 : 1.2 : 1);
 
   // Scale menu
-  $("body").height(h);
+  $("#main").height(h);
   $(".menu").height(h/2);
   $(".menu-item-button").height(r*AppConstants.REL_SCALE_2).width(r*AppConstants.REL_SCALE_2);
   $(largerButtons).height(r*AppConstants.REL_SCALE).width(r*AppConstants.REL_SCALE);
   $(largerButtons).css("margin-left",-r*AppConstants.REL_SCALE*0.5).css("margin-top",-r*AppConstants.REL_SCALE*0.5);
 
   // Scale icons
-  $("i.menu-toggle-icon, i.menu-item-icon").css('font-size',r*AppConstants.REL_SCALE_LH+'em').css('line-height',r*AppConstants.REL_SCALE_LH*0.5*scale+'em');
+  $("i.menu-toggle-icon, i.menu-item-icon").css('font-size',r*AppConstants.REL_SCALE_LH+'em').css('top',r*AppConstants.REL_SCALE_2*0.3);
+
+  if(isOpen) { scaleItems(r); };
 }
 
-$(window).resize(function() { resizeElements(); });
+function scaleItems(r) {
+  TweenMax.to($(".menu-item-button"),AppConstants.MOVE_DURATION,{
+    delay: AppConstants.NEXT_DELAY,
+    y: r/4,
+    ease: Elastic.easeInOut
+  });
+}
 
 module.exports = AppStore;

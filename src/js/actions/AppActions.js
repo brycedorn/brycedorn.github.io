@@ -2,19 +2,20 @@ var AppDispatcher = require('../dispatcher/AppDispatcher');
 var AppConstants = require('../constants/AppConstants');
 
 var AppActions = {
-  openMenu: function(item){
+  openMenu: function() {
     AppDispatcher.handleViewAction({
       actionType: AppConstants.OPEN_MENU
     });
   },
-  closeMenu: function(item){
+  closeMenu: function() {
     AppDispatcher.handleViewAction({
       actionType: AppConstants.CLOSE_MENU
     });
   },
-  resizeElements: function(item){
+  resizeElements: function(isOpen) {
     AppDispatcher.handleViewAction({
-      actionType: AppConstants.RESIZE_ELEMENTS
+      actionType: AppConstants.RESIZE_ELEMENTS,
+      isOpen: isOpen
     });
   }
 }

@@ -10,5 +10,3 @@ React.render(
   <App />,
   document.getElementById('main')
 );
-
-// Todo: rotate elements on click

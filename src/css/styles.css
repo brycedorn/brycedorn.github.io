@@ -64,3 +64,11 @@ body {
 	top: 0px;
 	left: 0px;
 }
+
+.menu-item-icon {
+	position: relative;
+}
+
+.menu-toggle-icon {
+	/*color: #787878;*/
+}

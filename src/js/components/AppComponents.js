@@ -1,6 +1,7 @@
 /** @jsx React.DOM */
 var React = require('react');
 var TweenMax = require('gsap'); 
+var zepto = require('npm-zepto');
 var AppActions = require('../actions/AppActions');
 var AppConstants = require('../constants/AppConstants');
 var AppStore = require('../stores/AppStore');
@@ -15,17 +16,20 @@ var MenuItem = React.createClass({
         <a className="menu-item-button" href={this.props.url}>
           <i className={"menu-item-icon fa " + this.props.icon} style={rotPos}></i>
         </a>
-        <div className="menu-item-bounce"></div>
+        <div className="menu-item-bounce" />
       </li>
     );
   }
 });
 
 var MainApp = React.createClass({
-  // Scale elements
   componentDidMount: function() {
-    AppActions.resizeElements();
-    // <!-- Possibly add radial gradient for all colors on center circle -->
+    this.handleResize();
+    window.addEventListener('resize', this.handleResize);
+  },
+
+  handleResize: function(e) {
+    AppActions.resizeElements(this.state.menuOpen);
   },
 
   getInitialState: function() {
@@ -33,8 +37,9 @@ var MainApp = React.createClass({
   },
 
   handleClick: function(){
-    TweenMax.to($('.menu-toggle-icon'),AppConstants.BOUNCE_DURATION,{
+    TweenMax.to($('.menu-toggle-icon'),AppConstants.MOVE_DURATION,{
       rotation: this.state.menuOpen ? 180 : 0,
+      // color: this.state.menuOpen ? AppConstants.COLORS.DARK_GREY : AppConstants.COLORS.WHITE,
       ease: Quint.easeInOut,
     });
 
@@ -56,7 +61,8 @@ var MainApp = React.createClass({
   render: function(){
     var menuLen = AppConstants.ITEMS.length,
         angle = Math.floor(360/(menuLen));
-        startingAngle = AppConstants.START_ANGLE; 
+        startingAngle = AppConstants.START_ANGLE,
+        rot90 = { 'transform': 'matrix(-1, 0, 0, -1, 0, 0);' };
     
     var rotAngs = $.map(new Array(menuLen), function(n,i) {
       return startingAngle + angle * i; 
@@ -68,19 +74,15 @@ var MainApp = React.createClass({
       );
     });
 
-    var rot90 = { 'transform': 'matrix(-1, 0, 0, -1, 0, 0);' };
-
     return (
-      <div className="content">
-        <div className="menu">
-          <div className="menu-wrapper">
-            <ul className="menu-items">
-              {menuItems}
-            </ul>
-            <button className="menu-toggle-button" onClick={this.handleClick} onTouchStart={this.handleTouchStart}>
-              <i className="fa fa-circle-o-notch menu-toggle-icon" style={rot90}></i>
-            </button>
-          </div>
+      <div className="menu">
+        <div className="menu-wrapper">
+          <ul className="menu-items">
+            {menuItems}
+          </ul>
+          <button className="menu-toggle-button" onClick={this.handleClick} onTouchStart={this.handleTouchStart}>
+            <i className="fa fa-circle-o-notch menu-toggle-icon" style={rot90}></i>
+          </button>
         </div>
       </div>
     );
