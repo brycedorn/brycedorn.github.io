@@ -16,3 +16,4 @@ app/assets/stylesheets/*.css
 *.swp
 !.gitkeep
 db/dump
+node_modules/*
