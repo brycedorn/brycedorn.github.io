@@ -7,10 +7,6 @@
 
 body {
 	background: #787878;
-	background: -webkit-radial-gradient(#787878, #737373);
-  background: -o-radial-gradient(#787878, #737373);
-  background: -moz-radial-gradient(#787878, #737373);
-  background: radial-gradient(#787878, #737373);
 	color: #fafafa;
 }
 
