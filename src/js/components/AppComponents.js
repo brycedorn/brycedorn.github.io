@@ -1,13 +1,13 @@
 /** @jsx React.DOM */
 var React = require('react');
-var TweenMax = require('gsap'); 
+var TweenMax = require('gsap');
 var zepto = require('npm-zepto');
 var AppActions = require('../actions/AppActions');
 var AppConstants = require('../constants/AppConstants');
 var AppStore = require('../stores/AppStore');
- 
+
 var MenuItem = React.createClass({
-  render: function() {  
+  render: function() {
     var rotPos = { 'transform': 'rotate('+this.props.rotAng+'deg);' },
         rotNeg = { 'transform': 'rotate(-'+this.props.rotAng+'deg);' };
 
@@ -53,7 +53,7 @@ var MainApp = React.createClass({
   },
 
   handleTouchStart: function() {
-    $(this).trigger("mousedown");
+    this.handleClick();
     event.preventDefault();
     event.stopPropagation();
   },
@@ -63,9 +63,9 @@ var MainApp = React.createClass({
         angle = Math.floor(360/(menuLen));
         startingAngle = AppConstants.START_ANGLE,
         rot90 = { 'transform': 'matrix(-1, 0, 0, -1, 0, 0);' };
-    
+
     var rotAngs = $.map(new Array(menuLen), function(n,i) {
-      return startingAngle + angle * i; 
+      return startingAngle + angle * i;
     });
 
     var menuItems = AppConstants.ITEMS.map(function(item, index) {
@@ -80,9 +80,9 @@ var MainApp = React.createClass({
           <ul className="menu-items">
             {menuItems}
           </ul>
-          <button className="menu-toggle-button" onClick={this.handleClick} onTouchStart={this.handleTouchStart}>
+          <a className="menu-toggle-button" onClick={this.handleClick} onTouchStart={this.handleTouchStart}>
             <i className="fa fa-circle-o-notch menu-toggle-icon" style={rot90}></i>
-          </button>
+          </a>
         </div>
       </div>
     );

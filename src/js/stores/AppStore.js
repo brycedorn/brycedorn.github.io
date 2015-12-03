@@ -11,13 +11,13 @@ var AppStore = assign({}, EventEmitter.prototype, {
 
 AppDispatcher.register(function(payload){
   switch (payload.action.actionType) {
-    case 'open': 
+    case 'open':
     	openMenu();
     	break;
-    case 'close': 
+    case 'close':
     	closeMenu();
     	break;
-    case 'resize': 
+    case 'resize':
       resizeElements(payload.action.isOpen);
       break;
     default:
@@ -37,7 +37,6 @@ function openMenu() {
       scaleX: AppConstants.SMALL_SCALE,
 	    scaleY: AppConstants.SMALL_SCALE,
 	    ease:   Quint.easeInOut,
-
 	    onComplete:function(){
 	      TweenMax.to($els,AppConstants.BOUNCE_DURATION,{
 	        scaleY: AppConstants.LARGE_SCALE,
@@ -71,20 +70,20 @@ function closeMenu(){
     		$els = $(this).children(".menu-item-bounce");
 
     // Animate center button
-    TweenMax.to($els,AppConstants.BOUNCE_DURATION,{
-      delay: delay+AppConstants.MOVE_DURATION*0.6,
-      scaleX: 1,
-      scaleY: 1,
+    // Absorb
+    TweenMax.to($els,AppConstants.BOUNCE_DURATION+0.1,{
+      delay: delay + AppConstants.MOVE_DURATION*0.6,
+      scaleX: AppConstants.LARGE_SCALE,
+      scaleY: AppConstants.LARGE_SCALE,
       ease: Quint.easeInOut,
-
       onComplete:function(){
         TweenMax.to($els,AppConstants.BOUNCE_DURATION,{
-          scaleY:AppConstants.SMALL_SCALE,
+          scaleY: AppConstants.SMALL_SCALE,
           ease:  Quint.easeInOut,
           onComplete:function(){
             TweenMax.to($els,AppConstants.EASE_DURATION,{
-              scaleX: 1,
-              scaleY: 1,
+              scaleX: AppConstants.LARGE_SCALE,
+              scaleY: AppConstants.LARGE_SCALE,
               ease: Elastic.easeOut
             })
           }
@@ -105,12 +104,12 @@ function closeMenu(){
 
 function resizeElements(isOpen){
   var h = $(window).height(),
-      r = h < $(document).width() ? h : $(window).width(),
+      r = h < $(document).width() ? h : $(document).width(),
       largerButtons = ".menu-toggle-button, .menu-item-bounce, .menu-item-button",
       scale = (r < 700 ? r < 500 ? 1.7 : 1.2 : 1);
 
   // Scale menu
-  $("#main").height(h);
+  $("#main").height(h*0.8);
   $(".menu").height(h/2);
   $(".menu-item-button").height(r*AppConstants.REL_SCALE_2).width(r*AppConstants.REL_SCALE_2);
   $(largerButtons).height(r*AppConstants.REL_SCALE).width(r*AppConstants.REL_SCALE);
