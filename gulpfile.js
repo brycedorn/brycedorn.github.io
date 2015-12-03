@@ -23,7 +23,7 @@ gulp.task('img', function() {
 });
 
 gulp.task('fonts', function() {
-  gulp.src('src/fonts/fontawesome-webfont.woff2')
+  gulp.src('src/fonts/*')
     .pipe(gulp.dest('dist/fonts'));
 });
 
