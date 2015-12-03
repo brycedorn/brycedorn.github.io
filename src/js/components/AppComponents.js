@@ -80,7 +80,7 @@ var MainApp = React.createClass({
           <ul className="menu-items">
             {menuItems}
           </ul>
-          <a className="menu-toggle-button" onClick={this.handleClick} onTouchStart={this.handleTouchStart}>
+          <a className="menu-toggle-button" onClick={this.handleClick}>
             <i className="fa fa-circle-o-notch menu-toggle-icon" style={rot90}></i>
           </a>
         </div>
