@@ -39,8 +39,7 @@ var MainApp = React.createClass({
   handleClick: function(){
     TweenMax.to($('.menu-toggle-icon'),AppConstants.MOVE_DURATION,{
       rotation: this.state.menuOpen ? 180 : 0,
-      // color: this.state.menuOpen ? AppConstants.COLORS.DARK_GREY : AppConstants.COLORS.WHITE,
-      ease: Quint.easeInOut,
+      ease: Quint.easeInOut
     });
 
     if(this.state.menuOpen) {
@@ -54,8 +53,8 @@ var MainApp = React.createClass({
 
   handleTouchStart: function() {
     this.handleClick();
-    event.preventDefault();
-    event.stopPropagation();
+    // event.preventDefault();
+    // event.stopPropagation();
   },
 
   render: function(){

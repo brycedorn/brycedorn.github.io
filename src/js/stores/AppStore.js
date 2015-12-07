@@ -2,6 +2,7 @@ var AppDispatcher = require('../dispatcher/AppDispatcher');
 var AppConstants = require('../constants/AppConstants');
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
+var onMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
 var AppStore = assign({}, EventEmitter.prototype, {
   emitChange: function() {
@@ -28,29 +29,38 @@ AppDispatcher.register(function(payload){
 function openMenu() {
 	$(".menu-item").each(function(i){
 	  var delay = AppConstants.NEXT_DELAY * i,
-        dist = $(document).height() < $(document).width() ? $(document).height()/4 : $(document).width()/4,
+        dist = $(document).height() < $(document).width() ? $(document).height()/AppConstants.REL_DIST : $(document).width()/AppConstants.REL_DIST,
 	      $els = $(this).children(".menu-item-bounce");
 
-    // Animate center button
-	  TweenMax.to($els,AppConstants.BOUNCE_DURATION,{
-	    delay:  delay,
-      scaleX: AppConstants.SMALL_SCALE,
-	    scaleY: AppConstants.SMALL_SCALE,
-	    ease:   Quint.easeInOut,
-	    onComplete:function(){
-	      TweenMax.to($els,AppConstants.BOUNCE_DURATION,{
-	        scaleY: AppConstants.LARGE_SCALE,
-	        ease: Quint.easeInOut,
-	        onComplete:function(){
-	          TweenMax.to($els,AppConstants.EASE_DURATION,{
-	            scaleX: AppConstants.SMALL_SCALE,
-              scaleY: AppConstants.SMALL_SCALE,
-	            ease: Elastic.easeOut
-	          })
-	        }
-	      });
-	    }
-	  });
+    // Release
+    if(onMobile) {
+      TweenMax.to($els,AppConstants.BOUNCE_DURATION,{
+        delay:  delay,
+        scaleX: AppConstants.SMALL_SCALE,
+        scaleY: AppConstants.SMALL_SCALE,
+        ease:   Quad.easeInOut,
+      });
+    } else {
+  	  TweenMax.to($els,AppConstants.BOUNCE_DURATION,{
+  	    delay:  delay,
+        scaleX: AppConstants.SMALL_SCALE,
+  	    scaleY: AppConstants.SMALL_SCALE,
+  	    ease:   Quint.easeInOut,
+  	    onComplete:function(){
+  	      TweenMax.to($els,AppConstants.BOUNCE_DURATION,{
+  	        scaleY: AppConstants.LARGE_SCALE,
+  	        ease: Quint.easeInOut,
+  	        onComplete:function(){
+  	          TweenMax.to($els,AppConstants.EASE_DURATION,{
+  	            scaleX: AppConstants.SMALL_SCALE,
+                scaleY: AppConstants.SMALL_SCALE,
+  	            ease: Elastic.easeOut
+  	          })
+  	        }
+  	      });
+  	    }
+  	  });
+    }
 
     // Move menu buttons outward
 	  TweenMax.to($(this).children(".menu-item-button"),AppConstants.MOVE_DURATION,{
@@ -69,27 +79,35 @@ function closeMenu(){
     var delay = AppConstants.NEXT_DELAY * i,
     		$els = $(this).children(".menu-item-bounce");
 
-    // Animate center button
     // Absorb
-    TweenMax.to($els,AppConstants.BOUNCE_DURATION+0.1,{
-      delay: delay + AppConstants.MOVE_DURATION*0.6,
-      scaleX: AppConstants.LARGE_SCALE,
-      scaleY: AppConstants.LARGE_SCALE,
-      ease: Quint.easeInOut,
-      onComplete:function(){
-        TweenMax.to($els,AppConstants.BOUNCE_DURATION,{
-          scaleY: AppConstants.SMALL_SCALE,
-          ease:  Quint.easeInOut,
-          onComplete:function(){
-            TweenMax.to($els,AppConstants.EASE_DURATION,{
-              scaleX: AppConstants.LARGE_SCALE,
-              scaleY: AppConstants.LARGE_SCALE,
-              ease: Elastic.easeOut
-            })
-          }
-        })
-      }
-    });
+    if(onMobile) {
+      TweenMax.to($els,AppConstants.BOUNCE_DURATION+0.1,{
+        delay: delay + AppConstants.MOVE_DURATION*0.6,
+        scaleX: AppConstants.LARGE_SCALE,
+        scaleY: AppConstants.LARGE_SCALE,
+        ease: Quad.easeInOut
+      });
+    } else {
+      TweenMax.to($els,AppConstants.BOUNCE_DURATION+0.1,{
+        delay: delay + AppConstants.MOVE_DURATION*0.6,
+        scaleX: AppConstants.LARGE_SCALE,
+        scaleY: AppConstants.LARGE_SCALE,
+        ease: Quint.easeInOut,
+        onComplete:function(){
+          TweenMax.to($els,AppConstants.BOUNCE_DURATION,{
+            scaleY: AppConstants.SMALL_SCALE,
+            ease:  Quint.easeInOut,
+            onComplete:function(){
+              TweenMax.to($els,AppConstants.EASE_DURATION,{
+                scaleX: AppConstants.LARGE_SCALE,
+                scaleY: AppConstants.LARGE_SCALE,
+                ease: Elastic.easeOut
+              })
+            }
+          })
+        }
+      });
+    }
 
     // Move menu buttons inward
     TweenMax.to($(this).children(".menu-item-button"),AppConstants.MOVE_DURATION,{
@@ -105,8 +123,10 @@ function closeMenu(){
 function resizeElements(isOpen){
   var h = $(window).height(),
       r = h < $(document).width() ? h : $(document).width(),
-      largerButtons = ".menu-toggle-button, .menu-item-bounce, .menu-item-button",
-      scale = (r < 700 ? r < 500 ? 1.7 : 1.2 : 1);
+      largerButtons = ".menu-toggle-button, .menu-item-bounce, .menu-item-button";
+
+  // Increase scale if on mobile
+  if(onMobile) { r += 300; }
 
   // Scale menu
   $("#main").height(h*0.8);
@@ -124,7 +144,7 @@ function resizeElements(isOpen){
 function scaleItems(r) {
   TweenMax.to($(".menu-item-button"),AppConstants.MOVE_DURATION,{
     delay: AppConstants.NEXT_DELAY,
-    y: r/4,
+    y: r/AppConstants.REL_DIST,
     ease: Elastic.easeInOut
   });
 }

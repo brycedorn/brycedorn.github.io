@@ -54,6 +54,7 @@ module.exports = {
   EASE_DURATION: 1.5,
   SMALL_SCALE: 0.8,
   LARGE_SCALE: 1,
+  REL_DIST: 3.5,
   REL_SCALE: 0.15,
   REL_SCALE_2: 0.125,
   REL_SCALE_LH: 0.00475,
