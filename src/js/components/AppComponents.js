@@ -53,8 +53,8 @@ var MainApp = React.createClass({
 
   handleTouchStart: function() {
     this.handleClick();
-    // event.preventDefault();
-    // event.stopPropagation();
+    event.preventDefault();
+    event.stopPropagation();
   },
 
   render: function(){

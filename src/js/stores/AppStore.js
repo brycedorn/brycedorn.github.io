@@ -38,7 +38,7 @@ function openMenu() {
         delay:  delay,
         scaleX: AppConstants.SMALL_SCALE,
         scaleY: AppConstants.SMALL_SCALE,
-        ease:   Quad.easeInOut,
+        ease:   Quad.easeIn,
       });
     } else {
   	  TweenMax.to($els,AppConstants.BOUNCE_DURATION,{
@@ -68,8 +68,7 @@ function openMenu() {
 	    y: dist,
       color: AppConstants.COLORS.WHITE,
       backgroundColor: AppConstants.ITEM_COLORS[i],
-      // background: 'radial-gradient('+AppConstants.DEFAULT_GREY+','+AppConstants.ITEM_COLORS[i]+');',
-	    ease: Quint.easeInOut
+	    ease: Quad.easeInOut
 	  });
 	})
 }
@@ -85,7 +84,7 @@ function closeMenu(){
         delay: delay + AppConstants.MOVE_DURATION*0.6,
         scaleX: AppConstants.LARGE_SCALE,
         scaleY: AppConstants.LARGE_SCALE,
-        ease: Quad.easeInOut
+        ease: Linear.easeOut
       });
     } else {
       TweenMax.to($els,AppConstants.BOUNCE_DURATION+0.1,{
@@ -115,7 +114,7 @@ function closeMenu(){
       y: 0,
       color: AppConstants.COLORS.GREY,
       backgroundColor: AppConstants.COLORS.GREY,
-      ease: Quint.easeInOut
+      ease: Quad.easeInOut
     });
   })
 }
