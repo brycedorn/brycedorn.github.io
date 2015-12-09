@@ -55,7 +55,7 @@ function openMenu() {
   	            scaleX: AppConstants.SMALL_SCALE,
                 scaleY: AppConstants.SMALL_SCALE,
   	            ease: Elastic.easeOut
-  	          })
+  	          });
   	        }
   	      });
   	    }
@@ -101,7 +101,7 @@ function closeMenu(){
                 scaleX: AppConstants.LARGE_SCALE,
                 scaleY: AppConstants.LARGE_SCALE,
                 ease: Elastic.easeOut
-              })
+              });
             }
           })
         }
@@ -121,15 +121,16 @@ function closeMenu(){
 
 function resizeElements(isOpen){
   var h = $(window).height(),
-      r = h < $(document).width() ? h : $(document).width(),
+      w = $(window).width(),
+      r = h < w ? h : w,
       largerButtons = ".menu-toggle-button, .menu-item-bounce, .menu-item-button";
 
   // Increase scale if on mobile
-  if(onMobile) { r += 300; }
+  if(onMobile) { r += 200; }
 
   // Scale menu
   $("#main").height(h*0.8);
-  $(".menu").height(h/2);
+  $(".menu").height(h/2).width(r/2);
   $(".menu-item-button").height(r*AppConstants.REL_SCALE_2).width(r*AppConstants.REL_SCALE_2);
   $(largerButtons).height(r*AppConstants.REL_SCALE).width(r*AppConstants.REL_SCALE);
   $(largerButtons).css("margin-left",-r*AppConstants.REL_SCALE*0.5).css("margin-top",-r*AppConstants.REL_SCALE*0.5);

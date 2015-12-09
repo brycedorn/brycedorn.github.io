@@ -8,9 +8,11 @@
 body {
 	background: #787878;
 	color: #fafafa;
+	text-align: center;
 }
 
 .menu {
+	margin: 0 auto;
 	-webkit-transform: translateZ(0);
 	transform: translateZ(0);
 	-webkit-filter: url("#goo");

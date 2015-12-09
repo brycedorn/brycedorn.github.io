@@ -33,7 +33,7 @@ var MainApp = React.createClass({
   },
 
   getInitialState: function() {
-    return {menuOpen: false};
+    return {menuOpen: false, onSafari: /iPhone|iPad/i.test(navigator.userAgent)};
   },
 
   handleClick: function(){
@@ -55,6 +55,14 @@ var MainApp = React.createClass({
     this.handleClick();
     event.preventDefault();
     event.stopPropagation();
+  },
+
+  handleMouseOver: function() {
+    if(this.state.onSafari) {
+      this.handleClick();
+      event.preventDefault();
+      event.stopPropagation();
+    }
   },
 
   render: function(){
@@ -79,7 +87,7 @@ var MainApp = React.createClass({
           <ul className="menu-items">
             {menuItems}
           </ul>
-          <a className="menu-toggle-button" onClick={this.handleClick} onTouchStart={this.handleTouchStart}>
+          <a className="menu-toggle-button" onClick={this.handleClick} onTouchStart={this.handleTouchStart} onMouseOver={this.handleMouseOver}>
             <i className="fa fa-circle-o-notch menu-toggle-icon" style={rot90}></i>
           </a>
         </div>
