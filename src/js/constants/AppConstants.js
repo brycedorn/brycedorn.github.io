@@ -24,6 +24,10 @@ module.exports = {
       'icon': 'fa-linkedin'
     },
     {
+      'url': 'http://www.last.fm/user/BDORN',
+      'icon': 'fa-lastfm'
+    },
+    {
       'url': 'mailto:brycedorn@gmail.com',
       'icon': 'fa-inbox'
     },
@@ -37,6 +41,7 @@ module.exports = {
     '#F0D8A8',
     '#A8C090',
     '#789090',
+    '#889baf',
     '#9C869C',
     '#C090A8'
   ],
@@ -53,7 +58,8 @@ module.exports = {
   MOVE_DURATION: 0.4,
   EASE_DURATION: 1.2,
   SMALL_SCALE: 0.8,
-  LARGE_SCALE: 1,
+  DEFAULT_SCALE: 1,
+  LARGE_SCALE: 1.2,
   REL_DIST: 3.5,
   REL_SCALE: 0.15,
   REL_SCALE_2: 0.125,

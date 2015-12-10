@@ -37,11 +37,6 @@ var MainApp = React.createClass({
   },
 
   handleClick: function(){
-    TweenMax.to($('.menu-toggle-icon'),AppConstants.MOVE_DURATION,{
-      rotation: this.state.menuOpen ? 180 : 0,
-      ease: Quint.easeInOut
-    });
-
     if(this.state.menuOpen) {
       AppActions.closeMenu();
       this.setState({menuOpen: false});
@@ -68,8 +63,7 @@ var MainApp = React.createClass({
   render: function(){
     var menuLen = AppConstants.ITEMS.length,
         angle = Math.floor(360/(menuLen));
-        startingAngle = AppConstants.START_ANGLE,
-        rot90 = { 'transform': 'matrix(-1, 0, 0, -1, 0, 0);' };
+        startingAngle = AppConstants.START_ANGLE;
 
     var rotAngs = $.map(new Array(menuLen), function(n,i) {
       return startingAngle + angle * i;
@@ -88,7 +82,7 @@ var MainApp = React.createClass({
             {menuItems}
           </ul>
           <a className="menu-toggle-button" onClick={this.handleClick} onTouchStart={this.handleTouchStart} onMouseOver={this.handleMouseOver}>
-            <i className="fa fa-circle-o-notch menu-toggle-icon" style={rot90}></i>
+            <i className="fa fa-paw menu-toggle-icon"></i>
           </a>
         </div>
       </div>

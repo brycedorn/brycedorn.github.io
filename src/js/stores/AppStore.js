@@ -4,6 +4,8 @@ var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
 var onMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
+// TODO: Analyze everything in slow-mo
+
 var AppStore = assign({}, EventEmitter.prototype, {
   emitChange: function() {
     this.emit(AppConstants.CHANGE_EVENT);
@@ -42,7 +44,7 @@ function openMenu() {
       });
     } else {
   	  TweenMax.to($els,AppConstants.BOUNCE_DURATION,{
-  	    delay:  delay,
+  	    delay: delay,
         scaleX: AppConstants.SMALL_SCALE,
   	    scaleY: AppConstants.SMALL_SCALE,
   	    ease:   Quint.easeInOut,
@@ -70,7 +72,13 @@ function openMenu() {
       backgroundColor: AppConstants.ITEM_COLORS[i],
 	    ease: Quad.easeInOut
 	  });
-	})
+	});
+
+  TweenMax.to($(".menu"),AppConstants.MOVE_DURATION*3,{
+    rotation: 360,
+    transformOrigin:"50% 100%",
+    ease: Quad.easeInOut
+  });
 }
 
 function closeMenu(){
@@ -81,15 +89,15 @@ function closeMenu(){
     // Absorb
     if(onMobile) {
       TweenMax.to($els,AppConstants.BOUNCE_DURATION+0.1,{
-        delay: delay + AppConstants.MOVE_DURATION*0.6,
-        scaleX: AppConstants.LARGE_SCALE,
-        scaleY: AppConstants.LARGE_SCALE,
+        delay: delay + AppConstants.MOVE_DURATION*0.3,
+        scaleX: AppConstants.DEFAULT_SCALE,
+        scaleY: AppConstants.DEFAULT_SCALE,
         ease: Linear.easeOut
       });
     } else {
       TweenMax.to($els,AppConstants.BOUNCE_DURATION+0.1,{
-        delay: delay + AppConstants.MOVE_DURATION*0.6,
-        scaleX: AppConstants.LARGE_SCALE,
+        delay: delay + AppConstants.MOVE_DURATION*0.3,
+        // scaleX: AppConstants.DEFAULT_SCALE*2,
         scaleY: AppConstants.LARGE_SCALE,
         ease: Quint.easeInOut,
         onComplete:function(){
@@ -98,25 +106,30 @@ function closeMenu(){
             ease:  Quint.easeInOut,
             onComplete:function(){
               TweenMax.to($els,AppConstants.EASE_DURATION,{
-                scaleX: AppConstants.LARGE_SCALE,
-                scaleY: AppConstants.LARGE_SCALE,
+                // scaleX: AppConstants.DEFAULT_SCALE,
+                scaleY: AppConstants.DEFAULT_SCALE,
                 ease: Elastic.easeOut
               });
             }
-          })
+          });
         }
       });
     }
 
     // Move menu buttons inward
-    TweenMax.to($(this).children(".menu-item-button"),AppConstants.MOVE_DURATION,{
-      delay: delay,
+    TweenMax.to($(this).children(".menu-item-button"),AppConstants.MOVE_DURATION*2,{
       y: 0,
       color: AppConstants.COLORS.GREY,
       backgroundColor: AppConstants.COLORS.GREY,
-      ease: Quad.easeInOut
+      ease: Quad.easeIn
     });
-  })
+  });
+
+  TweenMax.to($(".menu"),AppConstants.MOVE_DURATION*3,{
+    rotation: 0,
+    transformOrigin:"50% 100%",
+    ease: Quad.easeInOut
+  });
 }
 
 function resizeElements(isOpen){
