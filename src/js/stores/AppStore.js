@@ -64,7 +64,7 @@ function openMenu() {
   	  });
     }
 
-    // Move menu buttons outward
+    // Move menu buttons outward & colorize
 	  TweenMax.to($(this).children(".menu-item-button"),AppConstants.MOVE_DURATION,{
 	    delay: delay,
 	    y: dist,
@@ -97,7 +97,6 @@ function closeMenu(){
     } else {
       TweenMax.to($els,AppConstants.BOUNCE_DURATION+0.1,{
         delay: delay + AppConstants.MOVE_DURATION*0.3,
-        // scaleX: AppConstants.DEFAULT_SCALE*2,
         scaleY: AppConstants.LARGE_SCALE,
         ease: Quint.easeInOut,
         onComplete:function(){
@@ -106,7 +105,6 @@ function closeMenu(){
             ease:  Quint.easeInOut,
             onComplete:function(){
               TweenMax.to($els,AppConstants.EASE_DURATION,{
-                // scaleX: AppConstants.DEFAULT_SCALE,
                 scaleY: AppConstants.DEFAULT_SCALE,
                 ease: Elastic.easeOut
               });
@@ -116,11 +114,15 @@ function closeMenu(){
       });
     }
 
+    // Change color faster so blend works
+    TweenMax.to($(this).children(".menu-item-button"),AppConstants.MOVE_DURATION*2,{
+      backgroundColor: AppConstants.COLORS.GREY,
+      color: AppConstants.COLORS.GREY 
+    });
+
     // Move menu buttons inward
     TweenMax.to($(this).children(".menu-item-button"),AppConstants.MOVE_DURATION*2,{
       y: 0,
-      color: AppConstants.COLORS.GREY,
-      backgroundColor: AppConstants.COLORS.GREY,
       ease: Quad.easeIn
     });
   });

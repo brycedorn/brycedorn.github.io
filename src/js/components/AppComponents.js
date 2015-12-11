@@ -16,7 +16,7 @@ var MenuItem = React.createClass({
         <a className="menu-item-button" href={this.props.url}>
           <i className={"menu-item-icon fa " + this.props.icon} style={rotPos}></i>
         </a>
-        <div className="menu-item-bounce" />
+        <div className="menu-item-bounce"/>
       </li>
     );
   }
@@ -26,6 +26,10 @@ var MainApp = React.createClass({
   componentDidMount: function() {
     this.handleResize();
     window.addEventListener('resize', this.handleResize);
+
+    if(this.state.onSafari) {
+      this.handleClick();
+    }
   },
 
   handleResize: function(e) {
@@ -52,14 +56,6 @@ var MainApp = React.createClass({
     event.stopPropagation();
   },
 
-  handleMouseOver: function() {
-    if(this.state.onSafari) {
-      this.handleClick();
-      event.preventDefault();
-      event.stopPropagation();
-    }
-  },
-
   render: function(){
     var menuLen = AppConstants.ITEMS.length,
         angle = Math.floor(360/(menuLen));
@@ -81,7 +77,7 @@ var MainApp = React.createClass({
           <ul className="menu-items">
             {menuItems}
           </ul>
-          <a className="menu-toggle-button" onClick={this.handleClick} onTouchStart={this.handleTouchStart} onMouseOver={this.handleMouseOver}>
+          <a className="menu-toggle-button" onClick={this.handleClick} onTouchStart={this.handleTouchStart}>
             <i className="fa fa-paw menu-toggle-icon"></i>
           </a>
         </div>
