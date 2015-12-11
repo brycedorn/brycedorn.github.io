@@ -26,10 +26,6 @@ var MainApp = React.createClass({
   componentDidMount: function() {
     this.handleResize();
     window.addEventListener('resize', this.handleResize);
-
-    if(this.state.onSafari) {
-      this.handleClick();
-    }
   },
 
   handleResize: function(e) {
