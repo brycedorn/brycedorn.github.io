@@ -2,9 +2,8 @@ var AppDispatcher = require('../dispatcher/AppDispatcher');
 var AppConstants = require('../constants/AppConstants');
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
-var onMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-
-// TODO: Analyze everything in slow-mo
+var onMobile = !!navigator.userAgent.match(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/);
+var onSafari = !!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/)
 
 var AppStore = assign({}, EventEmitter.prototype, {
   emitChange: function() {
@@ -115,7 +114,7 @@ function closeMenu(){
     }
 
     // Change color faster so blend works
-    TweenMax.to($(this).children(".menu-item-button"),AppConstants.MOVE_DURATION*2,{
+    TweenMax.to($(this).children(".menu-item-button"),AppConstants.MOVE_DURATION*(onSafari ? 0.3 : 2),{
       backgroundColor: AppConstants.COLORS.GREY,
       color: AppConstants.COLORS.GREY 
     });

@@ -8,8 +8,17 @@ var AppStore = require('../stores/AppStore');
 
 var MenuItem = React.createClass({
   render: function() {
-    var rotPos = { 'transform': 'rotate('+this.props.rotAng+'deg);' },
-        rotNeg = { 'transform': 'rotate(-'+this.props.rotAng+'deg);' };
+    var rotAng = this.props.rotAng,
+        rotPos = { 
+                   transform:'rotate('+rotAng+'deg);', 
+                   WebkitTransform:'rotate('+rotAng+'deg);',
+                   msTransform:'rotate('+rotAng+'deg);' 
+                 },
+        rotNeg = { 
+                   transform:'rotate(-'+rotAng+'deg);', 
+                   WebkitTransform:'rotate(-'+rotAng+'deg);',
+                   msTransform:'rotate(-'+rotAng+'deg);' 
+                 };
 
     return (
       <li className="menu-item" style={rotNeg}>
@@ -33,7 +42,7 @@ var MainApp = React.createClass({
   },
 
   getInitialState: function() {
-    return {menuOpen: false, onSafari: /iPhone|iPad/i.test(navigator.userAgent)};
+    return {menuOpen: false};
   },
 
   handleClick: function(){
@@ -52,6 +61,11 @@ var MainApp = React.createClass({
     event.stopPropagation();
   },
 
+  // Because React doesn't know these attributes
+  createSVGFilter: function() { 
+    return {__html: '<svg xmlns="http://www.w3.org/2000/svg" version="1.1"><defs><filter id="goo"><feGaussianBlur in="SourceGraphic"stdDeviation="10" result="blur" /><feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 30 -14" result="goo" /><feComposite in="SourceGraphic" in2="goo" operator="atop"/></filter></defs></svg>'};
+  },
+
   render: function(){
     var menuLen = AppConstants.ITEMS.length,
         angle = Math.floor(360/(menuLen));
@@ -68,14 +82,19 @@ var MainApp = React.createClass({
     });
 
     return (
-      <div className="menu">
-        <div className="menu-wrapper">
-          <ul className="menu-items">
-            {menuItems}
-          </ul>
-          <a className="menu-toggle-button" onClick={this.handleClick} onTouchStart={this.handleTouchStart}>
-            <i className="fa fa-paw menu-toggle-icon"></i>
-          </a>
+      <div>
+        <div className="menu">
+          <div className="menu-wrapper">
+            <ul className="menu-items">
+              {menuItems}
+            </ul>
+            <a className="menu-toggle-button" onClick={this.handleClick} onTouchStart={this.handleTouchStart}>
+              <i className="fa fa-paw menu-toggle-icon"></i>
+            </a>
+          </div>
+        </div>
+        <div className="filter-wrapper">
+          <div dangerouslySetInnerHTML={this.createSVGFilter()} />
         </div>
       </div>
     );

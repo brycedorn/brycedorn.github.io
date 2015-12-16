@@ -6,7 +6,4 @@ $(document).ready(function(){
   $(document).on("touchend",function(){ $(document).trigger("mouseup") });
 });
 
-React.render(
-  <App />,
-  document.getElementById('main')
-);
+React.render(<App />, document.getElementById('main'));
