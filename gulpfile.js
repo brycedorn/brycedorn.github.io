@@ -12,7 +12,7 @@ gulp.task('js', function() {
 });
 
 gulp.task('css', function() {
-  gulp.src(['src/css/styles.css','src/css/font-awesome.min.css'])
+  gulp.src(['src/css/font-awesome.min.css','src/css/styles.css'])
   	.pipe(concat('styles.css'))
     .pipe(gulp.dest('dist/css'));
 });
