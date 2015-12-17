@@ -4,18 +4,23 @@ var AppConstants = require('../constants/AppConstants');
 var AppActions = {
   openMenu: function() {
     AppDispatcher.handleViewAction({
-      actionType: AppConstants.OPEN_MENU
+      actionType: AppConstants.ACTIONS.OPEN_MENU
     });
   },
   closeMenu: function() {
     AppDispatcher.handleViewAction({
-      actionType: AppConstants.CLOSE_MENU
+      actionType: AppConstants.ACTIONS.CLOSE_MENU
     });
   },
   resizeElements: function(isOpen) {
     AppDispatcher.handleViewAction({
-      actionType: AppConstants.RESIZE_ELEMENTS,
+      actionType: AppConstants.ACTIONS.RESIZE,
       isOpen: isOpen
+    });
+  },
+  sendPageView: function() {
+    AppDispatcher.handleViewAction({
+      actionType: AppConstants.ACTIONS.PAGEVIEW
     });
   }
 }

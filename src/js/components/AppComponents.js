@@ -2,6 +2,7 @@
 var React = require('react');
 var TweenMax = require('gsap');
 var zepto = require('npm-zepto');
+var ga = require('react-google-analytics');
 var AppActions = require('../actions/AppActions');
 var AppConstants = require('../constants/AppConstants');
 var AppStore = require('../stores/AppStore');
@@ -9,15 +10,15 @@ var AppStore = require('../stores/AppStore');
 var MenuItem = React.createClass({
   render: function() {
     var rotAng = this.props.rotAng,
-        rotPos = { 
-                   transform:'rotate('+rotAng+'deg);', 
+        rotPos = {
+                   transform:'rotate('+rotAng+'deg);',
                    WebkitTransform:'rotate('+rotAng+'deg);',
-                   msTransform:'rotate('+rotAng+'deg);' 
+                   msTransform:'rotate('+rotAng+'deg);'
                  },
-        rotNeg = { 
-                   transform:'rotate(-'+rotAng+'deg);', 
+        rotNeg = {
+                   transform:'rotate(-'+rotAng+'deg);',
                    WebkitTransform:'rotate(-'+rotAng+'deg);',
-                   msTransform:'rotate(-'+rotAng+'deg);' 
+                   msTransform:'rotate(-'+rotAng+'deg);'
                  };
 
     return (
@@ -34,11 +35,16 @@ var MenuItem = React.createClass({
 var MainApp = React.createClass({
   componentDidMount: function() {
     this.handleResize();
+    this.handlePageView();
     window.addEventListener('resize', this.handleResize);
   },
 
   handleResize: function(e) {
     AppActions.resizeElements(this.state.menuOpen);
+  },
+
+  handlePageView: function(e) {
+    AppActions.sendPageView();
   },
 
   getInitialState: function() {
@@ -64,14 +70,16 @@ var MainApp = React.createClass({
     event.stopPropagation();
   },
 
-  createSVGFilter: function() { 
+  createSVGFilter: function() {
     return {__html: AppConstants.SVG_FILTER_HTML};
   },
 
   render: function(){
     var menuLen = AppConstants.ITEMS.length,
         angle = Math.floor(360/(menuLen));
-        startingAngle = AppConstants.START_ANGLE;
+        startingAngle = AppConstants.START_ANGLE,
+        svg = !(this.state.onSafari || this.state.onMobile) ? (<div className="filter-wrapper"><div dangerouslySetInnerHTML={this.createSVGFilter()}/></div>) : (<div></div>),
+        GAInitializer = ga.Initializer;
 
     var rotAngs = $.map(new Array(menuLen), function(n,i) {
       return startingAngle + angle * i;
@@ -82,9 +90,6 @@ var MainApp = React.createClass({
         <MenuItem key={index} icon={item.icon} url={item.url} rotAng={rotAngs[index]} />
       );
     });
-
-    var svg = !(this.state.onSafari || this.state.onMobile) ? (<div className="filter-wrapper"><div dangerouslySetInnerHTML={this.createSVGFilter()}/></div>) : (<div></div>);
-    console.log(this.state);
 
     return (
       <div>
@@ -99,6 +104,9 @@ var MainApp = React.createClass({
           </div>
         </div>
         {svg}
+        <div className="ga">
+          <GAInitializer />
+        </div>
       </div>
     );
   }

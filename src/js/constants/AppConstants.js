@@ -1,9 +1,12 @@
 module.exports = {
   // Actions
-  OPEN_MENU: 'open',
-  CLOSE_MENU: 'close',
-  RESIZE_ELEMENTS: 'resize',
-  CHANGE_EVENT: 'change',
+  ACTIONS: {
+    OPEN_MENU: 'open',
+    CLOSE_MENU: 'close',
+    RESIZE: 'resize',
+    CHANGE: 'change',
+    PAGEVIEW: 'pageview'
+  },
 
   // Menu data
   ITEMS: [
@@ -57,6 +60,9 @@ module.exports = {
   // Regexps for user agent matching
   MOBILE_REGEXP: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/,
   SAFARI_REGEXP: /Version\/[\d\.]+.*Safari/,
+
+  // Google analytics
+  GA_TRACKING_ID: 'UA-40008117-1',
 
   // Animation constants
   START_ANGLE: 180,

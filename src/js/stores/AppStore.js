@@ -2,6 +2,7 @@ var AppDispatcher = require('../dispatcher/AppDispatcher');
 var AppConstants = require('../constants/AppConstants');
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
+var ga = require('react-google-analytics');
 var onMobile = !!navigator.userAgent.match(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/);
 var onSafari = !!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/)
 
@@ -21,6 +22,9 @@ AppDispatcher.register(function(payload){
     	break;
     case 'resize':
       resizeElements(payload.action.isOpen);
+      break;
+    case 'pageview':
+      sendPageView();
       break;
     default:
     	break;
@@ -116,7 +120,7 @@ function closeMenu(){
     // Change color faster so blend works
     TweenMax.to($(this).children(".menu-item-button"),AppConstants.MOVE_DURATION*(onSafari ? 0.3 : 2),{
       backgroundColor: AppConstants.COLORS.GREY,
-      color: AppConstants.COLORS.GREY 
+      color: AppConstants.COLORS.GREY
     });
 
     // Move menu buttons inward
@@ -161,6 +165,11 @@ function scaleItems(r) {
     y: r/AppConstants.REL_DIST,
     ease: Elastic.easeInOut
   });
+}
+
+function sendPageView() {
+  ga('create', AppConstants.GA_TRACKING_ID, 'auto');
+  ga('send', 'pageview');
 }
 
 module.exports = AppStore;
