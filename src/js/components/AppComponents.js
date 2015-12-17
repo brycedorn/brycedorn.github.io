@@ -42,7 +42,10 @@ var MainApp = React.createClass({
   },
 
   getInitialState: function() {
-    return {menuOpen: false};
+    var onMobile = !!navigator.userAgent.match(AppConstants.MOBILE_REGEXP),
+        onSafari = !!navigator.userAgent.match(AppConstants.SAFARI_REGEXP);
+
+    return {menuOpen: false, onMobile: onMobile, onSafari: onSafari};
   },
 
   handleClick: function(){
@@ -61,9 +64,8 @@ var MainApp = React.createClass({
     event.stopPropagation();
   },
 
-  // Because React doesn't know these attributes
   createSVGFilter: function() { 
-    return {__html: '<svg xmlns="http://www.w3.org/2000/svg" version="1.1"><defs><filter id="goo"><feGaussianBlur in="SourceGraphic"stdDeviation="10" result="blur" /><feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 30 -14" result="goo" /><feComposite in="SourceGraphic" in2="goo" operator="atop"/></filter></defs></svg>'};
+    return {__html: AppConstants.SVG_FILTER_HTML};
   },
 
   render: function(){
@@ -81,6 +83,9 @@ var MainApp = React.createClass({
       );
     });
 
+    var svg = !(this.state.onSafari || this.state.onMobile) ? (<div className="filter-wrapper"><div dangerouslySetInnerHTML={this.createSVGFilter()}/></div>) : (<div></div>);
+    console.log(this.state);
+
     return (
       <div>
         <div className="menu">
@@ -93,9 +98,7 @@ var MainApp = React.createClass({
             </a>
           </div>
         </div>
-        <div className="filter-wrapper">
-          <div dangerouslySetInnerHTML={this.createSVGFilter()} />
-        </div>
+        {svg}
       </div>
     );
   }
