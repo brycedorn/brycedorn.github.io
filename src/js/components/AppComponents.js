@@ -1,6 +1,6 @@
 /** @jsx React.DOM */
 var React = require('react');
-var TweenMax = require('gsap');
+var TweenLite = require('gsap');
 var zepto = require('npm-zepto');
 var ga = require('react-google-analytics');
 var AppActions = require('../actions/AppActions');
@@ -31,6 +31,8 @@ var MenuItem = React.createClass({
     );
   }
 });
+
+var MenuFactory = React.createFactory(MenuItem);
 
 var MainApp = React.createClass({
   componentDidMount: function() {
