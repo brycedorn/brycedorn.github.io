@@ -28,6 +28,7 @@ body {
 }
 
 .menu-items {
+	opacity: 0;
 	position: absolute;
 	list-style-type: none;
 	padding: 0;
@@ -52,4 +53,4 @@ body {
 }
 
 .menu-item-bounce, .menu-item-button { top: 0; left: 0; }
-.menu-item-icon, .menu-toggle-icon { position: relative;}
+.menu-item-icon, .menu-toggle-icon { position: relative; opacity: 0; }

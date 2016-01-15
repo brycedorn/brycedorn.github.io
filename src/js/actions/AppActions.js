@@ -22,6 +22,11 @@ var AppActions = {
     AppDispatcher.handleViewAction({
       actionType: AppConstants.ACTIONS.PAGEVIEW
     });
+  },
+  showButton: function() {
+    AppDispatcher.handleViewAction({
+      actionType: AppConstants.ACTIONS.SHOW_BUTTON
+    });
   }
 }
 

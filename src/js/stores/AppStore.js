@@ -27,12 +27,19 @@ AppDispatcher.register(function(payload){
     case 'pageview':
       sendPageView();
       break;
+    case 'show':
+      showButton();
+      break;
     default:
     	break;
   }
 });
 
 function openMenu() {
+  TweenLite.to($(".menu-item-icon"),AC.ITEM_DELAY,{
+    opacity: 1
+  });
+
 	$(".menu-item").each(function(i){
 	  var delay = AC.ITEM_DELAY * i,
         dist = Math.min($(document).height(),$(document).width())/AC.REL_DIST,
@@ -175,6 +182,13 @@ function scaleItems(r) {
 function sendPageView() {
   ga('create', AC.GA_TRACKING_ID, 'auto');
   ga('send', 'pageview');
+}
+
+function showButton() {
+  TweenLite.to($(".menu-toggle-icon, .menu-items"),AC.MOVE_DURATION*3,{
+    opacity: 1,
+    ease: Quad.easeInOut
+  });
 }
 
 module.exports = AppStore;

@@ -39,13 +39,18 @@ var MainApp = React.createClass({
     this.handleResize();
     this.handlePageView();
     window.addEventListener('resize', this.handleResize);
+    this.showButton();
   },
 
-  handleResize: function(e) {
+  showButton: function() {
+    AppActions.showButton();
+  },
+
+  handleResize: function() {
     AppActions.resizeElements(this.state.menuOpen);
   },
 
-  handlePageView: function(e) {
+  handlePageView: function() {
     AppActions.sendPageView();
   },
 
@@ -56,7 +61,7 @@ var MainApp = React.createClass({
     return {menuOpen: false, onMobile: onMobile, onSafari: onSafari};
   },
 
-  handleClick: function(){
+  handleClick: function() {
     if(this.state.menuOpen) {
       AppActions.closeMenu();
       this.setState({menuOpen: false});

@@ -1,11 +1,12 @@
 module.exports = {
   // Actions
   ACTIONS: {
-    OPEN_MENU:  'open',
-    CLOSE_MENU: 'close',
-    RESIZE:     'resize',
-    CHANGE:     'change',
-    PAGEVIEW:   'pageview'
+    OPEN_MENU:   'open',
+    CLOSE_MENU:  'close',
+    RESIZE:      'resize',
+    CHANGE:      'change',
+    PAGEVIEW:    'pageview',
+    SHOW_BUTTON: 'show'
   },
 
   // Menu data
