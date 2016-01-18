@@ -152,7 +152,7 @@ function resizeElements(isOpen){
       largerButtons = ".menu-toggle-button, .menu-item-bounce, .menu-item-button";
 
   // Increase scale if on mobile
-  if(onMobile) { r += MOBILE_SCALE_ADD; }
+  if(onMobile) { r += AC.MOBILE_SCALE_ADD; }
 
   // Scale menu
   $("#main").height(h*0.8);
