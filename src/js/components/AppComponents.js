@@ -4,7 +4,7 @@ var TweenLite = require('gsap');
 var zepto = require('npm-zepto');
 var ga = require('react-google-analytics');
 var AppActions = require('../actions/AppActions');
-var AppConstants = require('../constants/AppConstants');
+var AC = require('../constants/AppConstants');
 var AppStore = require('../stores/AppStore');
 
 var MenuItem = React.createClass({
@@ -55,8 +55,8 @@ var MainApp = React.createClass({
   },
 
   getInitialState: function() {
-    var onMobile = !!navigator.userAgent.match(AppConstants.MOBILE_REGEXP),
-        onSafari = !!navigator.userAgent.match(AppConstants.SAFARI_REGEXP);
+    var onMobile = !!navigator.userAgent.match(AC.MOBILE_REGEXP),
+        onSafari = !!navigator.userAgent.match(AC.SAFARI_REGEXP);
 
     return {menuOpen: false, onMobile: onMobile, onSafari: onSafari};
   },
@@ -78,21 +78,21 @@ var MainApp = React.createClass({
   },
 
   createSVGFilter: function() {
-    return {__html: AppConstants.SVG_FILTER_HTML};
+    return {__html: AC.SVG_FILTER_HTML};
   },
 
   render: function(){
-    var menuLen = AppConstants.ITEMS.length,
+    var menuLen = AC.ITEMS.length,
         angle = Math.floor(360/(menuLen));
-        startingAngle = AppConstants.START_ANGLE,
-        svg = !(this.state.onSafari || this.state.onMobile) ? (<div className="filter-wrapper"><div dangerouslySetInnerHTML={this.createSVGFilter()}/></div>) : (<div></div>),
+        startingAngle = AC.START_ANGLE,
+        svg = !(this.state.onSafari || this.state.onMobile || AC.SVG_FILTER_DISABLED) ? (<div className="filter-wrapper"><div dangerouslySetInnerHTML={this.createSVGFilter()}/></div>) : (<div></div>),
         GAInitializer = ga.Initializer;
 
     var rotAngs = $.map(new Array(menuLen), function(n,i) {
       return startingAngle + angle * i;
     });
 
-    var menuItems = AppConstants.ITEMS.map(function(item, index) {
+    var menuItems = AC.ITEMS.map(function(item, index) {
       return (
         <MenuItem key={index} icon={item.icon} url={item.url} rotAng={rotAngs[index]} />
       );

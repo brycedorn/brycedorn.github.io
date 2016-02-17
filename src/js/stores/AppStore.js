@@ -155,9 +155,9 @@ function resizeElements(isOpen){
   if(onMobile) { r += AC.MOBILE_SCALE_ADD; }
 
   // Scale menu
-  $("#main").height(h*0.8);
+  $("#main").height(0.2);
   $(".menu").height(h/2)
-    .width(r/2);
+    .width(r);
   $(".menu-item-button").height(r*AC.REL_SCALE_2)
     .width(r*AC.REL_SCALE_2);
   $(largerButtons).height(r*AC.REL_SCALE)

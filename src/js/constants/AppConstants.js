@@ -62,6 +62,9 @@ module.exports = {
   // Raw SVG html b/c react doesn't know how to set these attributes
   SVG_FILTER_HTML: '<svg xmlns="http://www.w3.org/2000/svg" version="1.1"><defs><filter id="g"><feGaussianBlur in="SourceGraphic"stdDeviation="10" result="blur" /><feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 30 -14" result="g" /><feComposite in="SourceGraphic" in2="g" operator="atop"/></filter></defs></svg>',
 
+  //
+  SVG_FILTER_DISABLED: true,
+
   // Regexps for user agent matching
   MOBILE_REGEXP: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/,
   SAFARI_REGEXP: /Version\/[\d\.]+.*Safari/,
