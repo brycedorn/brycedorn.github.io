@@ -10,23 +10,18 @@ var AppStore = require('../stores/AppStore');
 var MenuItem = React.createClass({
   render: function() {
     var rotAng = this.props.rotAng,
-        rotPos = {
-                   transform:'rotate('+rotAng+'deg);',
+        rotPos = { transform:'rotate('+rotAng+'deg);',
                    WebkitTransform:'rotate('+rotAng+'deg);',
-                   msTransform:'rotate('+rotAng+'deg);'
-                 },
-        rotNeg = {
-                   transform:'rotate(-'+rotAng+'deg);',
+                   msTransform:'rotate('+rotAng+'deg);' },
+        rotNeg = { transform:'rotate(-'+rotAng+'deg);',
                    WebkitTransform:'rotate(-'+rotAng+'deg);',
-                   msTransform:'rotate(-'+rotAng+'deg);'
-                 };
+                   msTransform:'rotate(-'+rotAng+'deg);' };
 
     return (
       <li className="menu-item" style={rotNeg}>
         <a className="menu-item-button" href={this.props.url}>
           <i className={"menu-item-icon fa " + this.props.icon} style={rotPos}></i>
         </a>
-        <div className="menu-item-bounce"/>
       </li>
     );
   }
@@ -81,11 +76,16 @@ var MainApp = React.createClass({
     return {__html: AC.SVG_FILTER_HTML};
   },
 
+  createCastle: function() {
+    return {__html: AC.CASTLE_ASCII_ART};
+  },
+
   render: function(){
     var menuLen = AC.ITEMS.length,
         angle = Math.floor(360/(menuLen));
         startingAngle = AC.START_ANGLE,
-        svg = !(this.state.onSafari || this.state.onMobile || AC.SVG_FILTER_DISABLED) ? (<div className="filter-wrapper"><div dangerouslySetInnerHTML={this.createSVGFilter()}/></div>) : (<div></div>),
+        svg = !(this.state.onSafari || this.state.onMobile || AC.SVG_FILTER_DISABLED) ? (<div dangerouslySetInnerHTML={this.createSVGFilter()}/>) : (<div></div>),
+        castle = <div dangerouslySetInnerHTML={this.createCastle()}/>,
         GAInitializer = ga.Initializer;
 
     var rotAngs = $.map(new Array(menuLen), function(n,i) {

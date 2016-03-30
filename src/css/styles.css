@@ -4,9 +4,14 @@
 }
 
 body {
-	background: #787878;
-	color: #fafafa;
+	background: #FAFAFA;
+	color: #787878;
 	text-align: center;
+}
+
+.castle {
+	font-family: monospace;
+	text-align: left;
 }
 
 .menu {
@@ -32,9 +37,9 @@ body {
 	top: 0;
 }
 
-.menu-toggle-button, .menu-item-bounce, .menu-item-button {
-	background: #ccc;
-	color: #fafafa;
+.menu-toggle-button, .menu-item-button {
+	background: #787878;
+	color: #FAFAFA;
 	border-radius: 50%;
 	border: none;
 	outline: none;
@@ -47,5 +52,5 @@ body {
 	background: none;
 }
 
-.menu-item-bounce, .menu-item-button { top: 0; left: 0; }
+.menu-item-button { top: 0; left: 0; }
 .menu-item-icon, .menu-toggle-icon { position: relative; opacity: 0; }
