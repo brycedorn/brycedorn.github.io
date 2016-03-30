@@ -69,15 +69,11 @@ function closeMenu(){
     var delay = AC.ITEM_DELAY * i,
         $els = $(this).children(".menu-item-button");
 
-    // Change color faster so blend works
-    TweenLite.to($(this).children(".menu-item-button"),AC.MOVE_DURATION*(onSafari ? 0.3 : 2), {
-      color: AC.COLORS.DARK_GREY,
-      backgroundColor: AC.COLORS.DARK_GREY
-    });
-
     // Move menu buttons inward
     TweenLite.to($els,AC.MOVE_DURATION,{
       y: 0,
+      color: AC.COLORS.DARK_GREY,
+      backgroundColor: AC.COLORS.DARK_GREY,
       ease: Quad.easeInOut
     });
   });
