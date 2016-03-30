@@ -105,7 +105,7 @@ function resizeElements(isOpen){
   $("#main").height(h)
     .offset({ top: -h/2 });
   $(".menu").height(h)
-    .width(r);
+    .width(r/2);
   $(".menu-item-button").height(r*AC.REL_SCALE_2)
     .width(r*AC.REL_SCALE_2);
   $(largerButtons).height(r*AC.REL_SCALE)
