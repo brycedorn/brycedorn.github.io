@@ -56,7 +56,7 @@ function openMenu() {
 
   // Release
   TweenLite.to($(".menu-toggle-button"),AC.MOVE_DURATION,{
-    delay:  AC.MOVE_DURATION/3,
+    delay:  AC.ITEM_DELAY*3,
     color:  AC.COLORS.GREY,
     scaleX: AC.SMALL_SCALE,
     scaleY: AC.SMALL_SCALE,
@@ -79,8 +79,8 @@ function closeMenu(){
   });
 
   // Absorb
-  TweenLite.to($(".menu-toggle-button"),AC.BOUNCE_DURATION+AC.CLOSE_DELAY,{
-    delay:  AC.MOVE_DURATION/2,
+  TweenLite.to($(".menu-toggle-button"),AC.MOVE_DURATION,{
+    delay:  AC.ITEM_DELAY*3,
     color:  AC.COLORS.WHITE,
     scaleX: AC.DEFAULT_SCALE,
     scaleY: AC.DEFAULT_SCALE,
@@ -92,7 +92,7 @@ function resizeElements(isOpen){
   var h = $(window).height(),
       w = $(window).width(),
       r = Math.min(w,h),
-      largerButtons = ".menu-toggle-button, .menu-item-bounce, .menu-item-button";
+      largerButtons = ".menu-toggle-button, .menu-item-button";
 
   // Increase scale if on mobile
   if(onMobile) { r += AC.MOBILE_SCALE_ADD; }
@@ -129,7 +129,7 @@ function sendPageView() {
 }
 
 function showButton() {
-  TweenLite.to($(".menu-toggle-icon, .menu-items"),AC.MOVE_DURATION*3,{
+  TweenLite.to($(".menu-toggle-icon, .menu-items"),AC.MOVE_DURATION,{
     opacity: 1,
     ease: Quad.easeInOut
   });
