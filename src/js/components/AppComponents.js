@@ -19,7 +19,7 @@ var MenuItem = React.createClass({
 
     return (
       <li className="menu-item" style={rotNeg}>
-        <a className="menu-item-button" href={this.props.url}>
+        <a className="menu-item-button" href={this.props.url} target="_blank">
           <i className={"menu-item-icon fa " + this.props.icon} style={rotPos}></i>
         </a>
       </li>
