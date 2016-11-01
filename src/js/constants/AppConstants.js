@@ -12,9 +12,9 @@ module.exports = {
   // Menu data
   ITEMS: [
     {
-      'url': '/resume.pdf',
-      'icon': 'fa-flask',
-      'text': 'Resume'
+      'url': 'http://asdpoigna.tumblr.com/',
+      'icon': 'fa-tumblr',
+      'text': 'Tumblr'
     },
     {
       'url': 'https://www.flickr.com/photos/_burce',
@@ -26,38 +26,44 @@ module.exports = {
       'icon': 'fa-github-alt',
       'text': 'Github'
     },
+    { 'url': '/resume.pdf',
+      'icon': 'fa-flask',
+      'text': 'Resume'
+    },
     {
       'url': 'https://www.linkedin.com/in/brycedorn',
       'icon': 'fa-linkedin',
       'text': 'LinkedIn'
     },
     {
+      'url': 'mailto:brycedorn@gmail.com',
+      'icon': 'fa-inbox',
+      'text': 'Mail'
+    },
+    {
       'url': 'http://www.last.fm/user/BDORN',
       'icon': 'fa-lastfm',
       'text': 'last.fm'
     },
-    {
-      'url': 'mailto:brycedorn@gmail.com',
-      'icon': 'fa-inbox',
-      'text': 'Mail'
-    }
   ],
 
   // Color palette for menu items
+  // http://www.colourlovers.com/palette/4344331/Meeting_With_Fate
   ITEM_COLORS: [
-    '#CEECEF',
-    '#A5D3EE',
-    '#9ED54C',
-    '#917F6E',
-    '#9ED54C',
-    '#A5D3EE'
+    '#EB5356',
+    '#BD1178',
+    '#285EAC',
+    '#089F96',
+    '#285EAC',
+    '#BD1178',
+    '#089F96'
   ],
 
   // General colors
   COLORS: {
     WHITE: "#FAFAFA",
     GREY: "#CCC",
-    DARK_GREY: "#787878"
+    DARK_GREY: "#555"
   },
 
   // Raw SVG html b/c React doesn't know how to set these attributes
@@ -71,7 +77,7 @@ module.exports = {
   SAFARI_REGEXP: /Version\/[\d\.]+.*Safari/,
 
   // Google analytics
-  GA_TRACKING_ID: 'UA-40008117-1',
+  // GA_TRACKING_ID: 'UA-40008117-1',
 
   // Animation constants
   START_ANGLE: 180,

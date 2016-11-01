@@ -11,7 +11,7 @@
 body {
 	margin: 0;
 	background: #FAFAFA;
-	color: #787878;
+	color: #555;
 	text-align: center;
 }
 
@@ -39,7 +39,7 @@ body {
 }
 
 .menu-toggle-button, .menu-item-button {
-	background: #787878;
+	background: #555;
 	color: #FAFAFA;
 	text-decoration: none;
 	border-radius: 50%;
