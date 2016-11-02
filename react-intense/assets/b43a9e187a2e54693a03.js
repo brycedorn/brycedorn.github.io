@@ -69,24 +69,24 @@
 	__webpack_require__(160);
 
 	var DemoImages = [{
-	  caption: 'With lots of wheaty puffs. Love those puffs',
+	  caption: 'An annual month-long festival in Kyoto',
 	  classes: 'demo-image first',
 	  src: __webpack_require__(164),
 	  thumbnailSrc: __webpack_require__(165),
-	  title: 'Beautiful fields'
+	  title: 'Gion Matsuri'
 	}, {
-	  caption: 'Longing for exploration. Explore me!',
+	  caption: 'Umbrellas are key!',
 	  classes: 'demo-image second',
 	  src: __webpack_require__(166),
 	  thumbnailSrc: __webpack_require__(167),
-	  title: 'Fantastic cliffs',
+	  title: 'Rainy rain',
 	  vertical: true
 	}, {
-	  caption: 'To your breed, your fleece, your clan be true!',
+	  caption: 'Ancient Buddhist temple on a cliff',
 	  classes: 'demo-image third',
 	  src: __webpack_require__(168),
 	  thumbnailSrc: __webpack_require__(169),
-	  title: 'Chilling sheep'
+	  title: 'Kiyomizu-dera'
 	}];
 
 	var IntenseDemos = (function (_React$Component) {
@@ -20510,37 +20510,37 @@
 /* 164 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "ea6757b017ccf12f5139f90511530716.jpg";
+	module.exports = __webpack_require__.p + "81abb4a57ad332929e43d87858b6c050.jpg";
 
 /***/ },
 /* 165 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "64d6f8f03384d8a787e48daed1f4f9ed.jpg";
+	module.exports = __webpack_require__.p + "3a35afea47fcc66b7bbe5e9f379251f5.jpg";
 
 /***/ },
 /* 166 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "f8bfd4ce2a8a5451ad127ab7ae353c24.jpg";
+	module.exports = __webpack_require__.p + "4125b0f3a20b8dad97e9b87668f98a11.jpg";
 
 /***/ },
 /* 167 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "a272d37c685ca556042d45ed967663fd.jpg";
+	module.exports = __webpack_require__.p + "6d2dc1191ef03b7385449b1a3bb8be2d.jpg";
 
 /***/ },
 /* 168 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "2cdadd9c7f1d7e1b1db4dbc28b0f1225.jpg";
+	module.exports = __webpack_require__.p + "72b963a740393698b4d3b799efb95eb3.jpg";
 
 /***/ },
 /* 169 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "0422a64cfdfe19556b483bee06ae8915.jpg";
+	module.exports = __webpack_require__.p + "b043b8f8a285caab2b69d92e2fdc6b2a.jpg";
 
 /***/ }
 /******/ ]);
