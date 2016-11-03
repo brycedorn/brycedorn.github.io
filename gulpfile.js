@@ -1,7 +1,8 @@
-var gulp = require('gulp');
-var browserify = require('gulp-browserify');
-var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
+var gulp = require('gulp'),
+    browserify = require('gulp-browserify'),
+    concat = require('gulp-concat'),
+    connect = require('gulp-connect'),
+    uglify = require('gulp-uglify');
 
 gulp.task('js', function() {
   gulp.src('src/js/main.js')
@@ -32,8 +33,16 @@ gulp.task('copy', function() {
     .pipe(gulp.dest(''));
 });
 
-gulp.task('default',['js', 'css', 'img', 'fonts', 'copy']);
+gulp.task('connect', function() {
+  connect.server({
+    root: './',
+    livereload: true
+  });
+});
+
+gulp.task('all',['js', 'css', 'img', 'fonts', 'copy'])
+gulp.task('default',['all', 'connect']);
 
 gulp.task('watch', function() {
-  gulp.watch('src/**/*.*', ['default']);
+  gulp.watch('src/**/*.*', ['all']);
 });

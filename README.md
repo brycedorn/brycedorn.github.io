@@ -7,5 +7,4 @@ A micro-implementation of Flux in React feat. [SVG filters](http://www.w3.org/TR
 ```
 $ npm install
 $ gulp
-$ python -m SimpleHTTPServer
 ```
