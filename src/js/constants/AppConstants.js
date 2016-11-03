@@ -12,7 +12,7 @@ module.exports = {
   // Menu data
   ITEMS: [
     {
-      'url': 'http://asdpoigna.tumblr.com/',
+      'url': 'http://brycedorn.tumblr.com/',
       'icon': 'fa-tumblr',
       'text': 'Tumblr'
     },
@@ -77,7 +77,7 @@ module.exports = {
   SAFARI_REGEXP: /Version\/[\d\.]+.*Safari/,
 
   // Google analytics
-  // GA_TRACKING_ID: 'UA-40008117-1',
+  GA_TRACKING_ID: 'UA-40008117-1',
 
   // Animation constants
   START_ANGLE: 180,
