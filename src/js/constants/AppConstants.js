@@ -13,36 +13,36 @@ module.exports = {
   ITEMS: [
     {
       'url': 'http://brycedorn.tumblr.com/',
-      'icon': 'fa-tumblr',
+      'icon': 'icon-tumblr-squared',
       'text': 'Tumblr'
     },
     {
       'url': 'https://www.flickr.com/photos/_burce',
-      'icon': 'fa-flickr',
+      'icon': 'icon-flickr',
       'text': 'Flickr'
     },
     {
       'url': 'https://github.com/brycedorn',
-      'icon': 'fa-github-alt',
+      'icon': 'icon-github',
       'text': 'Github'
     },
     { 'url': '/resume.pdf',
-      'icon': 'fa-flask',
+      'icon': 'icon-beaker',
       'text': 'Resume'
     },
     {
       'url': 'https://www.linkedin.com/in/brycedorn',
-      'icon': 'fa-linkedin',
+      'icon': 'icon-linkedin-squared',
       'text': 'LinkedIn'
     },
     {
       'url': 'mailto:brycedorn@gmail.com',
-      'icon': 'fa-inbox',
+      'icon': 'icon-inbox',
       'text': 'Mail'
     },
     {
       'url': 'http://www.last.fm/user/BDORN',
-      'icon': 'fa-lastfm',
+      'icon': 'icon-lastfm',
       'text': 'last.fm'
     },
   ],

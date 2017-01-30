@@ -13,7 +13,7 @@ gulp.task('js', function() {
 });
 
 gulp.task('css', function() {
-  gulp.src(['src/css/font-awesome.min.css','src/css/styles.css'])
+  gulp.src(['src/css/fontello.css','src/css/styles.css'])
   	.pipe(concat('styles.css'))
     .pipe(gulp.dest('dist/css'));
 });
@@ -24,8 +24,8 @@ gulp.task('img', function() {
 });
 
 gulp.task('fonts', function() {
-  gulp.src('src/fonts/*')
-    .pipe(gulp.dest('dist/fonts'));
+  gulp.src('src/font/*')
+    .pipe(gulp.dest('dist/font'));
 });
 
 gulp.task('copy', function() {

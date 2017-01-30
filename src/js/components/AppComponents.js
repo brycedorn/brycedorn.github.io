@@ -21,7 +21,7 @@ var MenuItem = React.createClass({
       <li className="menu-item" style={rotNeg}>
         <a className="menu-item-button" href={this.props.url} target="_blank">
           <div className="menu-item-button-content" style={rotPos}>
-            <i className={"menu-item-icon fa " + this.props.icon}></i>
+            <i className={"menu-item-icon " + this.props.icon}></i>
             <p className="menu-item-text">{this.props.text}</p>
           </div>
         </a>
@@ -105,7 +105,7 @@ var MainApp = React.createClass({
               {menuItems}
             </ul>
             <a className="menu-toggle-button" onClick={this.handleClick} onTouchStart={this.handleTouchStart}>
-              <i className="fa fa-paw menu-toggle-icon"></i>
+              <i className="icon-paw menu-toggle-icon"></i>
             </a>
           </div>
         </div>

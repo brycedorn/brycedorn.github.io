@@ -47,6 +47,7 @@ body {
 .menu-toggle-button {
 	cursor: pointer;
 	background: none;
+	top: -4px;
 }
 
 .menu-item-button { 
