@@ -26,10 +26,10 @@ module.exports = {
       'icon': 'icon-github',
       'text': 'Github'
     },
-    { 'url': '/resume.pdf',
-      'icon': 'icon-beaker',
-      'text': 'Resume'
-    },
+    // { 'url': '/resume.pdf',
+    //   'icon': 'icon-beaker',
+    //   'text': 'Resume'
+    // },
     {
       'url': 'https://www.linkedin.com/in/brycedorn',
       'icon': 'icon-linkedin-squared',
