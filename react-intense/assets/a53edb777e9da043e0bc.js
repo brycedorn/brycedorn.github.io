@@ -66,26 +66,26 @@
 
 	var _libReactIntense2 = _interopRequireDefault(_libReactIntense);
 
-	__webpack_require__(164);
+	__webpack_require__(167);
 
 	var DemoImages = [{
 	  caption: 'An annual month-long festival in Kyoto',
 	  classes: 'demo-image first',
-	  src: __webpack_require__(166),
-	  thumbnailSrc: __webpack_require__(167),
+	  src: __webpack_require__(169),
+	  thumbnailSrc: __webpack_require__(170),
 	  title: 'Gion Matsuri'
 	}, {
 	  caption: 'Umbrellas are key!',
 	  classes: 'demo-image second',
-	  src: __webpack_require__(168),
-	  thumbnailSrc: __webpack_require__(169),
+	  src: __webpack_require__(171),
+	  thumbnailSrc: __webpack_require__(172),
 	  title: 'Rainy rain',
 	  vertical: true
 	}, {
 	  caption: 'Ancient Buddhist temple on a cliff',
 	  classes: 'demo-image third',
-	  src: __webpack_require__(170),
-	  thumbnailSrc: __webpack_require__(171),
+	  src: __webpack_require__(173),
+	  thumbnailSrc: __webpack_require__(174),
 	  title: 'Kiyomizu-dera'
 	}];
 
@@ -112,6 +112,7 @@
 	          caption: caption,
 	          classes: classes,
 	          key: title,
+	          loader: 'uil-spin-css',
 	          src: src,
 	          thumbnailSrc: thumbnailSrc,
 	          title: title,
@@ -19833,7 +19834,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
-	 * React Intense v0.0.3
+	 * React Intense v0.0.6
 	 * https://github.com/brycedorn/react-intense
 	 *
 	 * A port of the javascript library: https://github.com/tholman/intense-images
@@ -19842,7 +19843,6 @@
 	 * https://mit-license.org
 	 */
 
-	// https://gist.github.com/paulirish/1579671
 	'use strict';
 
 	Object.defineProperty(exports, '__esModule', {
@@ -19855,6 +19855,8 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i]; return arr2; } else { return Array.from(arr); } }
+
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
@@ -19863,38 +19865,34 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	(function () {
-	  var lastTime = 0;
-	  var vendors = ['webkit', 'moz'];
-	  for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
-	    window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame'];
-	    window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame'] || window[vendors[x] + 'CancelRequestAnimationFrame'];
-	  }
-
-	  if (!window.requestAnimationFrame) window.requestAnimationFrame = function (callback, element) {
-	    var currTime = new Date().getTime();
-	    var timeToCall = Math.max(0, 16 - (currTime - lastTime));
-	    var id = window.setTimeout(function () {
-	      callback(currTime + timeToCall);
-	    }, timeToCall);
-	    lastTime = currTime + timeToCall;
-	    return id;
-	  };
-
-	  if (!window.cancelAnimationFrame) window.cancelAnimationFrame = function (id) {
-	    clearTimeout(id);
-	  };
-	})();
-
 	__webpack_require__(160);
+	__webpack_require__(164);
+	__webpack_require__(165);
+
+	var propTypes = {
+	  caption: _react2['default'].PropTypes.string,
+	  classes: _react2['default'].PropTypes.string,
+	  loader: _react2['default'].PropTypes.string,
+	  src: _react2['default'].PropTypes.string.isRequired,
+	  thumbnailSrc: _react2['default'].PropTypes.string,
+	  title: _react2['default'].PropTypes.string
+	};
+
+	var defaultProps = {
+	  invert: false,
+	  moveSpeed: 0.05,
+	  vertical: false
+	};
+
+	var KEYCODE_ESC = 27;
 
 	var ReactIntense = (function (_React$Component) {
 	  _inherits(ReactIntense, _React$Component);
 
-	  function ReactIntense() {
+	  function ReactIntense(props) {
 	    _classCallCheck(this, ReactIntense);
 
-	    _get(Object.getPrototypeOf(ReactIntense.prototype), 'constructor', this).apply(this, arguments);
+	    _get(Object.getPrototypeOf(ReactIntense.prototype), 'constructor', this).call(this, props);
 
 	    this.state = {
 	      bindingsApplied: false,
@@ -19923,12 +19921,27 @@
 	      },
 	      visible: false
 	    };
+
+	    this._onClick = this._onClick.bind(this);
+	    this._onKeyUp = this._onKeyUp.bind(this);
+	    this._onLoad = this._onLoad.bind(this);
+	    this._onMouseMove = this._onMouseMove.bind(this);
+	    this._onTouchMove = this._onTouchMove.bind(this);
+
+	    this.hideViewer = this.hideViewer.bind(this);
+	    this.loop = this.loop.bind(this);
+	    this.positionTarget = this.positionTarget.bind(this);
+	    this.setDimensions = this.setDimensions.bind(this);
+	    this.unlockBody = this.unlockBody.bind(this);
+
+	    this.addEventListeners = this.addEventListeners.bind(this);
+	    this.removeEventListeners = this.removeEventListeners.bind(this);
 	  }
+
+	  // Manually set height & width
 
 	  _createClass(ReactIntense, [{
 	    key: 'setDimensions',
-
-	    // Manually set height & width
 	    value: function setDimensions(target) {
 	      var offsetHeight = target.offsetHeight;
 	      var offsetWidth = target.offsetWidth;
@@ -19971,6 +19984,7 @@
 	            var overflowPosition = this.calcPosition(newY, container.height);
 	            var position = overflow.y * overflowPosition;
 	            var transform = 'translate3d( 0px, ' + position + 'px, 0px)';
+
 	            this.setState({
 	              lastPosition: newY,
 	              transform: transform
@@ -19982,6 +19996,7 @@
 	            var overflowPosition = this.calcPosition(newX, container.width);
 	            var position = overflow.x * overflowPosition;
 	            var transform = 'translate3d(' + position + 'px, 0px, 0px)';
+
 	            this.setState({
 	              lastPosition: newX,
 	              transform: transform
@@ -19996,33 +20011,33 @@
 	      return this.props.invert ? (total - current) / total : current / total;
 	    }
 	  }, {
-	    key: 'addBindings',
-	    value: function addBindings() {
+	    key: 'addEventListeners',
+	    value: function addEventListeners() {
 	      try {
 	        var container = this.refs.container;
 	        var imgRef = container.children[0].children[0];
 
-	        imgRef.addEventListener('mousemove', this._onMouseMove.bind(this), false);
-	        imgRef.addEventListener('touchmove', this._onTouchMove.bind(this), false);
-	        imgRef.addEventListener('click', this._hideViewer.bind(this), false);
-	        window.addEventListener('resize', this.setDimensions.bind(this), false);
-	        window.addEventListener('keyup', this._onKeyUp.bind(this), false);
+	        imgRef.addEventListener('mousemove', this._onMouseMove, false);
+	        imgRef.addEventListener('touchmove', this._onTouchMove, false);
+	        imgRef.addEventListener('click', this.hideViewer, false);
+	        window.addEventListener('resize', this.setDimensions, false);
+	        window.addEventListener('keyup', this._onKeyUp, false);
 
 	        this.setState({ bindingsApplied: true });
 	      } catch (e) {}
 	    }
 	  }, {
-	    key: 'removeBindings',
-	    value: function removeBindings() {
+	    key: 'removeEventListeners',
+	    value: function removeEventListeners() {
 	      try {
 	        var container = this.refs.container;
 	        var imgRef = container.children[0].children[0];
 
-	        imgRef.removeEventListener('mousemove', this._onMouseMove.bind(this), false);
-	        imgRef.removeEventListener('touchmove', this._onTouchMove.bind(this), false);
-	        imgRef.removeEventListener('click', this._hideViewer.bind(this), false);
-	        window.removeEventListener('resize', this.setDimensions.bind(this), false);
-	        window.removeEventListener('keyup', this._onKeyUp.bind(this), false);
+	        imgRef.removeEventListener('mousemove', this._onMouseMove, false);
+	        imgRef.removeEventListener('touchmove', this._onTouchMove, false);
+	        imgRef.removeEventListener('click', this.hideViewer, false);
+	        window.removeEventListener('resize', this.setDimensions, false);
+	        window.removeEventListener('keyup', this._onKeyUp, false);
 
 	        this.setState({ bindingsApplied: false });
 	      } catch (e) {}
@@ -20030,13 +20045,13 @@
 	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      this.positionTarget.bind(this).apply();
+	      this.positionTarget();
 	    }
 	  }, {
 	    key: 'componentWillUnmount',
 	    value: function componentWillUnmount() {
 	      if (this.state.bindingsApplied) {
-	        this.removeBindings.bind(this).apply();
+	        this.removeEventListeners();
 	      }
 	    }
 
@@ -20065,9 +20080,10 @@
 	  }, {
 	    key: 'loop',
 	    value: function loop() {
-	      var looper = window.requestAnimationFrame(this.loop.bind(this));
+	      var looper = window.requestAnimationFrame(this.loop);
+
 	      this.setState({ looper: looper });
-	      this.positionTarget.bind(this).apply();
+	      this.positionTarget();
 	    }
 
 	    // Events
@@ -20076,17 +20092,17 @@
 	    value: function _onClick(e) {
 	      e.preventDefault();
 	      this.setState({ visible: true });
-	      this._onMouseMove.bind(this).call(undefined, e);
+	      this._onMouseMove.call(undefined, e);
 	      this.lockBody();
-	      this.loop.bind(this).apply();
+	      this.loop();
 	    }
 	  }, {
 	    key: '_onKeyUp',
 	    value: function _onKeyUp(e) {
 	      e.preventDefault();
-	      var KEYCODE_ESC = 27;
+
 	      if (e.keyCode === KEYCODE_ESC) {
-	        this._hideViewer.bind(this).call();
+	        this.hideViewer();
 	      }
 	    }
 	  }, {
@@ -20101,8 +20117,8 @@
 	        }
 	      });
 
-	      this.setDimensions.bind(this).call(undefined, e.target);
-	      this.addBindings.bind(this).apply();
+	      this.setDimensions.call(undefined, e.target);
+	      this.addEventListeners();
 	    }
 	  }, {
 	    key: '_onMouseMove',
@@ -20128,12 +20144,29 @@
 
 	    // View helpers
 	  }, {
-	    key: '_hideViewer',
-	    value: function _hideViewer() {
+	    key: 'hideViewer',
+	    value: function hideViewer() {
 	      this.setState({ visible: false });
 	      this.stop(this.state.looper);
-	      this.unlockBody.bind(this).apply();
-	      this.removeBindings.bind(this).apply();
+	      this.unlockBody();
+	      this.removeEventListeners();
+	    }
+	  }, {
+	    key: '_renderLoader',
+	    value: function _renderLoader(loaderClassName, isVisible) {
+	      var doublyNestedDiv = _react2['default'].createElement(
+	        'div',
+	        null,
+	        _react2['default'].createElement('div', null)
+	      );
+
+	      return isVisible && loaderClassName ? _react2['default'].createElement(
+	        'div',
+	        { className: loaderClassName + ' ri-loader' },
+	        [].concat(_toConsumableArray(Array(8))).map(function (e, i) {
+	          return doublyNestedDiv;
+	        })
+	      ) : _react2['default'].createElement('div', null);
 	    }
 	  }, {
 	    key: '_renderViewer',
@@ -20164,7 +20197,7 @@
 	        _react2['default'].createElement(
 	          'figure',
 	          { className: 'ri-container', style: { opacity: loaded ? 1 : 0 } },
-	          _react2['default'].createElement('img', { src: src, style: transformStyle, onLoad: this._onLoad.bind(this) }),
+	          _react2['default'].createElement('img', { src: src, style: transformStyle, onLoad: this._onLoad }),
 	          _react2['default'].createElement(
 	            'figcaption',
 	            { className: 'ri-caption-container' },
@@ -20187,47 +20220,37 @@
 	    value: function render() {
 	      var _props2 = this.props;
 	      var classes = _props2.classes;
+	      var loader = _props2.loader;
 	      var src = _props2.src;
 	      var thumbnailSrc = _props2.thumbnailSrc;
 	      var visible = this.state.visible;
 
 	      var classNames = classes + (visible ? ' clicked' : '');
+
 	      return _react2['default'].createElement(
 	        'div',
 	        { className: 'ri-wrapper' },
-	        _react2['default'].createElement('a', {
-	          className: classNames,
-	          onClick: this._onClick.bind(this),
-	          ref: 'thumbnail',
-	          style: { backgroundImage: 'url(' + (thumbnailSrc || src) + ')' }
-	        }),
+	        _react2['default'].createElement(
+	          'a',
+	          {
+	            className: classNames,
+	            onClick: this._onClick,
+	            ref: 'thumbnail',
+	            style: { backgroundImage: 'url(' + (thumbnailSrc || src) + ')' } },
+	          this._renderLoader(loader, visible)
+	        ),
 	        this._renderViewer()
 	      );
 	    }
-	  }], [{
-	    key: 'propTypes',
-	    value: {
-	      caption: _react2['default'].PropTypes.string,
-	      classes: _react2['default'].PropTypes.string,
-	      src: _react2['default'].PropTypes.string.isRequired,
-	      thumbnailSrc: _react2['default'].PropTypes.string,
-	      title: _react2['default'].PropTypes.string
-	    },
-	    enumerable: true
-	  }, {
-	    key: 'defaultProps',
-	    value: {
-	      invert: false,
-	      moveSpeed: 0.05,
-	      vertical: false
-	    },
-	    enumerable: true
 	  }]);
 
 	  return ReactIntense;
 	})(_react2['default'].Component);
 
 	exports['default'] = ReactIntense;
+
+	ReactIntense.propTypes = propTypes;
+	ReactIntense.defaultProps = defaultProps;
 	module.exports = exports['default'];
 
 /***/ },
@@ -20262,7 +20285,7 @@
 
 
 	// module
-	exports.push([module.id, ".ri-wrapper,\n.ri-cursor-plus {\n  cursor: url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo4M0UzRkZGRUY4ODQxMUUzQjg5REQwNUQyQTFENTVGOSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo4M0UzRkZGRkY4ODQxMUUzQjg5REQwNUQyQTFENTVGOSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjUyNjc4QUY1Rjg0QjExRTNCODlERDA1RDJBMUQ1NUY5IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjUyNjc4QUY2Rjg0QjExRTNCODlERDA1RDJBMUQ1NUY5Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+x6eaoAAABeVJREFUeNrcWn1M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\") 25 25, no-drop;\n}\n\n.ri-container, \n.ri-cursor-x {\n  cursor: url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo3Q0IyNDI3M0FFMkYxMUUzOEQzQUQ5NTMxMDAwQjJGRCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo3Q0IyNDI3NEFFMkYxMUUzOEQzQUQ5NTMxMDAwQjJGRCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjdDQjI0MjcxQUUyRjExRTM4RDNBRDk1MzEwMDBCMkZEIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjdDQjI0MjcyQUUyRjExRTM4RDNBRDk1MzEwMDBCMkZEIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+soZ1WgAABp5JREFUeNrcWn9M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\") 25 25, no-drop;\n}\n\n.ri-wrapper {\n  display: inline-block;\n  margin: 0 8px;\n}\n\n.ri-wrapper a.clicked {\n  box-shadow: inset 0 0 0 500px rgba(0,0,0,.2);\n}\n\n.ri-container {\n  background-color: rgba(0,0,0,0.8);\n  width: 100%;\n  height: 100%;\n  position: fixed;\n  top: 0px;\n  left: 0px;\n  overflow: hidden;\n  z-index: 999999;\n  margin: 0px;\n  webkit-transition: opacity 150ms cubic-bezier(0, 0, 0.26, 1);\n  moz-transition: opacity 150ms cubic-bezier(0, 0, 0.26, 1);\n  transition: opacity 150ms cubic-bezier(0, 0, 0.26, 1);\n}\n\n.ri-caption-container {\n  font-family: Georgia, Times, \"Times New Roman\", serif;\n  position: fixed;\n  bottom: 0px;\n  left: 0px;\n  padding: 20px;\n  color: #fff;\n  word-spacing: 0.2px;\n  webkit-font-smoothing: antialiased;\n  text-shadow: -1px 0px 1px rgba(0,0,0,0.4);\n}\n\n.ri-title {\n  margin: 0px;\n  padding: 0px;\n  font-weight: normal;\n  font-size: 40px;\n  letter-spacing: 0.5px;\n  line-height: 35px;\n  text-align: left;\n}\n\n.ri-caption {\n  margin: 0px;\n  padding: 0px;\n  font-weight: normal;\n  font-size: 20px;\n  letter-spacing: 0.1px;\n  max-width: 500px;\n  text-align: left;\n  background: none;\n  margin-top: 5px;\n}", ""]);
+	exports.push([module.id, ".ri-wrapper,\n.ri-cursor-plus {\n  cursor: url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo4M0UzRkZGRUY4ODQxMUUzQjg5REQwNUQyQTFENTVGOSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo4M0UzRkZGRkY4ODQxMUUzQjg5REQwNUQyQTFENTVGOSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjUyNjc4QUY1Rjg0QjExRTNCODlERDA1RDJBMUQ1NUY5IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjUyNjc4QUY2Rjg0QjExRTNCODlERDA1RDJBMUQ1NUY5Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+x6eaoAAABeVJREFUeNrcWn1M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\") 25 25, no-drop;\n}\n\n.ri-container, \n.ri-cursor-x {\n  cursor: url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo3Q0IyNDI3M0FFMkYxMUUzOEQzQUQ5NTMxMDAwQjJGRCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo3Q0IyNDI3NEFFMkYxMUUzOEQzQUQ5NTMxMDAwQjJGRCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjdDQjI0MjcxQUUyRjExRTM4RDNBRDk1MzEwMDBCMkZEIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjdDQjI0MjcyQUUyRjExRTM4RDNBRDk1MzEwMDBCMkZEIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+soZ1WgAABp5JREFUeNrcWn9M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\") 25 25, no-drop;\n}\n\n.ri-wrapper {\n  display: inline-block;\n  margin: 0 8px;\n}\n\n.ri-wrapper a.clicked {\n  box-shadow: inset 0 0 0 500px rgba(0,0,0,.2);\n}\n\n.ri-container {\n  background-color: rgba(0,0,0,0.8);\n  width: 100%;\n  height: 100%;\n  position: fixed;\n  top: 0px;\n  left: 0px;\n  overflow: hidden;\n  z-index: 999999;\n  margin: 0px;\n  webkit-transition: opacity 150ms cubic-bezier(0, 0, 0.26, 1);\n  moz-transition: opacity 150ms cubic-bezier(0, 0, 0.26, 1);\n  transition: opacity 150ms cubic-bezier(0, 0, 0.26, 1);\n}\n\n.ri-caption-container {\n  font-family: Georgia, Times, \"Times New Roman\", serif;\n  position: fixed;\n  bottom: 0px;\n  left: 0px;\n  padding: 20px;\n  color: #fff;\n  word-spacing: 0.2px;\n  webkit-font-smoothing: antialiased;\n  text-shadow: -1px 0px 1px rgba(0,0,0,0.4);\n}\n\n.ri-title {\n  margin: 0px;\n  padding: 0px;\n  font-weight: normal;\n  font-size: 40px;\n  letter-spacing: 0.5px;\n  line-height: 35px;\n  text-align: left;\n}\n\n.ri-caption {\n  margin: 0px;\n  padding: 0px;\n  font-weight: normal;\n  font-size: 20px;\n  letter-spacing: 0.1px;\n  max-width: 500px;\n  text-align: left;\n  background: none;\n  margin-top: 5px;\n}\n\n.ri-loader {\n  position: relative;\n  left: 30%;\n  top: 30%;\n}\n\n.ri-loader > div {\n  width: 12px;\n  height: 12px;\n  margin-left: 2px;\n  margin-top: 2px;\n}\n\n.ri-loader > div > div {\n  background: #fff;\n}", ""]);
 
 	// exports
 
@@ -20520,12 +20543,79 @@
 
 /***/ },
 /* 164 */
+/***/ function(module, exports) {
+
+	// https://gist.github.com/paulirish/1579671
+	'use strict';
+
+	(function () {
+	  var lastTime = 0;
+	  var vendors = ['webkit', 'moz'];
+	  for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+	    window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame'];
+	    window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame'] || window[vendors[x] + 'CancelRequestAnimationFrame'];
+	  }
+
+	  if (!window.requestAnimationFrame) window.requestAnimationFrame = function (callback, element) {
+	    var currTime = new Date().getTime();
+	    var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+	    var id = window.setTimeout(function () {
+	      callback(currTime + timeToCall);
+	    }, timeToCall);
+	    lastTime = currTime + timeToCall;
+	    return id;
+	  };
+
+	  if (!window.cancelAnimationFrame) window.cancelAnimationFrame = function (id) {
+	    clearTimeout(id);
+	  };
+	})();
+
+/***/ },
+/* 165 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(165);
+	var content = __webpack_require__(166);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(163)(content, {});
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		module.hot.accept("!!/Users/bdorn/react-intense/node_modules/css-loader/index.js?root=../!/Users/bdorn/react-intense/lib/loader.css", function() {
+			var newContent = require("!!/Users/bdorn/react-intense/node_modules/css-loader/index.js?root=../!/Users/bdorn/react-intense/lib/loader.css");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 166 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(162)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "@-webkit-keyframes uil-spin-css {\n  0% {\n    opacity: 1;\n    -ms-transform: scale(1.5);\n    -moz-transform: scale(1.5);\n    -webkit-transform: scale(1.5);\n    -o-transform: scale(1.5);\n    transform: scale(1.5);\n  }\n  100% {\n    opacity: 0.1;\n    -ms-transform: scale(1);\n    -moz-transform: scale(1);\n    -webkit-transform: scale(1);\n    -o-transform: scale(1);\n    transform: scale(1);\n  }\n}\n@-webkit-keyframes uil-spin-css {\n  0% {\n    opacity: 1;\n    -ms-transform: scale(1.5);\n    -moz-transform: scale(1.5);\n    -webkit-transform: scale(1.5);\n    -o-transform: scale(1.5);\n    transform: scale(1.5);\n  }\n  100% {\n    opacity: 0.1;\n    -ms-transform: scale(1);\n    -moz-transform: scale(1);\n    -webkit-transform: scale(1);\n    -o-transform: scale(1);\n    transform: scale(1);\n  }\n}\n@-moz-keyframes uil-spin-css {\n  0% {\n    opacity: 1;\n    -ms-transform: scale(1.5);\n    -moz-transform: scale(1.5);\n    -webkit-transform: scale(1.5);\n    -o-transform: scale(1.5);\n    transform: scale(1.5);\n  }\n  100% {\n    opacity: 0.1;\n    -ms-transform: scale(1);\n    -moz-transform: scale(1);\n    -webkit-transform: scale(1);\n    -o-transform: scale(1);\n    transform: scale(1);\n  }\n}\n@-ms-keyframes uil-spin-css {\n  0% {\n    opacity: 1;\n    -ms-transform: scale(1.5);\n    -moz-transform: scale(1.5);\n    -webkit-transform: scale(1.5);\n    -o-transform: scale(1.5);\n    transform: scale(1.5);\n  }\n  100% {\n    opacity: 0.1;\n    -ms-transform: scale(1);\n    -moz-transform: scale(1);\n    -webkit-transform: scale(1);\n    -o-transform: scale(1);\n    transform: scale(1);\n  }\n}\n@-moz-keyframes uil-spin-css {\n  0% {\n    opacity: 1;\n    -ms-transform: scale(1.5);\n    -moz-transform: scale(1.5);\n    -webkit-transform: scale(1.5);\n    -o-transform: scale(1.5);\n    transform: scale(1.5);\n  }\n  100% {\n    opacity: 0.1;\n    -ms-transform: scale(1);\n    -moz-transform: scale(1);\n    -webkit-transform: scale(1);\n    -o-transform: scale(1);\n    transform: scale(1);\n  }\n}\n@-webkit-keyframes uil-spin-css {\n  0% {\n    opacity: 1;\n    -ms-transform: scale(1.5);\n    -moz-transform: scale(1.5);\n    -webkit-transform: scale(1.5);\n    -o-transform: scale(1.5);\n    transform: scale(1.5);\n  }\n  100% {\n    opacity: 0.1;\n    -ms-transform: scale(1);\n    -moz-transform: scale(1);\n    -webkit-transform: scale(1);\n    -o-transform: scale(1);\n    transform: scale(1);\n  }\n}\n@-o-keyframes uil-spin-css {\n  0% {\n    opacity: 1;\n    -ms-transform: scale(1.5);\n    -moz-transform: scale(1.5);\n    -webkit-transform: scale(1.5);\n    -o-transform: scale(1.5);\n    transform: scale(1.5);\n  }\n  100% {\n    opacity: 0.1;\n    -ms-transform: scale(1);\n    -moz-transform: scale(1);\n    -webkit-transform: scale(1);\n    -o-transform: scale(1);\n    transform: scale(1);\n  }\n}\n@keyframes uil-spin-css {\n  0% {\n    opacity: 1;\n    -ms-transform: scale(1.5);\n    -moz-transform: scale(1.5);\n    -webkit-transform: scale(1.5);\n    -o-transform: scale(1.5);\n    transform: scale(1.5);\n  }\n  100% {\n    opacity: 0.1;\n    -ms-transform: scale(1);\n    -moz-transform: scale(1);\n    -webkit-transform: scale(1);\n    -o-transform: scale(1);\n    transform: scale(1);\n  }\n}\n.uil-spin-css > div {\n  position: absolute;\n}\n.uil-spin-css > div > div {\n  width: 100%;\n  height: 100%;\n  border-radius: 15px;\n}\n.uil-spin-css > div:nth-of-type(1) > div {\n  -ms-animation: uil-spin-css 1s linear infinite;\n  -moz-animation: uil-spin-css 1s linear infinite;\n  -webkit-animation: uil-spin-css 1s linear infinite;\n  -o-animation: uil-spin-css 1s linear infinite;\n  animation: uil-spin-css 1s linear infinite;\n  -ms-animation-delay: 0s;\n  -moz-animation-delay: 0s;\n  -webkit-animation-delay: 0s;\n  -o-animation-delay: 0s;\n  animation-delay: 0s;\n}\n.uil-spin-css > div:nth-of-type(1) {\n  -ms-transform: translate(50px, 50px) rotate(45deg) translate(30px, 0);\n  -moz-transform: translate(50px, 50px) rotate(45deg) translate(30px, 0);\n  -webkit-transform: translate(50px, 50px) rotate(45deg) translate(30px, 0);\n  -o-transform: translate(50px, 50px) rotate(45deg) translate(30px, 0);\n  transform: translate(50px, 50px) rotate(45deg) translate(30px, 0);\n}\n.uil-spin-css > div:nth-of-type(2) > div {\n  -ms-animation: uil-spin-css 1s linear infinite;\n  -moz-animation: uil-spin-css 1s linear infinite;\n  -webkit-animation: uil-spin-css 1s linear infinite;\n  -o-animation: uil-spin-css 1s linear infinite;\n  animation: uil-spin-css 1s linear infinite;\n  -ms-animation-delay: 0.12s;\n  -moz-animation-delay: 0.12s;\n  -webkit-animation-delay: 0.12s;\n  -o-animation-delay: 0.12s;\n  animation-delay: 0.12s;\n}\n.uil-spin-css > div:nth-of-type(2) {\n  -ms-transform: translate(50px, 50px) rotate(90deg) translate(30px, 0);\n  -moz-transform: translate(50px, 50px) rotate(90deg) translate(30px, 0);\n  -webkit-transform: translate(50px, 50px) rotate(90deg) translate(30px, 0);\n  -o-transform: translate(50px, 50px) rotate(90deg) translate(30px, 0);\n  transform: translate(50px, 50px) rotate(90deg) translate(30px, 0);\n}\n.uil-spin-css > div:nth-of-type(3) > div {\n  -ms-animation: uil-spin-css 1s linear infinite;\n  -moz-animation: uil-spin-css 1s linear infinite;\n  -webkit-animation: uil-spin-css 1s linear infinite;\n  -o-animation: uil-spin-css 1s linear infinite;\n  animation: uil-spin-css 1s linear infinite;\n  -ms-animation-delay: 0.25s;\n  -moz-animation-delay: 0.25s;\n  -webkit-animation-delay: 0.25s;\n  -o-animation-delay: 0.25s;\n  animation-delay: 0.25s;\n}\n.uil-spin-css > div:nth-of-type(3) {\n  -ms-transform: translate(50px, 50px) rotate(135deg) translate(30px, 0);\n  -moz-transform: translate(50px, 50px) rotate(135deg) translate(30px, 0);\n  -webkit-transform: translate(50px, 50px) rotate(135deg) translate(30px, 0);\n  -o-transform: translate(50px, 50px) rotate(135deg) translate(30px, 0);\n  transform: translate(50px, 50px) rotate(135deg) translate(30px, 0);\n}\n.uil-spin-css > div:nth-of-type(4) > div {\n  -ms-animation: uil-spin-css 1s linear infinite;\n  -moz-animation: uil-spin-css 1s linear infinite;\n  -webkit-animation: uil-spin-css 1s linear infinite;\n  -o-animation: uil-spin-css 1s linear infinite;\n  animation: uil-spin-css 1s linear infinite;\n  -ms-animation-delay: 0.37s;\n  -moz-animation-delay: 0.37s;\n  -webkit-animation-delay: 0.37s;\n  -o-animation-delay: 0.37s;\n  animation-delay: 0.37s;\n}\n.uil-spin-css > div:nth-of-type(4) {\n  -ms-transform: translate(50px, 50px) rotate(180deg) translate(30px, 0);\n  -moz-transform: translate(50px, 50px) rotate(180deg) translate(30px, 0);\n  -webkit-transform: translate(50px, 50px) rotate(180deg) translate(30px, 0);\n  -o-transform: translate(50px, 50px) rotate(180deg) translate(30px, 0);\n  transform: translate(50px, 50px) rotate(180deg) translate(30px, 0);\n}\n.uil-spin-css > div:nth-of-type(5) > div {\n  -ms-animation: uil-spin-css 1s linear infinite;\n  -moz-animation: uil-spin-css 1s linear infinite;\n  -webkit-animation: uil-spin-css 1s linear infinite;\n  -o-animation: uil-spin-css 1s linear infinite;\n  animation: uil-spin-css 1s linear infinite;\n  -ms-animation-delay: 0.5s;\n  -moz-animation-delay: 0.5s;\n  -webkit-animation-delay: 0.5s;\n  -o-animation-delay: 0.5s;\n  animation-delay: 0.5s;\n}\n.uil-spin-css > div:nth-of-type(5) {\n  -ms-transform: translate(50px, 50px) rotate(225deg) translate(30px, 0);\n  -moz-transform: translate(50px, 50px) rotate(225deg) translate(30px, 0);\n  -webkit-transform: translate(50px, 50px) rotate(225deg) translate(30px, 0);\n  -o-transform: translate(50px, 50px) rotate(225deg) translate(30px, 0);\n  transform: translate(50px, 50px) rotate(225deg) translate(30px, 0);\n}\n.uil-spin-css > div:nth-of-type(6) > div {\n  -ms-animation: uil-spin-css 1s linear infinite;\n  -moz-animation: uil-spin-css 1s linear infinite;\n  -webkit-animation: uil-spin-css 1s linear infinite;\n  -o-animation: uil-spin-css 1s linear infinite;\n  animation: uil-spin-css 1s linear infinite;\n  -ms-animation-delay: 0.62s;\n  -moz-animation-delay: 0.62s;\n  -webkit-animation-delay: 0.62s;\n  -o-animation-delay: 0.62s;\n  animation-delay: 0.62s;\n}\n.uil-spin-css > div:nth-of-type(6) {\n  -ms-transform: translate(50px, 50px) rotate(270deg) translate(30px, 0);\n  -moz-transform: translate(50px, 50px) rotate(270deg) translate(30px, 0);\n  -webkit-transform: translate(50px, 50px) rotate(270deg) translate(30px, 0);\n  -o-transform: translate(50px, 50px) rotate(270deg) translate(30px, 0);\n  transform: translate(50px, 50px) rotate(270deg) translate(30px, 0);\n}\n.uil-spin-css > div:nth-of-type(7) > div {\n  -ms-animation: uil-spin-css 1s linear infinite;\n  -moz-animation: uil-spin-css 1s linear infinite;\n  -webkit-animation: uil-spin-css 1s linear infinite;\n  -o-animation: uil-spin-css 1s linear infinite;\n  animation: uil-spin-css 1s linear infinite;\n  -ms-animation-delay: 0.75s;\n  -moz-animation-delay: 0.75s;\n  -webkit-animation-delay: 0.75s;\n  -o-animation-delay: 0.75s;\n  animation-delay: 0.75s;\n}\n.uil-spin-css > div:nth-of-type(7) {\n  -ms-transform: translate(50px, 50px) rotate(315deg) translate(30px, 0);\n  -moz-transform: translate(50px, 50px) rotate(315deg) translate(30px, 0);\n  -webkit-transform: translate(50px, 50px) rotate(315deg) translate(30px, 0);\n  -o-transform: translate(50px, 50px) rotate(315deg) translate(30px, 0);\n  transform: translate(50px, 50px) rotate(315deg) translate(30px, 0);\n}\n.uil-spin-css > div:nth-of-type(8) > div {\n  -ms-animation: uil-spin-css 1s linear infinite;\n  -moz-animation: uil-spin-css 1s linear infinite;\n  -webkit-animation: uil-spin-css 1s linear infinite;\n  -o-animation: uil-spin-css 1s linear infinite;\n  animation: uil-spin-css 1s linear infinite;\n  -ms-animation-delay: 0.87s;\n  -moz-animation-delay: 0.87s;\n  -webkit-animation-delay: 0.87s;\n  -o-animation-delay: 0.87s;\n  animation-delay: 0.87s;\n}\n.uil-spin-css > div:nth-of-type(8) {\n  -ms-transform: translate(50px, 50px) rotate(360deg) translate(30px, 0);\n  -moz-transform: translate(50px, 50px) rotate(360deg) translate(30px, 0);\n  -webkit-transform: translate(50px, 50px) rotate(360deg) translate(30px, 0);\n  -o-transform: translate(50px, 50px) rotate(360deg) translate(30px, 0);\n  transform: translate(50px, 50px) rotate(360deg) translate(30px, 0);\n}", ""]);
+
+	// exports
+
+
+/***/ },
+/* 167 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(168);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(163)(content, {});
@@ -20542,7 +20632,7 @@
 	}
 
 /***/ },
-/* 165 */
+/* 168 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(162)();
@@ -20556,37 +20646,37 @@
 
 
 /***/ },
-/* 166 */
+/* 169 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "81abb4a57ad332929e43d87858b6c050.jpg";
 
 /***/ },
-/* 167 */
+/* 170 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "3a35afea47fcc66b7bbe5e9f379251f5.jpg";
 
 /***/ },
-/* 168 */
+/* 171 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "4125b0f3a20b8dad97e9b87668f98a11.jpg";
 
 /***/ },
-/* 169 */
+/* 172 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "6d2dc1191ef03b7385449b1a3bb8be2d.jpg";
 
 /***/ },
-/* 170 */
+/* 173 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "72b963a740393698b4d3b799efb95eb3.jpg";
 
 /***/ },
-/* 171 */
+/* 174 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "b043b8f8a285caab2b69d92e2fdc6b2a.jpg";
