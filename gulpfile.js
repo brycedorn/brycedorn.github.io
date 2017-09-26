@@ -2,7 +2,8 @@ var gulp = require('gulp'),
     browserify = require('gulp-browserify'),
     concat = require('gulp-concat'),
     connect = require('gulp-connect'),
-    uglify = require('gulp-uglify');
+    uglify = require('gulp-uglify'),
+    cleanCSS = require('gulp-clean-css');
 
 gulp.task('js', function() {
   gulp.src('src/js/main.js')
@@ -15,6 +16,7 @@ gulp.task('js', function() {
 gulp.task('css', function() {
   gulp.src(['src/css/fontello.css','src/css/styles.css'])
   	.pipe(concat('styles.css'))
+    .pipe(cleanCSS())
     .pipe(gulp.dest('dist/css'));
 });
 
