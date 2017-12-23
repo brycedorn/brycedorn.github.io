@@ -12,6 +12,7 @@ export default class Legos extends React.Component {
     super(props)
 
     this.state = {
+      alt: false,
       size: 'medium'
     }
 
@@ -26,22 +27,25 @@ export default class Legos extends React.Component {
 
   setBrickSize() {
     const { innerWidth } = window
+    console.log(innerWidth);
 
     this.setState({
+      alt: (innerWidth < 682),
       size: (innerWidth > 1240) ? 'medium' : 'small'
     })
   }
 
   render() {
-    const { size } = this.state
+    const { alt, size } = this.state
     const placement = letterPlacements[size]
+    const altPlacement = alt && placement['alt'] || {}
     const bryce = ['b','r','y','c','e']
     const brickProps = {}
 
     bryce.forEach((letter) => (
       brickProps[letter] = {
         name: letter,
-        placement: placement[letter],
+        placement: altPlacement[letter] || placement[letter],
         shape: letters[`lowercase${letter.toUpperCase()}`],
         size: size
       }
@@ -49,7 +53,7 @@ export default class Legos extends React.Component {
 
     return (
       <div className="container">
-        <div className={`collection collection--${size}`}>
+        <div className={`collection collection--${size} ${alt ? 'mobile' : ''}`}>
           <Lego { ...brickProps['b'] } />
           <Lego { ...brickProps['r'] } />
           <Lego { ...brickProps['y'] } style={{zIndex: 1}} />

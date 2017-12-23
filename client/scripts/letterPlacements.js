@@ -42,6 +42,18 @@ const letterPlacements = {
     e: {
       top: '252px',
       left: '440px'
+    },
+    alt: {
+      c: {
+        top: '369px',
+        left: '21px',
+        zIndex: '1'
+      },
+      e: {
+        top: '421px',
+        left: '154px',
+        zIndex: '1'
+      },
     }
   },
   medium: {
