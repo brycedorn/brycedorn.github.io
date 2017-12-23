@@ -3,10 +3,7 @@
   "version": "0.1.0",
   "scripts": {
     "build": "webpack -p --config ./client/webpack.config.js",
-    "build-lib": "cp -R lib/. dist/ && ./node_modules/.bin/babel --plugins transform-react-jsx --presets 'env' lib/lego.js > dist/lego.js",
-    "dev": "webpack --config ./client/webpack.config.js && webpack-dev-server --config ./client/webpack.config.js --inline --hot --content-base ./public && yarn run storybook",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "dev": "webpack --config ./client/webpack.config.js && webpack-dev-server --config ./client/webpack.config.js --inline --hot --content-base ./public"
   },
   "author": {
     "name": "Bryce Dorn",
