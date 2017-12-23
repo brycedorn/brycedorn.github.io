@@ -5,7 +5,7 @@ var Path = require("path"),
     HtmlWebpackPlugin = require("html-webpack-plugin"),
     UglifyJSPlugin = require('uglifyjs-webpack-plugin'),
     DefinePlugin = require('webpack/lib/DefinePlugin'),
-    IS_PRODUCTION = false
+    IS_PRODUCTION = true
 
 var webpackConfig = module.exports = {
   entry: "./client/scripts/index.js",
