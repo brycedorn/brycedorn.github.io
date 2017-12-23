@@ -27,7 +27,6 @@ export default class Legos extends React.Component {
 
   setBrickSize() {
     const { innerWidth } = window
-    console.log(innerWidth);
 
     this.setState({
       alt: (innerWidth < 682),
