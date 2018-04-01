@@ -4,22 +4,38 @@
   box-sizing: border-box;
 }
 
-html {
-  height: auto;
-  width: auto;
-}
-
 body {
-  background: #fefefe;
   margin: 0;
   overflow: hidden;
 }
 
+.background-scaffold {
+  background-position: center;
+  background-repeat: repeat;
+  height: 100vh;
+  left: 19px;
+  position: absolute;
+  top: 2px;
+  width: 100%;
+  z-index: -100;
+
+  @media (max-width: 1240px)  {
+    background-size: 44px;
+    left: 10px;
+    top: 16px;
+  }
+
+  @media (max-width: 682px)  {
+    left: 0px;
+    top: 10px;
+  }
+}
+
 .container {
-  display: flex;
   align-items: center;
-  justify-content: center;
+  display: flex;
   height: 90vh;
+  justify-content: center;
   width: 100%;
 }
 
@@ -41,6 +57,14 @@ body {
     height: 660px;
     width: 1240px;
   }
+}
+
+.motion-outer {
+  position: relative;
+  top: -60px;
+}
+.motion-inner {
+  position: relative;
 }
 
 .links {

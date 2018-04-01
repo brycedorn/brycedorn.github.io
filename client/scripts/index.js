@@ -1,19 +1,24 @@
-'use strict'
-
-import React from 'react'
+import React, { Component } from 'react'
 import { render } from 'react-dom'
+import ga from 'react-ga'
+
 import Legos from './legos'
 
-import flickr from '../svg/flickr.svg'
-import github from '../svg/github.svg'
-import gmail from '../svg/gmail.svg'
-import lastfm from '../svg/lastfm.svg'
-import npm from '../svg/npm.svg'
-import tumblr from '../svg/tumblr.svg'
+import flickr from '../img/flickr.svg'
+import github from '../img/github.svg'
+import gmail from '../img/gmail.svg'
+import lastfm from '../img/lastfm.svg'
+import npm from '../img/npm.svg'
+import tumblr from '../img/tumblr.svg'
+import bg from '../img/bg.png'
 
 require("../styles/index.scss")
 
-class Index extends React.Component {
+class Index extends Component {
+  componentWillMount() {
+    ga.initialize('UA-40008117-1')
+  }
+
   renderLinks() {
     const links = [
       { url: 'https://www.flickr.com/photos/_burce', icon: flickr },
@@ -38,10 +43,13 @@ class Index extends React.Component {
   }
 
   render() {
+    ga.pageview('/')
+
     return (
       <div id="react-root">
+        <div className="background-scaffold" style={{backgroundImage: `url(${bg})`}} />
         <Legos />
-        <div className='links'>
+        <div className="links">
           {this.renderLinks()}
         </div>
       </div>
@@ -50,4 +58,3 @@ class Index extends React.Component {
 }
 
 render(<Index />, document.getElementById('root'))
-document.body.setAttribute("style","display:block")

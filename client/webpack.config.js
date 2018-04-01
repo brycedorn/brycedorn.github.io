@@ -18,13 +18,15 @@ var webpackConfig = module.exports = {
     loaders: [
       { test: /\.js(x?)$/, loaders: ["jsx-loader?harmony", "babel-loader?stage=0"] },
       { test: /\.scss$/, loader: "style-loader!css-loader!sass-loader?root=../" },
+      { test: /\.png$/, loader: "file-loader" },
       { test: /\.svg$/, loader: 'svg-inline-loader' }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: "./client/index.html",
-      filename: "../index.html"
+      filename: "../index.html",
+      favicon: "./client/img/sauropod.png"
     }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(IS_PRODUCTION ? 'production' : 'development')
