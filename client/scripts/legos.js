@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import Lego from 'react-legos'
+import Lego, { shapes } from 'react-legos'
 import { Motion, spring } from 'react-motion'
 
 import letterPlacements from './letterPlacements'
-import { letters } from '../../lib/shapes'
 
 const MEDIUM_WIDTH = 682
 const LARGE_WIDTH = 1240
@@ -45,7 +44,7 @@ export default class Legos extends Component {
         ...letterOrdering[l],
         color: letterColoring[l],
         name: l,
-        shape: letters[`lowercase${l.toUpperCase()}`]
+        shape: shapes.letters[l]
       }
     ))
 

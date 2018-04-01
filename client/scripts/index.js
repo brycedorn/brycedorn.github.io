@@ -14,9 +14,13 @@ import bg from '../img/bg.png'
 
 require("../styles/index.scss")
 
+const PROD = true;
+
 class Index extends Component {
   componentWillMount() {
-    ga.initialize('UA-40008117-1')
+    if (PROD) { 
+      ga.initialize('UA-40008117-1') 
+    }
   }
 
   renderLinks() {
@@ -43,11 +47,15 @@ class Index extends Component {
   }
 
   render() {
-    ga.pageview('/')
+    if (PROD) { 
+      ga.pageview('/') 
+    }
+
+    const backgroundImage = `url(${PROD ? 'public/' : ''}${bg})`
 
     return (
       <div id="react-root">
-        <div className="background-scaffold" style={{backgroundImage: `url(${bg})`}} />
+        <div className="background-scaffold" style={{ backgroundImage }} />
         <Legos />
         <div className="links">
           {this.renderLinks()}
