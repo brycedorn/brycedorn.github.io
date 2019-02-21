@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
 import posed, { PoseGroup } from 'react-pose';
-import ga from 'react-ga'
+
+const ga = {
+  initialize: () => {},
+  pageview: () => {}
+};
 
 import Legos from './js/legos'
 
@@ -72,11 +76,9 @@ class Index extends Component {
       ga.pageview('/')
     }
 
-    const backgroundImage = `url(${!DEV_MODE ? 'dist/' : ''}${bg})`
-
     return (
       <div id="react-root">
-        <div className="background-scaffold" style={{ backgroundImage }} />
+        <div className="background-scaffold" style={{ backgroundImage: `url(${bg})` }} />
         <Legos />
         <div className="links">
           <PoseGroup>

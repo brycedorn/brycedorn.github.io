@@ -47,15 +47,25 @@ module.exports = {
           'sass-loader'
         ]
       },
-      { test: /\.png$/, loader: 'file-loader' },
-      { test: /\.svg$/, loader: 'svg-inline-loader' }
+      {
+        test: /\.(png)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {},
+          },
+        ],
+      },
+      {
+        test: /\.svg$/,
+        use: ['svg-inline-loader']
+      }
     ],
   },
   plugins: [
     new webpack.DefinePlugin({
       DEV_MODE: devMode,
     }),
-
     new HtmlWebpackPlugin({
       title: 'bryce.io',
       description: 'I write code.',
