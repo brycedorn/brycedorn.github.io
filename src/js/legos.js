@@ -1,11 +1,33 @@
 import React, { Component } from 'react'
-import Lego, { shapes } from 'react-legos'
-import { Motion, spring } from 'react-motion'
+import Lego, { shapes } from '../react-legos'
+import posed, { PoseGroup } from 'react-pose';
 
 import letterPlacements from './letterPlacements'
 
 const MEDIUM_WIDTH = 682
 const LARGE_WIDTH = 1240
+
+const Thing = posed.div({
+  enter: {
+    y: 0,
+    // x: 0,
+    // opacity: 1,
+    transition: {
+      duration: 600,
+      ease: 'easeInOut',
+      // type: 'spring',
+      // stiffness: 500
+    },
+    delay: ({ index }) => index * 400
+  },
+  exit: {
+    y: -1200,
+    // x: -300,
+    // opacity: 1
+  },
+  // hoverable: true,
+  // hover: { y: 40, }
+})
 
 const letterColoring = {
   b: 'Bright-blue',
@@ -16,7 +38,9 @@ const letterColoring = {
 }
 
 const letterOrdering = {
-  y: { style: { zIndex: 1 } }
+  y: { style: { zIndex: 1 } },
+  c: { style: { zIndex: 2 } },
+  e: { style: { zIndex: 2 } }
 }
 
 export default class Legos extends Component {
@@ -27,16 +51,9 @@ export default class Legos extends Component {
       alt: false,
       size: '',
       step: '',
-      letterVisibility: {
-        b: false,
-        r: false,
-        y: false,
-        c: false,
-        e: false
-      }
     }
 
-    this.letters = Object.keys(this.state.letterVisibility)
+    this.letters = ['b','c','r','e','y']
 
     const brickProps = {}
     this.letters.forEach((l) => (
@@ -51,31 +68,11 @@ export default class Legos extends Component {
     this.brickProps = brickProps
 
     this.setBrickSize = this.setBrickSize.bind(this)
-    this.placeLetter = this.placeLetter.bind(this)
   }
 
-  componentDidMount() {
-    this.step = setInterval(this.placeLetter, 800)
-  }
-
-  placeLetter() {
-    const { letterVisibility } = this.state
-    const letter = this.letters.find(l => !this.state.letterVisibility[l])
-
-    if (!letter) {
-      clearInterval(this.step)
-
-      return
-    }
-
-    letterVisibility[letter] = true
-
-    this.setState({ letterVisibility })
-  }
 
   componentWillMount() {
     window.addEventListener('resize', this.setBrickSize)
-
     this.setBrickSize()
   }
 
@@ -119,14 +116,14 @@ export default class Legos extends Component {
 
     return (
       <div className="container">
-        <div className={`collection collection--${size}${alt ? ' mobile' : ''} motion-outer`}>
-          {this.letters.filter(l => this.state.letterVisibility[l]).map((l, i) => 
-            <Motion key={i} defaultStyle={{top: 0, opacity: 0}} style={{top: spring(60), opacity: spring(1)}}>
-              {interpolatingStyle => <div className='motion-inner' style={interpolatingStyle}>
+        <div className={`collection collection--${size}${alt ? ' mobile' : ''}`}>
+          <PoseGroup>
+            {this.letters.map((l, i) =>
+              <Thing key={l} index={i} initialPose="exit">
                 <Lego { ...brickProps[l] } />
-             </div>}
-            </Motion>     
-          )}
+              </Thing>
+            )}
+          </PoseGroup>
         </div>
       </div>
     )

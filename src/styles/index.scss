@@ -31,6 +31,12 @@ body {
   }
 }
 
+@media (min-width: 682px)  {
+  .brick.Light-grey {
+    z-index: 2 !important;
+  }
+}
+
 .container {
   align-items: center;
   display: flex;
@@ -59,14 +65,6 @@ body {
   }
 }
 
-.motion-outer {
-  position: relative;
-  top: -60px;
-}
-.motion-inner {
-  position: relative;
-}
-
 .links {
   align-items: center;
   bottom: 0;
@@ -79,6 +77,7 @@ body {
   a {
     height: 40px;
     width: 40px;
+    display: flex;
 
     svg {
       fill: #444;
