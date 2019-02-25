@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Lego, { shapes } from '../react-legos'
-import posed, { PoseGroup } from 'react-pose';
+import posed, { PoseGroup } from 'react-pose'
 
 import letterPlacements from './letterPlacements'
 
@@ -22,6 +22,7 @@ const Thing = posed.div({
   },
   exit: {
     y: -1200,
+    zIndex: 99
     // x: -300,
     // opacity: 1
   },
@@ -39,7 +40,7 @@ const letterColoring = {
 
 const letterOrdering = {
   y: { style: { zIndex: 1 } },
-  c: { style: { zIndex: 2 } },
+  c: { style: { zIndex: 1 } },
   e: { style: { zIndex: 2 } }
 }
 
@@ -53,7 +54,7 @@ export default class Legos extends Component {
       step: '',
     }
 
-    this.letters = ['b','c','r','e','y']
+    this.letters = window.innerWidth <= MEDIUM_WIDTH ? ['b','r','y','c','e'] : ['b','r','c','e','y']
 
     const brickProps = {}
     this.letters.forEach((l) => (
