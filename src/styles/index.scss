@@ -5,6 +5,7 @@
 }
 
 body {
+  height: 100vh;
   margin: 0;
   overflow: hidden;
 }
@@ -37,6 +38,7 @@ body {
   display: flex;
   height: 100vh;
   justify-content: center;
+  overflow: hidden;
   width: 100%;
 }
 

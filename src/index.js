@@ -4,30 +4,28 @@ import { render } from 'react-dom'
 const ga = {
   initialize: () => {},
   pageview: () => {}
-};
+}
 
 import Legos from './js/legos'
 
 import flickr from './img/flickr.svg'
 import github from './img/github.svg'
-import gmail from './img/gmail.svg'
+import gitlab from './img/gitlab.svg'
+import twitter from './img/twitter.svg'
 import lastfm from './img/lastfm.svg'
-import devto from './img/devto.svg'
-import tumblr from './img/tumblr.svg'
+import devto from './img/dev-dot-to.svg'
 import bg from './img/bg.png'
 
-import "./styles/index.scss";
+import "./styles/index.scss"
 
 const links = [
   { url: 'https://www.flickr.com/photos/_burce', icon: flickr },
-  { url: 'https://github.com/brycedorn', icon: github },
-  { url: 'mailto:brycedorn@gmail.com', icon: gmail },
   { url: 'http://www.last.fm/user/BDORN', icon: lastfm },
+  { url: 'https://twitter.com/combatfetus', icon: twitter },
   { url: 'https://dev.to/bryce', icon: devto },
-  { url: 'http://asdpoigna.tumblr.com/', icon: tumblr }
+  { url: 'https://gitlab.com/brycedorn', icon: gitlab },
+  { url: 'https://github.com/brycedorn', icon: github },
 ]
-
-const staticLinks = true // just rendering statically for now
 
 class Index extends Component {
   componentWillMount() {
@@ -45,7 +43,7 @@ class Index extends Component {
       <div id="react-root">
         <div className="background-scaffold" style={{ backgroundImage: `url(${bg})` }} />
         <Legos />
-        {staticLinks ? null : (<div className="links">
+        <div className="links">
           {links.map((item, index) => (
             <a
               className="link"
@@ -56,7 +54,7 @@ class Index extends Component {
               target="_blank"
             />
           ))}
-        </div>)}
+        </div>
       </div>
     )
   }
