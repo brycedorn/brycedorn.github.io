@@ -8,8 +8,13 @@
   "author": {
     "name": "Bryce Dorn",
     "email": "brycedorn@gmail.com",
-    "url": "http://www.bryce.io"
+    "url": "https://www.bryce.io"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/brycedorn/brycedorn.gitlab.io"
+  },
+  "homepage": "https://bryce.io",
   "license": {
     "type": "MIT",
     "url": "http://www.mit-license.org"
@@ -30,8 +35,9 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
-    "react-legos": "^0.0.3",
+    "react-legos": "^0.0.5",
     "react-pose": "^4.0.7",
+    "sass": "^1.17.4",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "svg-inline-loader": "^0.8.0",

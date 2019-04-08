@@ -1,27 +1,5 @@
 // Specific to this application
 const letterPlacements = {
-  tiny: {
-    b: {
-      top: '48px',
-      left: '0px'
-    },
-    r: {
-      top: '84px',
-      left: '66px'
-    },
-    y: {
-      top: '120px',
-      left: '44px'
-    },
-    c: {
-      top: '90px',
-      left: '165px'
-    },
-    e: {
-      top: '120px',
-      left: '220px'
-    }
-  },
   small: {
     b: {
       top: '96px',
@@ -44,8 +22,20 @@ const letterPlacements = {
       left: '440px'
     },
     alt: {
+      b: {
+        top: '103px',
+        left: '0px'
+      },
+      r: {
+        top: '181px',
+        left: '132px'
+      },
+      y: {
+        top: '259px',
+        left: '88px'
+      },
       c: {
-        top: '369px',
+        top: '371px',
         left: '21px',
         zIndex: '1'
       },

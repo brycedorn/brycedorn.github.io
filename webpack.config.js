@@ -83,6 +83,7 @@ module.exports = {
   ],
   devServer: {
     contentBase: './public',
+    host: '0.0.0.0',
     hot: true,
   },
 };

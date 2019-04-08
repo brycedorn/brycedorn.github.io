@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Lego, { shapes } from '../react-legos'
+import Lego, { shapes } from 'react-legos'
 import posed, { PoseGroup } from 'react-pose'
 
 import letterPlacements from './letterPlacements'
@@ -27,7 +27,7 @@ const Thing = posed.div({
     // opacity: 1
   },
   // hoverable: true,
-  // hover: { y: 40, }
+  // hover: { y: -40, }
 })
 
 const letterColoring = {
@@ -81,9 +81,9 @@ export default class Legos extends Component {
     const { innerWidth } = window
     const { alt, size } = this.state
 
-    const isTiny = innerWidth <= MEDIUM_WIDTH
+    const useAlt = innerWidth <= MEDIUM_WIDTH
     const isSmall = innerWidth <= LARGE_WIDTH
-    const shouldUpdateAlt = isTiny && !alt || !isTiny && alt
+    const shouldUpdateAlt = useAlt && !alt || !useAlt && alt
     const isMedium = !isSmall
     const shouldUpdateSize = size === '' || isSmall && size !== 'small' || isMedium && size !== 'medium'
     const shouldUpdate = shouldUpdateAlt || shouldUpdateSize
@@ -92,7 +92,7 @@ export default class Legos extends Component {
       const newSize = isSmall ? 'small' : 'medium'
 
       // Update brick props before rerendering
-      this.updateBrickProps(isTiny, newSize)
+      this.updateBrickProps(useAlt, newSize)
     }
   }
 
