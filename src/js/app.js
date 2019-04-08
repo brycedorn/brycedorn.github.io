@@ -8,15 +8,15 @@ const ga = {
 
 import Legos from "./legos";
 
-import flickr from "./img/flickr.svg";
-import github from "./img/github.svg";
-import gitlab from "./img/gitlab.svg";
-import twitter from "./img/twitter.svg";
-import lastfm from "./img/lastfm.svg";
-import devto from "./img/dev-dot-to.svg";
-import bg from "./img/bg.png";
+import flickr from "../img/flickr.svg";
+import github from "../img/github.svg";
+import gitlab from "../img/gitlab.svg";
+import twitter from "../img/twitter.svg";
+import lastfm from "../img/lastfm.svg";
+import devto from "../img/dev-dot-to.svg";
+import bg from "../img/bg.png";
 
-import "./styles/index.scss";
+import "../styles/index.scss";
 
 const links = [
   { url: "https://www.flickr.com/photos/_burce", icon: flickr },
