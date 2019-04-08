@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
-import Lego, { shapes } from 'react-legos'
-import posed, { PoseGroup } from 'react-pose'
+import React, { Component } from "react";
+import Lego, { shapes } from "react-legos";
+import posed, { PoseGroup } from "react-pose";
 
-import letterPlacements from './letterPlacements'
+import letterPlacements from "./letterPlacements";
 
-const MEDIUM_WIDTH = 682
-const LARGE_WIDTH = 1240
+const MEDIUM_WIDTH = 682;
+const LARGE_WIDTH = 1240;
 
 const Thing = posed.div({
   enter: {
@@ -14,7 +14,7 @@ const Thing = posed.div({
     // opacity: 1,
     transition: {
       duration: 600,
-      ease: 'easeInOut',
+      ease: "easeInOut"
       // type: 'spring',
       // stiffness: 500
     },
@@ -25,108 +25,116 @@ const Thing = posed.div({
     zIndex: 99
     // x: -300,
     // opacity: 1
-  },
+  }
   // hoverable: true,
   // hover: { y: -40, }
-})
+});
 
 const letterColoring = {
-  b: 'Bright-blue',
-  r: 'Bright-red',
-  y: 'Light-grey',
-  c: 'Bright-yellow',
-  e: 'Dark-green'
-}
+  b: "Bright-blue",
+  r: "Bright-red",
+  y: "Light-grey",
+  c: "Bright-yellow",
+  e: "Dark-green"
+};
 
 const letterOrdering = {
   y: { style: { zIndex: 1 } },
   c: { style: { zIndex: 1 } },
   e: { style: { zIndex: 2 } }
-}
+};
 
 export default class Legos extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       alt: false,
-      size: '',
-      step: '',
-    }
+      size: "",
+      step: ""
+    };
 
-    this.letters = window.innerWidth <= MEDIUM_WIDTH ? ['b','r','y','c','e'] : ['b','r','c','e','y']
+    this.letters =
+      window.innerWidth <= MEDIUM_WIDTH
+        ? ["b", "r", "y", "c", "e"]
+        : ["b", "r", "c", "e", "y"];
 
-    const brickProps = {}
-    this.letters.forEach((l) => (
-      brickProps[l] = {
-        ...letterOrdering[l],
-        color: letterColoring[l],
-        name: l,
-        shape: shapes.letters[l]
-      }
-    ))
+    const brickProps = {};
+    this.letters.forEach(
+      l =>
+        (brickProps[l] = {
+          ...letterOrdering[l],
+          color: letterColoring[l],
+          name: l,
+          shape: shapes.letters[l]
+        })
+    );
 
-    this.brickProps = brickProps
+    this.brickProps = brickProps;
 
-    this.setBrickSize = this.setBrickSize.bind(this)
+    this.setBrickSize = this.setBrickSize.bind(this);
   }
 
-
   componentWillMount() {
-    window.addEventListener('resize', this.setBrickSize)
-    this.setBrickSize()
+    window.addEventListener("resize", this.setBrickSize);
+    this.setBrickSize();
   }
 
   setBrickSize() {
-    const { innerWidth } = window
-    const { alt, size } = this.state
+    const { innerWidth } = window;
+    const { alt, size } = this.state;
 
-    const useAlt = innerWidth <= MEDIUM_WIDTH
-    const isSmall = innerWidth <= LARGE_WIDTH
-    const shouldUpdateAlt = useAlt && !alt || !useAlt && alt
-    const isMedium = !isSmall
-    const shouldUpdateSize = size === '' || isSmall && size !== 'small' || isMedium && size !== 'medium'
-    const shouldUpdate = shouldUpdateAlt || shouldUpdateSize
+    const useAlt = innerWidth <= MEDIUM_WIDTH;
+    const isSmall = innerWidth <= LARGE_WIDTH;
+    const shouldUpdateAlt = (useAlt && !alt) || (!useAlt && alt);
+    const isMedium = !isSmall;
+    const shouldUpdateSize =
+      size === "" ||
+      (isSmall && size !== "small") ||
+      (isMedium && size !== "medium");
+    const shouldUpdate = shouldUpdateAlt || shouldUpdateSize;
 
     if (shouldUpdate) {
-      const newSize = isSmall ? 'small' : 'medium'
+      const newSize = isSmall ? "small" : "medium";
 
       // Update brick props before rerendering
-      this.updateBrickProps(useAlt, newSize)
+      this.updateBrickProps(useAlt, newSize);
     }
   }
 
   updateBrickProps(alt, size) {
-    const placement = letterPlacements[size]
-    const altPlacement = alt && placement['alt'] || {}
-    const brickProps = this.brickProps
+    const placement = letterPlacements[size];
+    const altPlacement = (alt && placement["alt"]) || {};
+    const brickProps = this.brickProps;
 
-    this.letters.forEach((l) => {
-      brickProps[l].placement = altPlacement[l] || placement[l]
-      brickProps[l].size = size
-    })
+    this.letters.forEach(l => {
+      brickProps[l].placement = altPlacement[l] || placement[l];
+      brickProps[l].size = size;
+    });
 
-    this.brickProps = brickProps
+    this.brickProps = brickProps;
 
-    this.setState({ alt, size })
+    this.setState({ alt, size });
   }
 
   render() {
-    const { alt, size } = this.state
-    const { brickProps, letters } = this
+    const { alt, size } = this.state;
+    const { brickProps, letters } = this;
 
     return (
       <div className="container">
-        <div className={`collection collection--${size}${alt ? ' mobile' : ''}`}>
+        <div
+          className={`collection collection--${size}${alt ? " mobile" : ""}`}
+        >
           <PoseGroup>
-            {this.letters.map((l, i) =>
-              <Thing key={l} index={i} initialPose="exit">
-                <Lego { ...brickProps[l] } />
+            {this.letters.map((letter, i) => (
+              <Thing key={letter} index={i} initialPose="exit">
+                <Lego {...brickProps[letter]} />
               </Thing>
-            )}
+            ))}
           </PoseGroup>
         </div>
       </div>
-    )
+    );
   }
 }

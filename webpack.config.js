@@ -7,7 +7,7 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const devMode = process.env.NODE_ENV === 'development';
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/js/app.js',
   mode: process.env.NODE_ENV,
   output: {
     path: `${__dirname}/public`,
