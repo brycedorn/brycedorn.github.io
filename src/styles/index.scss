@@ -16,19 +16,19 @@ body {
   left: 20px;
   overflow: hidden;
   position: absolute;
-  top: -4px;
+  top: -34px;
   width: 100%;
   z-index: -100;
 
-  @media (max-width: 1240px)  {
+  @media (max-width: 1240px) {
     background-size: 44px;
     left: 10px;
-    top: 4px;
+    top: 0px;
   }
 
-  @media (max-width: 682px)  {
+  @media (max-width: 682px) {
     left: -1px;
-    top: -3px;
+    top: -30px;
   }
 }
 
