@@ -5,7 +5,6 @@
 }
 
 body {
-  height: 100vh;
   margin: 0;
   overflow: hidden;
 }
@@ -39,14 +38,11 @@ body {
   height: 100vh;
   justify-content: center;
   overflow: hidden;
+  padding-bottom: 60px;
   width: 100%;
 }
 
 .collection {
-  &--tiny {
-    height: 180px;
-    width: 340px;
-  }
   &--small {
     height: 376px;
     width: 682px;
@@ -64,32 +60,23 @@ body {
 
 .links {
   align-items: center;
+  background: #333;
   bottom: 0;
   display: flex;
   position: absolute;
   justify-content: space-around;
   width: 100%;
-  height: 72px;
+  height: 60px;
   z-index: 99;
 
   a {
     align-items: center;
     display: flex;
   }
-  
-  svg, path {
-    fill: #333;
+
+  svg {
+    fill: #fff;
     height: 40px;
     width: 40px;
-  }
-
-
-  @media (max-width: 682px)  {
-    height: 50px;
-    svg,
-    path {
-      height: 30px;
-      width: 30px;
-    }
   }
 }
