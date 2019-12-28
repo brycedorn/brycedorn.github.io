@@ -1,14 +1,17 @@
 {
   "name": "bryce.io",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server --config ./webpack.config.js",
-    "build": "NODE_ENV=production webpack -p --config ./webpack.config.js",
+    "build": "rm -rf public/ && NODE_ENV=production webpack -p --config ./webpack.config.js",
+    "postbuild": "react-snap",
     "lint": "npx prettier --write src/**/*.js"
+  },
+  "reactSnap": {
+    "source": "./public"
   },
   "author": {
     "name": "Bryce Dorn",
-    "email": "brycedorn@gmail.com",
     "url": "https://www.bryce.io"
   },
   "repository": {
@@ -36,6 +39,7 @@
     "react-dom": "^16.8.3",
     "react-legos": "^0.0.5",
     "react-pose": "^4.0.7",
+    "react-snap": "^1.23.0",
     "sass": "^1.17.4",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",

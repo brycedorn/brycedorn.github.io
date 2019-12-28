@@ -1,5 +1,55 @@
-// Specific to this application
-const letterPlacements = {
+import flickr from "../img/flickr.svg";
+import github from "../img/github.svg";
+import gitlab from "../img/gitlab.svg";
+import twitter from "../img/twitter.svg";
+import lastfm from "../img/last.fm.svg";
+import devto from "../img/dev.to.svg";
+import spotify from "../img/spotify.svg";
+import bg from "../img/bg.png";
+
+export const images = {
+  flickr,
+  github,
+  gitlab,
+  twitter,
+  lastfm,
+  devto,
+  spotify,
+  bg
+};
+
+export const links = [
+  {
+    url: "https://twitter.com/combatfetus",
+    icon: twitter
+  },
+  {
+    url: "https://dev.to/bryce",
+    icon: devto
+  },
+  {
+    url: "https://gitlab.com/brycedorn",
+    icon: gitlab
+  },
+  {
+    url: "https://github.com/brycedorn",
+    icon: github
+  },
+  {
+    url: "http://www.last.fm/user/BDORN",
+    icon: lastfm
+  },
+  {
+    url: "https://open.spotify.com/user/combatfetus?si=1UVE0T7JR2SsHwfB4W_x8w",
+    icon: spotify
+  },
+  {
+    url: "https://www.flickr.com/photos/_burce",
+    icon: flickr
+  }
+];
+
+export const letterPositions = {
   small: {
     b: {
       top: "96px",
@@ -91,5 +141,3 @@ const letterPlacements = {
     }
   }
 };
-
-export default letterPlacements;
