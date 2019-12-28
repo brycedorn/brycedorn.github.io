@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import Lego, { shapes } from "react-legos";
 import posed, { PoseGroup } from "react-pose";
-
-import letterPlacements from "./letterPlacements";
+import { letterPositions } from "./consts";
 
 const MEDIUM_WIDTH = 682;
 const LARGE_WIDTH = 1240;
@@ -10,33 +9,19 @@ const LARGE_WIDTH = 1240;
 const Thing = posed.div({
   enter: {
     y: 0,
-    // x: 0,
-    // opacity: 1,
+    x: 0,
     transition: {
-      duration: 600,
+      duration: 500,
       ease: "easeInOut"
-      // type: 'spring',
-      // stiffness: 500
     },
-    delay: ({ index }) => index * 400
+    delay: ({ index }) => 700 + index * 150
   },
   exit: {
-    y: -1200,
+    y: -1000,
+    x: 400,
     zIndex: 99
-    // x: -300,
-    // opacity: 1
   }
-  // hoverable: true,
-  // hover: { y: -40, }
 });
-
-const letterColoring = {
-  b: "Bright-blue",
-  r: "Bright-red",
-  y: "Light-grey",
-  c: "Bright-yellow",
-  e: "Dark-green"
-};
 
 const letterOrdering = {
   y: { style: { zIndex: 1 } },
@@ -54,12 +39,40 @@ export default class Legos extends Component {
       step: ""
     };
 
+    this.setBrickSize = this.setBrickSize.bind(this);
+  }
+
+  componentDidMount() {
+    window.addEventListener("resize", this.setBrickSize);
+
+    let letterColoring = {
+      b: "Bright-blue",
+      r: "Bright-red",
+      y: "Light-grey",
+      c: "Bright-yellow",
+      e: "Dark-green"
+    };
+
+    // dark mode
+    if (
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+    ) {
+      letterColoring = {
+        b: "Earth-blue",
+        r: "Dark-red",
+        y: "Rust",
+        c: "Medium-lilac",
+        e: "Earth-green"
+      };
+    }
+
     this.letters =
       window.innerWidth <= MEDIUM_WIDTH
         ? ["b", "r", "y", "c", "e"]
         : ["b", "r", "c", "e", "y"];
 
-    const brickProps = {};
+    const brickProps = [];
     this.letters.forEach(
       l =>
         (brickProps[l] = {
@@ -69,14 +82,8 @@ export default class Legos extends Component {
           shape: shapes.letters[l]
         })
     );
-
     this.brickProps = brickProps;
 
-    this.setBrickSize = this.setBrickSize.bind(this);
-  }
-
-  componentWillMount() {
-    window.addEventListener("resize", this.setBrickSize);
     this.setBrickSize();
   }
 
@@ -97,15 +104,19 @@ export default class Legos extends Component {
     if (shouldUpdate) {
       const newSize = isSmall ? "small" : "medium";
 
-      // Update brick props before rerendering
       this.updateBrickProps(useAlt, newSize);
     }
   }
 
   updateBrickProps(alt, size) {
-    const placement = letterPlacements[size];
+    const placement = letterPositions[size];
     const altPlacement = (alt && placement["alt"]) || {};
     const brickProps = this.brickProps;
+
+    this.letters =
+      window.innerWidth <= MEDIUM_WIDTH
+        ? ["b", "r", "y", "c", "e"]
+        : ["b", "r", "c", "e", "y"];
 
     this.letters.forEach(l => {
       brickProps[l].placement = altPlacement[l] || placement[l];
@@ -127,7 +138,7 @@ export default class Legos extends Component {
           className={`collection collection--${size}${alt ? " mobile" : ""}`}
         >
           <PoseGroup>
-            {this.letters.map((letter, i) => (
+            {this.letters && this.letters.map((letter, i) => (
               <Thing key={letter} index={i} initialPose="exit">
                 <Lego {...brickProps[letter]} />
               </Thing>

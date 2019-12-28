@@ -80,3 +80,27 @@ body {
     width: 40px;
   }
 }
+
+// Dark mode
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #343434;
+  }
+
+  .links {
+    background: #111;
+
+    svg {
+      fill: #aaa;
+    }
+  }
+
+  .background-scaffold {
+    filter: brightness(30%) contrast(150%);
+  }
+
+  .gitlab-corner {
+    background: #111 !important;
+    border-color: #111 !important;
+  }
+}

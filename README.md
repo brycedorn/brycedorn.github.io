@@ -1,6 +1,6 @@
-# [bryce.io](http://www.bryce.io)
+# [bryce.io](https://www.bryce.io)
 
 ```
-$ yarn install
-$ yarn dev
+$ yarn
+$ yarn start
 ```
