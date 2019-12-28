@@ -14,7 +14,7 @@ const Thing = posed.div({
       duration: 500,
       ease: "easeInOut"
     },
-    delay: ({ index }) => 700 + index * 150
+    delay: ({ index }) => 850 + index * 150
   },
   exit: {
     y: -1000,
