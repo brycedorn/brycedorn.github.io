@@ -1,4 +1,4 @@
-image: buildkite/puppeteer
+image: node:latest
 
 cache:
   paths:
@@ -7,7 +7,7 @@ cache:
 pages:
   stage: deploy
   script:
-  - yarn install
+  - yarn
   - yarn build
   artifacts:
     paths:

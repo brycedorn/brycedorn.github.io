@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const { StatsWriterPlugin } = require("webpack-stats-plugin")
 
 const devMode = process.env.NODE_ENV === 'development';
 
@@ -13,6 +14,12 @@ module.exports = {
     path: `${__dirname}/public`,
     publicPath: '/',
     filename: devMode ? 'bundle.js' : '[name].[hash].js',
+  },
+  resolve: {
+    alias: {
+        'react': 'preact/compat',
+        'react-dom': 'preact/compat'
+    }
   },
   optimization: devMode ? {} : {
     minimizer: [new UglifyJsPlugin({
@@ -79,7 +86,14 @@ module.exports = {
       chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new ProgressBarPlugin()
+    new ProgressBarPlugin(),
+    new StatsWriterPlugin({
+      filename: "stats.json",
+      stats: {
+        all: true,
+        assets: true
+      }
+    })
   ],
   devServer: {
     contentBase: './public',

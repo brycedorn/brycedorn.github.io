@@ -11,10 +11,10 @@ const Thing = posed.div({
     y: 0,
     x: 0,
     transition: {
-      duration: 500,
-      ease: "easeInOut"
+      duration: 650,
+      ease: "easeOut"
     },
-    delay: ({ index }) => 850 + index * 150
+    delay: ({ index }) => 500 + index * 250
   },
   exit: {
     y: -1000,
@@ -138,11 +138,12 @@ export default class Legos extends Component {
           className={`collection collection--${size}${alt ? " mobile" : ""}`}
         >
           <PoseGroup>
-            {this.letters && this.letters.map((letter, i) => (
-              <Thing key={letter} index={i} initialPose="exit">
-                <Lego {...brickProps[letter]} />
-              </Thing>
-            ))}
+            {this.letters &&
+              this.letters.map((letter, i) => (
+                <Thing key={letter} index={i} initialPose="exit">
+                  <Lego {...brickProps[letter]} />
+                </Thing>
+              ))}
           </PoseGroup>
         </div>
       </div>
