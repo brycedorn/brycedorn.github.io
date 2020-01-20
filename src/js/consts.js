@@ -1,31 +1,24 @@
-import flickr from "../img/flickr.svg";
-import github from "../img/github.svg";
-import gitlab from "../img/gitlab.svg";
-import twitter from "../img/twitter.svg";
-import lastfm from "../img/last.fm.svg";
-import devto from "../img/dev.to.svg";
-import spotify from "../img/spotify.svg";
-import bg from "../img/bg.png";
-
-export const images = {
-  flickr,
-  github,
-  gitlab,
-  twitter,
-  lastfm,
-  devto,
-  spotify,
-  bg
-};
+import flickr from "../svg/flickr.svg";
+import github from "../svg/github.svg";
+import gitlab from "../svg/gitlab.svg";
+import linkedin from "../svg/linkedin.svg";
+import buymeacoffee from "../svg/buymeacoffee.svg";
+import lastfm from "../svg/last.fm.svg";
+import devto from "../svg/dev.to.svg";
+import spotify from "../svg/spotify.svg";
 
 export const links = [
   {
-    url: "https://twitter.com/combatfetus",
-    icon: twitter
+    url: "https://coffee.bryce.io",
+    icon: buymeacoffee
   },
   {
     url: "https://dev.to/bryce",
     icon: devto
+  },
+  {
+    url: "https://www.linkedin.com/in/brycedorn/",
+    icon: linkedin
   },
   {
     url: "https://gitlab.com/brycedorn",

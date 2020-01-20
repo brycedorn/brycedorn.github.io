@@ -76,10 +76,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'bryce.io',
       description: 'I write code.',
-      image: 'https://www.bryce.io/assets/sauropod.png',
+      image: 'https://www.bryce.io/assets/favicon.png',
       url: 'https://bryce.io',
       template: 'src/index.html',
-      favicon: 'src/img/sauropod.png'
+      favicon: 'src/img/favicon.png'
     }),
     new MiniCssExtractPlugin({
       filename: devMode ? '[name].css' : '[name].[hash].css',
