@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const { StatsWriterPlugin } = require("webpack-stats-plugin")
@@ -22,11 +22,8 @@ module.exports = {
     }
   },
   optimization: devMode ? {} : {
-    minimizer: [new UglifyJsPlugin({
-      cache: true,
-      parallel: true,
-      extractComments: 'all',
-    })],
+    minimizer: [new TerserPlugin()],
+    minimize: true,
     splitChunks: {
       chunks: 'all',
       cacheGroups: {
