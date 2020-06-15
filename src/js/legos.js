@@ -1,32 +1,35 @@
-import React, { Component } from "react";
-import Lego, { shapes } from "react-legos";
+import React, { Component, Fragment } from "react";
+import Lego, { colors } from "react-legos";
+import { letters } from "react-legos/lib/shapes"
 import posed, { PoseGroup } from "react-pose";
 import { letterPositions } from "./consts";
+import bg from "../img/bg.png";
 
 const MEDIUM_WIDTH = 682;
 const LARGE_WIDTH = 1240;
 
 const Thing = posed.div({
   enter: {
+    rotateZ: '0deg',
     y: 0,
     x: 0,
     transition: {
-      duration: 650,
-      ease: "easeOut"
+      duration: 800
     },
-    delay: ({ index }) => 500 + index * 250
+    delay: ({ index }) => 500 + index * 300
   },
   exit: {
-    y: -1000,
-    x: 400,
+    rotateZ: '-40deg',
+    y: -800,
+    x: 300,
     zIndex: 99
   }
 });
 
 const letterOrdering = {
-  y: { style: { zIndex: 1 } },
-  c: { style: { zIndex: 1 } },
-  e: { style: { zIndex: 2 } }
+  y: { zIndex: 1 },
+  c: { zIndex: 1 },
+  e: { zIndex: 2 }
 };
 
 export default class Legos extends Component {
@@ -46,11 +49,11 @@ export default class Legos extends Component {
     window.addEventListener("resize", this.setBrickSize);
 
     let letterColoring = {
-      b: "Bright-blue",
-      r: "Bright-red",
-      y: "Light-grey",
-      c: "Bright-yellow",
-      e: "Dark-green"
+        b: colors["Bright blue"],
+        r: colors["Bright red"],
+        y: colors["Light grey"],
+        c: colors["Bright yellow"],
+        e: colors["Dark green"]
     };
 
     // dark mode
@@ -59,11 +62,11 @@ export default class Legos extends Component {
       window.matchMedia("(prefers-color-scheme: dark)").matches
     ) {
       letterColoring = {
-        b: "Earth-blue",
-        r: "Dark-red",
-        y: "Rust",
-        c: "Medium-lilac",
-        e: "Earth-green"
+        b: colors["Earth blue"],
+        r: colors["Dark red"],
+        y: colors["Rust"],
+        c: colors["Medium lilac"],
+        e: colors["Earth green"]
       };
     }
 
@@ -76,10 +79,11 @@ export default class Legos extends Component {
     this.letters.forEach(
       l =>
         (brickProps[l] = {
-          ...letterOrdering[l],
+          style: letterOrdering[l],
           color: letterColoring[l],
           name: l,
-          shape: shapes.letters[l]
+          shape: letters[l],
+          opacity: 0.8
         })
     );
     this.brickProps = brickProps;
@@ -106,6 +110,8 @@ export default class Legos extends Component {
 
       this.updateBrickProps(useAlt, newSize);
     }
+
+    this.scaffoldRef.style.width = `${window.innerWidth + 40}px`;
   }
 
   updateBrickProps(alt, size) {
@@ -119,7 +125,7 @@ export default class Legos extends Component {
         : ["b", "r", "c", "e", "y"];
 
     this.letters.forEach(l => {
-      brickProps[l].placement = altPlacement[l] || placement[l];
+      brickProps[l].style = { ...brickProps[l].style, ...(altPlacement[l] || placement[l]) };
       brickProps[l].size = size;
     });
 
@@ -133,20 +139,27 @@ export default class Legos extends Component {
     const { brickProps, letters } = this;
 
     return (
-      <div className="container">
-        <div
-          className={`collection collection--${size}${alt ? " mobile" : ""}`}
-        >
-          <PoseGroup>
-            {this.letters &&
-              this.letters.map((letter, i) => (
-                <Thing key={letter} index={i} initialPose="exit">
-                  <Lego {...brickProps[letter]} />
-                </Thing>
-              ))}
-          </PoseGroup>
+      <Fragment>
+        <div className="container" ref={containerRef => this.containerRef = containerRef}>
+          <div
+            className={`collection collection--${size}${alt ? " mobile" : ""}`}
+          >
+            <PoseGroup>
+              {this.letters &&
+                this.letters.map((letter, i) => (
+                  <Thing key={letter} index={i} initialPose="exit">
+                    <Lego {...brickProps[letter]} />
+                  </Thing>
+                ))}
+            </PoseGroup>
+          </div>
         </div>
-      </div>
+        <div
+          className="background-scaffold"
+          ref={scaffoldRef => this.scaffoldRef = scaffoldRef}
+          style={{ backgroundImage: `url(${bg})` }}
+        />
+      </Fragment>
     );
   }
 }

@@ -31,7 +31,7 @@
     "preact-compat": "^3.19.0",
     "prettier": "1.16.4",
     "progress-bar-webpack-plugin": "^1.12.1",
-    "react-legos": "^0.0.5",
+    "react-legos": "^0.1.2",
     "react-pose": "^4.0.7",
     "sass-loader": "^7.1.0",
     "svg-inline-loader": "^0.8.0",

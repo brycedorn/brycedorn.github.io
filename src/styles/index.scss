@@ -13,22 +13,22 @@ body {
   background-position: center;
   background-repeat: repeat;
   height: 100vh;
-  left: 20px;
+  left: -40px;
   overflow: hidden;
   position: absolute;
-  top: -34px;
+  top: -11px;
   width: 100%;
   z-index: -100;
 
   @media (max-width: 1240px) {
     background-size: 44px;
-    left: 10px;
-    top: 0px;
+    left: -10px;
+    top: -3px;
   }
 
   @media (max-width: 682px) {
-    left: -1px;
-    top: -30px;
+    left: 1px;
+    top: -22px;
   }
 }
 
@@ -97,7 +97,7 @@ body {
 // Dark mode
 @media (prefers-color-scheme: dark) {
   body {
-    background: #343434;
+    background: rgb(42,42,42);
   }
 
   .links {
@@ -113,7 +113,7 @@ body {
   }
 
   .background-scaffold {
-    filter: brightness(30%) contrast(150%);
+    filter: brightness(30%) contrast(170%);
   }
 
   .gitlab-corner {

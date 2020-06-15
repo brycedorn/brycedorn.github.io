@@ -3,7 +3,6 @@ import { hydrate, render } from "react-dom";
 import { PoseGroup } from "react-pose";
 import { links } from "./consts";
 import Legos from "./legos";
-import bg from "../img/bg.png";
 
 import "../styles/index.scss";
 
@@ -23,10 +22,6 @@ const App = () => (
       </PoseGroup>
     </div>
     <Legos />
-    <div
-      className="background-scaffold"
-      style={{ backgroundImage: `url(${bg})` }}
-    />
   </div>
 );
 
