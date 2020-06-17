@@ -20,7 +20,7 @@ const Thing = posed.div({
   },
   exit: {
     rotateZ: '-40deg',
-    y: -800,
+    y: -1200,
     x: 300,
     zIndex: 99
   }
