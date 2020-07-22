@@ -2,16 +2,11 @@ import flickr from "../svg/flickr.svg";
 import github from "../svg/github.svg";
 import gitlab from "../svg/gitlab.svg";
 import linkedin from "../svg/linkedin.svg";
-import buymeacoffee from "../svg/buymeacoffee.svg";
 import lastfm from "../svg/last.fm.svg";
 import devto from "../svg/dev.to.svg";
 import spotify from "../svg/spotify.svg";
 
 export const links = [
-  {
-    url: "https://coffee.bryce.io",
-    icon: buymeacoffee
-  },
   {
     url: "https://dev.to/bryce",
     icon: devto
