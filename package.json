@@ -1,9 +1,9 @@
 {
   "name": "bryce.io",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "scripts": {
-    "start": "NODE_ENV=development webpack-dev-server --config ./webpack.config.js",
-    "build": "rm -rf public/ && NODE_ENV=production webpack -p --config ./webpack.config.js",
+    "start": "env NODE_ENV=development parcel src/index.html --out-dir public",
+    "build": "env NODE_ENV=production parcel build src/index.html --out-dir public --detailed-report --no-source-maps",
     "lint": "npx prettier --write src/**/*.js"
   },
   "author": {
@@ -12,33 +12,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/brycedorn/brycedorn.gitlab.io"
+    "url": "https://github.com/brycedorn/brycedorn.github.io"
   },
   "homepage": "https://bryce.io",
   "license": "MIT",
   "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.3.3",
-    "@babel/preset-env": "^7.3.1",
-    "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.0.5",
-    "css-loader": "^2.1.0",
-    "file-loader": "^3.0.1",
-    "html-webpack-plugin": "^3.2.0",
-    "mini-css-extract-plugin": "^0.5.0",
-    "node-sass": "^4.11.0",
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.10",
+    "@babel/preset-react": "^7.12.10",
+    "@svgr/parcel-plugin-svgr": "^5.5.0",
+    "parcel-bundler": "^1.12.4",
     "preact": "^10.1.1",
     "preact-compat": "^3.19.0",
     "prettier": "1.16.4",
-    "progress-bar-webpack-plugin": "^1.12.1",
     "react-legos": "^0.1.2",
     "react-pose": "^4.0.7",
-    "sass-loader": "^7.1.0",
-    "svg-inline-loader": "^0.8.0",
-    "terser-webpack-plugin": "^3.0.5",
-    "webpack": "^4.29.5",
-    "webpack-cli": "^3.2.3",
-    "webpack-dev-server": "^3.2.0",
-    "webpack-stats-plugin": "^0.3.1"
+    "sass": "^1.30.0"
   }
 }

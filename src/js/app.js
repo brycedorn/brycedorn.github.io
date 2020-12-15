@@ -11,13 +11,9 @@ const App = () => (
     <div className="links">
       <PoseGroup>
         {links.map(link => (
-          <a
-            className="link"
-            dangerouslySetInnerHTML={{ __html: link.icon }}
-            href={link.url}
-            key={link.url}
-            target="_blank"
-          />
+          <a className="link" href={link.url} key={link.url} target="_blank">
+            {link.icon()}
+          </a>
         ))}
       </PoseGroup>
     </div>

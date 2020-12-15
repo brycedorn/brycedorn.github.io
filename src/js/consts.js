@@ -1,6 +1,6 @@
 import flickr from "../svg/flickr.svg";
 import github from "../svg/github.svg";
-import gitlab from "../svg/gitlab.svg";
+import keybase from "../svg/keybase.svg";
 import linkedin from "../svg/linkedin.svg";
 import lastfm from "../svg/last.fm.svg";
 import devto from "../svg/dev.to.svg";
@@ -12,12 +12,12 @@ export const links = [
     icon: devto
   },
   {
-    url: "https://www.linkedin.com/in/brycedorn/",
-    icon: linkedin
+    url: "https://keybase.io/burce",
+    icon: keybase
   },
   {
-    url: "https://gitlab.com/brycedorn",
-    icon: gitlab
+    url: "https://www.linkedin.com/in/brycedorn/",
+    icon: linkedin
   },
   {
     url: "https://github.com/brycedorn",

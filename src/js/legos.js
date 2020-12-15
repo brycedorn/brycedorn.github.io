@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import Lego, { colors } from "react-legos";
-import { letters } from "react-legos/lib/shapes"
+import { letters } from "react-legos/lib/shapes";
 import posed, { PoseGroup } from "react-pose";
 import { letterPositions } from "./consts";
 import bg from "../img/bg.png";
@@ -8,9 +8,37 @@ import bg from "../img/bg.png";
 const MEDIUM_WIDTH = 682;
 const LARGE_WIDTH = 1240;
 
+// Durstenfeld
+function shuffleArray(a) {
+  for (let i = a.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      let temp = a[i];
+      a[i] = a[j];
+      a[j] = temp;
+  }
+
+  return a;
+}
+
+const lightColorOptions = shuffleArray([
+  "Bright blue",
+  "Bright red",
+  "Light grey",
+  "Bright yellow",
+  "Dark green",
+]);
+
+const darkColorOptions = shuffleArray([
+  "Earth blue",
+  "Dark red",
+  "Rust",
+  "Medium lilac",
+  "Earth green",
+]);
+
 const Thing = posed.div({
   enter: {
-    rotateZ: '0deg',
+    rotateZ: "0deg",
     y: 0,
     x: 0,
     transition: {
@@ -19,7 +47,7 @@ const Thing = posed.div({
     delay: ({ index }) => 500 + index * 300
   },
   exit: {
-    rotateZ: '-40deg',
+    rotateZ: "-40deg",
     y: -1200,
     x: 300,
     zIndex: 99
@@ -49,11 +77,11 @@ export default class Legos extends Component {
     window.addEventListener("resize", this.setBrickSize);
 
     let letterColoring = {
-        b: colors["Bright blue"],
-        r: colors["Bright red"],
-        y: colors["Light grey"],
-        c: colors["Bright yellow"],
-        e: colors["Dark green"]
+      b: colors[lightColorOptions[0]],
+      r: colors[lightColorOptions[1]],
+      y: colors[lightColorOptions[2]],
+      c: colors[lightColorOptions[3]],
+      e: colors[lightColorOptions[4]]
     };
 
     // dark mode
@@ -62,11 +90,11 @@ export default class Legos extends Component {
       window.matchMedia("(prefers-color-scheme: dark)").matches
     ) {
       letterColoring = {
-        b: colors["Earth blue"],
-        r: colors["Dark red"],
-        y: colors["Rust"],
-        c: colors["Medium lilac"],
-        e: colors["Earth green"]
+        b: colors[darkColorOptions[0]],
+        r: colors[darkColorOptions[1]],
+        y: colors[darkColorOptions[2]],
+        c: colors[darkColorOptions[3]],
+        e: colors[darkColorOptions[4]]
       };
     }
 
@@ -82,8 +110,7 @@ export default class Legos extends Component {
           style: letterOrdering[l],
           color: letterColoring[l],
           name: l,
-          shape: letters[l],
-          opacity: 0.8
+          shape: letters[l]
         })
     );
     this.brickProps = brickProps;
@@ -125,7 +152,10 @@ export default class Legos extends Component {
         : ["b", "r", "c", "e", "y"];
 
     this.letters.forEach(l => {
-      brickProps[l].style = { ...brickProps[l].style, ...(altPlacement[l] || placement[l]) };
+      brickProps[l].style = {
+        ...brickProps[l].style,
+        ...(altPlacement[l] || placement[l])
+      };
       brickProps[l].size = size;
     });
 
@@ -140,7 +170,10 @@ export default class Legos extends Component {
 
     return (
       <Fragment>
-        <div className="container" ref={containerRef => this.containerRef = containerRef}>
+        <div
+          className="container"
+          ref={containerRef => (this.containerRef = containerRef)}
+        >
           <div
             className={`collection collection--${size}${alt ? " mobile" : ""}`}
           >
@@ -156,7 +189,7 @@ export default class Legos extends Component {
         </div>
         <div
           className="background-scaffold"
-          ref={scaffoldRef => this.scaffoldRef = scaffoldRef}
+          ref={scaffoldRef => (this.scaffoldRef = scaffoldRef)}
           style={{ backgroundImage: `url(${bg})` }}
         />
       </Fragment>
