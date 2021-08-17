@@ -1,9 +1,9 @@
 {
   "name": "bryce.io",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "scripts": {
-    "start": "env NODE_ENV=development parcel src/index.html --out-dir public",
-    "build": "env NODE_ENV=production parcel build src/index.html --out-dir public --detailed-report --no-source-maps",
+    "start": "env NODE_ENV=development parcel src/index.html --dist-dir public",
+    "build": "env NODE_ENV=production parcel build src/index.html --dist-dir public --detailed-report --no-source-maps",
     "lint": "npx prettier --write src/**/*.js"
   },
   "author": {
@@ -14,17 +14,24 @@
     "type": "git",
     "url": "https://github.com/brycedorn/brycedorn.github.io"
   },
+  "alias": {
+    "react": "preact/compat",
+    "react-dom": "preact/compat"
+  },
   "homepage": "https://bryce.io",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.10",
     "@babel/preset-react": "^7.12.10",
+    "@parcel/transformer-sass": "^2.0.0-rc.0",
     "@svgr/parcel-plugin-svgr": "^5.5.0",
-    "parcel-bundler": "^1.12.4",
+    "babel-plugin-transform-imports": "^2.0.0",
+    "parcel": "^2.0.0-rc.0",
     "preact": "^10.1.1",
     "preact-compat": "^3.19.0",
     "prettier": "1.16.4",
+    "react-inlinesvg": "^2.3.0",
     "react-legos": "^0.1.2",
     "react-pose": "^4.0.7",
     "sass": "^1.30.0"

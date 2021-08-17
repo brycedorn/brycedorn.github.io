@@ -4,6 +4,7 @@ import { letters } from "react-legos/lib/shapes";
 import posed, { PoseGroup } from "react-pose";
 import { letterPositions } from "./consts";
 import bg from "../img/bg.png";
+import darkBg from "../img/bg-dark.png";
 
 const MEDIUM_WIDTH = 682;
 const LARGE_WIDTH = 1240;
@@ -166,7 +167,6 @@ export default class Legos extends Component {
 
   render() {
     const { alt, size } = this.state;
-    const { brickProps, letters } = this;
 
     return (
       <Fragment>
@@ -181,7 +181,7 @@ export default class Legos extends Component {
               {this.letters &&
                 this.letters.map((letter, i) => (
                   <Thing key={letter} index={i} initialPose="exit">
-                    <Lego {...brickProps[letter]} />
+                    <Lego {...this.brickProps[letter]} />
                   </Thing>
                 ))}
             </PoseGroup>
@@ -190,7 +190,7 @@ export default class Legos extends Component {
         <div
           className="background-scaffold"
           ref={scaffoldRef => (this.scaffoldRef = scaffoldRef)}
-          style={{ backgroundImage: `url(${bg})` }}
+          style={{ backgroundImage: `url(${this.props.isDarkMode ? darkBg : bg})` }}
         />
       </Fragment>
     );
