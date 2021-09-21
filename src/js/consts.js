@@ -1,4 +1,4 @@
-import flickr from "../svg/flickr.svg";
+import instagram from "../svg/instagram.svg";
 import github from "../svg/github.svg";
 import keybase from "../svg/keybase.svg";
 import linkedin from "../svg/linkedin.svg";
@@ -16,7 +16,7 @@ export const links = [
     icon: keybase
   },
   {
-    url: "https://www.linkedin.com/in/brycedorn/",
+    url: "https://www.linkedin.com/in/brycedorn",
     icon: linkedin
   },
   {
@@ -32,8 +32,8 @@ export const links = [
     icon: spotify
   },
   {
-    url: "https://www.flickr.com/photos/_burce",
-    icon: flickr
+    url: "https://www.instagram.com/buuurce",
+    icon: instagram
   }
 ];
 
