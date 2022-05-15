@@ -1,9 +1,8 @@
 import React from 'react';
-import { m } from "framer-motion";
 
 import sizeOffsets from './sizes';
-import { variants } from '../consts';
 import { getChunkDelay, darken, lighten } from "./utils";
+import { useState, useEffect } from "react";
 
 const Lego = ({
   color, shape, size, style, optimize, index
@@ -11,11 +10,12 @@ const Lego = ({
   function renderUnitsForShape(shape, size) {
     let unitNum = 0;
     const numUnits = shape.length * shape[0].length;
-    const speed = 40;
     const delayBetweenChunks = index === 4 ? 10 : 20;
     
     return shape.map((row, y) => {
       return row.map((hasUnit, x) => {
+        const [state, setState] = useState("up");
+
         if (hasUnit) {
           unitNum += 1;
 
@@ -33,18 +33,12 @@ const Lego = ({
             getChunkDelay(index, x, y) * delayBetweenChunks +
             index * delayBetweenChunks/2 + index * 3;
           
+          useEffect(() => {
+            setTimeout(() => setState(""), delay * 20);
+          }, []);
+
           return (
-            <m.div
-              initial="hidden"
-              animate="visible"
-              variants={variants}
-              transition={{
-                delay: delay / speed,
-                times: [0, 0.1, 0.9, 1],
-              }}
-              className="unit"
-              style={style}
-            >
+            <div className={`unit ${state}`} style={style}>
               {(optimize ? renderRight : true) && (
                 <div className="side side--1" />
               )}
@@ -57,7 +51,7 @@ const Lego = ({
               <div className="stud">
                 <div className="stud--inner" />
               </div>
-            </m.div>
+            </div>
           );
         }
       });

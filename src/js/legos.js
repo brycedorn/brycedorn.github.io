@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Fragment } from "react";
 import Lego from "./react-lego-lib";
 import { letters as letterShapes } from "./react-lego-lib/shapes";
-import { LazyMotion, domAnimation } from "framer-motion";
 
 import {
   letterOrdering,
@@ -77,14 +76,14 @@ const Legos = () => {
   }
 
   return (
-    <LazyMotion features={domAnimation} strict>
+    <Fragment>
       <div className="container">
         <div className={`collection collection--${size}`}>
           {brickProps.map((bp, i) => <Lego key={bp.letter} {...brickProps[i]} />)}
         </div>
       </div>
       <div className="background-scaffold" />
-    </LazyMotion>
+    </Fragment>
   );
 }
 

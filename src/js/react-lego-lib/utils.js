@@ -49,7 +49,7 @@ export function getChunkDelay(index, x, y) {
   if (index === 3) {
     if (y < 2) {
       return 1;
-    } else if (x > 2) {
+    } else if (x > 1) {
       return 2;
     } else {
       return 3;

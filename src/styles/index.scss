@@ -132,6 +132,7 @@ body {
 .unit {
   height: 60px;
   width: 44px;
+  transition: transform 300ms;
 }
 
 .side--1 {
@@ -287,4 +288,8 @@ body {
   .background-scaffold {
     background-image: url("../img/bg-dark.png");
   }
+}
+
+.up {
+  transform: translateY(-900px);
 }

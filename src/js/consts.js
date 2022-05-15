@@ -11,19 +11,6 @@ import spotify from "../svg/spotify.svg";
 export const MEDIUM_WIDTH = 682;
 export const LARGE_WIDTH = 1240;
 
-export const variants = {
-  visible: {
-    rotateZ: "0deg",
-    y: 0,
-    x: 0,
-  },
-  hidden: {
-    rotateZ: "10deg",
-    y: -1000,
-    x: -100,
-  },
-};
-
 function shuffleArray(a) {
   for (let i = a.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1));
