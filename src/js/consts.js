@@ -1,4 +1,4 @@
-import { colors } from "react-legos";
+import { colors } from "./react-lego-lib";
 
 import instagram from "../svg/instagram.svg";
 import github from "../svg/github.svg";

@@ -1,3 +1,17 @@
+import tinycolor from "tinycolor2";
+
+export function lighten(amount, color) {
+  return tinycolor(color)
+    .lighten(amount * 100)
+    .toString();
+}
+
+export function darken(amount, color) {
+  return tinycolor(color)
+    .darken(amount * 100)
+    .toString();
+}
+
 export function getChunkDelay(index, x, y) {
   // b
   if (index === 0) {
@@ -20,7 +34,7 @@ export function getChunkDelay(index, x, y) {
     } else if (y < 2) {
       return 2;
     } else {
-      return 3
+      return 3;
     }
   }
   // y

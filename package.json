@@ -1,18 +1,14 @@
 {
   "name": "bryce.io",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "scripts": {
     "start": "env NODE_ENV=development parcel src/index.html",
-    "build": "rm -rf dist && env NODE_ENV=production parcel build src/index.html --detailed-report --no-source-maps",
+    "build": "rm -rf dist && env NODE_ENV=production parcel build src/index.html --detailed-report --no-source-maps --no-content-hash",
     "lint": "eslint . --ext .js --fix",
     "postbuild": "react-snap"
   },
   "reactSnap": {
-    "source": "dist",
-    "minifyHtml": {
-      "collapseWhitespace": true,
-      "removeComments": true
-    }
+    "source": "dist"
   },
   "author": {
     "name": "Bryce Dorn",
@@ -38,14 +34,15 @@
     "eslint": "^8.15.0",
     "eslint-plugin-react": "^7.29.4",
     "parcel": "^2.5.0",
-    "preact": "^10.1.1",
-    "preact-compat": "^3.19.0",
-    "react-snap": "^1.23.0",
-    "sass": "^1.30.0"
+    "react-snap": "^1.23.0"
   },
   "dependencies": {
     "framer-motion": "^6.3.3",
+    "preact": "^10.7.2",
     "process": "^0.11.10",
-    "react-helmet": "^6.1.0"
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "react-helmet": "^6.1.0",
+    "tinycolor2": "^1.4.2"
   }
 }

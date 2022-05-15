@@ -1,7 +1,6 @@
 import React from "react";
 import { hydrate, render } from "react-dom";
 import { Helmet } from "react-helmet";
-import {FontImport} from './react-lego-lib/elements';
 import { links, meta } from "./consts";
 import Legos from "./legos";
 import favicon from '../img/favicon.png';
@@ -34,7 +33,6 @@ const App = () => (
       <meta property="og:site_name" content={meta.title} />
     </Helmet>
     <Legos />
-    <FontImport />
     <div className="links">
       {links.map((link) => (
         <a className="link" href={link.url} key={link.url} target="_blank" rel="noreferrer">

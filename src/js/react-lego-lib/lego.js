@@ -3,9 +3,8 @@ import { m } from "framer-motion";
 import PropTypes from 'prop-types';
 
 import sizeOffsets from './sizes';
-import { Brick, Stud, StudInner } from './elements';
 import { variants } from '../consts';
-import { getChunkDelay } from './utils';
+import { getChunkDelay, darken, lighten } from "./utils";
 
 const Lego = ({
   color, shape, size, style, optimize, index
@@ -57,9 +56,9 @@ const Lego = ({
               <div className="side--3-wrap">
                 <div className="side side--3" />
               </div>
-              <Stud className="stud" color={color}>
-                <StudInner className="stud--inner" />
-              </Stud>
+              <div className="stud">
+                <div className="stud--inner" />
+              </div>
             </m.div>
           );
         }
@@ -67,10 +66,18 @@ const Lego = ({
     });
   }
 
+  const cssVars = {
+    '--color-0': color,
+    '--color-1': darken(0.08, color),
+    '--color-2': lighten(0.08, color),
+    '--color-3': lighten(0.16, color),
+    '--color-4': lighten(0.04, color)
+  };
+
   return (
-    <Brick size={size} color={color} style={style}>
+    <div size={size} color={color} style={{ ...style, ...cssVars }} className="brick">
       {renderUnitsForShape(shape, size)}
-    </Brick>
+    </div>
   );
 };
 
