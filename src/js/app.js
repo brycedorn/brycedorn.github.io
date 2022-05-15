@@ -11,7 +11,7 @@ const App = () => (
   <>
     <Helmet>
       <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, minimum-scale=1" />
       <link rel="canonical" href={meta.url} />
       <link rel="icon" type="image/png" href={favicon} />
       <title>{meta.title}</title>
@@ -35,8 +35,8 @@ const App = () => (
     <Legos />
     <div className="links">
       {links.map((link) => (
-        <a className="link" href={link.url} key={link.url} target="_blank" rel="noreferrer">
-          <img src={link.icon} width={40} height={40} />
+        <a className="link" href={link.url} key={link.url} target="_blank" rel="noreferrer" aria-label={link.title}>
+          <img src={link.icon} width={40} height={40} alt={`${link.title} logo`} />
         </a>
       ))}
     </div>
