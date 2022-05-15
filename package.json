@@ -3,7 +3,7 @@
   "version": "1.0.4",
   "scripts": {
     "start": "env NODE_ENV=development parcel src/index.html",
-    "build": "rm -rf dist && env NODE_ENV=production parcel build src/index.html --detailed-report --no-source-maps --no-content-hash",
+    "build": "rm -rf dist && env NODE_ENV=production parcel build src/index.html --detailed-report --no-source-maps --no-content-hash --public-url https://bryce.io",
     "lint": "eslint . --ext .js --fix",
     "postbuild": "react-snap"
   },
