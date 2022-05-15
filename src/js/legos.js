@@ -1,198 +1,106 @@
-import React, { Component, Fragment } from "react";
-import Lego, { colors } from "react-legos";
-import { letters } from "react-legos/lib/shapes";
-import posed, { PoseGroup } from "react-pose";
-import { letterPositions } from "./consts";
-import bg from "../img/bg.png";
-import darkBg from "../img/bg-dark.png";
+import React, { useEffect, useState } from "react";
+import Lego from "react-legos";
+import { letters as letterShapes } from "react-legos/lib/shapes";
+import { m } from "framer-motion";
+import { LazyMotion, domAnimation } from "framer-motion";
 
-const MEDIUM_WIDTH = 682;
-const LARGE_WIDTH = 1240;
+import {
+  letterOrdering,
+  letterPositions,
+  lightLetterColoring, 
+  darkLetterColoring,
+  variants,
+  MEDIUM_WIDTH,
+  LARGE_WIDTH
+} from "./consts";
 
-// Durstenfeld
-function shuffleArray(a) {
-  for (let i = a.length - 1; i > 0; i--) {
-      let j = Math.floor(Math.random() * (i + 1));
-      let temp = a[i];
-      a[i] = a[j];
-      a[j] = temp;
-  }
+const inOrderLetters = ["b", "r", "y", "c", "e"];
+const inHierarchyLetters = ["b", "r", "c", "e", "y"];
 
-  return a;
-}
+const Legos = () => {
+  const [size, setSize] = useState("");
+  const [brickProps, setBrickProps] = useState([]);
 
-const lightColorOptions = shuffleArray([
-  "Bright blue",
-  "Bright red",
-  "Light grey",
-  "Bright yellow",
-  "Dark green",
-]);
+  useEffect(() => {
+    window.addEventListener("resize", updateSize);
+    updateSize();
+  }, []);
 
-const darkColorOptions = shuffleArray([
-  "Earth blue",
-  "Dark red",
-  "Rust",
-  "Medium lilac",
-  "Earth green",
-]);
+  useEffect(() => {
+    updateBrickProps()
+  }, [size]);
 
-const Thing = posed.div({
-  enter: {
-    rotateZ: "0deg",
-    y: 0,
-    x: 0,
-    transition: {
-      duration: 800
-    },
-    delay: ({ index }) => 500 + index * 300
-  },
-  exit: {
-    rotateZ: "-40deg",
-    y: -1200,
-    x: 300,
-    zIndex: 99
-  }
-});
-
-const letterOrdering = {
-  y: { zIndex: 1 },
-  c: { zIndex: 1 },
-  e: { zIndex: 2 }
-};
-
-export default class Legos extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      alt: false,
-      size: "",
-      step: ""
-    };
-
-    this.setBrickSize = this.setBrickSize.bind(this);
-  }
-
-  componentDidMount() {
-    window.addEventListener("resize", this.setBrickSize);
-
-    let letterColoring = {
-      b: colors[lightColorOptions[0]],
-      r: colors[lightColorOptions[1]],
-      y: colors[lightColorOptions[2]],
-      c: colors[lightColorOptions[3]],
-      e: colors[lightColorOptions[4]]
-    };
-
-    // dark mode
-    if (
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches
-    ) {
-      letterColoring = {
-        b: colors[darkColorOptions[0]],
-        r: colors[darkColorOptions[1]],
-        y: colors[darkColorOptions[2]],
-        c: colors[darkColorOptions[3]],
-        e: colors[darkColorOptions[4]]
-      };
-    }
-
-    this.letters =
-      window.innerWidth <= MEDIUM_WIDTH
-        ? ["b", "r", "y", "c", "e"]
-        : ["b", "r", "c", "e", "y"];
-
-    const brickProps = [];
-    this.letters.forEach(
-      l =>
-        (brickProps[l] = {
-          style: letterOrdering[l],
-          color: letterColoring[l],
-          name: l,
-          shape: letters[l]
-        })
-    );
-    this.brickProps = brickProps;
-
-    this.setBrickSize();
-  }
-
-  setBrickSize() {
+  function updateSize() {
     const { innerWidth } = window;
-    const { alt, size } = this.state;
 
-    const useAlt = innerWidth <= MEDIUM_WIDTH;
-    const isSmall = innerWidth <= LARGE_WIDTH;
-    const shouldUpdateAlt = (useAlt && !alt) || (!useAlt && alt);
-    const isMedium = !isSmall;
-    const shouldUpdateSize =
-      size === "" ||
-      (isSmall && size !== "small") ||
-      (isMedium && size !== "medium");
-    const shouldUpdate = shouldUpdateAlt || shouldUpdateSize;
-
-    if (shouldUpdate) {
-      const newSize = isSmall ? "small" : "medium";
-
-      this.updateBrickProps(useAlt, newSize);
+    let newSize = "medium";
+    if (innerWidth <= MEDIUM_WIDTH) {
+      newSize = "tiny";
+    } else if (innerWidth <= LARGE_WIDTH) {
+      newSize = "small";
     }
 
-    this.scaffoldRef.style.width = `${window.innerWidth + 40}px`;
+    if (newSize !== size) {
+      setSize(newSize);
+    }
   }
 
-  updateBrickProps(alt, size) {
+  function updateBrickProps() {
+    if (!size){
+      return;
+    }
+
+    let letterColoring = lightLetterColoring;
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      letterColoring = darkLetterColoring;
+    }
+
+    const letters =
+      window.innerWidth <= MEDIUM_WIDTH ? inOrderLetters : inHierarchyLetters;
+
     const placement = letterPositions[size];
-    const altPlacement = (alt && placement["alt"]) || {};
-    const brickProps = this.brickProps;
 
-    this.letters =
-      window.innerWidth <= MEDIUM_WIDTH
-        ? ["b", "r", "y", "c", "e"]
-        : ["b", "r", "c", "e", "y"];
+    const newBrickProps = letters.map((l) => ({
+      letter: l,
+      style: {
+        ...letterOrdering[l],
+        ...placement[l],
+      },
+      color: letterColoring[l],
+      name: l,
+      shape: letterShapes[l],
+      delay: inOrderLetters.indexOf(l) / inOrderLetters.length,
+      size: size === 'tiny' ? 'small' : size,
+    }));
 
-    this.letters.forEach(l => {
-      brickProps[l].style = {
-        ...brickProps[l].style,
-        ...(altPlacement[l] || placement[l])
-      };
-      brickProps[l].size = size;
-    });
-
-    this.brickProps = brickProps;
-
-    this.setState({ alt, size });
+    setBrickProps(newBrickProps);
   }
 
-  render() {
-    const { alt, size } = this.state;
-
-    return (
-      <Fragment>
-        <div
-          className="container"
-          ref={containerRef => (this.containerRef = containerRef)}
-        >
-          <div
-            className={`collection collection--${size}${alt ? " mobile" : ""}`}
-          >
-            <PoseGroup>
-              {this.letters &&
-                this.letters.map((letter, i) => (
-                  <Thing key={letter} index={i} initialPose="exit">
-                    <Lego {...this.brickProps[letter]} />
-                  </Thing>
-                ))}
-            </PoseGroup>
-          </div>
+  return (
+    <LazyMotion features={domAnimation}>
+      <div className="container">
+        <div className={`collection collection--${size}`}>
+          {brickProps.map((bp, i) => (
+            <m.div
+              key={bp.letter}
+              index={i}
+              initial="hidden"
+              animate="visible"
+              variants={variants}
+              transition={{
+                delay: bp.delay,
+                times: [0, 0.1, 0, 5, 0.9, 1],
+                duration: 0.6,
+              }}
+            >
+              <Lego {...brickProps[i]} />
+            </m.div>
+          ))}
         </div>
-        <div
-          className="background-scaffold"
-          ref={scaffoldRef => (this.scaffoldRef = scaffoldRef)}
-          style={{ backgroundImage: `url(${this.props.isDarkMode ? darkBg : bg})` }}
-        />
-      </Fragment>
-    );
-  }
+      </div>
+      <div className="background-scaffold" />
+    </LazyMotion>
+  );
 }
+
+export default Legos;

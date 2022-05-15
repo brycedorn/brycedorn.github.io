@@ -10,25 +10,25 @@ body {
 }
 
 .background-scaffold {
+  background-image: url("../img/bg.png");
   background-position: center;
   background-repeat: repeat;
   height: 100vh;
   left: -40px;
   overflow: hidden;
   position: absolute;
-  top: -11px;
-  width: 100%;
+  top: -2px;
+  width: calc(100% + 40px);
   z-index: -100;
 
   @media (max-width: 1240px) {
     background-size: 44px;
-    left: -10px;
-    top: -3px;
+    left: -9px;
   }
 
   @media (max-width: 682px) {
-    left: 1px;
-    top: -22px;
+    left: 2px;
+    top: 0;
   }
 }
 
@@ -43,18 +43,18 @@ body {
 }
 
 .collection {
-  &--small {
-    height: 376px;
-    width: 682px;
+  &--tiny {
+    height: 540px;
+    width: 396px;
+  }
 
-    &.mobile {
-      height: 576px;
-      width: 396px;
-    }
+  &--small {
+    height: 382px;
+    width: 682px;
   }
 
   &--medium {
-    height: 660px;
+    height: 650px;
     width: 1240px;
   }
 }
@@ -96,11 +96,10 @@ body {
   }
 
   .links {
-    background: #111;
+    background: #222;
   }
 
-  .gitlab-corner {
-    background: #111 !important;
-    border-color: #111 !important;
+  .background-scaffold {
+    background-image: url("../img/bg-dark.png");
   }
 }
