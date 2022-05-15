@@ -18,10 +18,9 @@ export const variants = {
     x: 0,
   },
   hidden: {
-    rotateZ: "-50deg",
+    rotateZ: "10deg",
     y: -1000,
-    x: 300,
-    zIndex: 99,
+    x: -100,
   },
 };
 
@@ -113,6 +112,8 @@ export const links = [
 ];
 
 export const letterOrdering = {
+  b: { zIndex: 0 },
+  r: { zIndex: 0 },
   y: { zIndex: 1 },
   c: { zIndex: 1 },
   e: { zIndex: 2 },

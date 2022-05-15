@@ -40,14 +40,12 @@
     "parcel": "^2.5.0",
     "preact": "^10.1.1",
     "preact-compat": "^3.19.0",
-    "react-legos": "^0.1.4",
     "react-snap": "^1.23.0",
     "sass": "^1.30.0"
   },
   "dependencies": {
     "framer-motion": "^6.3.3",
     "process": "^0.11.10",
-    "react-helmet": "^6.1.0",
-    "react-inlinesvg": "^3.0.0"
+    "react-helmet": "^6.1.0"
   }
 }

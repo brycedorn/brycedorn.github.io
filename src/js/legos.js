@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Lego from "react-legos";
+import Lego from "./react-lego-lib";
 import { letters as letterShapes } from "react-legos/lib/shapes";
-import { m } from "framer-motion";
 import { LazyMotion, domAnimation } from "framer-motion";
 
 import {
@@ -9,7 +8,6 @@ import {
   letterPositions,
   lightLetterColoring, 
   darkLetterColoring,
-  variants,
   MEDIUM_WIDTH,
   LARGE_WIDTH
 } from "./consts";
@@ -70,7 +68,9 @@ const Legos = () => {
       name: l,
       shape: letterShapes[l],
       delay: inOrderLetters.indexOf(l) / inOrderLetters.length,
+      index: inOrderLetters.indexOf(l),
       size: size === 'tiny' ? 'small' : size,
+      optimize: true
     }));
 
     setBrickProps(newBrickProps);
@@ -80,22 +80,7 @@ const Legos = () => {
     <LazyMotion features={domAnimation}>
       <div className="container">
         <div className={`collection collection--${size}`}>
-          {brickProps.map((bp, i) => (
-            <m.div
-              key={bp.letter}
-              index={i}
-              initial="hidden"
-              animate="visible"
-              variants={variants}
-              transition={{
-                delay: bp.delay,
-                times: [0, 0.1, 0, 5, 0.9, 1],
-                duration: 0.6,
-              }}
-            >
-              <Lego {...brickProps[i]} />
-            </m.div>
-          ))}
+          {brickProps.map((bp, i) => <Lego key={bp.letter} {...brickProps[i]} />)}
         </div>
       </div>
       <div className="background-scaffold" />
