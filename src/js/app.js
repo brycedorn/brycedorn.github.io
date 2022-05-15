@@ -1,15 +1,13 @@
 import React from "react";
 import { hydrate, render } from "react-dom";
-import { Helmet } from "react-helmet";
+import MetaTags from "react-meta-tags";
 import { links, meta } from "./consts";
 import Legos from "./legos";
 import favicon from '../img/favicon.png';
 
-import "../styles/index.scss";
-
 const App = () => (
   <>
-    <Helmet>
+    <MetaTags>
       <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, minimum-scale=1" />
       <link rel="canonical" href={meta.url} />
@@ -31,7 +29,7 @@ const App = () => (
       <meta property="og:image" content={favicon} />
       <meta property="og:description" content={meta.desc} />
       <meta property="og:site_name" content={meta.title} />
-    </Helmet>
+    </MetaTags>
     <Legos />
     <div className="links">
       {links.map((link) => (

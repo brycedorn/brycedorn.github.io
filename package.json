@@ -37,12 +37,12 @@
     "react-snap": "^1.23.0"
   },
   "dependencies": {
+    "@ctrl/tinycolor": "^3.4.1",
     "framer-motion": "^6.3.3",
     "preact": "^10.7.2",
     "process": "^0.11.10",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
-    "react-helmet": "^6.1.0",
-    "tinycolor2": "^1.4.2"
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0",
+    "react-meta-tags": "^1.0.1"
   }
 }

@@ -1,6 +1,5 @@
 import React from 'react';
 import { m } from "framer-motion";
-import PropTypes from 'prop-types';
 
 import sizeOffsets from './sizes';
 import { variants } from '../consts';
@@ -41,10 +40,9 @@ const Lego = ({
               variants={variants}
               transition={{
                 delay: delay / speed,
-                times: [0, 0.1, 0, 5, 0.9, 1],
+                times: [0, 0.1, 0.9, 1],
               }}
               className="unit"
-              id={`${x}:${y}`}
               style={style}
             >
               {(optimize ? renderRight : true) && (
@@ -79,21 +77,6 @@ const Lego = ({
       {renderUnitsForShape(shape, size)}
     </div>
   );
-};
-
-Lego.defaultProps = {
-  size: Object.keys(sizeOffsets)[1],
-  color: '#eee',
-  style: {},
-  optimize: true
-};
-
-Lego.propTypes = {
-  size: PropTypes.oneOf(Object.keys(sizeOffsets)),
-  color: PropTypes.string,
-  shape: PropTypes.array.isRequired,
-  style: PropTypes.object,
-  optimize: PropTypes.bool
 };
 
 export default Lego;
