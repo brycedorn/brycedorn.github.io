@@ -38,7 +38,6 @@
   },
   "dependencies": {
     "@ctrl/tinycolor": "^3.4.1",
-    "framer-motion": "^6.3.3",
     "preact": "^10.7.2",
     "process": "^0.11.10",
     "react": "^16.6.0",
