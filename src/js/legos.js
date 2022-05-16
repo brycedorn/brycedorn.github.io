@@ -1,6 +1,6 @@
 import React, { useEffect, useState, createContext } from "react";
 import Lego from "./react-lego-lib/lego";
-import { letters as letterShapes } from "./react-lego-lib/shapes";
+import { letters as letterShapes } from "./react-lego-lib/consts";
 
 import {
   letterOrdering,

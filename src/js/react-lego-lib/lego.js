@@ -1,16 +1,19 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import useDraggable from "use-draggable-hook";
 
-import { GlobalZIndex } from '../legos';
-import sizeOffsets from './sizes';
+import { sizeOffsets } from './consts';
 import { getChunkDelay, darken } from "./utils";
-import { useState, useEffect } from "react";
-import { useDraggable } from './hooks';
+import { GlobalZIndex } from '../legos';
 
 const Lego = ({
   color, shape, size, style, optimize, index
 }) => {
-  const zIndexState = useContext(GlobalZIndex);
-  const draggable = useDraggable(zIndexState);
+  const [zIndex, setZIndex] = useContext(GlobalZIndex);
+  function inc(target) {
+    setZIndex(prevZIndex => prevZIndex + 1);
+    target.current.style.zIndex = zIndex;
+  }
+  const { target } = useDraggable({ onStart: inc });
 
   function renderUnitsForShape(shape, size) {
     let unitNum = 0;
@@ -72,7 +75,7 @@ const Lego = ({
   };
 
   return (
-    <div className="brick" size={size} color={color} style={{ ...style, ...cssVars, ...draggable.styles }} {...draggable.props}>
+    <div className="brick" size={size} color={color} style={{ ...style, ...cssVars }} ref={target}>
       {renderUnitsForShape(shape, size)}
     </div>
   );
