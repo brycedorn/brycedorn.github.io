@@ -1,11 +1,7 @@
 import { TinyColor } from "@ctrl/tinycolor";
 
-export function lighten(amount, color) {
-  return new TinyColor(color).lighten(amount * 100).toString();
-}
-
-export function darken(amount, color) {
-  return new TinyColor(color).darken(amount * 100).toString();
+export function darken(color, amount, desaturateAmount = 0) {
+  return new TinyColor(color).darken(amount * 100).desaturate(desaturateAmount * 100).toString();
 }
 
 export function getChunkDelay(index, x, y) {

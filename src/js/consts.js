@@ -1,12 +1,12 @@
-import { colors } from "./react-lego-lib";
+import {darken} from './react-lego-lib/utils';
 
-import instagram from "../svg/instagram.svg";
-import github from "../svg/github.svg";
-import keybase from "../svg/keybase.svg";
-import linkedin from "../svg/linkedin.svg";
-import lastfm from "../svg/last.fm.svg";
-import devto from "../svg/dev.to.svg";
-import spotify from "../svg/spotify.svg";
+import instagram from '../svg/instagram.svg';
+import github from '../svg/github.svg';
+import keybase from '../svg/keybase.svg';
+import linkedin from '../svg/linkedin.svg';
+import lastfm from '../svg/last.fm.svg';
+import devto from '../svg/dev.to.svg';
+import spotify from '../svg/spotify.svg';
 
 export const MEDIUM_WIDTH = 682;
 export const LARGE_WIDTH = 1240;
@@ -22,78 +22,62 @@ function shuffleArray(a) {
   return a;
 }
 
-const lc = shuffleArray([
-  "Bright blue",
-  "Bright red",
-  "Light grey",
-  "Bright yellow",
-  "Dark green",
+export const lc = shuffleArray([
+  darken('#4D96FF', 0.15),
+  darken('#FF6B6B', 0.2),
+  darken('#FFD365', 0.1),
+  '#CCC',
+  darken('#6BCB77', 0.1),
 ]);
 
-const dc = shuffleArray([
-  "Earth blue",
-  "Dark red",
-  "Rust",
-  "Medium lilac",
-  "Earth green",
+export const dc = shuffleArray([
+  darken('#4D96FF', 0.2, 0.3),
+  darken('#FF6B6B', 0.2, 0.4),
+  darken('#FFD365', 0.1, 0.3),
+  darken('#CCC', 0.15, 0.4),
+  darken('#6BCB77', 0.15, 0.1),
 ]);
-
-export const lightLetterColoring = {
-  b: colors[lc[0]],
-  r: colors[lc[1]],
-  y: colors[lc[2]],
-  c: colors[lc[3]],
-  e: colors[lc[4]],
-};
-
-export const darkLetterColoring = {
-  b: colors[dc[0]],
-  r: colors[dc[1]],
-  y: colors[dc[2]],
-  c: colors[dc[3]],
-  e: colors[dc[4]],
-};
 
 export const meta = {
-  desc: "I'm Bryce, I'm from Chicago 🍕 live in Amsterdam 🚲 work at Uber and sometimes write things on dev.to.",
-  title: "bryce.io",
-  url: "https://bryce.io",
+  desc: 'I\'m Bryce, I\'m from Chicago 🍕 live in Amsterdam 🚲 work at Uber and sometimes write things on dev.to.',
+  title: 'bryce.io',
+  url: 'https://bryce.io',
 };
 
 export const links = [
   {
-    url: "https://dev.to/bryce",
-    title: "dev.to",
+    url: 'https://dev.to/bryce',
+    title: 'dev.to',
     icon: devto,
   },
   {
-    url: "https://keybase.io/burce",
-    title: "keybase",
+    url: 'https://keybase.io/burce',
+    title: 'keybase',
     icon: keybase,
   },
   {
-    url: "https://www.linkedin.com/in/brycedorn",
-    title: "linkedin",
+    url: 'https://www.linkedin.com/in/brycedorn',
+    title: 'linkedin',
     icon: linkedin,
   },
   {
-    url: "https://github.com/brycedorn",
-    title: "github",
+    url: 'https://github.com/brycedorn',
+    title: 'github',
     icon: github,
   },
   {
-    url: "http://www.last.fm/user/BDORN",
-    title: "lastfm",
+    url: 'http://www.last.fm/user/BDORN',
+    title: 'lastfm',
     icon: lastfm,
   },
   {
-    url: "https://open.spotify.com/user/combatfetus?si=1UVE0T7JR2SsHwfB4W_x8w",
-    title: "spotify",
+    url: 'https://open.spotify.com/user/combatfetus?si=1UVE0T7JR2SsHwfB4W_x8w',
+    title: 'spotify',
     icon: spotify,
   },
   {
-    url: "https://www.instagram.com/buuurce",
-    title: "instagram",
+    url: 'https://www.instagram.com/buuurce',
+    title: 'instagram',
     icon: instagram,
   },
 ];

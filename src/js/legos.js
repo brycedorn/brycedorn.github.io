@@ -1,12 +1,12 @@
-import React, { useEffect, useState, Fragment } from "react";
-import Lego from "./react-lego-lib";
+import React, { useEffect, useState, createContext } from "react";
+import Lego from "./react-lego-lib/lego";
 import { letters as letterShapes } from "./react-lego-lib/shapes";
 
 import {
   letterOrdering,
   letterPositions,
-  lightLetterColoring, 
-  darkLetterColoring,
+  lc,
+  dc,
   MEDIUM_WIDTH,
   LARGE_WIDTH
 } from "./consts";
@@ -14,18 +14,21 @@ import {
 const inOrderLetters = ["b", "r", "y", "c", "e"];
 const inHierarchyLetters = ["b", "r", "c", "e", "y"];
 
+export const GlobalZIndex = createContext(null);
+
 const Legos = () => {
+  const globalZIndexState = useState(1000);
   const [size, setSize] = useState("");
   const [brickProps, setBrickProps] = useState([]);
 
   useEffect(() => {
     window.addEventListener("resize", updateSize);
     updateSize();
+
+    return () => window.removeEventListener("resize", updateSize);
   }, []);
 
-  useEffect(() => {
-    updateBrickProps()
-  }, [size]);
+  useEffect(updateBrickProps, [size]);
 
   function updateSize() {
     const { innerWidth } = window;
@@ -47,9 +50,9 @@ const Legos = () => {
       return;
     }
 
-    let letterColoring = lightLetterColoring;
+    let letterColoring = lc;
     if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      letterColoring = darkLetterColoring;
+      letterColoring = dc;
     }
 
     const letters =
@@ -57,13 +60,13 @@ const Legos = () => {
 
     const placement = letterPositions[size];
 
-    const newBrickProps = letters.map((l) => ({
+    const newBrickProps = letters.map((l, i) => ({
       letter: l,
       style: {
         ...letterOrdering[l],
         ...placement[l],
       },
-      color: letterColoring[l],
+      color: letterColoring[i],
       name: l,
       shape: letterShapes[l],
       delay: inOrderLetters.indexOf(l) / inOrderLetters.length,
@@ -76,14 +79,14 @@ const Legos = () => {
   }
 
   return (
-    <Fragment>
+    <GlobalZIndex.Provider value={globalZIndexState}>
       <div className="container">
         <div className={`collection collection--${size}`}>
           {brickProps.map((bp, i) => <Lego key={bp.letter} {...brickProps[i]} />)}
         </div>
       </div>
       <div className="background-scaffold" />
-    </Fragment>
+    </GlobalZIndex.Provider>
   );
 }
 

@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
+import { GlobalZIndex } from '../legos';
 import sizeOffsets from './sizes';
-import { getChunkDelay, darken, lighten } from "./utils";
+import { getChunkDelay, darken } from "./utils";
 import { useState, useEffect } from "react";
+import { useDraggable } from './hooks';
 
 const Lego = ({
   color, shape, size, style, optimize, index
 }) => {
+  const zIndexState = useContext(GlobalZIndex);
+  const draggable = useDraggable(zIndexState);
+
   function renderUnitsForShape(shape, size) {
     let unitNum = 0;
     const numUnits = shape.length * shape[0].length;
@@ -59,15 +64,15 @@ const Lego = ({
   }
 
   const cssVars = {
-    '--color-0': color,
-    '--color-1': darken(0.08, color),
-    '--color-2': lighten(0.08, color),
-    '--color-3': lighten(0.16, color),
-    '--color-4': lighten(0.04, color)
+    '--color-0': darken(color, 0.16),
+    '--color-1': darken(color, 0.24),
+    '--color-2': darken(color, 0.08),
+    '--color-3': darken(color, 0),
+    '--color-4': darken(color, 0.12)
   };
 
   return (
-    <div size={size} color={color} style={{ ...style, ...cssVars }} className="brick">
+    <div className="brick" size={size} color={color} style={{ ...style, ...cssVars, ...draggable.styles }} {...draggable.props}>
       {renderUnitsForShape(shape, size)}
     </div>
   );

@@ -19,35 +19,45 @@ body {
 }
 
 .background-scaffold {
-  background-image: url("../img/bg.png");
+  background-image: url("../img/bg-light.png");
   background-position: center;
+  background-size: 80px;
   background-repeat: repeat;
   height: 100vh;
   left: -40px;
   overflow: hidden;
   position: absolute;
-  top: -2px;
+  top: -40px;
   width: calc(100% + 40px);
   z-index: -100;
 
   @media (max-width: 1240px) {
     background-size: 44px;
-    left: -9px;
+    left: -10px;
+    top: -22px;
   }
 
   @media (max-width: 682px) {
-    left: 2px;
-    top: 0;
+    left: 1px;
+    top: -20px;
   }
 }
 
 .container {
   align-items: center;
   display: flex;
-  height: 100vh;
+  height: calc(100vh - 60px);
   justify-content: center;
   overflow: hidden;
-  padding-bottom: 60px;
+  width: 100%;
+}
+
+.container:before {
+  box-shadow: 0 -20px 10px -10px rgba(0, 0, 0, 0.1) inset;
+  content: '';
+  height: 20px;
+  bottom: 60px;
+  position: absolute;
   width: 100%;
 }
 
@@ -70,24 +80,25 @@ body {
 
 .links {
   align-items: center;
-  background: #333;
+  background: #eee;
   bottom: 0;
   display: flex;
   position: absolute;
   justify-content: space-evenly;
   width: 100%;
   height: 60px;
+  z-index: 10000;
 
   a {
     align-items: center;
     display: flex;
 
     img {
-      filter: invert(90%);
+      filter: invert(20%);
     }
 
     &:hover img {
-      filter: invert(100%);
+      filter: invert(40%);
     }
   }
 
@@ -275,15 +286,19 @@ body {
 
   .links {
     background: #222;
-  }
 
-  .links a img {
-    filter: invert(70%);
-  }
+    a img {
+      filter: invert(70%);
 
-  .links a img:hover {
-      filter: invert(90%);
+      &:hover {
+        filter: invert(90%);
+      }
     }
+  }
+
+  .container:before {
+    box-shadow: 0 -20px 10px -10px rgba(0, 0, 0, 0.2) inset;
+  }
 
   .background-scaffold {
     background-image: url("../img/bg-dark.png");
