@@ -1,12 +1,13 @@
 import {darken} from './react-lego-lib/utils';
 
+import blog from '../svg/bookstack.svg';
 import instagram from '../svg/instagram.svg';
 import github from '../svg/github.svg';
-import keybase from '../svg/keybase.svg';
 import linkedin from '../svg/linkedin.svg';
 import lastfm from '../svg/last.fm.svg';
 import devto from '../svg/dev.to.svg';
 import spotify from '../svg/spotify.svg';
+import twitter from '../svg/twitter.svg';
 
 export const MEDIUM_WIDTH = 682;
 export const LARGE_WIDTH = 1240;
@@ -22,20 +23,28 @@ function shuffleArray(a) {
   return a;
 }
 
-export const lc = shuffleArray([
-  darken('#4D96FF', 0.15),
-  darken('#FF6B6B', 0.2),
-  darken('#FFD365', 0.1),
+const colors = [
+  '#4D96FF',
+  '#FF6B6B',
+  '#FFD365',
   '#CCC',
-  darken('#6BCB77', 0.1),
+  '#6BCB77'
+]
+
+export const lc = shuffleArray([
+  darken(colors[0], 0.15),
+  darken(colors[1], 0.2),
+  darken(colors[2], 0.1),
+  colors[3],
+  darken(colors[4], 0.1),
 ]);
 
 export const dc = shuffleArray([
-  darken('#4D96FF', 0.2, 0.3),
-  darken('#FF6B6B', 0.2, 0.4),
-  darken('#FFD365', 0.1, 0.3),
-  darken('#CCC', 0.15, 0.4),
-  darken('#6BCB77', 0.15, 0.1),
+  darken(colors[0], 0.2, 0.3),
+  darken(colors[1], 0.2, 0.4),
+  darken(colors[2], 0.1, 0.3),
+  darken(colors[3], 0.15, 0.4),
+  darken(colors[4], 0.15, 0.1),
 ]);
 
 export const meta = {
@@ -51,9 +60,9 @@ export const links = [
     icon: devto,
   },
   {
-    url: 'https://keybase.io/burce',
-    title: 'keybase',
-    icon: keybase,
+    url: 'https://blog.bryce.io',
+    title: 'blog',
+    icon: blog,
   },
   {
     url: 'https://www.linkedin.com/in/brycedorn',
@@ -76,9 +85,14 @@ export const links = [
     icon: spotify,
   },
   {
-    url: 'https://www.instagram.com/buuurce',
+    url: 'https://www.instagram.com/amsterdorn',
     title: 'instagram',
     icon: instagram,
+  },
+  {
+    url: 'https://www.twitter.com/amsterdorn',
+    title: 'twitter',
+    icon: twitter,
   },
 ];
 

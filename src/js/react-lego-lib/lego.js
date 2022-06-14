@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import useDraggable from "use-draggable-hook";
 
 import { sizeOffsets } from './consts';
+import { LARGE_WIDTH } from '../consts';
 import { getChunkDelay, darken } from "./utils";
 import { GlobalZIndex } from '../legos';
 
@@ -13,7 +14,24 @@ const Lego = ({
     setZIndex(prevZIndex => prevZIndex + 1);
     target.current.style.zIndex = zIndex;
   }
-  const { target } = useDraggable({ onStart: inc });
+  const [stepSize, setStepSize] = useState(sizeOffsets.small);
+  const { target } = useDraggable({ onStart: inc, stepSize });
+  function updateStepSize() {
+    const { innerWidth } = window;
+
+    if (innerWidth > LARGE_WIDTH) {
+      setStepSize(sizeOffsets.medium)
+    } else {
+      setStepSize(sizeOffsets.small)
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener("resize", updateStepSize);
+    updateStepSize();
+
+    return () => window.removeEventListener("resize", updateStepSize);
+  }, []);
 
   function renderUnitsForShape(shape, size) {
     let unitNum = 0;
