@@ -7,7 +7,6 @@ import linkedin from '../svg/linkedin.svg';
 import lastfm from '../svg/last.fm.svg';
 import devto from '../svg/dev.to.svg';
 import spotify from '../svg/spotify.svg';
-import twitter from '../svg/twitter.svg';
 
 export const MEDIUM_WIDTH = 682;
 export const LARGE_WIDTH = 1240;
@@ -88,11 +87,6 @@ export const links = [
     url: 'https://www.instagram.com/amsterdorn',
     title: 'instagram',
     icon: instagram,
-  },
-  {
-    url: 'https://www.twitter.com/amsterdorn',
-    title: 'twitter',
-    icon: twitter,
   },
 ];
 
