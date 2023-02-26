@@ -10,13 +10,14 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
 
-      - name: Install and Build 🔧
+      - name: Install dependencies 📦
         run: |
           npm install
-          npm run build
 
-      - name: react-snap 📸
-        run: npm run snap
+      - name: Build & pre-render 📸
+        uses: daleobrien/npm-with-chrome-browser-action@master
+        with:
+          args: build
 
       - name: Upload Artifacts 🔺
         uses: actions/upload-artifact@v1
