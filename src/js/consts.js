@@ -1,11 +1,10 @@
 import {darken} from './react-lego-lib/utils';
 
-import blog from '../svg/bookstack.svg';
 import instagram from '../svg/instagram.svg';
 import github from '../svg/github.svg';
 import linkedin from '../svg/linkedin.svg';
-import lastfm from '../svg/last.fm.svg';
-import devto from '../svg/dev.to.svg';
+import lastfm from '../svg/lastfm.svg';
+import devto from '../svg/devto.svg';
 import spotify from '../svg/spotify.svg';
 
 export const MEDIUM_WIDTH = 682;
@@ -54,14 +53,9 @@ export const meta = {
 
 export const links = [
   {
-    url: 'https://dev.to/bryce',
-    title: 'dev.to',
-    icon: devto,
-  },
-  {
     url: 'https://blog.bryce.io',
     title: 'blog',
-    icon: blog,
+    icon: devto,
   },
   {
     url: 'https://www.linkedin.com/in/brycedorn',
