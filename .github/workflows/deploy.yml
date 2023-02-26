@@ -14,7 +14,10 @@ jobs:
         run: |
           npm install
           npm run build
-      
+
+      - name: react-snap 📸
+        run: npm run snap
+
       - name: Upload Artifacts 🔺
         uses: actions/upload-artifact@v1
         with:
