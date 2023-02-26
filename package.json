@@ -1,20 +1,11 @@
 {
   "name": "bryce.io",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "scripts": {
     "start": "env NODE_ENV=development parcel src/index.html",
     "build": "rm -rf dist && env NODE_ENV=production parcel build src/index.html --detailed-report --no-source-maps --no-content-hash --public-url https://bryce.io",
     "lint": "eslint . --ext .js --fix",
     "snap": "react-snap"
-  },
-  "reactSnap": {
-    "source": "dist",
-    "puppeteerArgs": [
-      "--no-sandbox",
-      "--disable-setuid-sandbox",
-      "--disable-dev-shm-usage",
-      "--single-process"
-    ]
   },
   "author": {
     "name": "Bryce Dorn",
@@ -39,8 +30,7 @@
     "@parcel/transformer-sass": "^2.5.0",
     "eslint": "^8.17.0",
     "eslint-plugin-react": "^7.30.0",
-    "parcel": "^2.5.0",
-    "react-snap": "^1.23.0"
+    "parcel": "^2.5.0"
   },
   "dependencies": {
     "@ctrl/tinycolor": "^3.4.1",

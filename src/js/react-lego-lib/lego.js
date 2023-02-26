@@ -64,7 +64,7 @@ const Lego = ({
           }, []);
 
           return (
-            <div className={`unit ${state}`} style={style}>
+            <div key={`${y},${x}`} className={`unit ${state}`} style={style}>
               {(optimize ? renderRight : true) && (
                 <div className="side side--1" />
               )}
