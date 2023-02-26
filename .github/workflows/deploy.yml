@@ -17,7 +17,7 @@ jobs:
       - name: Build & pre-render 📸
         uses: daleobrien/npm-with-chrome-browser-action@master
         with:
-          args: build
+          args: npm run build
 
       - name: Upload Artifacts 🔺
         uses: actions/upload-artifact@v1
