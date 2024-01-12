@@ -4,15 +4,6 @@
   box-sizing: border-box;
 }
 
-@font-face {
-  font-family: "Roboto Condensed";
-  font-style: italic;
-  font-weight: 400;
-  src: local("Roboto Condensed Italic"), local("RobotoCondensed-Italic"),
-    url(https://fonts.gstatic.com/l/font?kit=BP5K8ZAJv9qEbmuFp8RpJYQ5Rbxg3CkpuFLDf7uJP82bRh2bRM9hMKB4Ebd-KE1n&skey=7b4bef3e83279e13&v=v16) format("woff2");
-  font-display: swap;
-}
-
 body {
   margin: 0;
   overflow: hidden;
@@ -52,15 +43,6 @@ body {
   width: 100%;
 }
 
-.container:before {
-  box-shadow: 0 -20px 10px -10px rgba(0, 0, 0, 0.1) inset;
-  content: '';
-  height: 20px;
-  bottom: 60px;
-  position: absolute;
-  width: 100%;
-}
-
 .collection {
   &--tiny {
     height: 540px;
@@ -82,16 +64,21 @@ body {
   align-items: center;
   background: #eee;
   bottom: 0;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
   position: absolute;
-  justify-content: space-evenly;
   width: 100%;
-  height: 60px;
   z-index: 10000;
+  
+  div {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    padding: 1em 0;
+  }
 
   a {
-    align-items: center;
-    display: flex;
+    width: fit-content;
 
     img {
       filter: invert(20%);
@@ -99,15 +86,6 @@ body {
 
     &:hover img {
       filter: invert(40%);
-    }
-  }
-
-  @media (max-width: 400px) {
-    flex-wrap: wrap;
-    height: 120px;
-
-    .link {
-      margin: 0 20px;
     }
   }
 }
@@ -143,7 +121,7 @@ body {
 .unit {
   height: 60px;
   width: 44px;
-  transition: transform 300ms;
+  transition: opacity 300ms, transform 300ms;
 }
 
 .side--1 {
@@ -216,6 +194,11 @@ body {
   }
 }
 
+.entering {
+  transform: translateY(-40px);
+  opacity: 0;
+}
+
 @media (max-width: 440px) {
   .collection {
     transform: scale(80%);
@@ -252,7 +235,7 @@ body {
   .side--3 {
     top: -12px;
     left: 0px;
-    height: 46px;
+    height: 46.5px;
     width: 40px;
   }
 
@@ -290,7 +273,7 @@ body {
     a img {
       filter: invert(70%);
 
-      &:hover {
+      &:hover img {
         filter: invert(90%);
       }
     }
@@ -303,8 +286,4 @@ body {
   .background-scaffold {
     background-image: url("../img/bg-dark.png");
   }
-}
-
-.up {
-  transform: translateY(-900px);
 }

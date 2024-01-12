@@ -1,9 +1,13 @@
+/* eslint-disable react/no-unknown-property */
+
 import React from "react";
 import { hydrate, render } from "react-dom";
 import MetaTags from "react-meta-tags";
 import { links, meta } from "./consts";
 import Legos from "./legos";
 import favicon from '../img/favicon.png';
+import darkBg from '../img/bg-dark.png';
+import lightBg from '../img/bg-light.png';
 
 const App = () => (
   <>
@@ -12,6 +16,8 @@ const App = () => (
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, minimum-scale=1" />
       <link rel="canonical" href={meta.url} />
       <link rel="icon" type="image/png" href={favicon} />
+      <link rel="preload" fetchpriority="high" as="image" href={darkBg} type="image/png" />
+      <link rel="preload" fetchpriority="high" as="image" href={lightBg} type="image/png" />
       <title>{meta.title}</title>
       <meta name="description" content={meta.desc} />
       <meta name="keywords" content="bryce,dorn,brycedorn,bryce.io,bryce dorn" />
@@ -33,9 +39,11 @@ const App = () => (
     <Legos />
     <div className="links">
       {links.map((link) => (
-        <a className="link" href={link.url} key={link.url} target="_blank" rel="noreferrer" aria-label={link.title}>
-          <img src={link.icon} width={40} height={40} alt={`${link.title} logo`} />
-        </a>
+        <div key={link.url}>
+          <a href={link.url} target="_blank" rel="noreferrer" aria-label={link.title}>
+            <img src={link.icon} width={40} height={40} alt={`${link.title} logo`} />
+          </a>
+        </div>
       ))}
     </div>
   </>

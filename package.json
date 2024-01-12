@@ -1,11 +1,11 @@
 {
   "name": "bryce.io",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "scripts": {
-    "start": "env NODE_ENV=development parcel src/index.html",
-    "build": "rm -rf dist && env NODE_ENV=production parcel build src/index.html --detailed-report --no-source-maps --no-content-hash --public-url https://bryce.io",
-    "lint": "eslint . --ext .js --fix",
-    "snap": "react-snap"
+    "start": "rm -rf dist .parcel-cache && env NODE_ENV=development parcel src/index.html",
+    "build": "rm -rf dist && env NODE_ENV=production parcel build src/index.html --no-source-maps --no-content-hash --public-url https://bryce.io",
+    "build-dev": "rm -rf dist .parcel-cache && parcel build src/index.html --detailed-report --no-content-hash",
+    "lint": "eslint . --ext .js --fix"
   },
   "author": {
     "name": "Bryce Dorn",
@@ -33,12 +33,11 @@
     "parcel": "^2.5.0"
   },
   "dependencies": {
-    "@ctrl/tinycolor": "^3.4.1",
-    "preact": "^10.7.2",
+    "preact": "^10.19.3",
     "process": "^0.11.10",
-    "react": "^16.6.0",
-    "react-dom": "^16.6.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-meta-tags": "^1.0.1",
-    "use-draggable-hook": "^0.2.0"
+    "use-draggable-hook": "^1.1.0"
   }
 }

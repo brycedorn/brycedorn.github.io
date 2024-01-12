@@ -71,8 +71,7 @@ const Legos = () => {
       shape: letterShapes[l],
       delay: inOrderLetters.indexOf(l) / inOrderLetters.length,
       index: inOrderLetters.indexOf(l),
-      size: size === 'tiny' ? 'small' : size,
-      optimize: true
+      size: size === 'tiny' ? 'small' : size
     }));
 
     setBrickProps(newBrickProps);

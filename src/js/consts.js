@@ -1,48 +1,36 @@
-import {darken} from './react-lego-lib/utils';
+import { shuffleArray } from './react-lego-lib/utils';
 
 import instagram from '../svg/instagram.svg';
 import github from '../svg/github.svg';
 import linkedin from '../svg/linkedin.svg';
-import lastfm from '../svg/lastfm.svg';
 import devto from '../svg/devto.svg';
 import spotify from '../svg/spotify.svg';
 
 export const MEDIUM_WIDTH = 682;
 export const LARGE_WIDTH = 1240;
 
-function shuffleArray(a) {
-  for (let i = a.length - 1; i > 0; i--) {
-    let j = Math.floor(Math.random() * (i + 1));
-    let temp = a[i];
-    a[i] = a[j];
-    a[j] = temp;
-  }
-
-  return a;
-}
-
-const colors = [
-  '#4D96FF',
-  '#FF6B6B',
-  '#FFD365',
-  '#CCC',
-  '#6BCB77'
-]
+// const colors = [
+//   '#4D96FF',
+//   '#FF6B6B',
+//   '#FFD365',
+//   '#CCC',
+//   '#6BCB77'
+// ]
 
 export const lc = shuffleArray([
-  darken(colors[0], 0.15),
-  darken(colors[1], 0.2),
-  darken(colors[2], 0.1),
-  colors[3],
-  darken(colors[4], 0.1),
+  "#006aff",
+  "#ff0505",
+  "#ffc533",
+  "#ccc",
+  "#46be56",
 ]);
 
 export const dc = shuffleArray([
-  darken(colors[0], 0.2, 0.3),
-  darken(colors[1], 0.2, 0.4),
-  darken(colors[2], 0.1, 0.3),
-  darken(colors[3], 0.15, 0.4),
-  darken(colors[4], 0.15, 0.1),
+  "#2265c3",
+  "#cd3737",
+  "#e0b852",
+  "#a6a6a6",
+  "#49a255",
 ]);
 
 export const meta = {
@@ -68,12 +56,7 @@ export const links = [
     icon: github,
   },
   {
-    url: 'http://www.last.fm/user/BDORN',
-    title: 'lastfm',
-    icon: lastfm,
-  },
-  {
-    url: 'https://open.spotify.com/user/combatfetus?si=1UVE0T7JR2SsHwfB4W_x8w',
+    url: 'https://open.spotify.com/user/combatfetus',
     title: 'spotify',
     icon: spotify,
   },
