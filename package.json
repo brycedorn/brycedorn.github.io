@@ -35,8 +35,8 @@
   "dependencies": {
     "preact": "^10.19.3",
     "process": "^0.11.10",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0",
     "react-meta-tags": "^1.0.1",
     "use-draggable-hook": "^1.1.0"
   }
