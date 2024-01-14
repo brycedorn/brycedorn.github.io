@@ -1,4 +1,4 @@
-import React, { useEffect, useState, createContext } from "react";
+import React, { useEffect, useState, createContext, useRef } from "react";
 import Lego from "./react-lego-lib/lego";
 import { letters as letterShapes } from "./react-lego-lib/consts";
 
@@ -20,10 +20,12 @@ const Legos = () => {
   const globalZIndexState = useState(1000);
   const [size, setSize] = useState("");
   const [brickProps, setBrickProps] = useState([]);
+  const ready = useRef();
 
   useEffect(() => {
     window.addEventListener("resize", updateSize);
     updateSize();
+    ready.current = true;
 
     return () => window.removeEventListener("resize", updateSize);
   }, []);
@@ -81,7 +83,7 @@ const Legos = () => {
     <GlobalZIndex.Provider value={globalZIndexState}>
       <div className="container">
         <div className={`collection collection--${size}`}>
-          {brickProps.map((bp, i) => <Lego key={bp.letter} {...brickProps[i]} />)}
+          {ready.current && brickProps.map((bp, i) => <Lego key={bp.letter} {...brickProps[i]} />)}
         </div>
       </div>
       <div className="background-scaffold" />
