@@ -3,11 +3,13 @@
 import React from "react";
 import { hydrate, render } from "react-dom";
 import MetaTags from "react-meta-tags";
-import { links, meta } from "./consts";
+import { meta } from "./consts";
 import Legos from "./legos";
-import favicon from '../img/favicon.png';
+import SidePane from "./side-pane";
+import favicon from '../img/brick.png';
 import darkBg from '../img/bg-dark.png';
 import lightBg from '../img/bg-light.png';
+import me from '../img/me.jpg';
 
 const App = () => (
   <>
@@ -18,6 +20,7 @@ const App = () => (
       <link rel="icon" type="image/png" href={favicon} />
       <link rel="preload" fetchpriority="high" as="image" href={darkBg} type="image/png" />
       <link rel="preload" fetchpriority="high" as="image" href={lightBg} type="image/png" />
+      <link rel="preload" fetchpriority="high" as="image" href={me} type="image/jpg" />
       <title>{meta.title}</title>
       <meta name="description" content={meta.desc} />
       <meta name="keywords" content="bryce,dorn,brycedorn,bryce.io,bryce dorn" />
@@ -36,16 +39,10 @@ const App = () => (
       <meta property="og:description" content={meta.desc} />
       <meta property="og:site_name" content={meta.title} />
     </MetaTags>
-    <Legos />
-    <div className="links">
-      {links.map((link) => (
-        <div key={link.url}>
-          <a href={link.url} target="_blank" rel="noreferrer" aria-label={link.title}>
-            <img src={link.icon} width={40} height={40} alt={`${link.title} logo`} />
-          </a>
-        </div>
-      ))}
-    </div>
+    <main>
+      <SidePane />
+      <Legos />
+    </main>
   </>
 );
 

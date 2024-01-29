@@ -54,14 +54,3 @@ export const letters = {
   c,
   e
 };
-
-export const sizeOffsets = {
-  small: {
-    x: 22,
-    y: 13
-  },
-  medium: {
-    x: 40,
-    y: 23
-  }
-};

@@ -1,8 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import useDraggable from "use-draggable-hook";
 
-import { sizeOffsets } from './consts';
-import { LARGE_WIDTH } from '../consts';
 import { getChunkDelay, darken } from "./utils";
 import { GlobalZIndex } from '../legos';
 
@@ -14,26 +12,10 @@ const Lego = ({
     setZIndex(prevZIndex => prevZIndex + 1);
     target.current.style.zIndex = zIndex;
   }
-  const [stepSize, setStepSize] = useState(sizeOffsets.small);
+  const stepSize = { x: 40, y: 23 }
   const { target } = useDraggable({ onStart: inc, stepSize });
-  function updateStepSize() {
-    const { innerWidth } = window;
 
-    if (innerWidth > LARGE_WIDTH) {
-      setStepSize(sizeOffsets.medium)
-    } else {
-      setStepSize(sizeOffsets.small)
-    }
-  }
-
-  useEffect(() => {
-    window.addEventListener("resize", updateStepSize);
-    updateStepSize();
-
-    return () => window.removeEventListener("resize", updateStepSize);
-  }, []);
-
-  function renderUnitsForShape(shape, size) {
+  function renderUnitsForShape(shape) {
     let unitNum = 0;
     const numUnits = shape.length * shape[0].length;
     const delayBetweenChunks = 15;
@@ -45,7 +27,7 @@ const Lego = ({
         if (hasUnit) {
           unitNum += 1;
 
-          const offsets = sizeOffsets[size];
+          const {x: xOffset, y: yOffset } = stepSize;
 
           const chunkDelayAmount = getChunkDelay(index, x, y);
           const isRightmostOfChunk = chunkDelayAmount < getChunkDelay(index, x + 1, y);
@@ -64,8 +46,8 @@ const Lego = ({
 
           const style = {
             zIndex: numUnits - unitNum - (isRightmostOfChunk ? 1 : 0) + zIndexOverride,
-            left: `${(x + y) * offsets.x}px`,
-            top: `${((x - y) * offsets.y).toFixed(2)}px`,
+            left: `${(x + y) * xOffset}px`,
+            top: `${((x - y) * yOffset).toFixed(2)}px`,
           };
 
           return (

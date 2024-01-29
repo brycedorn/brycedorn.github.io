@@ -1,4 +1,4 @@
-import React, { useEffect, useState, createContext, useRef } from "react";
+import React, { useEffect, useState, createContext, useRef, useReducer } from "react";
 import Lego from "./react-lego-lib/lego";
 import { letters as letterShapes } from "./react-lego-lib/consts";
 
@@ -7,8 +7,6 @@ import {
   letterPositions,
   lc,
   dc,
-  MEDIUM_WIDTH,
-  LARGE_WIDTH
 } from "./consts";
 
 const inOrderLetters = ["b", "r", "y", "c", "e"];
@@ -17,51 +15,23 @@ const inHierarchyLetters = ["b", "r", "c", "e", "y"];
 export const GlobalZIndex = createContext(null);
 
 const Legos = () => {
-  const globalZIndexState = useState(1000);
-  const [size, setSize] = useState("");
+  const globalZIndexState = useState(100);
   const [brickProps, setBrickProps] = useState([]);
   const ready = useRef();
 
   useEffect(() => {
-    window.addEventListener("resize", updateSize);
-    updateSize();
+    updateBrickProps();
     ready.current = true;
-
-    return () => window.removeEventListener("resize", updateSize);
   }, []);
 
-  useEffect(updateBrickProps, [size]);
-
-  function updateSize() {
-    const { innerWidth } = window;
-
-    let newSize = "medium";
-    if (innerWidth <= MEDIUM_WIDTH) {
-      newSize = "tiny";
-    } else if (innerWidth <= LARGE_WIDTH) {
-      newSize = "small";
-    }
-
-    if (newSize !== size) {
-      setSize(newSize);
-    }
-  }
-
   function updateBrickProps() {
-    if (!size){
-      return;
-    }
-
     let letterColoring = lc;
     if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
       letterColoring = dc;
     }
 
-    const letters =
-      window.innerWidth <= MEDIUM_WIDTH ? inOrderLetters : inHierarchyLetters;
-
-    const placement = letterPositions[size];
-
+    const letters = inHierarchyLetters;
+    const placement = letterPositions;
     const newBrickProps = letters.map((l, i) => ({
       letter: l,
       style: {
@@ -72,8 +42,8 @@ const Legos = () => {
       name: l,
       shape: letterShapes[l],
       delay: inOrderLetters.indexOf(l) / inOrderLetters.length,
-      index: inOrderLetters.indexOf(l),
-      size: size === 'tiny' ? 'small' : size
+      index: inHierarchyLetters.indexOf(l),
+      size: "medium"
     }));
 
     setBrickProps(newBrickProps);
@@ -81,12 +51,12 @@ const Legos = () => {
 
   return (
     <GlobalZIndex.Provider value={globalZIndexState}>
-      <div className="container">
-        <div className={`collection collection--${size}`}>
+      <div id="lego-container">
+        <div className="collection collection--medium">
           {ready.current && brickProps.map((bp, i) => <Lego key={bp.letter} {...brickProps[i]} />)}
         </div>
       </div>
-      <div className="background-scaffold" />
+      <div id="background-scaffold" />
     </GlobalZIndex.Provider>
   );
 }
