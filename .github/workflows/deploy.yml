@@ -8,19 +8,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node.js 📦
         uses: actions/setup-node@v4
         with:
           node-version: 18.x
 
-      - name: Build 🏗️
-        run: |
-          npm install
-          npm run build
-
       - name: Pre-render 🎨
+        uses: brycedorn/react-snap-action@v1.0.2
+
+      - name: Remove tags
         run: npm run remove-tags
 
       - name: Upload Artifacts 🔺
@@ -34,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Download Artifacts 🔻
         uses: actions/download-artifact@v1

@@ -3,17 +3,10 @@
   "version": "1.0.7",
   "scripts": {
     "start": "rm -rf dist .parcel-cache && env NODE_ENV=development parcel src/index.html",
-    "build": "rm -rf dist && env NODE_ENV=production parcel build src/index.html --no-source-maps --no-content-hash --public-url https://bryce.io && react-snap",
+    "build": "rm -rf dist && env NODE_ENV=production parcel build src/index.html --no-source-maps --no-content-hash --public-url https://bryce.io",
     "build-dev": "rm -rf dist .parcel-cache && parcel build src/index.html --no-content-hash && react-snap && npm run remove-tags",
     "lint": "eslint . --ext .js --fix",
     "remove-tags": "node src/js/remove-tags.js"
-  },
-  "reactSnap": {
-    "source": "dist",
-    "minifyHtml": {
-      "collapseWhitespace": true,
-      "removeComments": true
-    }
   },
   "author": {
     "name": "Bryce Dorn",
