@@ -1,5 +1,5 @@
 window.addEventListener('resize', setScale);
-window.addEventListener('load', insertCSSVars);
+window.addEventListener('load', onLoad);
 
 function setScale() {
   const collectionEl = document.getElementById('collection');
@@ -25,4 +25,9 @@ function insertCSSVars() {
   const vars = colors.map((color, i) => `--color-${i}: ${color};`).join(' ');
   style.textContent = `*{${vars}}`;
   document.head.appendChild(style);
+}
+
+function onLoad() {
+  setScale();
+  insertCSSVars();
 }
