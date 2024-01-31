@@ -40,7 +40,7 @@ const Lego = ({
           };
 
           return (
-            <div key={`${y},${x}`} className={`unit unitnum: ${unitNum} index ${index}`} style={style}>
+            <div key={`${y},${x}`} className="unit" style={style}>
               {renderRight && (
                 <div className="side side--1" />
               )}

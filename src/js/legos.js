@@ -23,7 +23,7 @@ const Legos = () => {
   }));
 
   return (
-    <div id="collection" className="collection collection--medium">
+    <div id="collection">
       {brickProps.map((bp, i) => <Lego key={bp.letter} {...brickProps[i]} />)}
     </div>
   );
