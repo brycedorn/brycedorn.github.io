@@ -20,6 +20,9 @@ jobs:
           npm install
           npm run build
 
+      - name: Pre-render 🎨
+        run: npm run remove-tags
+
       - name: Upload Artifacts 🔺
         uses: actions/upload-artifact@v1
         with:
