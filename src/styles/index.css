@@ -79,7 +79,7 @@ body {
   object-fit: cover;
   aspect-ratio: 1;
   margin: calc(3 * var(--shadow-width)/2);
-  max-width: 350px;
+  max-width: min(50vw, 350px);
   width: 50%;
   box-shadow:
     calc(-1 * var(--shadow-width)) calc(-1 * var(--shadow-width)) 0 calc(var(--shadow-width)/2) var(--color-3),
