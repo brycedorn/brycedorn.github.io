@@ -1,20 +1,10 @@
-import React, { useContext, useState } from 'react';
-import useDraggable from "use-draggable-hook";
+import React from 'react';
 
-import { getChunkDelay, darken } from "./utils";
-import { GlobalZIndex } from '../legos';
+import { getChunkDelay } from "./utils";
 
 const Lego = ({
   color, shape, size, style, index
 }) => {
-  const [zIndex, setZIndex] = useContext(GlobalZIndex);
-  function inc(target) {
-    setZIndex(prevZIndex => prevZIndex + 1);
-    target.current.style.zIndex = zIndex;
-  }
-  const stepSize = { x: 40, y: 23 }
-  const { target } = useDraggable({ onStart: inc, stepSize });
-
   function renderUnitsForShape(shape) {
     let unitNum = 0;
     const numUnits = shape.length * shape[0].length;
@@ -22,12 +12,11 @@ const Lego = ({
     
     return shape.map((row, y) => {
       return row.map((hasUnit, x) => {
-        const [inPlace, setInPlace] = useState(false);
-
         if (hasUnit) {
           unitNum += 1;
 
-          const {x: xOffset, y: yOffset } = stepSize;
+          const xOffset = 40;
+          const yOffset = 23;
 
           const chunkDelayAmount = getChunkDelay(index, x, y);
           const isRightmostOfChunk = chunkDelayAmount < getChunkDelay(index, x + 1, y);
@@ -39,19 +28,19 @@ const Lego = ({
           const delay =
             chunkDelayAmount * delayBetweenChunks +
             index * delayBetweenChunks/2 + index * 3;
-          
-          setTimeout(() => setInPlace(true), delay * delayBetweenChunks);
 
           const zIndexOverride = x === 1 && y === 1 && unitNum === 4 ? 10 : 0;
+          const animationDelay = delay * delayBetweenChunks;
 
           const style = {
             zIndex: numUnits - unitNum - (isRightmostOfChunk ? 1 : 0) + zIndexOverride,
             left: `${(x + y) * xOffset}px`,
             top: `${((x - y) * yOffset).toFixed(2)}px`,
+            "--enter-delay": `${animationDelay}ms`,
           };
 
           return (
-            <div key={`${y},${x}`} className={`unit${inPlace ? "" : " entering"}`} style={style}>
+            <div key={`${y},${x}`} className={`unit unitnum: ${unitNum} index ${index}`} style={style}>
               {renderRight && (
                 <div className="side side--1" />
               )}
@@ -72,15 +61,11 @@ const Lego = ({
   }
 
   const cssVars = {
-    '--color-0': darken(color, 0.16),
-    '--color-1': darken(color, 0.24),
-    '--color-2': darken(color, 0.08),
-    '--color-3': darken(color, 0),
-    '--color-4': darken(color, 0.12)
+    '--brick-color': `var(--color-${index})`,
   };
 
   return (
-    <div className="brick" size={size} color={color} style={{ ...style, ...cssVars }} ref={target}>
+    <div className="brick" size={size} color={color} style={{ ...style, ...cssVars }}>
       {renderUnitsForShape(shape, size)}
     </div>
   );

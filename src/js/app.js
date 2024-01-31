@@ -7,8 +7,6 @@ import { meta } from "./consts";
 import Legos from "./legos";
 import SidePane from "./side-pane";
 import favicon from '../img/brick.png';
-import darkBg from '../img/bg-dark.png';
-import lightBg from '../img/bg-light.png';
 import me from '../img/me.jpg';
 
 const App = () => (
@@ -18,8 +16,6 @@ const App = () => (
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, minimum-scale=1" />
       <link rel="canonical" href={meta.url} />
       <link rel="icon" type="image/png" href={favicon} />
-      <link rel="preload" fetchpriority="high" as="image" href={darkBg} type="image/png" />
-      <link rel="preload" fetchpriority="high" as="image" href={lightBg} type="image/png" />
       <link rel="preload" fetchpriority="high" as="image" href={me} type="image/jpg" />
       <title>{meta.title}</title>
       <meta name="description" content={meta.desc} />
@@ -39,10 +35,8 @@ const App = () => (
       <meta property="og:description" content={meta.desc} />
       <meta property="og:site_name" content={meta.title} />
     </MetaTags>
-    <main>
-      <SidePane />
-      <Legos />
-    </main>
+    <SidePane />
+    <Legos />
   </>
 );
 

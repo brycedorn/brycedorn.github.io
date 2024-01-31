@@ -64,8 +64,8 @@ export const letterPositions = {
     left: 0,
   },
   r: {
-    top: 298 - 46,
-    left: 240 + 80,
+    top: 252,
+    left: 320,
   },
   y: {
     top: 436,
