@@ -5,27 +5,28 @@
 
   --container-width: 1240px;
   --container-height: 650px;
-  --pane-width: 500px;
-  --gutter-width: 24px;
   --shadow-width: 4px;
-  --left-offset: calc(2 * var(--gutter-width) + var(--pane-width));
-
+  --left-offset: calc(50% + var(--gutter-width) * 2);
   --background-color: #eee;
   --text-color: #222;
-  --font-size: 1em;
-  --icon-size: calc(var(--gutter-width) * 2);
-  --text-decoration-thickness: 2px;
+  --icon-size: 3em;
+  --text-decoration-thickness: 1px;
+  --gutter-width: 12px;
+  --font-size: 0.8em;
+  --pane-width: 100%;
+  --base-underline-width: 1px;
 
-  @media (max-width: 1140px) {
-    --gutter-width: 12px;
-    --font-size: 0.8em;
+  @media (min-width: 800px) {
+    --left-offset: calc(2 * var(--gutter-width) + var(--pane-width));
     --pane-width: 400px;
+    --base-underline-width: 2px;
   }
 
-  @media (max-width: 800px) {
-    --left-offset: calc(50% + var(--gutter-width) * 2);
-    --pane-width: 100%;
-    --text-decoration-thickness: 1px;
+  @media (min-width: 1140px) {
+    --gutter-width: 24px;
+    --font-size: 1em;
+    --pane-width: 500px;
+    --icon-size: 2em;
   }
 }
 
@@ -35,6 +36,14 @@
   font-weight: 400;
   font-display: swap;
   src: url(../fonts/lego.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(../fonts/inter.woff) format('woff');
 }
 
 @font-face {
@@ -56,28 +65,31 @@ body {
   height: 100vh;
   width: calc(var(--pane-width));
   padding: var(--gutter-width);
-  font-family: 'Roboto Slab', monospace;
   overflow: scroll;
 }
 
 h2, h3 {
-  font-weight: 400;
+  font-family: "Inter", sans-serif;
+  line-height: 150%;
+  font-weight: 300;
 }
 
 #hi {
-  background-color: var(--color-1);
+  text-decoration-color: var(--hue-0);
+  text-underline-offset: calc(var(--base-underline-width) + 3px);
+  text-decoration-thickness: calc(var(--base-underline-width) + 2px);
 }
 
 #contact {
-  background-color: var(--color-2);
+  text-decoration-color: var(--hue-1);
+  text-underline-offset: calc(var(--base-underline-width) + 2px);
+  text-decoration-thickness: calc(var(--base-underline-width) + 1px);
 }
 
 .box {
-  width: fit-content;
-  padding: 0 calc(var(--shadow-width) * 2);
-  color: var(--text-color);
+  font-family: 'Roboto Slab', monospace;
   font-weight: 500;
-  box-shadow: var(--shadow-width) var(--shadow-width) 0 var(--text-color);
+  text-decoration: underline;
 }
 
 #me {
@@ -87,8 +99,8 @@ h2, h3 {
   max-width: min(50vw, 350px);
   width: 50%;
   box-shadow:
-    calc(-1 * var(--shadow-width)) calc(-1 * var(--shadow-width)) 0 calc(var(--shadow-width)/2) var(--color-3),
-    var(--shadow-width) var(--shadow-width) 0 calc(var(--shadow-width)/2) var(--color-4);
+    calc(-1 * var(--shadow-width)) calc(-1 * var(--shadow-width)) 0 calc(var(--shadow-width)/2) var(--hue-2),
+    var(--shadow-width) var(--shadow-width) 0 calc(var(--shadow-width)/2) var(--hue-3);
 }
 
 a {
@@ -108,6 +120,13 @@ a {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   z-index: 10;
+  background:
+    linear-gradient(to right, var(--hue-2) calc(var(--base-underline-width) * 2), transparent calc(var(--base-underline-width) * 2)) 0 0,
+    linear-gradient(to left, var(--hue-3) calc(var(--base-underline-width) * 2), transparent calc(var(--base-underline-width) * 2)) 100% 100%,
+    linear-gradient(to bottom, var(--hue-2) calc(var(--base-underline-width) * 2), transparent calc(var(--base-underline-width) * 2)) 0 0,
+    linear-gradient(to top, var(--hue-3) calc(var(--base-underline-width) * 2), transparent calc(var(--base-underline-width) * 2)) 100% 100%;
+  background-repeat: no-repeat;
+  background-size: var(--gutter-width) var(--gutter-width);
 }
 
 .links div {
@@ -126,7 +145,7 @@ a {
 }
 
 .links a img {
-  filter: invert(20%);
+  filter: invert(10%);
 }
 
 .brick {
@@ -271,17 +290,11 @@ a {
     }
   }
 
-  .box {
-    filter: brightness(0.9) saturate(0.9);
-    color: var(--background-color);
-    box-shadow: var(--shadow-width) var(--shadow-width) 0 #000;
-  }
-
-  #me {
+  .box, #me, .links {
     filter: brightness(0.9) saturate(0.9);
   }
 
   #side-pane .links img {
-    filter: invert(90%);
+    filter: invert(100%);
   }
 }

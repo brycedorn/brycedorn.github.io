@@ -8,7 +8,7 @@ function SidePane() {
       <img id="me" src={me}></img>
       <h1 id="hi" className="box">Hi I&apos;m Bryce 👋</h1>
       <h2>I&apos;m a software engineer with a passion for building things, improving user experiences and shipping high-impact features.</h2>
-      <h2>Currently living in Amsterdam & working at Uber.</h2>
+      <h3>Currently living in Amsterdam & working at Uber.</h3>
       <h3>Previously: Glassdoor, The Onion, Avant.</h3>
       <div className="links">
         {links.map((link) => (

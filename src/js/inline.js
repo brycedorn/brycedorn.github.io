@@ -21,9 +21,10 @@ function shuffleArray(a) {
 
 function insertCSSVars() {
   const style = document.createElement('style');
-  const colors = shuffleArray(["#46be56","#ff3636","#1978ff","#ffc533","#ccc"]);
-  const vars = colors.map((color, i) => `--color-${i}: ${color};`).join(' ');
-  style.textContent = `*{${vars}}`;
+  const hues = ["#46be56","#ff3636","#1978ff","#ffc533"];
+  const vars = shuffleArray([...hues,"#ccc"]).map((color, i) => `--color-${i}: ${color};`).join('');
+  const hueVars = shuffleArray(hues).map((color, i) => `--hue-${i}: ${color};`).join('');
+  style.textContent = `*{${vars}${hueVars}}`;
   document.head.appendChild(style);
 }
 
