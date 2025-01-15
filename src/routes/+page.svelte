@@ -28,8 +28,8 @@
 					y={y * (innerWidth / (arr[0].length + padding)) +
 						(innerHeight - (innerWidth / (arr[0].length + padding)) * arr.length) / 2}
 					width={innerWidth / (arr[0].length + padding)}
-					dir="neg"
-					axis="x"
+					dir={(x - y) % 3 === 0 ? 'neg' : 'pos'}
+					axis={(x + y) % 3 === 0 ? 'x' : 'y'}
 					dur={1}
 					delay={0.01 + 0.15 * x + 0.01 * (arr[0].length + padding) * y}
 					speed={400}
