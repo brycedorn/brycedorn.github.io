@@ -1,44 +1,38 @@
 {
-  "name": "bryce.io",
-  "version": "1.0.7",
-  "scripts": {
-    "start": "rm -rf dist .parcel-cache && env NODE_ENV=development parcel src/index.html",
-    "build": "rm -rf dist && env NODE_ENV=production parcel build src/index.html --no-source-maps --no-content-hash --public-url https://bryce.io",
-    "build-dev": "rm -rf dist .parcel-cache && parcel build src/index.html --no-content-hash && react-snap && npm run remove-tags",
-    "lint": "eslint . --ext .js --fix",
-    "remove-tags": "node src/js/remove-tags.js"
-  },
-  "author": {
-    "name": "Bryce Dorn",
-    "url": "https://www.bryce.io"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/brycedorn/brycedorn.github.io"
-  },
-  "alias": {
-    "react": "preact/compat",
-    "react-dom": "preact/compat"
-  },
-  "homepage": "https://bryce.io",
-  "license": "MIT",
-  "devDependencies": {
-    "@babel/core": "^7.17.10",
-    "@babel/eslint-parser": "^7.17.0",
-    "@parcel/reporter-bundle-analyzer": "^2.5.0",
-    "@parcel/transformer-css": "^2.11.0",
-    "eslint": "^8.17.0",
-    "eslint-plugin-css": "^0.9.1",
-    "eslint-plugin-react": "^7.30.0",
-    "node-html-parser": "^6.1.12",
-    "parcel": "^2.5.0",
-    "react-snap": "^1.23.0"
-  },
-  "dependencies": {
-    "preact": "^10.19.3",
-    "process": "^0.11.10",
-    "react": "^16.6.0",
-    "react-dom": "^16.6.0",
-    "react-meta-tags": "^1.0.1"
-  }
+	"name": "bryce.io",
+	"version": "2.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"format": "prettier --write .",
+		"lint": "prettier --check . && eslint ."
+	},
+	"engines": {
+		"npm": "10.8.3",
+		"node": "22.9.0"
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-auto": "^3.3.1",
+		"@sveltejs/adapter-cloudflare-workers": "^2.7.0",
+		"@sveltejs/adapter-static": "^3.0.8",
+		"@sveltejs/kit": "^2.15.2",
+		"@sveltejs/vite-plugin-svelte": "^5.0.3",
+		"@types/eslint": "^9.6.1",
+		"eslint": "^9.17.0",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-plugin-svelte": "^2.46.1",
+		"globals": "^15.14.0",
+		"prettier": "^3.4.2",
+		"prettier-plugin-svelte": "^3.3.2",
+		"svelte": "^5.17.0",
+		"svelte-check": "^4.1.1",
+		"typescript": "^5.7.2",
+		"typescript-eslint": "^8.19.1",
+		"vite": "^6.0.7",
+		"wrangler": "^3.100.0"
+	}
 }
