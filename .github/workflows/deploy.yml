@@ -17,6 +17,8 @@ jobs:
 
       - name: Pre-render 🎨
         uses: brycedorn/react-snap-action@v1.0.2
+        with:
+          output: build
 
       - name: Remove tags
         run: npm run remove-tags
@@ -25,7 +27,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: site
-          path: dist
+          path: build
 
   deploy:
     needs: [build]
