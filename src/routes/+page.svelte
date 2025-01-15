@@ -112,4 +112,27 @@
 				linear-gradient(to bottom, #000 1px, #444 1px);
 		}
 	} */
+
+	@media (max-aspect-ratio: 1/1.5) {
+		#container {
+			transform: rotate(90deg) scale(2);
+			background: none;
+		}
+
+		#container::before {
+			/* transform: rotate(90deg); */
+			width: 200%;
+			height: 100vh;
+			position: absolute;
+			display: block;
+			content: '';
+			top: 0;
+			left: -50vh;
+			background-size: calc(var(--cube-width) / 1) calc(var(--cube-width) / 1);
+			background-image: linear-gradient(to right, #efefef 1px, transparent 1px),
+				linear-gradient(to bottom, #efefef 1px, transparent 1px);
+			background-position: calc(50% + calc(var(--cube-width) / 4))
+				calc(50% + calc(var(--cube-width) / 4));
+		}
+	}
 </style>
