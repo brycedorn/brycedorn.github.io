@@ -13,7 +13,10 @@ jobs:
       - name: Setup Node.js 📦
         uses: actions/setup-node@v4
         with:
-          node-version: 18.x
+          node-version: 22.9.0
+
+      - run: npm install
+      - run: npm run build
 
       # - name: Pre-render 🎨
       #   uses: brycedorn/react-snap-action@v1.0.2
