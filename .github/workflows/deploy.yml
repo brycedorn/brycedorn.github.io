@@ -15,13 +15,13 @@ jobs:
         with:
           node-version: 18.x
 
-      - name: Pre-render 🎨
-        uses: brycedorn/react-snap-action@v1.0.2
-        with:
-          output: build
+      # - name: Pre-render 🎨
+      #   uses: brycedorn/react-snap-action@v1.0.2
+      #   with:
+      #     output: build
 
-      - name: Remove tags
-        run: npm run remove-tags
+      # - name: Remove tags
+      #   run: npm run remove-tags
 
       - name: Upload Artifacts 🔺
         uses: actions/upload-artifact@v4
