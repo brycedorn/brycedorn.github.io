@@ -28,8 +28,8 @@
 					y={y * (innerWidth / (arr[0].length + padding)) +
 						(innerHeight - (innerWidth / (arr[0].length + padding)) * arr.length) / 2}
 					width={innerWidth / (arr[0].length + padding)}
-					dir={(x - y) % 3 === 0 ? 'neg' : 'pos'}
-					axis={(x + y) % 3 === 0 ? 'x' : 'y'}
+					dir={Math.random() < 0.5 ? 'neg' : 'pos'}
+					axis={Math.random() < 0.5 ? 'x' : 'y'}
 					dur={1}
 					delay={0.01 + 0.15 * x + 0.01 * (arr[0].length + padding) * y}
 					speed={400}
@@ -60,8 +60,14 @@
 		width: 100%;
 		height: 100vh;
 		background-size: calc(var(--cube-width) / 2) calc(var(--cube-width) / 2);
-		background-image: linear-gradient(to right, #efefef 1px, transparent 1px),
-			linear-gradient(to bottom, #efefef 1px, transparent 1px);
+		background-image: linear-gradient(to right, #dfdfdf 1px, transparent 1px),
+			linear-gradient(to bottom, #dfdfdf 1px, transparent 1px);
+		background-image:
+			-webkit-linear-gradient(to right, #dfdfdf 1px, transparent 1px),
+			-webkit-linear-gradient(to bottom, #dfdfdf 1px, transparent 1px);
+		background-image:
+			-moz-linear-gradient(to right, #dfdfdf 1px, transparent 1px),
+			-moz-linear-gradient(to bottom, #dfdfdf 1px, transparent 1px);
 		background-position: calc(50% + calc(var(--cube-width) / 4))
 			calc(50% + calc(var(--cube-width) / 4));
 	}
@@ -106,12 +112,23 @@
 		}
 	}
 
-	/* @media (prefers-color-scheme: dark) {
+	@media (prefers-color-scheme: dark) {
 		#container {
-			background-image: linear-gradient(to right, #000 1px, #444 1px),
-				linear-gradient(to bottom, #000 1px, #444 1px);
+			background-color: #333;
+			background-image: linear-gradient(to right, #222 1px, transparent 1px),
+				linear-gradient(to bottom, #222 1px, transparent 1px);
+			background-image:
+				-webkit-linear-gradient(to right, #222 1px, transparent 1px),
+				-webkit-linear-gradient(to bottom, #222 1px, transparent 1px);
+			background-image:
+				-moz-linear-gradient(to right, #222 1px, transparent 1px),
+				-moz-linear-gradient(to bottom, #222 1px, transparent 1px);
 		}
-	} */
+
+		svg {
+			fill: #222;
+		}
+	}
 
 	@media (max-aspect-ratio: 1/1.5) {
 		#container {
@@ -129,10 +146,33 @@
 			top: 0;
 			left: -50vh;
 			background-size: calc(var(--cube-width) / 1) calc(var(--cube-width) / 1);
-			background-image: linear-gradient(to right, #efefef 1px, transparent 1px),
-				linear-gradient(to bottom, #efefef 1px, transparent 1px);
-			background-position: calc(50% + calc(var(--cube-width) / 4))
-				calc(50% + calc(var(--cube-width) / 4));
+			background-image: linear-gradient(to right, #dfdfdf 1px, transparent 1px),
+				linear-gradient(to bottom, #dfdfdf 1px, transparent 1px);
+			background-image:
+				-webkit-linear-gradient(to right, #dfdfdf 1px, transparent 1px),
+				-webkit-linear-gradient(to bottom, #dfdfdf 1px, transparent 1px);
+			background-image:
+				-moz-linear-gradient(to right, #dfdfdf 1px, transparent 1px),
+				-moz-linear-gradient(to bottom, #dfdfdf 1px, transparent 1px);
+			background-position: calc(50vh + calc(var(--cube-width))) calc(50% + calc(var(--cube-width)));
+		}
+	}
+
+	@media (max-aspect-ratio: 1/1.5) and (prefers-color-scheme: dark) {
+		#container::before {
+			background-color: #333;
+			background-image: linear-gradient(to right, #222 1px, transparent 1px),
+				linear-gradient(to bottom, #222 1px, transparent 1px);
+			background-image:
+				-webkit-linear-gradient(to right, #222 1px, transparent 1px),
+				-webkit-linear-gradient(to bottom, #222 1px, transparent 1px);
+			background-image:
+				-moz-linear-gradient(to right, #222 1px, transparent 1px),
+				-moz-linear-gradient(to bottom, #222 1px, transparent 1px);
+		}
+
+		svg {
+			fill: #222;
 		}
 	}
 </style>

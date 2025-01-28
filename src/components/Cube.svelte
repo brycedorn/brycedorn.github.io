@@ -102,7 +102,7 @@
 			<div class="face {axis}-start {dir}"></div>
 			<div class="face {axis}-mid {dir} {rotateInfinite ? 'face-emoji' : ''}">
 				{#if rotateInfinite}
-					{emoji}
+					<span>{emoji}</span>
 				{/if}
 			</div>
 			<div class="face {axis}-end {dir}"></div>
@@ -125,6 +125,13 @@
 	@media (max-width: 500px) {
 		.face-emoji {
 			font-size: 0.5em;
+		}
+	}
+
+	@media (max-aspect-ratio: 1/1.5) {
+		.face-emoji span {
+			display: block;
+			transform: rotate(-90deg);
 		}
 	}
 </style>

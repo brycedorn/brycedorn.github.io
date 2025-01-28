@@ -2,7 +2,7 @@
 	perspective: 400px;
 
 	--bg-color: #fff;
-	--fade-color: #efefef;
+	--fade-color: #dfdfdf;
 	--face-color: #444;
 
 	position: absolute;
@@ -101,11 +101,11 @@
 		background: var(--bg-color);
 	}
 }
-/* 
+
 @media (prefers-color-scheme: dark) {
 	.cube-outer {
-		--bg-color: #000;
-		--fade-color: #111;
+		--bg-color: #333;
+		--fade-color: #444;
 		--face-color: #ccc;
 	}
-} */
+}
