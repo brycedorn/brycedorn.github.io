@@ -137,8 +137,7 @@
 		}
 
 		#container::before {
-			/* transform: rotate(90deg); */
-			width: 200%;
+			width: calc(max(100vh, 200%));
 			height: 100vh;
 			position: absolute;
 			display: block;
