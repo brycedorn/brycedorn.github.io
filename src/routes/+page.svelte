@@ -160,15 +160,15 @@
 
 	@media (max-aspect-ratio: 1/1.5) and (prefers-color-scheme: dark) {
 		#container::before {
-			background-color: #333;
-			background-image: linear-gradient(to right, #183939 0.5px, transparent 0.5px),
-				linear-gradient(to bottom, #183939 0.5px, transparent 0.5px);
+			background-color: #183939;
+			background-image: linear-gradient(to right, #2f4c4c 0.5px, transparent 0.5px),
+				linear-gradient(to bottom, #2f4c4c 0.5px, transparent 0.5px);
 			background-image:
-				-webkit-linear-gradient(to right, #183939 0.5px, transparent 0.5px),
-				-webkit-linear-gradient(to bottom, #183939 0.5px, transparent 0.5px);
+				-webkit-linear-gradient(to right, #2f4c4c 0.5px, transparent 0.5px),
+				-webkit-linear-gradient(to bottom, #2f4c4c 0.5px, transparent 0.5px);
 			background-image:
-				-moz-linear-gradient(to right, #183939 0.5px, transparent 0.5px),
-				-moz-linear-gradient(to bottom, #183939 0.5px, transparent 0.5px);
+				-moz-linear-gradient(to right, #2f4c4c 0.5px, transparent 0.5px),
+				-moz-linear-gradient(to bottom, #2f4c4c 0.5px, transparent 0.5px);
 		}
 
 		svg {
