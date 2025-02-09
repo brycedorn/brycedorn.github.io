@@ -34,6 +34,7 @@
 					delay={0.01 + 0.15 * x + 0.01 * (arr[0].length + padding) * y}
 					speed={400}
 					rotateInfinite={y === 1 && x === 20}
+					renderEmoji={y === 1 && x === 20}
 				/>
 			{/if}
 		{/each}
@@ -59,24 +60,24 @@
 	#container {
 		width: 100%;
 		height: 100vh;
-		background-size: calc(var(--cube-width) / 2) calc(var(--cube-width) / 2);
-		background-image: linear-gradient(to right, #dfdfdf 1px, transparent 1px),
-			linear-gradient(to bottom, #dfdfdf 1px, transparent 1px);
+		background-size: calc(var(--cube-width)) calc(var(--cube-width));
+		background-image: linear-gradient(to right, #e7ebeb 1px, transparent 1px),
+			linear-gradient(to bottom, #e7ebeb 1px, transparent 1px);
 		background-image:
-			-webkit-linear-gradient(to right, #dfdfdf 1px, transparent 1px),
-			-webkit-linear-gradient(to bottom, #dfdfdf 1px, transparent 1px);
+			-webkit-linear-gradient(to right, #e7ebeb 1px, transparent 1px),
+			-webkit-linear-gradient(to bottom, #e7ebeb 1px, transparent 1px);
 		background-image:
-			-moz-linear-gradient(to right, #dfdfdf 1px, transparent 1px),
-			-moz-linear-gradient(to bottom, #dfdfdf 1px, transparent 1px);
-		background-position: calc(50% + calc(var(--cube-width) / 4))
-			calc(50% + calc(var(--cube-width) / 4));
+			-moz-linear-gradient(to right, #e7ebeb 1px, transparent 1px),
+			-moz-linear-gradient(to bottom, #e7ebeb 1px, transparent 1px);
+		background-position: calc(50% + calc(var(--cube-width) / 2))
+			calc(50% + calc(var(--cube-width)));
 	}
 
 	svg {
 		width: 100px;
 		height: 100px;
-		fill: #444;
-		color: #fff;
+		fill: #466060;
+		color: #e7ebeb;
 		position: absolute;
 		top: 0;
 		border: 0;
@@ -114,19 +115,19 @@
 
 	@media (prefers-color-scheme: dark) {
 		#container {
-			background-color: #333;
-			background-image: linear-gradient(to right, #222 1px, transparent 1px),
-				linear-gradient(to bottom, #222 1px, transparent 1px);
+			background-color: #183939;
+			background-image: linear-gradient(to right, #2f4c4c 1px, transparent 1px),
+				linear-gradient(to bottom, #2f4c4c 1px, transparent 1px);
 			background-image:
-				-webkit-linear-gradient(to right, #222 1px, transparent 1px),
-				-webkit-linear-gradient(to bottom, #222 1px, transparent 1px);
+				-webkit-linear-gradient(to right, #2f4c4c 1px, transparent 1px),
+				-webkit-linear-gradient(to bottom, #2f4c4c 1px, transparent 1px);
 			background-image:
-				-moz-linear-gradient(to right, #222 1px, transparent 1px),
-				-moz-linear-gradient(to bottom, #222 1px, transparent 1px);
+				-moz-linear-gradient(to right, #2f4c4c 1px, transparent 1px),
+				-moz-linear-gradient(to bottom, #2f4c4c 1px, transparent 1px);
 		}
 
 		svg {
-			fill: #222;
+			fill: #2f4c4c;
 		}
 	}
 
@@ -144,34 +145,34 @@
 			content: '';
 			top: 0;
 			left: -50vh;
-			background-size: calc(var(--cube-width) / 1) calc(var(--cube-width) / 1);
-			background-image: linear-gradient(to right, #dfdfdf 1px, transparent 1px),
-				linear-gradient(to bottom, #dfdfdf 1px, transparent 1px);
+			background-size: var(--cube-width) var(--cube-width);
+			background-image: linear-gradient(to right, #e7ebeb 0.5px, transparent 0.5px),
+				linear-gradient(to bottom, #e7ebeb 0.5px, transparent 0.5px);
 			background-image:
-				-webkit-linear-gradient(to right, #dfdfdf 1px, transparent 1px),
-				-webkit-linear-gradient(to bottom, #dfdfdf 1px, transparent 1px);
+				-webkit-linear-gradient(to right, #e7ebeb 0.5px, transparent 0.5px),
+				-webkit-linear-gradient(to bottom, #e7ebeb 0.5px, transparent 0.5px);
 			background-image:
-				-moz-linear-gradient(to right, #dfdfdf 1px, transparent 1px),
-				-moz-linear-gradient(to bottom, #dfdfdf 1px, transparent 1px);
-			background-position: calc(50vh + calc(var(--cube-width))) calc(50% + calc(var(--cube-width)));
+				-moz-linear-gradient(to right, #e7ebeb 0.5px, transparent 0.5px),
+				-moz-linear-gradient(to bottom, #e7ebeb 0.5px, transparent 0.5px);
+			background-position: calc(50vh + var(--cube-width)) calc(50% + var(--cube-width));
 		}
 	}
 
 	@media (max-aspect-ratio: 1/1.5) and (prefers-color-scheme: dark) {
 		#container::before {
 			background-color: #333;
-			background-image: linear-gradient(to right, #222 1px, transparent 1px),
-				linear-gradient(to bottom, #222 1px, transparent 1px);
+			background-image: linear-gradient(to right, #183939 0.5px, transparent 0.5px),
+				linear-gradient(to bottom, #183939 0.5px, transparent 0.5px);
 			background-image:
-				-webkit-linear-gradient(to right, #222 1px, transparent 1px),
-				-webkit-linear-gradient(to bottom, #222 1px, transparent 1px);
+				-webkit-linear-gradient(to right, #183939 0.5px, transparent 0.5px),
+				-webkit-linear-gradient(to bottom, #183939 0.5px, transparent 0.5px);
 			background-image:
-				-moz-linear-gradient(to right, #222 1px, transparent 1px),
-				-moz-linear-gradient(to bottom, #222 1px, transparent 1px);
+				-moz-linear-gradient(to right, #183939 0.5px, transparent 0.5px),
+				-moz-linear-gradient(to bottom, #183939 0.5px, transparent 0.5px);
 		}
 
 		svg {
-			fill: #222;
+			fill: #183939;
 		}
 	}
 </style>

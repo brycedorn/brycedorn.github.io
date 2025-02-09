@@ -1,9 +1,9 @@
 .cube-outer {
-	perspective: 400px;
+	perspective: 150px;
 
 	--bg-color: #fff;
-	--fade-color: #dfdfdf;
-	--face-color: #444;
+	--fade-color: #d0d7d7;
+	--face-color: #466060;
 
 	position: absolute;
 	left: var(--x-pos);
@@ -104,8 +104,8 @@
 
 @media (prefers-color-scheme: dark) {
 	.cube-outer {
-		--bg-color: #333;
-		--fade-color: #444;
-		--face-color: #ccc;
+		--bg-color: #183939;
+		--fade-color: #435d5d;
+		--face-color: #e7ebeb;
 	}
 }

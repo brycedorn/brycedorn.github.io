@@ -13,11 +13,13 @@
 	export let delay: number;
 	export let speed: number;
 	export let rotateInfinite: boolean;
+	export let renderEmoji: boolean;
 
 	let face = dir === 'pos' ? 'start' : 'end';
 	let show = delay === 0;
 	let transitionDur = 1;
 	let transitionDurOverride = 'unset';
+	let isHovering = false;
 
 	onMount(startRotation);
 
@@ -43,10 +45,10 @@
 									);
 								}, transitionDur * speed);
 							},
-							(dur + transitionDur) * speed * 3
+							(dur + transitionDur) * speed * 2
 						);
 					},
-					(dur + transitionDur) * speed
+					(dur + transitionDur) * speed * 2
 				);
 			},
 			(dur + transitionDur) * speed
@@ -83,6 +85,25 @@
 		if (rotateInfinite) {
 			rotateForwardInfinite();
 		}
+
+		setTimeout(rotateWithoutDelay, delay * speed + Math.random() * 100000)
+	}
+
+	function rotateWithoutDelay() {
+		if (rotateInfinite || isHovering) {
+			return;
+		}
+		isHovering = true;
+		rotateEnd();
+		setTimeout(() => {
+			transitionDurOverride = '0';
+			rotateReset();
+			setTimeout(() => {
+				transitionDurOverride = 'unset';
+				rotateMid();
+				isHovering = false;
+			}, (dur + transitionDur) * speed)
+		}, (2 * dur + transitionDur) * speed);
 	}
 
 	function getEmoji() {
@@ -97,11 +118,12 @@
 	<div
 		class="cube-outer"
 		style="--cube-width:{width}px;--x-pos:{x}px;--y-pos:{y}px;--transition-dur:{transitionDur}s;--content-show-dur:{dur}s"
+		on:mouseenter={rotateWithoutDelay}
 	>
 		<div class="cube wrap-{axis}-{face}" style="--transition-dur:{transitionDurOverride}">
 			<div class="face {axis}-start {dir}"></div>
 			<div class="face {axis}-mid {dir} {rotateInfinite ? 'face-emoji' : ''}">
-				{#if rotateInfinite}
+				{#if renderEmoji}
 					<span>{emoji}</span>
 				{/if}
 			</div>
