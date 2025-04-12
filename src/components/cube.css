@@ -13,6 +13,8 @@
 	width: var(--cube-width);
 	height: var(--cube-width);
 	transform-style: preserve-3d;
+	will-change: transform;
+	backface-visibility: hidden;
 	transform: translateZ(calc(-1 * var(--cube-width) / 2));
 	transition: transform var(--transition-dur) ease-out;
 }

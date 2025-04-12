@@ -1,124 +1,111 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import type { CubeAxis, CubeDirection } from '$lib';
+	const { axis, dir, x, y, width, offset, maxOffset, speed, rotateInfinite, renderEmoji } =
+		$props();
 
-	import './cube.css';
-
-	export let axis: CubeAxis;
-	export let dir: CubeDirection;
-	export let dur: number;
-	export let x: number;
-	export let y: number;
-	export let width: number;
-	export let delay: number;
-	export let speed: number;
-	export let rotateInfinite: boolean;
-	export let renderEmoji: boolean;
-
-	let face = dir === 'pos' ? 'start' : 'end';
-	let show = delay === 0;
 	let transitionDur = 1;
-	let transitionDurOverride = 'unset';
-	let isHovering = false;
+	let startFace = dir === 'pos' ? 'start' : 'end';
+	let endFace = dir === 'pos' ? 'end' : 'start';
+	let delay = offset * speed;
+	let maxDelay = maxOffset * speed;
+
+	let transitionDurOverride = $state('unset');
+	let emoji = $state(getEmoji());
+	let show = $state(offset === 0);
+	let face = $state(startFace);
 
 	onMount(startRotation);
 
-	function rotateForwardInfinite() {
-		setTimeout(
-			() => {
-				rotateReset();
-				emoji = getEmoji();
-				setTimeout(
-					() => {
-						transitionDurOverride = 'unset';
-						rotateMid();
-						setTimeout(
-							() => {
-								rotateEnd();
-								setTimeout(() => {
-									rotateForwardInfinite();
-									setTimeout(
-										() => {
-											transitionDurOverride = '0';
-										},
-										(dur + transitionDur) * speed
-									);
-								}, transitionDur * speed);
-							},
-							(dur + transitionDur) * speed * 2
-						);
-					},
-					(dur + transitionDur) * speed * 2
-				);
-			},
-			(dur + transitionDur) * speed
-		);
-	}
-
-	function rotateReset() {
-		setTimeout(() => {
-			face = dir === 'pos' ? 'start' : 'end';
-		}, transitionDur * speed);
-	}
-
-	function rotateMid() {
-		setTimeout(() => {
-			face = 'mid';
-		}, transitionDur * speed);
-	}
-
-	function rotateEnd() {
-		setTimeout(() => {
-			face = dir === 'pos' ? 'end' : 'start';
-		}, transitionDur * speed);
-	}
-
-	function startRotation() {
-		if (delay > 0) {
+	async function wait(duration: number) {
+		return new Promise<void>((resolve) => {
 			setTimeout(() => {
-				show = true;
-			}, delay * speed);
-		}
-
-		setTimeout(rotateMid, delay * speed);
-
-		if (rotateInfinite) {
-			rotateForwardInfinite();
-		}
-
-		setTimeout(rotateWithoutDelay, delay * speed + Math.random() * 100000)
+				resolve();
+			}, duration);
+		});
 	}
 
-	function rotateWithoutDelay() {
-		if (rotateInfinite || isHovering) {
-			return;
-		}
-		isHovering = true;
-		rotateEnd();
-		setTimeout(() => {
-			transitionDurOverride = '0';
-			rotateReset();
+	async function rotateForwardInfinite(initialDelay: number) {
+		await rotateReset(initialDelay);
+		await rotate('mid', speed * 4);
+		await rotate(endFace, speed * 6);
+		await wait(speed * 4);
+		await rotateForwardInfinite(0);
+	}
+
+	function fade(visible: boolean, fadeDelay: number) {
+		return new Promise<void>((resolve) => {
+			setTimeout(() => {
+				show = visible;
+				resolve();
+			}, fadeDelay);
+		});
+	}
+
+	async function rotateReset(resetDelay: number) {
+		await wait(resetDelay);
+
+		transitionDurOverride = '0';
+		emoji = getEmoji();
+		face = startFace;
+
+		return new Promise<void>((resolve) => {
 			setTimeout(() => {
 				transitionDurOverride = 'unset';
-				rotateMid();
-				isHovering = false;
-			}, (dur + transitionDur) * speed)
-		}, (2 * dur + transitionDur) * speed);
+				resolve();
+			}, 10);
+		});
+	}
+
+	function rotate(nextFace: string, nextDelay: number) {
+		return new Promise<void>((resolve) => {
+			setTimeout(() => {
+				face = nextFace;
+				resolve();
+			}, nextDelay);
+		});
+	}
+
+	async function startRotation() {
+		if (delay > 0) {
+			await fade(true, delay);
+		}
+
+		await rotate('mid', delay);
+
+		// Exception for emoji cube
+		if (rotateInfinite) {
+			await rotate(endFace, delay * 2);
+			await rotateForwardInfinite(delay * 2);
+		}
+
+		// Random cube rotation
+		await rotateAfterDelay(maxDelay + 2000 + Math.random() * 10000);
+	}
+
+	async function rotateAfterDelay(longDelay: number) {
+		if (rotateInfinite) {
+			return;
+		}
+
+		await rotate(endFace, longDelay);
+		await wait(speed * 4);
+		// await fade(false, speed * 4);
+		await rotateReset(0);
+		await rotate('mid', speed * 4);
+		await rotateAfterDelay(maxDelay + longDelay);
 	}
 
 	function getEmoji() {
 		const emoji = ['🍷', '☕️', '👟', '✈️', '🐶', '🎮', '🚲', '🇳🇱', '🇺🇸', '🇬🇧'];
 		return emoji[Math.floor(Math.random() * emoji.length)];
 	}
-
-	let emoji = '';
 </script>
 
 {#if show}
+	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<div
 		class="cube-outer"
-		style="--cube-width:{width}px;--x-pos:{x}px;--y-pos:{y}px;--transition-dur:{transitionDur}s;--content-show-dur:{dur}s"
-		on:mouseenter={rotateWithoutDelay}
+		style="--cube-width:{width}px;--x-pos:{x}px;--y-pos:{y}px;--transition-dur:{transitionDur}s;"
 	>
 		<div class="cube wrap-{axis}-{face}" style="--transition-dur:{transitionDurOverride}">
 			<div class="face {axis}-start {dir}"></div>
@@ -135,7 +122,7 @@
 <style>
 	.face-emoji {
 		cursor: default;
-		font-size: 2em;
+		font-size: 1.5em;
 	}
 
 	@media (max-width: 1000px) {
@@ -150,10 +137,9 @@
 		}
 	}
 
-	@media (max-aspect-ratio: 1/1.5) {
-		.face-emoji span {
-			display: block;
-			transform: rotate(-90deg);
+	@media (max-width: 500px) {
+		.face-emoji {
+			font-size: 0;
 		}
 	}
 </style>

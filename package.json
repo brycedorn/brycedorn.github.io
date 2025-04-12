@@ -34,5 +34,8 @@
 		"typescript-eslint": "^8.19.1",
 		"vite": "^6.0.7",
 		"wrangler": "^3.100.0"
+	},
+	"dependencies": {
+		"animejs": "^4.0.0"
 	}
 }

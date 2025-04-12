@@ -1,10 +1,11 @@
 <script lang="ts">
 	import Cube from '../components/Cube.svelte';
+	import '../components/cube.css';
 
-	let innerHeight: number;
-	let innerWidth: number;
+	let innerHeight = $state<number>(0);
+	let innerWidth = $state<number>(0);
 
-	const arr = [
+	const grid = [
 		[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 		[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
 		[1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
@@ -14,25 +15,25 @@
 		[0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 	];
 
-	const padding = 10;
+	let padding = $derived<number>(innerWidth < 500 ? 4 : 10);
 </script>
 
 <svelte:window bind:innerHeight bind:innerWidth />
 
-<div id="container" style="--cube-width: {innerWidth / (arr[0].length + padding)}px">
-	{#each arr as row, y}
+<div id="container" style="--cube-width: {innerWidth / (grid[0].length + padding)}px">
+	{#each grid as row, y}
 		{#each row as cell, x}
 			{#if cell}
 				<Cube
-					x={(x + padding / 2) * (innerWidth / (arr[0].length + padding))}
-					y={y * (innerWidth / (arr[0].length + padding)) +
-						(innerHeight - (innerWidth / (arr[0].length + padding)) * arr.length) / 2}
-					width={innerWidth / (arr[0].length + padding)}
+					x={(x + padding / 2) * (innerWidth / (grid[0].length + padding))}
+					y={y * (innerWidth / (grid[0].length + padding)) +
+						(innerHeight - (innerWidth / (grid[0].length + padding)) * grid.length) / 2}
+					width={innerWidth / (grid[0].length + padding)}
 					dir={Math.random() < 0.5 ? 'neg' : 'pos'}
 					axis={Math.random() < 0.5 ? 'x' : 'y'}
-					dur={1}
-					delay={0.01 + 0.15 * x + 0.01 * (arr[0].length + padding) * y}
-					speed={400}
+					offset={0.15 * x + 0.01 * (1 + grid[0].length + padding) * y}
+					maxOffset={0.15 * grid[0].length + 0.01 * (1 + grid[0].length + padding) * grid.length}
+					speed={300}
 					rotateInfinite={y === 1 && x === 20}
 					renderEmoji={y === 1 && x === 20}
 				/>
@@ -69,8 +70,7 @@
 		background-image:
 			-moz-linear-gradient(to right, #e7ebeb 1px, transparent 1px),
 			-moz-linear-gradient(to bottom, #e7ebeb 1px, transparent 1px);
-		background-position: calc(50% + calc(var(--cube-width) / 2))
-			calc(50% + calc(var(--cube-width)));
+		background-position: calc(50% + calc(var(--cube-width) / 2)) calc(50% + calc(var(--cube-width)));
 	}
 
 	svg {
@@ -128,51 +128,6 @@
 
 		svg {
 			fill: #2f4c4c;
-		}
-	}
-
-	@media (max-aspect-ratio: 1/1.5) {
-		#container {
-			transform: rotate(90deg) scale(2);
-			background: none;
-		}
-
-		#container::before {
-			width: calc(max(100vh, 200%));
-			height: 100vh;
-			position: absolute;
-			display: block;
-			content: '';
-			top: 0;
-			left: -50vh;
-			background-size: var(--cube-width) var(--cube-width);
-			background-image: linear-gradient(to right, #e7ebeb 0.5px, transparent 0.5px),
-				linear-gradient(to bottom, #e7ebeb 0.5px, transparent 0.5px);
-			background-image:
-				-webkit-linear-gradient(to right, #e7ebeb 0.5px, transparent 0.5px),
-				-webkit-linear-gradient(to bottom, #e7ebeb 0.5px, transparent 0.5px);
-			background-image:
-				-moz-linear-gradient(to right, #e7ebeb 0.5px, transparent 0.5px),
-				-moz-linear-gradient(to bottom, #e7ebeb 0.5px, transparent 0.5px);
-			background-position: calc(50vh + var(--cube-width)) calc(50% + var(--cube-width));
-		}
-	}
-
-	@media (max-aspect-ratio: 1/1.5) and (prefers-color-scheme: dark) {
-		#container::before {
-			background-color: #183939;
-			background-image: linear-gradient(to right, #2f4c4c 0.5px, transparent 0.5px),
-				linear-gradient(to bottom, #2f4c4c 0.5px, transparent 0.5px);
-			background-image:
-				-webkit-linear-gradient(to right, #2f4c4c 0.5px, transparent 0.5px),
-				-webkit-linear-gradient(to bottom, #2f4c4c 0.5px, transparent 0.5px);
-			background-image:
-				-moz-linear-gradient(to right, #2f4c4c 0.5px, transparent 0.5px),
-				-moz-linear-gradient(to bottom, #2f4c4c 0.5px, transparent 0.5px);
-		}
-
-		svg {
-			fill: #183939;
 		}
 	}
 </style>
