@@ -1,6 +1,5 @@
 <script lang="ts">
 	import Cube from '../components/Cube.svelte';
-	import '../components/cube.css';
 
 	let innerHeight = $state<number>(0);
 	let innerWidth = $state<number>(0);
@@ -15,7 +14,7 @@
 		[0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 	];
 
-	let padding = $derived<number>(innerWidth < 500 ? 4 : 10);
+	let padding = $derived<number>(innerWidth < 500 ? 4 : 8);
 </script>
 
 <svelte:window bind:innerHeight bind:innerWidth />
@@ -58,9 +57,23 @@
 >
 
 <style>
+	* {
+		--color-white: #fff;
+		--color-off-white: #d0d7d7;
+		--color-off-white-alt: #e7ebeb;
+		--color-green: #466060;
+		--color-green-alt: #435d5d;
+		--color-dark-green-alt: #2f4c4c;
+		--color-dark-green: #183939;
+
+		--background-color: var(--color-white);
+		--grid-color: var(--color-off-white-alt);
+		--svg-fill-color: var(--color-green);
+	}
 	#container {
 		width: 100%;
 		height: 100vh;
+		background-color: var(--background-color);
 		background-size: calc(var(--cube-width)) calc(var(--cube-width));
 		background-image: linear-gradient(to right, #e7ebeb 1px, transparent 1px),
 			linear-gradient(to bottom, #e7ebeb 1px, transparent 1px);
@@ -72,22 +85,34 @@
 			-moz-linear-gradient(to bottom, #e7ebeb 1px, transparent 1px);
 		background-position: calc(50% + calc(var(--cube-width) / 2)) calc(50% + calc(var(--cube-width)));
 	}
-
+	@media (prefers-color-scheme: dark) {
+		* {
+			--background-color: var(--color-dark-green);
+			--svg-fill-color: var(--color-dark-green-alt);
+		}
+		#container {
+			background-image: linear-gradient(to right, #2f4c4c 1px, transparent 1px),
+				linear-gradient(to bottom, #2f4c4c 1px, transparent 1px);
+			background-image:
+				-webkit-linear-gradient(to right, #2f4c4c 1px, transparent 1px),
+				-webkit-linear-gradient(to bottom, #2f4c4c 1px, transparent 1px);
+			background-image:
+				-moz-linear-gradient(to right, #2f4c4c 1px, transparent 1px),
+				-moz-linear-gradient(to bottom, #2f4c4c 1px, transparent 1px);
+		}
+	}
 	svg {
 		width: 100px;
 		height: 100px;
-		fill: #466060;
-		color: #e7ebeb;
+		fill: var(--svg-fill-color);
+		color: var(--color-off-white-alt);
 		position: absolute;
 		top: 0;
-		border: 0;
 		right: 0;
 	}
-
 	.github-corner:hover .octo-arm {
 		animation: octocat-wave 560ms ease-in-out;
 	}
-
 	@keyframes octocat-wave {
 		0%,
 		100% {
@@ -102,7 +127,6 @@
 			transform: rotate(10deg);
 		}
 	}
-
 	@media (max-width: 500px) {
 		.github-corner:hover .octo-arm {
 			animation: none;
@@ -110,24 +134,6 @@
 
 		.github-corner .octo-arm {
 			animation: octocat-wave 560ms ease-in-out;
-		}
-	}
-
-	@media (prefers-color-scheme: dark) {
-		#container {
-			background-color: #183939;
-			background-image: linear-gradient(to right, #2f4c4c 1px, transparent 1px),
-				linear-gradient(to bottom, #2f4c4c 1px, transparent 1px);
-			background-image:
-				-webkit-linear-gradient(to right, #2f4c4c 1px, transparent 1px),
-				-webkit-linear-gradient(to bottom, #2f4c4c 1px, transparent 1px);
-			background-image:
-				-moz-linear-gradient(to right, #2f4c4c 1px, transparent 1px),
-				-moz-linear-gradient(to bottom, #2f4c4c 1px, transparent 1px);
-		}
-
-		svg {
-			fill: #2f4c4c;
 		}
 	}
 </style>
