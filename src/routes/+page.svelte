@@ -15,6 +15,9 @@
 	];
 
 	let padding = $derived<number>(innerWidth < 500 ? 4 : 8);
+	let maxOffset = $derived<number>(
+		0.1 * grid[0].length + 0.01 * (1 + grid[0].length + padding) * grid.length
+	);
 </script>
 
 <svelte:window bind:innerHeight bind:innerWidth />
@@ -30,10 +33,9 @@
 					width={innerWidth / (grid[0].length + padding)}
 					dir={Math.random() < 0.5 ? 'neg' : 'pos'}
 					axis={Math.random() < 0.5 ? 'x' : 'y'}
-					offset={0.15 * x + 0.01 * (1 + grid[0].length + padding) * y}
-					maxOffset={0.15 * grid[0].length + 0.01 * (1 + grid[0].length + padding) * grid.length}
-					speed={300}
-					rotateInfinite={y === 1 && x === 20}
+					offset={0.1 * x + 0.01 * (1 + grid[0].length + padding) * y}
+					{maxOffset}
+					speed={250}
 					renderEmoji={y === 1 && x === 20}
 				/>
 			{/if}
