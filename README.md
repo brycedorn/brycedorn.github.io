@@ -1,23 +1,27 @@
 # [bryce.io](https://www.bryce.io)
 
-Powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+A single-page personal site built with Qwik and QwikCity, prerendered to static files and hosted on GitHub Pages.
 
-## Developing
+## Development
 
-```bash
-npm install
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+```shell
+npm start
 ```
 
-## Building
+Dev mode server-side renders with Vite's dev server. It requests many `.js` files, so it is not representative of a production build.
 
-To create a production version:
+## Preview
 
-```bash
+```shell
+npm run preview
+```
+
+Builds the client and `src/entry.preview.tsx`, then serves them locally. For convenience only, not a production server.
+
+## Production
+
+```shell
 npm run build
 ```
 
-Preview the production build with `npm run preview`.
+Type checks, lints, and writes the static site to `dist/`. Pushing to `master` runs the GitHub Actions workflow, which builds and publishes `dist/` to the `deploy` branch served by GitHub Pages. Fonts are self-hosted from `public/fonts`, and the custom domain comes from `public/CNAME`.
