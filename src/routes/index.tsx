@@ -1,12 +1,13 @@
 import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
-import { startEtchedName } from "../components/etched-name/etched-name";
+import { startSubwayName } from "../components/subway-name/subway-name";
 import type { DocumentHead } from "@builder.io/qwik-city";
 
 type Job = {
   company: string;
+  parent?: string;
   role: string;
   dates: string;
-  blurb: string;
+  blurbs: string[];
 };
 
 const jobs: Job[] = [
@@ -14,22 +15,27 @@ const jobs: Job[] = [
     company: "Uber",
     role: "Lead Software Engineer",
     dates: "2022 to present",
-    blurb:
-      "Scaled Uber's global payments platform, expanding international payment method coverage and refining onboarding flows to unlock user growth across key emerging markets. Now leading development of internal operational tooling around maps and core maps SDK development, architecting cross-platform frameworks that power map-based experiences for 100M+ daily active users.",
+    blurbs: [
+      "Started in Uber's global payments platform, expanding international payment method coverage and refining onboarding flows to drive growth across emerging markets.",
+      "Currently leading development of internal operational tooling around maps experiences and core maps SDK development, architecting cross-platform frameworks that power map-based experiences for 100M+ daily active users across mobile and web.",
+    ],
   },
   {
     company: "Glassdoor",
     role: "Senior Frontend Engineer",
     dates: "2019 to 2022",
-    blurb:
-      "Led development for Glassdoor’s content moderation and B2B platforms, decoupling legacy monolithic systems into scalable Node.js, React, and GraphQL microservices. Engineered high-throughput tools to optimize high-volume moderation workflows while mentoring junior developers to elevate code quality and team velocity.",
+    blurbs: [
+      "Led development for Glassdoor’s content moderation and B2B platforms, decoupling legacy monolithic Java systems into scalable Node.js, React, and GraphQL microservices. Built job promotion system for B2B sales and the high-throughput tooling moderators use to work through 20M+ new reviews a year.",
+    ],
   },
   {
     company: "The Onion",
+    parent: "Gizmodo Media Group",
     role: "Senior Software Engineer",
     dates: "2017 to 2019",
-    blurb:
-      "Architected modernization strategy across the Kinja platform's frontend, transitioning legacy Scala services to scalable Node.js microservices and React to cut infrastructure overhead and improve velocity and maintainability.",
+    blurbs: [
+      "Architected modernization strategy for the Kinja platform's frontend, serving millions of daily readers across The Onion, Gizmodo and its sister sites. Transitioned legacy Scala services to scalable Node.js microservices and React.",
+    ],
   },
 ];
 
@@ -44,11 +50,15 @@ export default component$(() => {
     ({ cleanup }) => {
       let stop: (() => void) | null = null;
       let disposed = false;
-      document.fonts.load('400 64px "Suez One"').then(() => {
-        if (disposed || !hero.value || !name.value || !canvas.value) return;
-        stop = startEtchedName(canvas.value, hero.value, name.value);
-        if (stop) hero.value.classList.add("etched");
-      });
+      const showPlain = () => hero.value?.classList.add("plain");
+      document.fonts
+        .load('400 64px "Bree Serif"')
+        .then(() => {
+          if (disposed || !hero.value || !name.value || !canvas.value) return;
+          stop = startSubwayName(canvas.value, hero.value, name.value);
+          if (!stop) showPlain();
+        })
+        .catch(showPlain);
       cleanup(() => {
         disposed = true;
         stop?.();
@@ -64,7 +74,7 @@ export default component$(() => {
         <h1 ref={name} class="name">
           bryce
         </h1>
-        <p class="descriptor">Software architect and engineering leader.</p>
+        <p class="descriptor">Software engineer building platforms used by millions.</p>
       </section>
 
       <ol class="entries" aria-label="Experience">
@@ -76,19 +86,28 @@ export default component$(() => {
             style={{ "--i": i }}
           >
             <div>
-              <h2>{job.company}</h2>
+              <h2>
+                {job.company}
+                {job.parent && <small class="parent">({job.parent})</small>}
+              </h2>
               <p class="meta">
                 {job.role} · {job.dates}
               </p>
             </div>
-            <p class="blurb">{job.blurb}</p>
+            <div class="blurbs">
+              {job.blurbs.map((text) => (
+                <p class="blurb" key={text}>
+                  {text}
+                </p>
+              ))}
+            </div>
           </li>
         ))}
       </ol>
 
       <footer class="contact">
         <h2>Contact</h2>
-        <a href="mailto:hello@bryce.io">hello@bryce.io</a>
+        <a href="mailto:hi@bryce.io">hi@bryce.io</a>
         <a href="https://www.linkedin.com/in/brycedorn">LinkedIn</a>
         <a href="https://github.com/brycedorn">GitHub</a>
       </footer>
@@ -97,7 +116,7 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "bryce",
+  title: "bryce.io",
   meta: [
     {
       name: "description",

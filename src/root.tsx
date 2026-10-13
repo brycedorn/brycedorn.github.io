@@ -22,9 +22,12 @@ export default component$(() => {
             href={`${import.meta.env.BASE_URL}manifest.json`}
           />
         )}
+        <noscript>
+          <style dangerouslySetInnerHTML=".hero .name { color: var(--text); }" />
+        </noscript>
         <RouterHead />
       </head>
-      <body lang="en">
+      <body>
         <RouterOutlet />
       </body>
     </QwikCityProvider>
